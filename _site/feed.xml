@@ -5,8 +5,8 @@
     <description>Backups done right!</description>
     <link>https://restic.net/blog/</link>
     <atom:link href="https://restic.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 01 Jan 2018 21:41:25 +0100</pubDate>
-    <lastBuildDate>Mon, 01 Jan 2018 21:41:25 +0100</lastBuildDate>
+    <pubDate>Mon, 01 Jan 2018 21:57:39 +0100</pubDate>
+    <lastBuildDate>Mon, 01 Jan 2018 21:57:39 +0100</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
 
     
@@ -14,7 +14,7 @@
         <title>moving to restic.net</title>
         <description>&lt;p&gt;A while back we’ve registered the domain &lt;code class=&quot;highlighter-rouge&quot;&gt;restic.net&lt;/code&gt; and we’re moving the
 website from GitHub Pages to a dedicated hosting machine at
-&lt;a href=&quot;restic.net&quot;&gt;https://restic.net&lt;/a&gt;. Please update any links to the old website,
+&lt;a href=&quot;https://restic.net&quot;&gt;https://restic.net&lt;/a&gt;. Please update any links to the old website,
 thanks!&lt;/p&gt;
 
 &lt;p&gt;If you’re subscribed to the RSS/Atom XML feed, you need to update the feed url
