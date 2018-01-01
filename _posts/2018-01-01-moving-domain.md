@@ -10,4 +10,4 @@ website from GitHub Pages to a dedicated hosting machine at
 thanks!
 
 If you're subscribed to the RSS/Atom XML feed, you need to update the feed url
-to `https://restic.net/feed.xml`.
+to [https://restic.net/feed.xml](https://restic.net/feed.xml).
