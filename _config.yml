@@ -5,7 +5,7 @@ description: Backups done right!
 # this means to ignore newlines until "baseurl:"
 # restic is a program that does backups right. IT's easy, fast, secure and
 # efficient, and the backups are verifiable!
-baseurl: "/"
+baseurl: ""
 url: "https://restic.net" # the base hostname & protocol for your site
 language: en
 blog_baseurl: "/blog/"
