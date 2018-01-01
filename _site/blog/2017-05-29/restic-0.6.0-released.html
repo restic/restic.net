@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    restic &middot;
+      
+        restic 0.6.0 released
+      
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/css/others.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="//apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="//favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://restic.github.io/blog/2017-05-29/restic-0.6.0-released" />
+
+  <!-- scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">restic</a>
+      </h1>
+      <p class="lead">Backups done right!</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+      
+
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/blog/">Blog</a>
+          
+        
+      
+        
+          
+        
+      
+        
+      
+
+      <a class="sidebar-nav-item" href="https://forum.restic.net/">Forum</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/stable/">Docs</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/latest/">Docs (dev)</a>
+
+      <a class="sidebar-nav-item" href="https://github.com/restic/restic">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        GitHub Project
+      </a>
+
+      <a class="sidebar-nav-item" href="https://twitter.com/resticbackup">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        @<span class="username">resticbackup</span>
+      </a>
+    </nav>
+
+    <nav class="sidebar-nav secondary-nav">
+      
+    </nav>
+
+    <!--<p>&copy; 2018. All rights reserved.</p>-->
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">restic 0.6.0 released</h1>
+  <span class="post-date">29 May 2017</span>
+  <p>We’ve just released <a href="https://github.com/restic/restic/releases/tag/v0.6.0">restic 0.6.0</a>!</p>
+
+<p>No grave bugs have been found, so the final version is identical to the <code class="highlighter-rouge">-rc.1</code> version. This release contains many bug fixes and several improvements for the user interface, the most important changes are listed below (and also contained in the <code class="highlighter-rouge">CHANGELOG.md</code>.</p>
+
+<p>For downloading the code, head over to https://github.com/restic/restic/releases/tag/v0.6.0.
+As always, thanks for <a href="https://github.com/restic/restic/issues/new">reporting any issues</a> you encounter!</p>
+
+<h1 id="important-changes-in-060">Important Changes in 0.6.0</h1>
+
+<h2 id="consistent-forget-policy">Consistent forget policy</h2>
+
+<p>The <code class="highlighter-rouge">forget</code> command was corrected to be more consistent in which snapshots are to be forgotten. It is possible that the new code removes more snapshots than before, so please review what would be deleted by using the <code class="highlighter-rouge">--dry-run</code> option. https://github.com/restic/restic/pull/957 https://github.com/restic/restic/issues/953</p>
+
+<h2 id="unified-repository-layout">Unified repository layout</h2>
+
+<p>Up to now the s3 backend used a special repository layout. We’ve decided to unify the repository layout and implemented the default layout also for the s3 backend. For creating a new repository on s3 with the default layout, use <code class="highlighter-rouge">restic -o s3.layout=default init</code>. For further commands the option is not necessary any more, restic will automatically detect the correct layout to use. A future version will switch to the default layout for new repositories. https://github.com/restic/restic/pull/966 https://github.com/restic/restic/issues/965</p>
+
+<h2 id="memory-and-time-improvements-for-the-s3-backend">Memory and time improvements for the s3 backend</h2>
+
+<p>We’ve updated the library used for accessing s3, switched to using a lower level API and added caching for some requests. This lead to a decrease in memory usage and a great speedup. In addition, we added benchmark functions for all backends, so we can track improvements over time. The Continuous Integration test service we’re using (Travis) now runs the s3 backend tests not only against a Minio server, but also against the Amazon s3 live service, so we should be notified of any regressions much sooner. https://github.com/restic/restic/pull/962 https://github.com/restic/restic/pull/960 https://github.com/restic/restic/pull/946 https://github.com/restic/restic/pull/938 https://github.com/restic/restic/pull/883</p>
+
+
+</div>
+
+<h2>Comments</h2>
+<div id='discourse-comments'></div>
+
+<script type="text/javascript">
+  DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/',
+                     discourseEmbedUrl: 'https://restic.github.io/blog/2017-05-29/restic-0.6.0-released' };
+
+  (function() {
+    var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+    d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/blog/2017-12-27/restic-0.8.1-released">
+            restic 0.8.1 released
+            <small>27 Dec 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/2017-11-26/restic-0.8.0-released">
+            restic 0.8.0 released
+            <small>26 Nov 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/2017-11-25/upcoming-changes-to-s3">
+            Upcoming changes for the S3 backend
+            <small>25 Nov 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+    <a href="https://github.com/restic/restic" class="desktop"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+  </body>
+</html>

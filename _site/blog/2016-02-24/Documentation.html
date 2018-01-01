@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    restic &middot;
+      
+        Documentation and Manual
+      
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/css/others.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="//apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="//favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://restic.github.io/blog/2016-02-24/Documentation" />
+
+  <!-- scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">restic</a>
+      </h1>
+      <p class="lead">Backups done right!</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+      
+
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/blog/">Blog</a>
+          
+        
+      
+        
+          
+        
+      
+        
+      
+
+      <a class="sidebar-nav-item" href="https://forum.restic.net/">Forum</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/stable/">Docs</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/latest/">Docs (dev)</a>
+
+      <a class="sidebar-nav-item" href="https://github.com/restic/restic">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        GitHub Project
+      </a>
+
+      <a class="sidebar-nav-item" href="https://twitter.com/resticbackup">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        @<span class="username">resticbackup</span>
+      </a>
+    </nav>
+
+    <nav class="sidebar-nav secondary-nav">
+      
+    </nav>
+
+    <!--<p>&copy; 2018. All rights reserved.</p>-->
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Documentation and Manual</h1>
+  <span class="post-date">24 Feb 2016</span>
+  <p>Documentation in software projects is one of the things most developers hate.
+It is no secret that the docs always seem to be out of date.</p>
+
+<p>In order to improve this situation for restic, since a <a href="https://github.com/restic/restic/commit/eaa2f899d5f7c1d6e21d058cd5f5b6dc65eb45e6">few days
+ago</a>
+the manual and documentation is part of the main restic repository. Having the
+documentation in the main repository means that all users have instant access
+to the exact version of the documentation they’ll need and developers can
+document new features in the same Pull Request they’re submitting the code.</p>
+
+<p>We chose <a href="http://www.mkdocs.org/">MkDocs</a> so we can easily write the
+documentation in Markdown and locally preview it before publishing. The
+documentation can be viewed locally by running the following command from
+within the repository:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>mkdocs serve
+INFO    -  Building documentation... 
+INFO    -  Cleaning site directory 
+<span class="o">[</span>I 160224 21:04:49 server:271] Serving on http://127.0.0.1:8000
+<span class="o">[</span>I 160224 21:04:49 handlers:58] Start watching changes
+<span class="o">[</span>I 160224 21:04:49 handlers:60] Start detecting changes</code></pre></figure>
+
+<p>Afterwards just visit the printed URL. If you pass the additional parameter
+<code class="highlighter-rouge">--livereload</code>, the browser will automatically refresh after a files was
+changed. Of course you can also just view the Markdown files in a text editor,
+without any third-party software. We’ll always try to make the documentation
+readable in plain text.</p>
+
+<p>Additionally we’ve enabled the awesome
+<a href="https://readthedocs.org/">Read the Docs</a> service, which allows reading the
+documentation at <a href="https://restic.readthedocs.io/">https://restic.readthedocs.io/</a>. In the bottom left corner
+is a small menu which allows switching to a specific version of the
+documentation. The URL <a href="https://restic.readthedocs.io/en/latest/">https://restic.readthedocs.io/en/latest/</a> will always
+return the docs for the latest master branch.</p>
+
+</div>
+
+<h2>Comments</h2>
+<div id='discourse-comments'></div>
+
+<script type="text/javascript">
+  DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/',
+                     discourseEmbedUrl: 'https://restic.github.io/blog/2016-02-24/Documentation' };
+
+  (function() {
+    var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+    d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/blog/2017-12-27/restic-0.8.1-released">
+            restic 0.8.1 released
+            <small>27 Dec 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/2017-11-26/restic-0.8.0-released">
+            restic 0.8.0 released
+            <small>26 Nov 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/2017-11-25/upcoming-changes-to-s3">
+            Upcoming changes for the S3 backend
+            <small>25 Nov 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+    <a href="https://github.com/restic/restic" class="desktop"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+  </body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    restic &middot;
+      
+        restic 0.8.0 released
+      
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/css/others.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="//apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="//favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://restic.github.io/blog/2017-11-26/restic-0.8.0-released" />
+
+  <!-- scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">restic</a>
+      </h1>
+      <p class="lead">Backups done right!</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+      
+
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/blog/">Blog</a>
+          
+        
+      
+        
+          
+        
+      
+        
+      
+
+      <a class="sidebar-nav-item" href="https://forum.restic.net/">Forum</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/stable/">Docs</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/latest/">Docs (dev)</a>
+
+      <a class="sidebar-nav-item" href="https://github.com/restic/restic">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        GitHub Project
+      </a>
+
+      <a class="sidebar-nav-item" href="https://twitter.com/resticbackup">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        @<span class="username">resticbackup</span>
+      </a>
+    </nav>
+
+    <nav class="sidebar-nav secondary-nav">
+      
+    </nav>
+
+    <!--<p>&copy; 2018. All rights reserved.</p>-->
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">restic 0.8.0 released</h1>
+  <span class="post-date">26 Nov 2017</span>
+  <p>We’ve just released <a href="https://github.com/restic/restic/releases/tag/v0.8.0">restic 0.8.0</a>. It brings the new awesome metadata cache which will speed up many operations, you may need to run <code class="highlighter-rouge">restic prune</code> once to fully see it in action.</p>
+
+<p>For downloading the new release and see a more detailed list of important changes, head over to <a href="https://github.com/restic/restic/releases/tag/v0.8.0">GitHub</a>. As always, thanks for <a href="https://github.com/restic/restic/issues/new">reporting any issues</a> you encounter! Or just write a post in <a href="https://forum.restic.net">the forum</a>.</p>
+
+<p>This release also corrects a (low risk) vulnerability. When attackers are able to create files with arbitrary names on a Linux/Unix system in a directory that is saved with restic, it may happen that when the directory is restored on a Windows system to write files outside the target directory for the restore.</p>
+
+<p>It works as follows:</p>
+<ol>
+  <li>The attackers create a file called <code class="highlighter-rouge">..\test.txt</code>, which is a valid filename on Linux.</li>
+  <li>This is saved with restic, which will just save the file name in verbatim.</li>
+  <li>When the file is restored on Linux, it’ll just be called <code class="highlighter-rouge">..\test.txt</code> again. But if it restored on Windows, it’ll be placed in the parent directory of the target directory (because <code class="highlighter-rouge">..\</code> refers to the parent).</li>
+</ol>
+
+<p>We think this situation will not occur very often, so it is estimated to be of low risk. Nevertheless we’ve made sure that the behavior is changed, and now restic refuses to write files outside the target directory during restore.</p>
+
+<p>We’d like to thank <a href="https://allinaccess.com/">Tyler Spivey</a> for reporting the vulnerability responsibly!</p>
+
+</div>
+
+<h2>Comments</h2>
+<div id='discourse-comments'></div>
+
+<script type="text/javascript">
+  DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/',
+                     discourseEmbedUrl: 'https://restic.github.io/blog/2017-11-26/restic-0.8.0-released' };
+
+  (function() {
+    var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+    d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/blog/2017-12-27/restic-0.8.1-released">
+            restic 0.8.1 released
+            <small>27 Dec 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/2017-11-25/upcoming-changes-to-s3">
+            Upcoming changes for the S3 backend
+            <small>25 Nov 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/2017-09-20/restic-0.7.3-released">
+            restic 0.7.3 released
+            <small>20 Sep 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+    <a href="https://github.com/restic/restic" class="desktop"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+  </body>
+</html>

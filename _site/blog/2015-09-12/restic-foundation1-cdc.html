@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    restic &middot;
+      
+        Foundation - Introducing Content Defined Chunking (CDC)
+      
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/css/others.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="//apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="//favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://restic.github.io/blog/2015-09-12/restic-foundation1-cdc" />
+
+  <!-- scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">restic</a>
+      </h1>
+      <p class="lead">Backups done right!</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+      
+
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/blog/">Blog</a>
+          
+        
+      
+        
+          
+        
+      
+        
+      
+
+      <a class="sidebar-nav-item" href="https://forum.restic.net/">Forum</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/stable/">Docs</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/latest/">Docs (dev)</a>
+
+      <a class="sidebar-nav-item" href="https://github.com/restic/restic">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        GitHub Project
+      </a>
+
+      <a class="sidebar-nav-item" href="https://twitter.com/resticbackup">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        @<span class="username">resticbackup</span>
+      </a>
+    </nav>
+
+    <nav class="sidebar-nav secondary-nav">
+      
+    </nav>
+
+    <!--<p>&copy; 2018. All rights reserved.</p>-->
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Foundation - Introducing Content Defined Chunking (CDC)</h1>
+  <span class="post-date">12 Sep 2015</span>
+  <p>This post will explain Content Defined Chunking (CDC) and how it is used by
+restic.</p>
+
+<p>Backup programs need to deal with large volumes of changing data. Saving the
+whole copy of each file again to the backup location when a subsequent (usually
+called “incremental”) backup is created is not efficient. Over time, different
+strategies have emerged to handle data in such a case.</p>
+
+<p>In a backup program, data de-duplication can be applied in two locations:
+Removing duplicate data from the same or different files within the same backup
+process (<em>inter-file de-duplication</em>), e.g. during the initial backup, or
+removing it between several backups that contain some of the same data
+(<em>inter-backup de-duplication</em>). While the former is desirable to have, the
+latter is much more important.</p>
+
+<h3 id="strategies">Strategies</h3>
+
+<p>The most basic strategy is to only save files that have changed since the last
+backup, this is where the term “incremental” backup comes from. This way,
+unmodified files are not stored again on subsequent backups. But what happens if
+just a small portion of a large file is modified? Using this strategy, the
+modified file will be saved again, although most of it did not change.</p>
+
+<p>A better idea is to split files into smaller fixed-size pieces (called “chunks”
+in the following) of e.g. 1MiB in size. When the backup program saves a file to
+the backup location, it is sufficient to save all chunks and the list of chunks
+the file consists of. These chunks can be identified for example by the SHA-256
+hash of the content, so duplicate chunks can be detected and saved only once.
+This way, for a file containing of a large number of consecutive null bytes,
+only one chunk of null bytes needs to be stored.</p>
+
+<p>On a subsequent backup, unmodified files are not saved again because all chunks
+have already been saved before. Modified files on the other hand are split into
+chunks again, and new chunks are saved to the backup location.</p>
+
+<p>But what happens when the user adds a byte to the beginning of the file? The
+chunk boundaries (where a chunk ends and the next begins) would shift by one
+byte, changing every chunk in the file. When the backup program now splits the
+file into fixed-sized chunks, it would (in most cases) end up with a list of
+different chunks, so it needs to save every chunk as a new chunk to the backup
+location. This is not satisfactory for a modern backup program.</p>
+
+<h3 id="content-defined-chunking">Content Defined Chunking</h3>
+
+<p>Restic works a bit differently. It also operates on chunks of data from files
+and only upload new chunks, but uses a more sophisticated approach for
+splitting files into chunks called <em>Content Defined Chunking</em>. It works by
+splitting a file into chunks based on the contents of the file, rather than
+always splitting after a fixed number of bytes.</p>
+
+<p>In the following, the function <span class="MathJax_Preview">F(b_0…b_{63})</span><script type="math/tex">F(b_0…b_{63})</script> returns a 64 bit <a href="https://en.wikipedia.org/wiki/Rabin_fingerprint">Rabin
+Fingerprint</a> of the byte
+sequence in the argument (where <span class="MathJax_Preview">b_i</span><script type="math/tex">b_i</script> is the byte at offset <span class="MathJax_Preview">i</span><script type="math/tex">i</script>). This
+function can be efficiently computed as a <a href="https://en.wikipedia.org/wiki/Rolling_hash">rolling
+hash</a>, which means that <span class="MathJax_Preview">F(b_1 …
+b_{64})</span><script type="math/tex">F(b_1 …
+b_{64})</script> can be computed without much overhead when <span class="MathJax_Preview">F(b_0 … b_{63})</span><script type="math/tex">F(b_0 … b_{63})</script> is
+already known. Restic uses 64 bytes as the “window size” for the rolling hash.</p>
+
+<p>When restic saves a file, it first computes the Rabin Fingerprints for all 64
+byte sequences in the file, so it starts by computing <span class="MathJax_Preview">F(b_0 … b_{63})</span><script type="math/tex">F(b_0 … b_{63})</script>,
+then <span class="MathJax_Preview">F(b_1 … b_{64})</span><script type="math/tex">F(b_1 … b_{64})</script>, then <span class="MathJax_Preview">F(b_2 … b_{65})</span><script type="math/tex">F(b_2 … b_{65})</script> and so on. For each
+fingerprint, restic then tests if the lowest 21 bits are zero. If this is the
+case, restic found a new chunk boundary.</p>
+
+<p>A chunk boundary therefore depends only on the last 64 bytes before the
+boundary, in other words the end of a chunk depends on the last 64 bytes of a
+chunk. This especially means that chunks are variable-sized, within reasonable
+limits.</p>
+
+<p>Returning to our earlier example, if a user creates a backup of a file and then
+inserts bytes at the beginning of the file, restic will find the same chunk
+boundary for the first chunk during the second run. The content of this first
+chunk will have changed (due to the additional bytes), but any subsequent chunk
+will remain identical thanks to the content-defined chunk boundaries.</p>
+
+<p>Let’s say our file consists of 4MiB of data, and restic detects the following
+chunk boundaries, where “offset” is the byte offset of the last byte of the
+sliding window:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Offset</th>
+      <th style="text-align: right">Fingerprint</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">577536</td>
+      <td style="text-align: right"><code class="highlighter-rouge">0x77db45c60d400000</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1990656</td>
+      <td style="text-align: right"><code class="highlighter-rouge">0xc0da6ed30fe00000</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2945019</td>
+      <td style="text-align: right"><code class="highlighter-rouge">0x309235f507600000</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: right">4194304</td>
+      <td style="text-align: right">End of File</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The file is therefore split into four chunks. Adding 20 bytes at the beginning
+of the file still yields the same chunk boundaries, shifted by 20 bytes:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Offset</th>
+      <th style="text-align: right">Fingerprint</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">577556</td>
+      <td style="text-align: right"><code class="highlighter-rouge">0x77db45c60d400000</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: right">1990676</td>
+      <td style="text-align: right"><code class="highlighter-rouge">0xc0da6ed30fe00000</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2945039</td>
+      <td style="text-align: right"><code class="highlighter-rouge">0x309235f507600000</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: right">4194304</td>
+      <td style="text-align: right">End of File</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>When restic computes a cryptographic hash (SHA-256) over the data in each chunk,
+it detects that the first chunk has been changed (we added 20 bytes, remember?),
+but the remaining three chunks have the same hash. Therefore, it only needs to
+save the changed first chunk.</p>
+
+<h3 id="examples">Examples</h3>
+
+<p>So, let’s take the things explained above to the real world, and have a bit of
+fun with restic. For the sake of simplicity, we’ll save the repository location
+and the password in environment variables (<code class="highlighter-rouge">RESTIC_REPOSITORY</code> and
+<code class="highlighter-rouge">RESTIC_PASSWORD</code>) so that we don’t have to type the password for every action:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="nb">export </span><span class="nv">RESTIC_REPOSITORY</span><span class="o">=</span>/tmp/restic-test-repository <span class="nv">RESTIC_PASSWORD</span><span class="o">=</span>foo</code></pre></figure>
+
+<p>Please be aware that this way the password will be contained in your shell
+history.</p>
+
+<p>First, we’ll initialize a new repository at a temporary location:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>restic init
+created restic backend 2b310bf378 at /tmp/restic-test-repository
+
+Please note that knowledge of your password is required to access
+the repository. Losing your password means that your data is
+irrecoverably lost.</code></pre></figure>
+
+<p>At this point, nothing has been saved to the repository, so it is rather small:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>du -sh <span class="nv">$RESTIC_REPOSITORY</span>
+8.0K	/tmp/restic-test-repository</code></pre></figure>
+
+<p>Next, we create a new directory called <code class="highlighter-rouge">testdata</code> for our test, containing a file
+<code class="highlighter-rouge">file.raw</code>, filled with 100MiB of random data:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>mkdir testdata
+<span class="gp">$ </span>dd <span class="k">if</span><span class="o">=</span>/dev/urandom <span class="nv">of</span><span class="o">=</span>testdata/file.raw <span class="nv">bs</span><span class="o">=</span>1M <span class="nv">count</span><span class="o">=</span>100
+100+0 records <span class="k">in
+</span>100+0 records out
+104857600 bytes <span class="o">(</span>105 MB<span class="o">)</span> copied, 5.76985 s, 18.2 MB/s</code></pre></figure>
+
+<p>We then backup this directory with restic (into the repository we specified via the
+environment variable <code class="highlighter-rouge">$RESTIC_REPOSITORY</code> above):</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>restic backup testdata
+scan <span class="o">[</span>/home/fd0/tmp/testdata]
+scanned 1 directories, 1 files <span class="k">in </span>0:00
+<span class="o">[</span>0:02] 100.00%  41.457 MiB/s  100.000 MiB / 100.000 MiB  0 / 2 it...ETA 0:00
+duration: 0:02, 44.21MiB/s
+snapshot 7452bd17 saved</code></pre></figure>
+
+<p>We can see that restic created a backup with a size of 100MiB in about two
+seconds. We can verify this by checking the size of the repository again:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>du -sh <span class="nv">$RESTIC_REPOSITORY</span>
+101M	/tmp/restic-test-repository</code></pre></figure>
+
+<p>Not surprisingly, the repository is roughly the same size as the data we have
+created the backup of.</p>
+
+<p>Now, we run the backup command for a second time:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>restic backup testdata
+using parent snapshot 7452bd17
+scan <span class="o">[</span>/home/fd0/tmp/testdata]
+scanned 1 directories, 1 files <span class="k">in </span>0:00
+<span class="o">[</span>0:00] 100.00%  0B/s  100.000 MiB / 100.000 MiB  0 / 2 items  ... ETA 0:00
+duration: 0:00, 20478.98MiB/s
+snapshot 0b870550 saved</code></pre></figure>
+
+<p>Again we’ve instructed restic to backup 100MiB of data, but in this case restic
+was much faster and finished the job in less than a second.  By the way, restic
+would have also been able to efficiently backup a file that was renamed or even
+moved to a different directory.</p>
+
+<p>Looking at the repository size we can already guess that it is still about
+100MiB, since we didn’t really add any new data:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>du -sh <span class="nv">$RESTIC_REPOSITORY</span>
+101M	/tmp/restic-test-repository</code></pre></figure>
+
+<p>When we make a copy of the file <code class="highlighter-rouge">file.raw</code> and backup the same repository again,
+restic recognises that all data is already known and the repository size does
+not grow at all, although the directory <code class="highlighter-rouge">testdata</code> now contains 200MiB of data:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>cp testdata/file.raw testdata/file2.raw
+
+<span class="gp">$ </span>du -sh testdata
+200M	testdata
+
+<span class="gp">$ </span>restic backup testdata
+using parent snapshot 0b870550
+scan <span class="o">[</span>/home/fd0/tmp/testdata]
+scanned 1 directories, 2 files <span class="k">in </span>0:00
+<span class="o">[</span>0:01] 100.00%  163.617 MiB/s  200.000 MiB / 200.000 MiB  1 / 3 ... ETA 0:00
+duration: 0:01, 129.06MiB/s
+snapshot ab8e0047 saved
+
+<span class="gp">$ </span>du -sh <span class="nv">$RESTIC_REPOSITORY</span>
+101M	/tmp/restic-test-repository</code></pre></figure>
+
+<p>Now for the final demonstration we’ll create a new file <code class="highlighter-rouge">file3.raw</code> which is a
+nasty combination of the 100MiB we’ve initially saved in <code class="highlighter-rouge">file.raw</code> so that
+<code class="highlighter-rouge">testdata</code> now contains about 400MiB:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span><span class="o">(</span><span class="nb">echo </span>foo; cat testdata/file.raw; <span class="nb">echo </span>bar; cat testdata/file.raw; <span class="nb">echo </span>baz<span class="o">)</span> <span class="se">\</span>
+  &gt; testdata/file3.raw
+
+<span class="gp">$ </span>du -sh testdata
+401M	testdata</code></pre></figure>
+
+<p>We’ll create a new backup of the directory with restic and observe that the
+repository has grown by about 10MiB:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>restic backup testdata
+using parent snapshot ab8e0047
+scan <span class="o">[</span>/home/fd0/tmp/testdata]
+scanned 1 directories, 3 files <span class="k">in </span>0:00
+<span class="o">[</span>0:03] 100.00%  127.638 MiB/s  400.000 MiB / 400.000 MiB  2 / 4 ... ETA 0:00
+duration: 0:03, 123.73MiB/s
+snapshot a8897ae3 saved
+
+<span class="gp">$ </span>du -sh <span class="nv">$RESTIC_REPOSITORY</span>
+111M	/tmp/restic-test-repository</code></pre></figure>
+
+<p>This is expected because we’ve created a few new chunks when creating
+<code class="highlighter-rouge">file3.raw</code>, e.g. the first chunk will be saved again because a few bytes (the
+string <code class="highlighter-rouge">foo\n</code>) were added. Restic managed this challenge quite well and only
+introduced minor overhead for storing this incremental backup.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Content Defined Chunking is a clever idea to split large amounts of data (e.g.
+large files) into small chunks, while being able to recognize the same chunks
+again when shifted or (slightly) modified.</p>
+
+<p>This enables restic to de-duplicate data on the level of chunks so that each
+chunk of data is only stored at (and transmitted to) the backup location once.
+This gives us not only <em>inter-file</em> de-duplication, but also the more relevant
+<em>inter-backup</em> de-duplication.</p>
+
+<h3 id="references">References</h3>
+
+<ul>
+  <li><a href="https://github.com/restic/chunker">The restic CDC implementation</a> and
+<a href="http://godoc.org/github.com/restic/chunker">API documentation</a></li>
+  <li>Michael O. Rabin (1981): <a href="http://www.xmailserver.org/rabin.pdf">Fingerprinting by Random Polynomials</a></li>
+  <li>Ross N. Williams (1993): <a href="http://www.zlib.net/crc_v3.txt">A Painless Guide to CRC Error Detection Algorithms</a></li>
+  <li>Andrei Z. Broder (1993): <a href="http://www.xmailserver.org/rabin_apps.pdf">Some Applications of Rabin’s Fingerprinting Method</a></li>
+  <li>Shuhong Gao and Daniel Panario (1997): <a href="http://www.math.clemson.edu/~sgao/papers/GP97a.pdf">Tests and Constructions of Irreducible Polynomials over Finite Fields</a></li>
+  <li>Andrew Kadatch, Bob Jenkins (2007): <a href="http://crcutil.googlecode.com/files/crc-doc.1.0.pdf">Everything we know about CRC but afraid to forget</a></li>
+</ul>
+
+</div>
+
+<h2>Comments</h2>
+<div id='discourse-comments'></div>
+
+<script type="text/javascript">
+  DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/',
+                     discourseEmbedUrl: 'https://restic.github.io/blog/2015-09-12/restic-foundation1-cdc' };
+
+  (function() {
+    var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+    d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/blog/2017-12-27/restic-0.8.1-released">
+            restic 0.8.1 released
+            <small>27 Dec 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/2017-11-26/restic-0.8.0-released">
+            restic 0.8.0 released
+            <small>26 Nov 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/2017-11-25/upcoming-changes-to-s3">
+            Upcoming changes for the S3 backend
+            <small>25 Nov 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+    <a href="https://github.com/restic/restic" class="desktop"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+  </body>
+</html>

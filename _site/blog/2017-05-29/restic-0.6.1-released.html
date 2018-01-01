@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    restic &middot;
+      
+        restic 0.6.1 released
+      
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/css/others.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="//apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="//favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://restic.github.io/blog/2017-05-29/restic-0.6.1-released" />
+
+  <!-- scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">restic</a>
+      </h1>
+      <p class="lead">Backups done right!</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+      
+
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/blog/">Blog</a>
+          
+        
+      
+        
+          
+        
+      
+        
+      
+
+      <a class="sidebar-nav-item" href="https://forum.restic.net/">Forum</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/stable/">Docs</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/latest/">Docs (dev)</a>
+
+      <a class="sidebar-nav-item" href="https://github.com/restic/restic">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        GitHub Project
+      </a>
+
+      <a class="sidebar-nav-item" href="https://twitter.com/resticbackup">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        @<span class="username">resticbackup</span>
+      </a>
+    </nav>
+
+    <nav class="sidebar-nav secondary-nav">
+      
+    </nav>
+
+    <!--<p>&copy; 2018. All rights reserved.</p>-->
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">restic 0.6.1 released</h1>
+  <span class="post-date">29 May 2017</span>
+  <p>We’ve just released <a href="https://github.com/restic/restic/releases/tag/v0.6.1">restic 0.6.1</a>!</p>
+
+<p>Just a few days after the release of restic 0.6.0 we’ve released 0.6.1 as a bugfix release to address two annoying bugs. The changes are listed below.</p>
+
+<p>This is the first release of restic that uses the new <a href="https://github.com/restic/builder">build Docker container</a> which allows you to reproduce a byte identical version of the released binaries. This is called <a href="https://reproducible-builds.org/">Reproducible Builds</a>.</p>
+
+<p>For downloading the code, head over to <a href="https://github.com/restic/restic/releases/tag/v0.6.1">GitHub</a>.
+As always, thanks for <a href="https://github.com/restic/restic/issues/new">reporting any issues</a> you encounter!</p>
+
+<h1 id="important-changes-in-061">Important Changes in 0.6.1</h1>
+
+<ul>
+  <li>
+    <p>We’ve fixed a bug where <code class="highlighter-rouge">rebuild-index</code> would corrupt the index when used
+with the s3 backend together with the <code class="highlighter-rouge">default</code> layout. This is not the
+default setting.</p>
+  </li>
+  <li>
+    <p>Backends based on HTTP now allow several idle connections in parallel. This
+is especially important for the REST backend, which (when used with a local
+server) may create a lot connections and exhaust available ports quickly.
+https://github.com/restic/restic/issues/985
+https://github.com/restic/restic/pull/986</p>
+  </li>
+  <li>
+    <p>Regular status report: We’ve removed the status report that was printed
+every 10 seconds when restic is run non-interactively. You can still force
+reporting the current status by sending a <code class="highlighter-rouge">USR1</code> signal to the process.
+https://github.com/restic/restic/pull/974</p>
+  </li>
+  <li>
+    <p>The <code class="highlighter-rouge">build.go</code> now strips the temporary directory used for compilation from
+the binary. This is the first step in enabling reproducible builds.
+https://github.com/restic/restic/pull/981</p>
+  </li>
+</ul>
+
+</div>
+
+<h2>Comments</h2>
+<div id='discourse-comments'></div>
+
+<script type="text/javascript">
+  DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/',
+                     discourseEmbedUrl: 'https://restic.github.io/blog/2017-05-29/restic-0.6.1-released' };
+
+  (function() {
+    var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+    d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/blog/2017-12-27/restic-0.8.1-released">
+            restic 0.8.1 released
+            <small>27 Dec 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/2017-11-26/restic-0.8.0-released">
+            restic 0.8.0 released
+            <small>26 Nov 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/2017-11-25/upcoming-changes-to-s3">
+            Upcoming changes for the S3 backend
+            <small>25 Nov 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+    <a href="https://github.com/restic/restic" class="desktop"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+  </body>
+</html>

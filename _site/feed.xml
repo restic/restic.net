@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>restic</title>
+    <description>Backups done right!</description>
+    <link>https://restic.github.io/blog/</link>
+    <atom:link href="https://restic.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 01 Jan 2018 15:51:25 +0100</pubDate>
+    <lastBuildDate>Mon, 01 Jan 2018 15:51:25 +0100</lastBuildDate>
+    <generator>Jekyll v3.6.2</generator>
+
+    
+      <item>
+        <title>restic 0.8.1 released</title>
+        <description>&lt;p&gt;We’ve just released &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.8.1&quot;&gt;restic 0.8.1&lt;/a&gt;. Among others, support for DigitalOcean Spaces (and other backends which use HTTP) is improved.&lt;/p&gt;
+
+&lt;p&gt;For downloading the new release and see a more detailed list of important changes, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.8.1&quot;&gt;GitHub&lt;/a&gt;. As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 27 Dec 2017 00:00:00 +0100</pubDate>
+        <link>https://restic.github.io/blog/2017-12-27/restic-0.8.1-released</link>
+        <guid isPermaLink="true">https://restic.github.io/blog/2017-12-27/restic-0.8.1-released</guid>
+
+        
+        
+
+      </item>
+    
+      <item>
+        <title>restic 0.8.0 released</title>
+        <description>&lt;p&gt;We’ve just released &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.8.0&quot;&gt;restic 0.8.0&lt;/a&gt;. It brings the new awesome metadata cache which will speed up many operations, you may need to run &lt;code class=&quot;highlighter-rouge&quot;&gt;restic prune&lt;/code&gt; once to fully see it in action.&lt;/p&gt;
+
+&lt;p&gt;For downloading the new release and see a more detailed list of important changes, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.8.0&quot;&gt;GitHub&lt;/a&gt;. As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This release also corrects a (low risk) vulnerability. When attackers are able to create files with arbitrary names on a Linux/Unix system in a directory that is saved with restic, it may happen that when the directory is restored on a Windows system to write files outside the target directory for the restore.&lt;/p&gt;
+
+&lt;p&gt;It works as follows:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;The attackers create a file called &lt;code class=&quot;highlighter-rouge&quot;&gt;..\test.txt&lt;/code&gt;, which is a valid filename on Linux.&lt;/li&gt;
+  &lt;li&gt;This is saved with restic, which will just save the file name in verbatim.&lt;/li&gt;
+  &lt;li&gt;When the file is restored on Linux, it’ll just be called &lt;code class=&quot;highlighter-rouge&quot;&gt;..\test.txt&lt;/code&gt; again. But if it restored on Windows, it’ll be placed in the parent directory of the target directory (because &lt;code class=&quot;highlighter-rouge&quot;&gt;..\&lt;/code&gt; refers to the parent).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We think this situation will not occur very often, so it is estimated to be of low risk. Nevertheless we’ve made sure that the behavior is changed, and now restic refuses to write files outside the target directory during restore.&lt;/p&gt;
+
+&lt;p&gt;We’d like to thank &lt;a href=&quot;https://allinaccess.com/&quot;&gt;Tyler Spivey&lt;/a&gt; for reporting the vulnerability responsibly!&lt;/p&gt;
+</description>
+        <pubDate>Sun, 26 Nov 2017 00:00:00 +0100</pubDate>
+        <link>https://restic.github.io/blog/2017-11-26/restic-0.8.0-released</link>
+        <guid isPermaLink="true">https://restic.github.io/blog/2017-11-26/restic-0.8.0-released</guid>
+
+        
+        
+
+      </item>
+    
+      <item>
+        <title>Upcoming changes for the S3 backend</title>
+        <description>&lt;p&gt;TL;DR: If you’re using the &lt;code class=&quot;highlighter-rouge&quot;&gt;s3&lt;/code&gt; backend and cannot access your repo any more, append the path &lt;code class=&quot;highlighter-rouge&quot;&gt;/restic&lt;/code&gt; to the repository location.&lt;/p&gt;
+
+&lt;p&gt;We’ve just merged &lt;a href=&quot;https://github.com/restic/restic/pull/1437&quot;&gt;Pull Request #1437&lt;/a&gt; which resolves an issue with the S3 backend reported in &lt;a href=&quot;https://github.com/restic/restic/issues/1292&quot;&gt;#1292&lt;/a&gt;. When the next restic version is released (or you’re using the master branch directly), this may require modifying the repository location you’re passing to restic.&lt;/p&gt;
+
+&lt;p&gt;In order to access a repository stored on S3, restic requires the following information:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The endpoint address: For Amazon S3, it’s &lt;code class=&quot;highlighter-rouge&quot;&gt;s3.amazonaws.com&lt;/code&gt;, for a custom hosted &lt;a href=&quot;https://minio.io/&quot;&gt;Minio&lt;/a&gt; server it may be &lt;code class=&quot;highlighter-rouge&quot;&gt;https://minio.example.com&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;The bucket name (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;backup-servers&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;The path within the bucket (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;/repo-server1&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The endpoint address and bucket name are required for operation, but the path is optional. When the path is not set or empty, restic used to use the default path &lt;code class=&quot;highlighter-rouge&quot;&gt;/restic&lt;/code&gt; within the bucket. This has now changed: When the path is not set or empty, the repository is put at the root of the bucket, so the path is &lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This change was made so that it is possible to have the repository directly in the root of the bucket. The default path &lt;code class=&quot;highlighter-rouge&quot;&gt;/restic&lt;/code&gt; within the bucket only existed for historical reasons and was never properly documented.&lt;/p&gt;
+
+&lt;p&gt;So, if you did not specify a path within the bucket, you’ll now get an error that the repo cannot be found:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ restic -r s3:s3.amazonaws.com/backup-servers snapshots
+unable to open config file: Stat: The specified key does not exist.
+Is there a repository at the following location?
+s3:s3.amazonaws.com/backup-servers
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then you’ll need to add the path &lt;code class=&quot;highlighter-rouge&quot;&gt;/restic&lt;/code&gt; now in order to access an existing repo, like this:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ restic -r s3:s3.amazonaws.com/backup-servers/restic snapshots
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As always, if you have feedback for us, please use &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt; embedded below or (if you experience a bug) &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;create a new issue on GitHub&lt;/a&gt;. Thanks!&lt;/p&gt;
+</description>
+        <pubDate>Sat, 25 Nov 2017 00:00:00 +0100</pubDate>
+        <link>https://restic.github.io/blog/2017-11-25/upcoming-changes-to-s3</link>
+        <guid isPermaLink="true">https://restic.github.io/blog/2017-11-25/upcoming-changes-to-s3</guid>
+
+        
+        
+
+      </item>
+    
+      <item>
+        <title>restic 0.7.3 released</title>
+        <description>&lt;p&gt;We’ve just released &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.7.3&quot;&gt;restic 0.7.3&lt;/a&gt; to correct a bug with the Google Cloud Storage and Azure backends. When &lt;code class=&quot;highlighter-rouge&quot;&gt;restic prune&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;restic rebuild-index&lt;/code&gt; was run, not all files stored in these backends were considered.&lt;/p&gt;
+
+&lt;p&gt;For downloading the code, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.7.3&quot;&gt;GitHub&lt;/a&gt;.
+As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter!&lt;/p&gt;
+
+&lt;p&gt;The binaries released with each restic version are &lt;a href=&quot;https://reproducible-builds.org/&quot;&gt;reproducible&lt;/a&gt;, which means that you can easily reproduce a byte identical version from the source code for that release. Instructions on how to do that are contained in the &lt;a href=&quot;https://github.com/restic/builder&quot;&gt;builder repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;important-changes-in-073&quot;&gt;Important Changes in 0.7.3&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;For large backups stored in Google Cloud Storage, the &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; command fails because listing only returns the first 1000 files. This has been corrected, no data is lost in the process. In addition, a plausibility check was added to &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt;.
+&lt;a href=&quot;https://github.com/restic/restic/issues/1246&quot;&gt;#1246&lt;/a&gt; &lt;a href=&quot;https://github.com/restic/restic/pull/1247&quot;&gt;#1247&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 20 Sep 2017 00:00:00 +0200</pubDate>
+        <link>https://restic.github.io/blog/2017-09-20/restic-0.7.3-released</link>
+        <guid isPermaLink="true">https://restic.github.io/blog/2017-09-20/restic-0.7.3-released</guid>
+
+        
+        
+
+      </item>
+    
+      <item>
+        <title>restic 0.7.2 released</title>
+        <description>&lt;p&gt;We’re very pleased to announce that &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.7.2&quot;&gt;restic 0.7.2&lt;/a&gt; has been released!
+For downloading the code, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.7.2&quot;&gt;GitHub&lt;/a&gt;.
+As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter!&lt;/p&gt;
+
+&lt;p&gt;The binaries released with each restic version are &lt;a href=&quot;https://reproducible-builds.org/&quot;&gt;reproducible&lt;/a&gt;, which means that you can easily reproduce a byte identical version from the source code for that release. Instructions on how to do that are contained in the &lt;a href=&quot;https://github.com/restic/builder&quot;&gt;builder repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;important-changes-in-072&quot;&gt;Important Changes in 0.7.2&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;We’ve added an official docker image and a Dockerfile to build this image in &lt;code class=&quot;highlighter-rouge&quot;&gt;docker/&lt;/code&gt;.
+&lt;a href=&quot;https://github.com/restic/restic/pull/1061&quot;&gt;#1061&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The git repository layout was changed to resemble the layout typically used in Go projects, we’re not using &lt;code class=&quot;highlighter-rouge&quot;&gt;gb&lt;/code&gt; for building restic any more and vendoring the dependencies is now taken care of by &lt;code class=&quot;highlighter-rouge&quot;&gt;dep&lt;/code&gt;.
+&lt;a href=&quot;https://github.com/restic/restic/pull/1126&quot;&gt;#1126&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;We now support saving backups on Google Cloud Storage.
+&lt;a href=&quot;https://github.com/restic/restic/pull/1134&quot;&gt;#1134&lt;/a&gt;
+&lt;a href=&quot;https://github.com/restic/restic/pull/1052&quot;&gt;#1052&lt;/a&gt;
+&lt;a href=&quot;https://github.com/restic/restic/issues/211&quot;&gt;#211&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;We’ve added support for Microsoft Azure Blob Storage as a restic backend.
+&lt;a href=&quot;https://github.com/restic/restic/pull/1149&quot;&gt;#1149&lt;/a&gt;
+&lt;a href=&quot;https://github.com/restic/restic/pull/1059&quot;&gt;#1059&lt;/a&gt;
+&lt;a href=&quot;https://github.com/restic/restic/issues/609&quot;&gt;#609&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;In the course of supporting Microsoft Azure Blobe Storage Go 1.8 is now a requirement to build restic.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;restore&lt;/code&gt; command has been improved: When dirs are excluded (or not included) in a restore, they are not loaded from the repo any more.
+&lt;a href=&quot;https://github.com/restic/restic/pull/1044&quot;&gt;#1044&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Name collisions are now resolved by appending a counter.
+&lt;a href=&quot;https://github.com/restic/restic/issues/1179&quot;&gt;#1179&lt;/a&gt;
+&lt;a href=&quot;https://github.com/restic/restic/pull/1209&quot;&gt;#1209&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;small-changes&quot;&gt;Small changes&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;key&lt;/code&gt; command now prompts for a password even if the original password to access a repo has been specified via the &lt;code class=&quot;highlighter-rouge&quot;&gt;RESTIC_PASSWORD&lt;/code&gt; environment variable or a password file.
+&lt;a href=&quot;https://github.com/restic/restic/issues/1132&quot;&gt;#1132&lt;/a&gt;
+&lt;a href=&quot;https://github.com/restic/restic/pull/1133&quot;&gt;#1133&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Properly report errors when reading files with exclude patterns.
+&lt;a href=&quot;https://github.com/restic/restic/pull/1144&quot;&gt;#1144&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;We now automatically generate man pages for all restic commands, see the subdir &lt;code class=&quot;highlighter-rouge&quot;&gt;doc/man&lt;/code&gt;.
+&lt;a href=&quot;https://github.com/restic/restic/issues/697&quot;&gt;#697&lt;/a&gt;
+&lt;a href=&quot;https://github.com/restic/restic/pull/1147&quot;&gt;#1147&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;key remove&lt;/code&gt; command was corrected and now works as documented.
+&lt;a href=&quot;https://github.com/restic/restic/pull/1164&quot;&gt;#1164&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;When a restic command other than &lt;code class=&quot;highlighter-rouge&quot;&gt;init&lt;/code&gt; is used with a local repository and the repository directory does not exist, restic creates the directory structure. That’s an error, only the &lt;code class=&quot;highlighter-rouge&quot;&gt;init&lt;/code&gt; command should create the dir.
+&lt;a href=&quot;https://github.com/restic/restic/issues/1167&quot;&gt;#1167&lt;/a&gt;
+&lt;a href=&quot;https://github.com/restic/restic/pull/1182&quot;&gt;#1182&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Restic now prints stats on all BSD systems (not only on darwin) when SIGINFO is received (usually when ctrl+t is pressed).
+&lt;a href=&quot;https://github.com/restic/restic/pull/1203&quot;&gt;#1203&lt;/a&gt;
+&lt;a href=&quot;https://github.com/restic/restic/pull/1082#issuecomment-326279920&quot;&gt;#1082&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Since a few releases restic had the ability to write profiling files for memory and CPU usage when &lt;code class=&quot;highlighter-rouge&quot;&gt;debug&lt;/code&gt; is enabled. It was discovered that when restic is interrupted (ctrl+c is pressed), the proper shutdown hook is not run. This is now corrected.
+&lt;a href=&quot;https://github.com/restic/restic/pull/1191&quot;&gt;#1191&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A new option &lt;code class=&quot;highlighter-rouge&quot;&gt;--exclude-caches&lt;/code&gt; was added that allows excluding cache directories (that are tagged as such). This is a special case of a more generic option &lt;code class=&quot;highlighter-rouge&quot;&gt;--exclude-if-present&lt;/code&gt; which excludes a directory if a file with a specific name (and contents) is present.
+&lt;a href=&quot;https://github.com/restic/restic/issues/317&quot;&gt;#317&lt;/a&gt;
+&lt;a href=&quot;https://github.com/restic/restic/pull/1170&quot;&gt;#1170&lt;/a&gt;
+&lt;a href=&quot;https://github.com/restic/restic/pull/1224&quot;&gt;#1224&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;forget&lt;/code&gt; command now has an option &lt;code class=&quot;highlighter-rouge&quot;&gt;--group-by&lt;/code&gt; that allows flexible grouping policies.
+&lt;a href=&quot;https://github.com/restic/restic/pull/1196&quot;&gt;#1196&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The date and time restic records for a new backup can now be specified externally by passing &lt;code class=&quot;highlighter-rouge&quot;&gt;--time&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;backup&lt;/code&gt; command.
+&lt;a href=&quot;https://github.com/restic/restic/pull/1205&quot;&gt;#1205&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The option &lt;code class=&quot;highlighter-rouge&quot;&gt;--compact&lt;/code&gt; was added to the &lt;code class=&quot;highlighter-rouge&quot;&gt;snapshots&lt;/code&gt; command to get a better overview of the snapshots in a repo. It limits each snapshot to a single line.
+&lt;a href=&quot;https://github.com/restic/restic/issues/1218&quot;&gt;#1218&lt;/a&gt;
+&lt;a href=&quot;https://github.com/restic/restic/pull/1223&quot;&gt;#1223&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Wed, 13 Sep 2017 00:00:00 +0200</pubDate>
+        <link>https://restic.github.io/blog/2017-09-13/restic-0.7.2-released</link>
+        <guid isPermaLink="true">https://restic.github.io/blog/2017-09-13/restic-0.7.2-released</guid>
+
+        
+        
+
+      </item>
+    
+      <item>
+        <title>Meeting at FrOSCon 2017 - Details</title>
+        <description>&lt;p&gt;As announced &lt;a href=&quot;/blog/2017-07-21/FrOSCon-Bonn&quot;&gt;a few weeks ago&lt;/a&gt; we’re meeting at this year’s &lt;a href=&quot;https://www.froscon.de&quot;&gt;FrOSCon&lt;/a&gt; on 19 August 2017, 15:00 CEST in &lt;a href=&quot;https://goo.gl/maps/Rj2Z6ZQfyXK2&quot;&gt;Sankt Augustin&lt;/a&gt; near Bonn/Cologne in Germany (free entry)! We’ll get a project room for the afternoon, the room number will be announced as an update to this blog entry, &lt;a href=&quot;https://twitter.com/resticbackup&quot;&gt;on Twitter&lt;/a&gt; and in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;It’d be nice to know how many of you will be able to join us, so please leave a comment in the &lt;a href=&quot;https://github.com/restic/restic/issues/1110&quot;&gt;GitHub issue #1110&lt;/a&gt; or in the forum. We’re looking forward to meeting you all, thanks!&lt;/p&gt;
+</description>
+        <pubDate>Mon, 14 Aug 2017 00:00:00 +0200</pubDate>
+        <link>https://restic.github.io/blog/2017-08-14/FrOSCon-Bonn-Details</link>
+        <guid isPermaLink="true">https://restic.github.io/blog/2017-08-14/FrOSCon-Bonn-Details</guid>
+
+        
+        
+
+      </item>
+    
+      <item>
+        <title>Discourse Forum</title>
+        <description>&lt;p&gt;We’ve noticed that there are &lt;a href=&quot;https://github.com/restic/restic/issues?q=is%3Aissue%20label%3Aquestion&quot;&gt;many questions raised as issues&lt;/a&gt; on GitHub, so we’ve installed a Discourse forum at &lt;a href=&quot;https://forum.restic.net&quot;&gt;https://forum.restic.net&lt;/a&gt;! For now, this is an experiment to see if a forum is better suited to answer questions. We’ll see how that goes.&lt;/p&gt;
+
+&lt;p&gt;Please let us know any feedback you have (in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;, obviously)!&lt;/p&gt;
+</description>
+        <pubDate>Fri, 11 Aug 2017 00:00:00 +0200</pubDate>
+        <link>https://restic.github.io/blog/2017-08-11/discourse-forum</link>
+        <guid isPermaLink="true">https://restic.github.io/blog/2017-08-11/discourse-forum</guid>
+
+        
+        
+
+      </item>
+    
+      <item>
+        <title>Please upgrade to restic 0.7.1!</title>
+        <description>&lt;p&gt;TL;DR:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Under some circumstances, data in the repo was not stored properly&lt;/li&gt;
+  &lt;li&gt;This could have caused incomplete backups&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Upgrade restic to at least 0.7.1 and run &lt;code class=&quot;highlighter-rouge&quot;&gt;restic rebuild-index&lt;/code&gt; before the next backup&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;It is good practice to run &lt;code class=&quot;highlighter-rouge&quot;&gt;restic check&lt;/code&gt; regularly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;We always knew that at some point there may be a more serious bug in restic
+that warrants a broader announcement. This is the story of how a small
+improvement that makes the code even more conservative lead to a small error
+which then caused a couple of unintended consequences. In the end, under some
+specific circumstances restic wrote incomplete snapshots to the repository.&lt;/p&gt;
+
+&lt;p&gt;But let’s start at the beginning. Restic stores all data for backups in a
+repository (repo). There are several different classes of files in there, the
+most important ones are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files (in the directory &lt;code class=&quot;highlighter-rouge&quot;&gt;data/&lt;/code&gt;) contain parts of files (blobs) and
+meta data (trees) about backups.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt; files (in the directory &lt;code class=&quot;highlighter-rouge&quot;&gt;index/&lt;/code&gt;) contain a list of &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files and
+their content, which blobs and meta data is stored in which &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; file and
+where exactly.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So when restic starts a backup, it first loads all index files to learn which
+data is already stored in the repo. This is much cheaper than going through the
+complete list of &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files and read the header of each &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; file to find
+out what’s in it. Then restic walks the list of files/directories to save,
+reads files, splits them into blobs and bundles the blobs not already present
+in the repo to &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files and uploads those files. Regularly during the run
+and at the end of the backup process it saves new index files to the repo that
+cover the newly uploaded &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files so that the next restic instance
+discovers the new data. Whenever something is wrong with the index (or we even
+guess that the index may be inaccurate) we advise users to run &lt;code class=&quot;highlighter-rouge&quot;&gt;restic
+rebuild-index&lt;/code&gt;, which simply lists all &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files, read the header to list
+the contents of each file, writes a new index and removes all old &lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt; files
+from the repo.&lt;/p&gt;
+
+&lt;p&gt;When &lt;a href=&quot;https://restic.github.io/blog/2016-08-22/removing-snapshots&quot;&gt;snapshots are removed&lt;/a&gt; with the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;forget&lt;/code&gt; command, the data in the repo needs to be reorganized so that files
+containing data which is not needed any more can be removed. This is what the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; command does. As we’ve seen above, the &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files stored in the repo
+consists of many different blobs from different files. When all blobs in a file
+are not needed any more, the file can be simply removed. That’s the easy case.
+Oftentimes, restic will detect that some blobs of a &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; file are still
+needed and some others are not. In this case, restic downloads the &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; file,
+bundles the still needed blobs into a new &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; file and uploads that. At the
+end of the process, restic removes the now unneeded &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files and creates a
+new index that covers the current set of &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files in the repo. The last
+step is to remove the old, now superseded index files.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-first-bug&quot;&gt;The First Bug&lt;/h2&gt;
+
+&lt;p&gt;The procedure we’ve just described in the previous paragraph contains a bug.
+Did you notice it? What happens when after the (now unneeded) files have been
+removed the index could not be saved to the repo?&lt;/p&gt;
+
+&lt;p&gt;This was reported (thankfully) by a user as &lt;a href=&quot;https://github.com/restic/restic/issues/1032&quot;&gt;GitHub issue #1032&lt;/a&gt;.
+The next time restic starts, it reads the old index files (remember, the new
+index could not be saved, so restic returned an error), and then thinks
+the repo still has the &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files which have been removed during &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt;
+earlier. This is bad because on the next &lt;code class=&quot;highlighter-rouge&quot;&gt;backup&lt;/code&gt; run, restic may not save
+blobs to the repo because it thinks they are already stored there, except these
+blobs may have been removed by prune!&lt;/p&gt;
+
+&lt;p&gt;So, we thought this issue could easily be resolved: The user can just run
+&lt;code class=&quot;highlighter-rouge&quot;&gt;rebuild-index&lt;/code&gt; to correct the index for his particular repo, and we slightly
+modify the order of things that prune does: First create a new index, and only
+after it has successfully been saved to the repo remove the old &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files.
+This is what was introduced in &lt;a href=&quot;https://github.com/restic/restic/pull/1035&quot;&gt;Pull Request #1035&lt;/a&gt;.
+Unfortunately, the change increased the code complexity for the &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt;
+command.&lt;/p&gt;
+
+&lt;p&gt;This is what’s included in restic 0.7.0, specifically commit
+&lt;a href=&quot;https://github.com/restic/restic/commit/91a24e822911c48ae00760dd70d2d55a40d8aff6&quot;&gt;91a24e8&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-second-bug&quot;&gt;The Second Bug&lt;/h2&gt;
+
+&lt;p&gt;As you may have guessed, the new code for the &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; command contained a new
+bug: The &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files to be deleted are not excluded from the new index
+created, so after &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; was completed successfully we had a repo containing a
+single index file which covers both the newly created files and some files that
+are not stored in the repo any more. But the data is safe, because all blobs
+that are still needed have been copied to other &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files during &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt;,
+right?&lt;/p&gt;
+
+&lt;p&gt;That’s unfortunately not always the case. Suppose we have a file called
+&lt;code class=&quot;highlighter-rouge&quot;&gt;foo.txt&lt;/code&gt; that is included in a snapshot, so its content is saved in some &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;
+file in the repo. The file just present during one snapshot, and this snapshot
+is removed via the &lt;code class=&quot;highlighter-rouge&quot;&gt;forget&lt;/code&gt; command. The next run of &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; will then repack
+all blobs in the same &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; file, and remove the file. Except the old, removed
+file is still present in the index. So the next time a new snapshot is created
+that contains the file again, its content is not uploaded because restic thinks
+(that’s what the index says) the data is still present in the repo.&lt;/p&gt;
+
+&lt;p&gt;The next time &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;rebuild-index&lt;/code&gt; are run, restic notices that the index
+contains files that are not there any more and creates a new index without the
+obsolete files.&lt;/p&gt;
+
+&lt;p&gt;Now we have a problem: There’s a snapshot in the repo which contains our
+&lt;code class=&quot;highlighter-rouge&quot;&gt;foo.txt&lt;/code&gt; file, but its content is not saved in the repo! Thankfully, this is
+detected by the &lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt; command. Unfortunately, if we don’t have the content of the
+file handy anywhere, it is lost.&lt;/p&gt;
+
+&lt;p&gt;This bug was corrected in &lt;a href=&quot;https://github.com/restic/restic/pull/1115&quot;&gt;Pull Request #1115&lt;/a&gt;
+and is included in restic 0.7.1. The PR states (incorrectly) that restic will
+detect this situation during backup and just re-upload the data, but after
+several users reported errors returned by the &lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt; command it became clear
+that this is not the case.&lt;/p&gt;
+
+&lt;p&gt;The bug was only included in restic 0.7.0 released on 2017-07-01, in commit
+&lt;a href=&quot;https://github.com/restic/restic/commit/91a24e822911c48ae00760dd70d2d55a40d8aff6&quot;&gt;91a24e8&lt;/a&gt;.
+It was corrected in the &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch on 2017-07-18, which was released as
+restic 0.7.1 on 2017-07-22. So the time frame is rather narrow.&lt;/p&gt;
+
+&lt;h2 id=&quot;faq&quot;&gt;FAQ&lt;/h2&gt;
+
+&lt;h3 id=&quot;how-do-i-know-if-im-affected&quot;&gt;How Do I Know If I’m Affected?&lt;/h3&gt;
+
+&lt;p&gt;Did you run &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; with restic 0.7.0, or more specifically commit &lt;a href=&quot;https://github.com/restic/restic/commit/91a24e822911c48ae00760dd70d2d55a40d8aff6&quot;&gt;91a24e8&lt;/a&gt;
+(in case you’re tracking the master branch)? If you didn’t, you’re probably not
+affected.&lt;/p&gt;
+
+&lt;p&gt;You can check as follows: Run the &lt;code class=&quot;highlighter-rouge&quot;&gt;rebuild-index&lt;/code&gt; followed by the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt; command. If it complains about &lt;code class=&quot;highlighter-rouge&quot;&gt;tree 69691d30, blob 6b9a777b: not found
+in index&lt;/code&gt;, then there’s a blob missing. The IDs will be different for you.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-does-that-mean&quot;&gt;What does that mean?&lt;/h3&gt;
+
+&lt;p&gt;Probably that a file in one or more of your snapshots is missing a piece and
+cannot be restored. When the same piece is found during a subsequent backup,
+restic will store the blob in the repo and the file can be restored again.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-data-is-affected&quot;&gt;What data is affected?&lt;/h3&gt;
+
+&lt;p&gt;For this bug to occur there needs to be a data blob that is present in a
+snapshot that is then removed by the &lt;code class=&quot;highlighter-rouge&quot;&gt;forget&lt;/code&gt; command. It may not be present in
+any other, still referenced snapshot. Then &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; needs to be run. In a
+subsequent backup, the data blob is found but not saved again. It needs to be
+exactly this order.&lt;/p&gt;
+
+&lt;h2 id=&quot;lessons-learned&quot;&gt;Lessons Learned&lt;/h2&gt;
+
+&lt;p&gt;We’re sorry this bug made it into a release of restic.&lt;/p&gt;
+
+&lt;p&gt;Software has bugs, so always make sure you have enough safety checks to detect
+important bugs within a short amount of time. In this case, the &lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt; command
+would’ve detected the error right after &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; ran, but it seems nobody
+(including the restic authors) did run a &lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt; right after &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;We’ll add a prominent recommendation to the manual to regularly run &lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt;. In
+addition, we’re planning to have restic print a message when &lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt; hasn’t
+been run for some time. This is tracked in
+&lt;a href=&quot;https://github.com/restic/restic/issues/1137&quot;&gt;GitHub issue #1137&lt;/a&gt;.
+We’ve also added a test which creates a few snapshots, runs &lt;code class=&quot;highlighter-rouge&quot;&gt;forget&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt;
+and finally &lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt; to see if there’s any error.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 25 Jul 2017 00:00:00 +0200</pubDate>
+        <link>https://restic.github.io/blog/2017-07-25/please-upgrade-to-0.7.1</link>
+        <guid isPermaLink="true">https://restic.github.io/blog/2017-07-25/please-upgrade-to-0.7.1</guid>
+
+        
+        
+
+      </item>
+    
+      <item>
+        <title>restic 0.7.1 released</title>
+        <description>&lt;p&gt;We’re proud to present &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.7.1&quot;&gt;restic 0.7.1&lt;/a&gt;!
+For downloading the code, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.7.1&quot;&gt;GitHub&lt;/a&gt;.
+As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter!&lt;/p&gt;
+
+&lt;p&gt;The binaries released with each restic version starting are &lt;a href=&quot;https://reproducible-builds.org/&quot;&gt;reproducible&lt;/a&gt;, which means that you can easily reproduce a byte identical version from the source code for that release. Instructions on how to do that are contained in the &lt;a href=&quot;https://github.com/restic/builder&quot;&gt;builder repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;important-changes-in-071&quot;&gt;Important Changes in 0.7.1&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;migrate&lt;/code&gt; command for chaning the &lt;code class=&quot;highlighter-rouge&quot;&gt;s3legacy&lt;/code&gt; layout to the &lt;code class=&quot;highlighter-rouge&quot;&gt;default&lt;/code&gt; layout for s3 backends has been improved: It can now be restarted with &lt;code class=&quot;highlighter-rouge&quot;&gt;restic migrate --force s3_layout&lt;/code&gt; and automatically retries operations on error. &lt;a href=&quot;https://github.com/restic/restic/issues/1073&quot;&gt;#1073&lt;/a&gt; &lt;a href=&quot;https://github.com/restic/restic/pull/1075&quot;&gt;#1075&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;small-changes&quot;&gt;Small changes&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The local and sftp backends now create the subdirs below &lt;code class=&quot;highlighter-rouge&quot;&gt;data/&lt;/code&gt; on open/init. This way, restic makes sure that they always exist. This is connected to an issue for the sftp server: &lt;a href=&quot;https://github.com/restic/rest-server/pull/11#issuecomment-309879710&quot;&gt;#11&lt;/a&gt; &lt;a href=&quot;https://github.com/restic/restic/issues/1055&quot;&gt;#1055&lt;/a&gt; &lt;a href=&quot;https://github.com/restic/restic/pull/1077&quot;&gt;#1077&lt;/a&gt; &lt;a href=&quot;https://github.com/restic/restic/pull/1105&quot;&gt;#1105&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;When no S3 credentials are specified in the environment variables, restic now tries to load credentials from an IAM instance profile when the s3 backend is used. &lt;a href=&quot;https://github.com/restic/restic/issues/1067&quot;&gt;#1067&lt;/a&gt; &lt;a href=&quot;https://github.com/restic/restic/pull/1086&quot;&gt;#1086&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;On Darwin and FreeBSD, restic now prints stats when SIGINFO is received (usually when ctrl+t is pressed). &lt;a href=&quot;https://github.com/restic/restic/pull/1082&quot;&gt;#1082&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The dependencies have been updated. &lt;a href=&quot;https://github.com/restic/restic/pull/1108&quot;&gt;#1108&lt;/a&gt; &lt;a href=&quot;https://github.com/restic/restic/pull/1124&quot;&gt;#1124&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A bug was found (and corrected) in the index rebuilding after prune, which led to indexes which include files that were not present in the repo any more. There were already checks in place which detected this situation and aborted with an error message. A new run of either &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;rebuild-index&lt;/code&gt; corrected the index files. This is now fixed and a test has been added to detect this. &lt;a href=&quot;https://github.com/restic/restic/pull/1115&quot;&gt;#1115&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Errors for chmod() on Unix for filesystems which do not support it (e.g. smb mounted via gvfs) are now ignored. &lt;a href=&quot;https://github.com/restic/restic/pull/1080&quot;&gt;#1080&lt;/a&gt; &lt;a href=&quot;https://github.com/restic/restic/pull/1112&quot;&gt;#1112&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The semantic for the &lt;code class=&quot;highlighter-rouge&quot;&gt;--tags&lt;/code&gt; option to &lt;code class=&quot;highlighter-rouge&quot;&gt;forget&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;snapshots&lt;/code&gt; was clarified: &lt;a href=&quot;https://github.com/restic/restic/issues/1081&quot;&gt;#1081&lt;/a&gt; &lt;a href=&quot;https://github.com/restic/restic/pull/1090&quot;&gt;#1090&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 22 Jul 2017 00:00:00 +0200</pubDate>
+        <link>https://restic.github.io/blog/2017-07-22/restic-0.7.1-released</link>
+        <guid isPermaLink="true">https://restic.github.io/blog/2017-07-22/restic-0.7.1-released</guid>
+
+        
+        
+
+      </item>
+    
+      <item>
+        <title>Meeting at FrOSCon 2017</title>
+        <description>&lt;p&gt;We’re planning to have a restic meeting at this year’s &lt;a href=&quot;https://www.froscon.de&quot;&gt;FrOSCon&lt;/a&gt;, which takes place on 19 and 20 August 2017 in &lt;a href=&quot;https://goo.gl/maps/Rj2Z6ZQfyXK2&quot;&gt;Sankt Augustin&lt;/a&gt; near Bonn/Cologne in Germany. The entry is free! In order to organize this, please add a “+1” reaction to &lt;a href=&quot;https://github.com/restic/restic/issues/1110&quot;&gt;the GitHub issue #1110&lt;/a&gt;. We’re looking forward to meeting you!&lt;/p&gt;
+</description>
+        <pubDate>Fri, 21 Jul 2017 00:00:00 +0200</pubDate>
+        <link>https://restic.github.io/blog/2017-07-21/FrOSCon-Bonn</link>
+        <guid isPermaLink="true">https://restic.github.io/blog/2017-07-21/FrOSCon-Bonn</guid>
+
+        
+        
+
+      </item>
+    
+  </channel>
+</rss>
