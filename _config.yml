@@ -22,3 +22,8 @@ kramdown:
   hard_wrap: false
   math_engine_opts:
     preview: true
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

@@ -3,10 +3,10 @@
   <channel>
     <title>restic</title>
     <description>Backups done right!</description>
-    <link>https://restic.github.io/blog/</link>
-    <atom:link href="https://restic.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 01 Jan 2018 15:51:25 +0100</pubDate>
-    <lastBuildDate>Mon, 01 Jan 2018 15:51:25 +0100</lastBuildDate>
+    <link>https://restic.net/blog/</link>
+    <atom:link href="https://restic.net/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 01 Jan 2018 17:57:28 +0100</pubDate>
+    <lastBuildDate>Mon, 01 Jan 2018 17:57:28 +0100</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
 
     
@@ -17,8 +17,8 @@
 &lt;p&gt;For downloading the new release and see a more detailed list of important changes, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.8.1&quot;&gt;GitHub&lt;/a&gt;. As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Wed, 27 Dec 2017 00:00:00 +0100</pubDate>
-        <link>https://restic.github.io/blog/2017-12-27/restic-0.8.1-released</link>
-        <guid isPermaLink="true">https://restic.github.io/blog/2017-12-27/restic-0.8.1-released</guid>
+        <link>https://restic.net/blog/2017-12-27/restic-0.8.1-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2017-12-27/restic-0.8.1-released</guid>
 
         
         
@@ -45,8 +45,8 @@
 &lt;p&gt;We’d like to thank &lt;a href=&quot;https://allinaccess.com/&quot;&gt;Tyler Spivey&lt;/a&gt; for reporting the vulnerability responsibly!&lt;/p&gt;
 </description>
         <pubDate>Sun, 26 Nov 2017 00:00:00 +0100</pubDate>
-        <link>https://restic.github.io/blog/2017-11-26/restic-0.8.0-released</link>
-        <guid isPermaLink="true">https://restic.github.io/blog/2017-11-26/restic-0.8.0-released</guid>
+        <link>https://restic.net/blog/2017-11-26/restic-0.8.0-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2017-11-26/restic-0.8.0-released</guid>
 
         
         
@@ -86,8 +86,8 @@ s3:s3.amazonaws.com/backup-servers
 &lt;p&gt;As always, if you have feedback for us, please use &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt; embedded below or (if you experience a bug) &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;create a new issue on GitHub&lt;/a&gt;. Thanks!&lt;/p&gt;
 </description>
         <pubDate>Sat, 25 Nov 2017 00:00:00 +0100</pubDate>
-        <link>https://restic.github.io/blog/2017-11-25/upcoming-changes-to-s3</link>
-        <guid isPermaLink="true">https://restic.github.io/blog/2017-11-25/upcoming-changes-to-s3</guid>
+        <link>https://restic.net/blog/2017-11-25/upcoming-changes-to-s3</link>
+        <guid isPermaLink="true">https://restic.net/blog/2017-11-25/upcoming-changes-to-s3</guid>
 
         
         
@@ -111,8 +111,8 @@ As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/n
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 20 Sep 2017 00:00:00 +0200</pubDate>
-        <link>https://restic.github.io/blog/2017-09-20/restic-0.7.3-released</link>
-        <guid isPermaLink="true">https://restic.github.io/blog/2017-09-20/restic-0.7.3-released</guid>
+        <link>https://restic.net/blog/2017-09-20/restic-0.7.3-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2017-09-20/restic-0.7.3-released</guid>
 
         
         
@@ -222,8 +222,8 @@ As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/n
 
 </description>
         <pubDate>Wed, 13 Sep 2017 00:00:00 +0200</pubDate>
-        <link>https://restic.github.io/blog/2017-09-13/restic-0.7.2-released</link>
-        <guid isPermaLink="true">https://restic.github.io/blog/2017-09-13/restic-0.7.2-released</guid>
+        <link>https://restic.net/blog/2017-09-13/restic-0.7.2-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2017-09-13/restic-0.7.2-released</guid>
 
         
         
@@ -237,8 +237,8 @@ As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/n
 &lt;p&gt;It’d be nice to know how many of you will be able to join us, so please leave a comment in the &lt;a href=&quot;https://github.com/restic/restic/issues/1110&quot;&gt;GitHub issue #1110&lt;/a&gt; or in the forum. We’re looking forward to meeting you all, thanks!&lt;/p&gt;
 </description>
         <pubDate>Mon, 14 Aug 2017 00:00:00 +0200</pubDate>
-        <link>https://restic.github.io/blog/2017-08-14/FrOSCon-Bonn-Details</link>
-        <guid isPermaLink="true">https://restic.github.io/blog/2017-08-14/FrOSCon-Bonn-Details</guid>
+        <link>https://restic.net/blog/2017-08-14/FrOSCon-Bonn-Details</link>
+        <guid isPermaLink="true">https://restic.net/blog/2017-08-14/FrOSCon-Bonn-Details</guid>
 
         
         
@@ -252,8 +252,8 @@ As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/n
 &lt;p&gt;Please let us know any feedback you have (in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;, obviously)!&lt;/p&gt;
 </description>
         <pubDate>Fri, 11 Aug 2017 00:00:00 +0200</pubDate>
-        <link>https://restic.github.io/blog/2017-08-11/discourse-forum</link>
-        <guid isPermaLink="true">https://restic.github.io/blog/2017-08-11/discourse-forum</guid>
+        <link>https://restic.net/blog/2017-08-11/discourse-forum</link>
+        <guid isPermaLink="true">https://restic.net/blog/2017-08-11/discourse-forum</guid>
 
         
         
@@ -425,8 +425,8 @@ We’ve also added a test which creates a few snapshots, runs &lt;code class=&qu
 and finally &lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt; to see if there’s any error.&lt;/p&gt;
 </description>
         <pubDate>Tue, 25 Jul 2017 00:00:00 +0200</pubDate>
-        <link>https://restic.github.io/blog/2017-07-25/please-upgrade-to-0.7.1</link>
-        <guid isPermaLink="true">https://restic.github.io/blog/2017-07-25/please-upgrade-to-0.7.1</guid>
+        <link>https://restic.net/blog/2017-07-25/please-upgrade-to-0.7.1</link>
+        <guid isPermaLink="true">https://restic.net/blog/2017-07-25/please-upgrade-to-0.7.1</guid>
 
         
         
@@ -474,8 +474,8 @@ As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/n
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 22 Jul 2017 00:00:00 +0200</pubDate>
-        <link>https://restic.github.io/blog/2017-07-22/restic-0.7.1-released</link>
-        <guid isPermaLink="true">https://restic.github.io/blog/2017-07-22/restic-0.7.1-released</guid>
+        <link>https://restic.net/blog/2017-07-22/restic-0.7.1-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2017-07-22/restic-0.7.1-released</guid>
 
         
         
@@ -487,8 +487,8 @@ As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/n
         <description>&lt;p&gt;We’re planning to have a restic meeting at this year’s &lt;a href=&quot;https://www.froscon.de&quot;&gt;FrOSCon&lt;/a&gt;, which takes place on 19 and 20 August 2017 in &lt;a href=&quot;https://goo.gl/maps/Rj2Z6ZQfyXK2&quot;&gt;Sankt Augustin&lt;/a&gt; near Bonn/Cologne in Germany. The entry is free! In order to organize this, please add a “+1” reaction to &lt;a href=&quot;https://github.com/restic/restic/issues/1110&quot;&gt;the GitHub issue #1110&lt;/a&gt;. We’re looking forward to meeting you!&lt;/p&gt;
 </description>
         <pubDate>Fri, 21 Jul 2017 00:00:00 +0200</pubDate>
-        <link>https://restic.github.io/blog/2017-07-21/FrOSCon-Bonn</link>
-        <guid isPermaLink="true">https://restic.github.io/blog/2017-07-21/FrOSCon-Bonn</guid>
+        <link>https://restic.net/blog/2017-07-21/FrOSCon-Bonn</link>
+        <guid isPermaLink="true">https://restic.net/blog/2017-07-21/FrOSCon-Bonn</guid>
 
         
         
