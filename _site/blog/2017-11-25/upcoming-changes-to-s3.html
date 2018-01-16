@@ -113,17 +113,15 @@
 <p>This change was made so that it is possible to have the repository directly in the root of the bucket. The default path <code class="highlighter-rouge">/restic</code> within the bucket only existed for historical reasons and was never properly documented.</p>
 
 <p>So, if you did not specify a path within the bucket, you’ll now get an error that the repo cannot be found:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ restic -r s3:s3.amazonaws.com/backup-servers snapshots
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ restic -r s3:s3.amazonaws.com/backup-servers snapshots
 unable to open config file: Stat: The specified key does not exist.
 Is there a repository at the following location?
 s3:s3.amazonaws.com/backup-servers
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Then you’ll need to add the path <code class="highlighter-rouge">/restic</code> now in order to access an existing repo, like this:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ restic -r s3:s3.amazonaws.com/backup-servers/restic snapshots
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ restic -r s3:s3.amazonaws.com/backup-servers/restic snapshots
+</code></pre></div></div>
 
 <p>As always, if you have feedback for us, please use <a href="https://forum.restic.net">the forum</a> embedded below or (if you experience a bug) <a href="https://github.com/restic/restic/issues/new">create a new issue on GitHub</a>. Thanks!</p>
 

@@ -5,9 +5,9 @@
     <description>Backups done right!</description>
     <link>https://restic.net/blog/</link>
     <atom:link href="https://restic.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 01 Jan 2018 22:48:09 +0100</pubDate>
-    <lastBuildDate>Mon, 01 Jan 2018 22:48:09 +0100</lastBuildDate>
-    <generator>Jekyll v3.6.2</generator>
+    <pubDate>Tue, 16 Jan 2018 15:12:49 +0100</pubDate>
+    <lastBuildDate>Tue, 16 Jan 2018 15:12:49 +0100</lastBuildDate>
+    <generator>Jekyll v3.7.0</generator>
 
     
       <item>
@@ -90,17 +90,15 @@ to &lt;a href=&quot;https://restic.net/feed.xml&quot;&gt;https://restic.net/feed
 &lt;p&gt;This change was made so that it is possible to have the repository directly in the root of the bucket. The default path &lt;code class=&quot;highlighter-rouge&quot;&gt;/restic&lt;/code&gt; within the bucket only existed for historical reasons and was never properly documented.&lt;/p&gt;
 
 &lt;p&gt;So, if you did not specify a path within the bucket, you’ll now get an error that the repo cannot be found:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ restic -r s3:s3.amazonaws.com/backup-servers snapshots
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ restic -r s3:s3.amazonaws.com/backup-servers snapshots
 unable to open config file: Stat: The specified key does not exist.
 Is there a repository at the following location?
 s3:s3.amazonaws.com/backup-servers
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Then you’ll need to add the path &lt;code class=&quot;highlighter-rouge&quot;&gt;/restic&lt;/code&gt; now in order to access an existing repo, like this:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ restic -r s3:s3.amazonaws.com/backup-servers/restic snapshots
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ restic -r s3:s3.amazonaws.com/backup-servers/restic snapshots
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;As always, if you have feedback for us, please use &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt; embedded below or (if you experience a bug) &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;create a new issue on GitHub&lt;/a&gt;. Thanks!&lt;/p&gt;
 </description>
