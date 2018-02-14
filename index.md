@@ -23,7 +23,7 @@ restic is a program that does backups right. The design goals are:
 
  * **Verifiable:** Much more important than backup is restore, so restic enables you to easily verify that all data can be restored.
 
- * **Secure:** Restic uses cryptography to guarantee confidentiality and integrity of your data. The location the backup data is stored is assumed not to be a trusted environment (e.g. a shared space where others like system administrators are able to access your backups). Restic is built to secure your data against such attackers.
+ * **Secure:** Restic uses cryptography to guarantee confidentiality and integrity of your data. The location where the backup data is stored is assumed to be an untrusted environment (e.g. a shared space where others like system administrators are able to access your backups). Restic is [built to secure your data](https://restic.readthedocs.io/en/latest/100_references.html#design) against such attackers, by encrypting it with AES-256 in counter mode and authenticating it using Poly1305-AES.
 
  * **Efficient:** With the growth of data, additional snapshots should only take the storage of the actual increment. Even more, duplicate data should be de-duplicated before it is actually written to the storage backend to save precious backup space.
 
