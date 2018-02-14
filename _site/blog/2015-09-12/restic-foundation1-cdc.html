@@ -262,14 +262,14 @@ irrecoverably lost.</code></pre></figure>
 
 <p>At this point, nothing has been saved to the repository, so it is rather small:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>du <span class="nt">-sh</span> <span class="nv">$RESTIC_REPOSITORY</span>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">du</span> <span class="nt">-sh</span> <span class="nv">$RESTIC_REPOSITORY</span>
 8.0K	/tmp/restic-test-repository</code></pre></figure>
 
 <p>Next, we create a new directory called <code class="highlighter-rouge">testdata</code> for our test, containing a file
 <code class="highlighter-rouge">file.raw</code>, filled with 100MiB of random data:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>mkdir testdata
-<span class="nv">$ </span>dd <span class="k">if</span><span class="o">=</span>/dev/urandom <span class="nv">of</span><span class="o">=</span>testdata/file.raw <span class="nv">bs</span><span class="o">=</span>1M <span class="nv">count</span><span class="o">=</span>100
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">mkdir </span>testdata
+<span class="nv">$ </span><span class="nb">dd </span><span class="k">if</span><span class="o">=</span>/dev/urandom <span class="nv">of</span><span class="o">=</span>testdata/file.raw <span class="nv">bs</span><span class="o">=</span>1M <span class="nv">count</span><span class="o">=</span>100
 100+0 records <span class="k">in
 </span>100+0 records out
 104857600 bytes <span class="o">(</span>105 MB<span class="o">)</span> copied, 5.76985 s, 18.2 MB/s</code></pre></figure>
@@ -287,7 +287,7 @@ snapshot 7452bd17 saved</code></pre></figure>
 <p>We can see that restic created a backup with a size of 100MiB in about two
 seconds. We can verify this by checking the size of the repository again:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>du <span class="nt">-sh</span> <span class="nv">$RESTIC_REPOSITORY</span>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">du</span> <span class="nt">-sh</span> <span class="nv">$RESTIC_REPOSITORY</span>
 101M	/tmp/restic-test-repository</code></pre></figure>
 
 <p>Not surprisingly, the repository is roughly the same size as the data we have
@@ -311,16 +311,16 @@ moved to a different directory.</p>
 <p>Looking at the repository size we can already guess that it is still about
 100MiB, since we didn’t really add any new data:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>du <span class="nt">-sh</span> <span class="nv">$RESTIC_REPOSITORY</span>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">du</span> <span class="nt">-sh</span> <span class="nv">$RESTIC_REPOSITORY</span>
 101M	/tmp/restic-test-repository</code></pre></figure>
 
 <p>When we make a copy of the file <code class="highlighter-rouge">file.raw</code> and backup the same repository again,
 restic recognises that all data is already known and the repository size does
 not grow at all, although the directory <code class="highlighter-rouge">testdata</code> now contains 200MiB of data:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>cp testdata/file.raw testdata/file2.raw
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">cp </span>testdata/file.raw testdata/file2.raw
 
-<span class="nv">$ </span>du <span class="nt">-sh</span> testdata
+<span class="nv">$ </span><span class="nb">du</span> <span class="nt">-sh</span> testdata
 200M	testdata
 
 <span class="nv">$ </span>restic backup testdata
@@ -331,7 +331,7 @@ scanned 1 directories, 2 files <span class="k">in </span>0:00
 duration: 0:01, 129.06MiB/s
 snapshot ab8e0047 saved
 
-<span class="nv">$ </span>du <span class="nt">-sh</span> <span class="nv">$RESTIC_REPOSITORY</span>
+<span class="nv">$ </span><span class="nb">du</span> <span class="nt">-sh</span> <span class="nv">$RESTIC_REPOSITORY</span>
 101M	/tmp/restic-test-repository</code></pre></figure>
 
 <p>Now for the final demonstration we’ll create a new file <code class="highlighter-rouge">file3.raw</code> which is a
@@ -341,7 +341,7 @@ nasty combination of the 100MiB we’ve initially saved in <code class="highligh
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="o">(</span><span class="nb">echo </span>foo<span class="p">;</span> <span class="nb">cat </span>testdata/file.raw<span class="p">;</span> <span class="nb">echo </span>bar<span class="p">;</span> <span class="nb">cat </span>testdata/file.raw<span class="p">;</span> <span class="nb">echo </span>baz<span class="o">)</span> <span class="se">\</span>
   <span class="o">&gt;</span> testdata/file3.raw
 
-<span class="nv">$ </span>du <span class="nt">-sh</span> testdata
+<span class="nv">$ </span><span class="nb">du</span> <span class="nt">-sh</span> testdata
 401M	testdata</code></pre></figure>
 
 <p>We’ll create a new backup of the directory with restic and observe that the
@@ -355,7 +355,7 @@ scanned 1 directories, 3 files <span class="k">in </span>0:00
 duration: 0:03, 123.73MiB/s
 snapshot a8897ae3 saved
 
-<span class="nv">$ </span>du <span class="nt">-sh</span> <span class="nv">$RESTIC_REPOSITORY</span>
+<span class="nv">$ </span><span class="nb">du</span> <span class="nt">-sh</span> <span class="nv">$RESTIC_REPOSITORY</span>
 111M	/tmp/restic-test-repository</code></pre></figure>
 
 <p>This is expected because we’ve created a few new chunks when creating

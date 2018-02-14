@@ -152,16 +152,16 @@ release.</p>
 <p>For restic version 0.1.0, the <code class="highlighter-rouge">tar.gz</code> file can be recreated from a checkout of
 the repository as follows:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>git archive <span class="nt">--format</span><span class="o">=</span><span class="nb">tar</span> <span class="nt">--prefix</span><span class="o">=</span>restic-0.1.0/ v0.1.0 | gzip <span class="nt">-n</span> <span class="o">&gt;</span> restic-0.1.0.tar.gz</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>git archive <span class="nt">--format</span><span class="o">=</span><span class="nb">tar</span> <span class="nt">--prefix</span><span class="o">=</span>restic-0.1.0/ v0.1.0 | <span class="nb">gzip</span> <span class="nt">-n</span> <span class="o">&gt;</span> restic-0.1.0.tar.gz</code></pre></figure>
 
 <p>Comparing the SHA-256 hash against the hash of the automatically generated file
 shows that indeed the same file has been generated:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>sha256sum restic-0.1.0.tar.gz
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">sha256sum </span>restic-0.1.0.tar.gz
 df7842cb690a56ce5371013a958d9f324072429897511d4bbfc092d76303f198  restic-0.1.0.tar.gz
 
-<span class="nv">$ </span>curl <span class="nt">-s</span> <span class="nt">-L</span> https://github.com/restic/restic/archive/v0.1.0.tar.gz | sha256sum
-df7842cb690a56ce5371013a958d9f324072429897511d4bbfc092d76303f198  -</code></pre></figure>
+<span class="nv">$ </span>curl <span class="nt">-s</span> <span class="nt">-L</span> https://github.com/restic/restic/archive/v0.1.0.tar.gz | <span class="nb">sha256sum
+</span>df7842cb690a56ce5371013a958d9f324072429897511d4bbfc092d76303f198  -</code></pre></figure>
 
 <h3 id="signing-and-verifying-release-files">Signing and Verifying Release Files</h3>
 
