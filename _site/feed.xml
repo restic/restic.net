@@ -5,10 +5,25 @@
     <description>Backups done right!</description>
     <link>https://restic.net/blog/</link>
     <atom:link href="https://restic.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 17 Feb 2018 21:05:50 +0100</pubDate>
-    <lastBuildDate>Sat, 17 Feb 2018 21:05:50 +0100</lastBuildDate>
+    <pubDate>Mon, 26 Feb 2018 21:48:22 +0100</pubDate>
+    <lastBuildDate>Mon, 26 Feb 2018 21:48:22 +0100</lastBuildDate>
     <generator>Jekyll v3.7.0</generator>
 
+    
+      <item>
+        <title>restic 0.8.3 released</title>
+        <description>&lt;p&gt;We’ve just released &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.8.3&quot;&gt;restic 0.8.3&lt;/a&gt;. This is again a bugfix release, but also several improvements for cloud-based backends.&lt;/p&gt;
+
+&lt;p&gt;For downloading the new release and see a more detailed list of important changes, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.8.3&quot;&gt;GitHub&lt;/a&gt;. As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 26 Feb 2018 00:00:00 +0100</pubDate>
+        <link>https://restic.net/blog/2018-02-26/restic-0.8.3-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2018-02-26/restic-0.8.3-released</guid>
+
+        
+        
+
+      </item>
     
       <item>
         <title>restic 0.8.2 released</title>
@@ -286,179 +301,6 @@ As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/n
         <pubDate>Fri, 11 Aug 2017 00:00:00 +0200</pubDate>
         <link>https://restic.net/blog/2017-08-11/discourse-forum</link>
         <guid isPermaLink="true">https://restic.net/blog/2017-08-11/discourse-forum</guid>
-
-        
-        
-
-      </item>
-    
-      <item>
-        <title>Please upgrade to restic 0.7.1!</title>
-        <description>&lt;p&gt;TL;DR:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Under some circumstances, data in the repo was not stored properly&lt;/li&gt;
-  &lt;li&gt;This could have caused incomplete backups&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Upgrade restic to at least 0.7.1 and run &lt;code class=&quot;highlighter-rouge&quot;&gt;restic rebuild-index&lt;/code&gt; before the next backup&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;It is good practice to run &lt;code class=&quot;highlighter-rouge&quot;&gt;restic check&lt;/code&gt; regularly&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-
-&lt;p&gt;We always knew that at some point there may be a more serious bug in restic
-that warrants a broader announcement. This is the story of how a small
-improvement that makes the code even more conservative lead to a small error
-which then caused a couple of unintended consequences. In the end, under some
-specific circumstances restic wrote incomplete snapshots to the repository.&lt;/p&gt;
-
-&lt;p&gt;But let’s start at the beginning. Restic stores all data for backups in a
-repository (repo). There are several different classes of files in there, the
-most important ones are:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files (in the directory &lt;code class=&quot;highlighter-rouge&quot;&gt;data/&lt;/code&gt;) contain parts of files (blobs) and
-meta data (trees) about backups.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt; files (in the directory &lt;code class=&quot;highlighter-rouge&quot;&gt;index/&lt;/code&gt;) contain a list of &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files and
-their content, which blobs and meta data is stored in which &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; file and
-where exactly.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So when restic starts a backup, it first loads all index files to learn which
-data is already stored in the repo. This is much cheaper than going through the
-complete list of &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files and read the header of each &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; file to find
-out what’s in it. Then restic walks the list of files/directories to save,
-reads files, splits them into blobs and bundles the blobs not already present
-in the repo to &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files and uploads those files. Regularly during the run
-and at the end of the backup process it saves new index files to the repo that
-cover the newly uploaded &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files so that the next restic instance
-discovers the new data. Whenever something is wrong with the index (or we even
-guess that the index may be inaccurate) we advise users to run &lt;code class=&quot;highlighter-rouge&quot;&gt;restic
-rebuild-index&lt;/code&gt;, which simply lists all &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files, read the header to list
-the contents of each file, writes a new index and removes all old &lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt; files
-from the repo.&lt;/p&gt;
-
-&lt;p&gt;When &lt;a href=&quot;https://restic.github.io/blog/2016-08-22/removing-snapshots&quot;&gt;snapshots are removed&lt;/a&gt; with the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;forget&lt;/code&gt; command, the data in the repo needs to be reorganized so that files
-containing data which is not needed any more can be removed. This is what the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; command does. As we’ve seen above, the &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files stored in the repo
-consists of many different blobs from different files. When all blobs in a file
-are not needed any more, the file can be simply removed. That’s the easy case.
-Oftentimes, restic will detect that some blobs of a &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; file are still
-needed and some others are not. In this case, restic downloads the &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; file,
-bundles the still needed blobs into a new &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; file and uploads that. At the
-end of the process, restic removes the now unneeded &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files and creates a
-new index that covers the current set of &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files in the repo. The last
-step is to remove the old, now superseded index files.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-first-bug&quot;&gt;The First Bug&lt;/h2&gt;
-
-&lt;p&gt;The procedure we’ve just described in the previous paragraph contains a bug.
-Did you notice it? What happens when after the (now unneeded) files have been
-removed the index could not be saved to the repo?&lt;/p&gt;
-
-&lt;p&gt;This was reported (thankfully) by a user as &lt;a href=&quot;https://github.com/restic/restic/issues/1032&quot;&gt;GitHub issue #1032&lt;/a&gt;.
-The next time restic starts, it reads the old index files (remember, the new
-index could not be saved, so restic returned an error), and then thinks
-the repo still has the &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files which have been removed during &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt;
-earlier. This is bad because on the next &lt;code class=&quot;highlighter-rouge&quot;&gt;backup&lt;/code&gt; run, restic may not save
-blobs to the repo because it thinks they are already stored there, except these
-blobs may have been removed by prune!&lt;/p&gt;
-
-&lt;p&gt;So, we thought this issue could easily be resolved: The user can just run
-&lt;code class=&quot;highlighter-rouge&quot;&gt;rebuild-index&lt;/code&gt; to correct the index for his particular repo, and we slightly
-modify the order of things that prune does: First create a new index, and only
-after it has successfully been saved to the repo remove the old &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files.
-This is what was introduced in &lt;a href=&quot;https://github.com/restic/restic/pull/1035&quot;&gt;Pull Request #1035&lt;/a&gt;.
-Unfortunately, the change increased the code complexity for the &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt;
-command.&lt;/p&gt;
-
-&lt;p&gt;This is what’s included in restic 0.7.0, specifically commit
-&lt;a href=&quot;https://github.com/restic/restic/commit/91a24e822911c48ae00760dd70d2d55a40d8aff6&quot;&gt;91a24e8&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-second-bug&quot;&gt;The Second Bug&lt;/h2&gt;
-
-&lt;p&gt;As you may have guessed, the new code for the &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; command contained a new
-bug: The &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files to be deleted are not excluded from the new index
-created, so after &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; was completed successfully we had a repo containing a
-single index file which covers both the newly created files and some files that
-are not stored in the repo any more. But the data is safe, because all blobs
-that are still needed have been copied to other &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; files during &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt;,
-right?&lt;/p&gt;
-
-&lt;p&gt;That’s unfortunately not always the case. Suppose we have a file called
-&lt;code class=&quot;highlighter-rouge&quot;&gt;foo.txt&lt;/code&gt; that is included in a snapshot, so its content is saved in some &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;
-file in the repo. The file just present during one snapshot, and this snapshot
-is removed via the &lt;code class=&quot;highlighter-rouge&quot;&gt;forget&lt;/code&gt; command. The next run of &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; will then repack
-all blobs in the same &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; file, and remove the file. Except the old, removed
-file is still present in the index. So the next time a new snapshot is created
-that contains the file again, its content is not uploaded because restic thinks
-(that’s what the index says) the data is still present in the repo.&lt;/p&gt;
-
-&lt;p&gt;The next time &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;rebuild-index&lt;/code&gt; are run, restic notices that the index
-contains files that are not there any more and creates a new index without the
-obsolete files.&lt;/p&gt;
-
-&lt;p&gt;Now we have a problem: There’s a snapshot in the repo which contains our
-&lt;code class=&quot;highlighter-rouge&quot;&gt;foo.txt&lt;/code&gt; file, but its content is not saved in the repo! Thankfully, this is
-detected by the &lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt; command. Unfortunately, if we don’t have the content of the
-file handy anywhere, it is lost.&lt;/p&gt;
-
-&lt;p&gt;This bug was corrected in &lt;a href=&quot;https://github.com/restic/restic/pull/1115&quot;&gt;Pull Request #1115&lt;/a&gt;
-and is included in restic 0.7.1. The PR states (incorrectly) that restic will
-detect this situation during backup and just re-upload the data, but after
-several users reported errors returned by the &lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt; command it became clear
-that this is not the case.&lt;/p&gt;
-
-&lt;p&gt;The bug was only included in restic 0.7.0 released on 2017-07-01, in commit
-&lt;a href=&quot;https://github.com/restic/restic/commit/91a24e822911c48ae00760dd70d2d55a40d8aff6&quot;&gt;91a24e8&lt;/a&gt;.
-It was corrected in the &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch on 2017-07-18, which was released as
-restic 0.7.1 on 2017-07-22. So the time frame is rather narrow.&lt;/p&gt;
-
-&lt;h2 id=&quot;faq&quot;&gt;FAQ&lt;/h2&gt;
-
-&lt;h3 id=&quot;how-do-i-know-if-im-affected&quot;&gt;How Do I Know If I’m Affected?&lt;/h3&gt;
-
-&lt;p&gt;Did you run &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; with restic 0.7.0, or more specifically commit &lt;a href=&quot;https://github.com/restic/restic/commit/91a24e822911c48ae00760dd70d2d55a40d8aff6&quot;&gt;91a24e8&lt;/a&gt;
-(in case you’re tracking the master branch)? If you didn’t, you’re probably not
-affected.&lt;/p&gt;
-
-&lt;p&gt;You can check as follows: Run the &lt;code class=&quot;highlighter-rouge&quot;&gt;rebuild-index&lt;/code&gt; followed by the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt; command. If it complains about &lt;code class=&quot;highlighter-rouge&quot;&gt;tree 69691d30, blob 6b9a777b: not found
-in index&lt;/code&gt;, then there’s a blob missing. The IDs will be different for you.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-does-that-mean&quot;&gt;What does that mean?&lt;/h3&gt;
-
-&lt;p&gt;Probably that a file in one or more of your snapshots is missing a piece and
-cannot be restored. When the same piece is found during a subsequent backup,
-restic will store the blob in the repo and the file can be restored again.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-data-is-affected&quot;&gt;What data is affected?&lt;/h3&gt;
-
-&lt;p&gt;For this bug to occur there needs to be a data blob that is present in a
-snapshot that is then removed by the &lt;code class=&quot;highlighter-rouge&quot;&gt;forget&lt;/code&gt; command. It may not be present in
-any other, still referenced snapshot. Then &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; needs to be run. In a
-subsequent backup, the data blob is found but not saved again. It needs to be
-exactly this order.&lt;/p&gt;
-
-&lt;h2 id=&quot;lessons-learned&quot;&gt;Lessons Learned&lt;/h2&gt;
-
-&lt;p&gt;We’re sorry this bug made it into a release of restic.&lt;/p&gt;
-
-&lt;p&gt;Software has bugs, so always make sure you have enough safety checks to detect
-important bugs within a short amount of time. In this case, the &lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt; command
-would’ve detected the error right after &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; ran, but it seems nobody
-(including the restic authors) did run a &lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt; right after &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;We’ll add a prominent recommendation to the manual to regularly run &lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt;. In
-addition, we’re planning to have restic print a message when &lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt; hasn’t
-been run for some time. This is tracked in
-&lt;a href=&quot;https://github.com/restic/restic/issues/1137&quot;&gt;GitHub issue #1137&lt;/a&gt;.
-We’ve also added a test which creates a few snapshots, runs &lt;code class=&quot;highlighter-rouge&quot;&gt;forget&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt;
-and finally &lt;code class=&quot;highlighter-rouge&quot;&gt;check&lt;/code&gt; to see if there’s any error.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 25 Jul 2017 00:00:00 +0200</pubDate>
-        <link>https://restic.net/blog/2017-07-25/please-upgrade-to-0.7.1</link>
-        <guid isPermaLink="true">https://restic.net/blog/2017-07-25/please-upgrade-to-0.7.1</guid>
 
         
         
