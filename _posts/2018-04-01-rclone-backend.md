@@ -7,7 +7,7 @@ Originally, restic started with just two backends: `local` and `sftp`. Over time
 
 A while ago, [Alex](https://github.com/fd0) was contacted by [Nick](https://github.com/ncw), who found restic by listening to the episode [#48](https://changelog.com/gotime/48) of the [GoTime podcast](https://changelog.com/gotime). He's the primary author of [rclone](https://github.com/ncw/rclone), a program which is "rsync for cloud storage". At the moment, it supports almost 20 different backends/services! They quickly agreed that it would be awesome if restic could just use clone as a backend, thereby supporting all the backends that rclone can talk to!
 
-Over the last couple of weeks, we have added support for rclone in restic. First, rclone learned how to serve restic's the [REST protocol](https://restic.readthedocs.io/en/latest/100_references.html#rest-backend) ([rclone PR #2116](https://github.com/ncw/rclone/pull/2116)). It is now possible (using a binary of `rclone` compiled from the master branch) to start rclone in server mode like this:
+Over the last couple of weeks, we have added support for rclone in restic. First, rclone learned how to serve restic's the [REST protocol](https://restic.readthedocs.io/en/latest/100_references.html#rest-backend) ([rclone PR #2116](https://github.com/ncw/rclone/pull/2116)). It is now possible (`rclone` >= 1.40) to start rclone in server mode like this:
 
     $ rclone serve restic --addr localhost:8889 --user foo --pass s3kr1t remote:bucket/path
 

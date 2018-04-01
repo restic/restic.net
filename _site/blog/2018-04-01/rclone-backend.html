@@ -101,7 +101,7 @@
 
 <p>A while ago, <a href="https://github.com/fd0">Alex</a> was contacted by <a href="https://github.com/ncw">Nick</a>, who found restic by listening to the episode <a href="https://changelog.com/gotime/48">#48</a> of the <a href="https://changelog.com/gotime">GoTime podcast</a>. He’s the primary author of <a href="https://github.com/ncw/rclone">rclone</a>, a program which is “rsync for cloud storage”. At the moment, it supports almost 20 different backends/services! They quickly agreed that it would be awesome if restic could just use clone as a backend, thereby supporting all the backends that rclone can talk to!</p>
 
-<p>Over the last couple of weeks, we have added support for rclone in restic. First, rclone learned how to serve restic’s the <a href="https://restic.readthedocs.io/en/latest/100_references.html#rest-backend">REST protocol</a> (<a href="https://github.com/ncw/rclone/pull/2116">rclone PR #2116</a>). It is now possible (using a binary of <code class="highlighter-rouge">rclone</code> compiled from the master branch) to start rclone in server mode like this:</p>
+<p>Over the last couple of weeks, we have added support for rclone in restic. First, rclone learned how to serve restic’s the <a href="https://restic.readthedocs.io/en/latest/100_references.html#rest-backend">REST protocol</a> (<a href="https://github.com/ncw/rclone/pull/2116">rclone PR #2116</a>). It is now possible (<code class="highlighter-rouge">rclone</code> &gt;= 1.40) to start rclone in server mode like this:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rclone serve restic --addr localhost:8889 --user foo --pass s3kr1t remote:bucket/path
 </code></pre></div></div>
