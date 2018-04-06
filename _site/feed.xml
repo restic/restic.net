@@ -5,10 +5,31 @@
     <description>Backups done right!</description>
     <link>https://restic.net/blog/</link>
     <atom:link href="https://restic.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 05 Apr 2018 22:30:01 +0200</pubDate>
-    <lastBuildDate>Thu, 05 Apr 2018 22:30:01 +0200</lastBuildDate>
+    <pubDate>Fri, 06 Apr 2018 18:48:06 +0200</pubDate>
+    <lastBuildDate>Fri, 06 Apr 2018 18:48:06 +0200</lastBuildDate>
     <generator>Jekyll v3.7.0</generator>
 
+    
+      <item>
+        <title>The restic project turns four!</title>
+        <description>&lt;p&gt;Four years ago on 2014-04-06 &lt;a href=&quot;https://github.com/fd0&quot;&gt;fd0&lt;/a&gt; added the &lt;a href=&quot;https://github.com/restic/restic/commit/c54facf66be1c4e137121f36b300543f6673ea7c&quot;&gt;first commit&lt;/a&gt; to what would later become the restic repository. At the time it was code-named &lt;code class=&quot;highlighter-rouge&quot;&gt;khepri&lt;/code&gt;, but unfortunately the name wasn’t available on GitHub any more, so we had to find a different one.&lt;/p&gt;
+
+&lt;p&gt;At the moment, restic’s repository was starred on GitHub almost four thousand times. And we’ve &lt;a href=&quot;https://github.com/restic/others&quot;&gt;collected&lt;/a&gt; 56 other backup tools along the way, helping countless people to discover backup programs (not necessarily restic alone). These two facts alone prove that it was worth it: More people were able to setup easy, effortless backups which they can depend upon.&lt;/p&gt;
+
+&lt;p&gt;We’ve seen quite a few milestones in restic’s development, most recently the introduction of the local metadata cache in &lt;a href=&quot;https://github.com/restic/restic/releases/v0.8.0&quot;&gt;0.8.0&lt;/a&gt; in November 2017, which sped up many operations. We continue to improve support for our various backends, the last one was the &lt;code class=&quot;highlighter-rouge&quot;&gt;rclone&lt;/code&gt; backend which will be included in the next release and allows using &lt;a href=&quot;https://rclone.org&quot;&gt;rclone&lt;/a&gt;, a versatile cloud syncing tool, for storing backups on a variety of cloud-based backends.&lt;/p&gt;
+
+&lt;p&gt;If you like restic, and you’d like development to continue, send some nice words to the developers! Either use the &lt;a href=&quot;https://saythanks.io/to/restic&quot;&gt;SayThanks&lt;/a&gt; service, or add a comment below via the forum! It’s always very encouraging to hear how restic helps users.&lt;/p&gt;
+
+&lt;p&gt;Last, we’d like to thank our many contributors! They are not only working on the code, but also on the documentation, the website, help with issue triage, and provide helpful comments in code reviews. You are awesome, thank you very much!&lt;/p&gt;
+</description>
+        <pubDate>Fri, 06 Apr 2018 00:00:00 +0200</pubDate>
+        <link>https://restic.net/blog/2018-04-06/restic-turns-four</link>
+        <guid isPermaLink="true">https://restic.net/blog/2018-04-06/restic-turns-four</guid>
+
+        
+        
+
+      </item>
     
       <item>
         <title>Using rclone as a restic Backend</title>
@@ -329,21 +350,6 @@ As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/n
         <pubDate>Wed, 13 Sep 2017 00:00:00 +0200</pubDate>
         <link>https://restic.net/blog/2017-09-13/restic-0.7.2-released</link>
         <guid isPermaLink="true">https://restic.net/blog/2017-09-13/restic-0.7.2-released</guid>
-
-        
-        
-
-      </item>
-    
-      <item>
-        <title>Meeting at FrOSCon 2017 - Details</title>
-        <description>&lt;p&gt;As announced &lt;a href=&quot;/blog/2017-07-21/FrOSCon-Bonn&quot;&gt;a few weeks ago&lt;/a&gt; we’re meeting at this year’s &lt;a href=&quot;https://www.froscon.de&quot;&gt;FrOSCon&lt;/a&gt; on 19 August 2017, 15:00 CEST in &lt;a href=&quot;https://goo.gl/maps/Rj2Z6ZQfyXK2&quot;&gt;Sankt Augustin&lt;/a&gt; near Bonn/Cologne in Germany (free entry)! We’ll get a project room for the afternoon, the room number will be announced as an update to this blog entry, &lt;a href=&quot;https://twitter.com/resticbackup&quot;&gt;on Twitter&lt;/a&gt; and in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;It’d be nice to know how many of you will be able to join us, so please leave a comment in the &lt;a href=&quot;https://github.com/restic/restic/issues/1110&quot;&gt;GitHub issue #1110&lt;/a&gt; or in the forum. We’re looking forward to meeting you all, thanks!&lt;/p&gt;
-</description>
-        <pubDate>Mon, 14 Aug 2017 00:00:00 +0200</pubDate>
-        <link>https://restic.net/blog/2017-08-14/FrOSCon-Bonn-Details</link>
-        <guid isPermaLink="true">https://restic.net/blog/2017-08-14/FrOSCon-Bonn-Details</guid>
 
         
         
