@@ -53,7 +53,7 @@ We guarantee backward compatibility of all repositories within one major version
 
 ## <a name="contribute"></a>Contribute and Documentation
 
-Contributions are welcome! More information can be found in [the restic contribution guidelines](https://github.com/restic/restic/blob/master/CONTRIBUTING.md). A document describing the design of restic and the data structures stored on disc is contained in [the design document](https://github.com/restic/restic/blob/master/doc/Design.md).
+Contributions are welcome! More information can be found in [the restic contribution guidelines](https://github.com/restic/restic/blob/master/CONTRIBUTING.md). A document describing the design of restic and the data structures stored on disc is contained in [the design document](http://restic.readthedocs.io/en/latest/100_references.html#design).
 
 ## <a name="contact"></a>Contact
 
