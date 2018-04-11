@@ -6,9 +6,9 @@ rvm:
   - 2.5.1
 
 install:
-- bundle install --jobs=3 --retry=3
-- npm install broken-link-checker -g
+  - bundle install --jobs=3 --retry=3
+  - pip install --no-cache-dir git+https://github.com/linkcheck/linkchecker.git@master
 
 script:
-- bundle exec jekyll serve --detach --verbose
-- blc --recursiv --follow --requests 10 --verbose http://localhost:4000/
+  - bundle exec jekyll serve --detach --verbose --skip-initial-build
+  - linkchecker --verbose http://127.0.0.1:4000
