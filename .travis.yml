@@ -1,0 +1,14 @@
+sudo: false
+
+language: ruby
+cache: bundler
+rvm:
+  - 2.5.1
+
+install:
+- bundle install --jobs=3 --retry=3
+- npm install broken-link-checker -g
+
+script:
+- bundle exec jekyll serve --detach --verbose
+- blc --recursiv --follow --requests 10 --verbose http://localhost:4000/
