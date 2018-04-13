@@ -14,4 +14,4 @@ script:
   - bundle exec jekyll build --destination _site-new
   - diff -aur --exclude 'feed.xml' _site _site-new
   - bundle exec jekyll serve --detach --verbose --skip-initial-build
-  - linkchecker --verbose http://127.0.0.1:4000
+  - linkchecker http://127.0.0.1:4000
