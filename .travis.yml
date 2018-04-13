@@ -6,9 +6,10 @@ rvm:
   - 2.5.1
 
 install:
-  - bundle install --jobs=3 --retry=3
+  - pyenv local 2.7.14
   - pip install --user --no-cache-dir git+https://github.com/fd0/linkchecker.git@fix-requirements
   - export PATH=~/.local/bin:$PATH
+  - bundle install --jobs=3 --retry=3
 
 script:
   - bundle exec jekyll build --destination _site-new
