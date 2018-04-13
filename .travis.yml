@@ -7,7 +7,7 @@ rvm:
 
 install:
   - bundle install --jobs=3 --retry=3
-  - pip install --user --no-cache-dir git+https://github.com/linkcheck/linkchecker.git@master
+  - pip install --user --no-cache-dir git+https://github.com/fd0/linkchecker.git@fix-requirements
   - export PATH=~/.local/bin:$PATH
 
 script:
