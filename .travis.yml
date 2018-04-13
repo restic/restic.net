@@ -1,0 +1,18 @@
+sudo: false
+
+language: ruby
+cache: bundler
+rvm:
+  - 2.5.1
+
+install:
+  - pyenv local 2.7.14
+  - pip install --user --no-cache-dir git+https://github.com/fd0/linkchecker.git@fix-requirements
+  - export PATH=~/.local/bin:$PATH
+  - bundle install --jobs=3 --retry=3
+
+script:
+  - bundle exec jekyll build --destination _site-new
+  - diff -aur --exclude 'feed.xml' _site _site-new
+  - bundle exec jekyll serve --detach --verbose --skip-initial-build
+  - linkchecker --check-extern --no-robots http://127.0.0.1:4000
