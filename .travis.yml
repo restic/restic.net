@@ -7,7 +7,7 @@ rvm:
 
 install:
   - pyenv local 2.7.14
-  - pip install --user --no-cache-dir git+https://github.com/fd0/linkchecker.git@fix-requirements
+  - pip install --user --no-cache-dir git+https://github.com/linkcheck/linkchecker.git@master
   - export PATH=~/.local/bin:$PATH
   - bundle install --jobs=3 --retry=3
 
