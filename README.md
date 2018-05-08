@@ -8,5 +8,5 @@ like this:
 
     $ linkchecker --check-extern --no-robots https://restic.net
 
-.. |Build Status| image:: https://travis-ci.org/restic/restic.net.svg?branch=master
-   :target: https://travis-ci.org/restic/restic.net
+.. |Build Status| image:: https://travis-ci.com/restic/restic.net.svg?branch=master
+   :target: https://travis-ci.com/restic/restic.net
