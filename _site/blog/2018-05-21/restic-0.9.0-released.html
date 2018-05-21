@@ -12,7 +12,7 @@
   <title>
     restic &middot;
       
-        Upcoming changes for the S3 backend
+        restic 0.9.0 released
       
   </title>
 
@@ -31,7 +31,7 @@
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://restic.net/blog/2017-11-25/upcoming-changes-to-s3" />
+  <link rel="canonical" href="https://restic.net/blog/2018-05-21/restic-0.9.0-released" />
 
   <!-- scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -95,35 +95,11 @@
 
     <div class="content container">
       <div class="post">
-  <h1 class="post-title">Upcoming changes for the S3 backend</h1>
-  <span class="post-date">25 Nov 2017</span>
-  <p>TL;DR: If you’re using the <code class="highlighter-rouge">s3</code> backend and cannot access your repo any more, append the path <code class="highlighter-rouge">/restic</code> to the repository location.</p>
+  <h1 class="post-title">restic 0.9.0 released</h1>
+  <span class="post-date">21 May 2018</span>
+  <p>We’ve just released <a href="https://github.com/restic/restic/releases/tag/v0.9.0">restic 0.9.0</a>. This is the next bigger release since 0.8.0, it mainly brings a completely rewritten archiver core, improves the speed for <code class="highlighter-rouge">restic check</code>, and many bug fixes.</p>
 
-<p>We’ve just merged <a href="https://github.com/restic/restic/pull/1437">Pull Request #1437</a> which resolves an issue with the S3 backend reported in <a href="https://github.com/restic/restic/issues/1292">#1292</a>. When the next restic version is released (or you’re using the master branch directly), this may require modifying the repository location you’re passing to restic.</p>
-
-<p>In order to access a repository stored on S3, restic requires the following information:</p>
-<ul>
-  <li>The endpoint address: For Amazon S3, it’s <code class="highlighter-rouge">s3.amazonaws.com</code>, for a custom hosted <a href="https://minio.io/">Minio</a> server it may be <code class="highlighter-rouge">https://minio.example.com</code>.</li>
-  <li>The bucket name (e.g. <code class="highlighter-rouge">backup-servers</code>)</li>
-  <li>The path within the bucket (e.g. <code class="highlighter-rouge">/repo-server1</code>)</li>
-</ul>
-
-<p>The endpoint address and bucket name are required for operation, but the path is optional. When the path is not set or empty, restic used to use the default path <code class="highlighter-rouge">/restic</code> within the bucket. This has now changed: When the path is not set or empty, the repository is put at the root of the bucket, so the path is <code class="highlighter-rouge">/</code>.</p>
-
-<p>This change was made so that it is possible to have the repository directly in the root of the bucket. The default path <code class="highlighter-rouge">/restic</code> within the bucket only existed for historical reasons and was never properly documented.</p>
-
-<p>So, if you did not specify a path within the bucket, you’ll now get an error that the repo cannot be found:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ restic -r s3:s3.amazonaws.com/backup-servers snapshots
-unable to open config file: Stat: The specified key does not exist.
-Is there a repository at the following location?
-s3:s3.amazonaws.com/backup-servers
-</code></pre></div></div>
-
-<p>Then you’ll need to add the path <code class="highlighter-rouge">/restic</code> now in order to access an existing repo, like this:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ restic -r s3:s3.amazonaws.com/backup-servers/restic snapshots
-</code></pre></div></div>
-
-<p>As always, if you have feedback for us, please use <a href="https://forum.restic.net">the forum</a> embedded below or (if you experience a bug) <a href="https://github.com/restic/restic/issues/new">create a new issue on GitHub</a>. Thanks!</p>
+<p>For downloading the new release and see a more detailed list of important changes, head over to <a href="https://github.com/restic/restic/releases/tag/v0.9.0">GitHub</a>. As always, thanks for <a href="https://github.com/restic/restic/issues/new">reporting any issues</a> you encounter! Or just write a post in <a href="https://forum.restic.net">the forum</a>.</p>
 
 </div>
 
@@ -132,7 +108,7 @@ s3:s3.amazonaws.com/backup-servers
 
 <script type="text/javascript">
   DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/',
-                     discourseEmbedUrl: 'https://restic.net/blog/2017-11-25/upcoming-changes-to-s3' };
+                     discourseEmbedUrl: 'https://restic.net/blog/2018-05-21/restic-0.9.0-released' };
 
   (function() {
     var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
@@ -144,15 +120,6 @@ s3:s3.amazonaws.com/backup-servers
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/blog/2018-05-21/restic-0.9.0-released">
-            restic 0.9.0 released
-            <small>21 May 2018</small>
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -168,6 +135,15 @@ s3:s3.amazonaws.com/backup-servers
           <a href="/blog/2018-04-01/rclone-backend">
             Using rclone as a restic Backend
             <small>01 Apr 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/2018-02-26/restic-0.8.3-released">
+            restic 0.8.3 released
+            <small>26 Feb 2018</small>
           </a>
         </h3>
       </li>

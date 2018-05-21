@@ -5,10 +5,25 @@
     <description>Backups done right!</description>
     <link>https://restic.net/blog/</link>
     <atom:link href="https://restic.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 30 Apr 2018 21:41:12 +0200</pubDate>
-    <lastBuildDate>Mon, 30 Apr 2018 21:41:12 +0200</lastBuildDate>
+    <pubDate>Mon, 21 May 2018 20:46:41 +0200</pubDate>
+    <lastBuildDate>Mon, 21 May 2018 20:46:41 +0200</lastBuildDate>
     <generator>Jekyll v3.7.0</generator>
 
+    
+      <item>
+        <title>restic 0.9.0 released</title>
+        <description>&lt;p&gt;We’ve just released &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.9.0&quot;&gt;restic 0.9.0&lt;/a&gt;. This is the next bigger release since 0.8.0, it mainly brings a completely rewritten archiver core, improves the speed for &lt;code class=&quot;highlighter-rouge&quot;&gt;restic check&lt;/code&gt;, and many bug fixes.&lt;/p&gt;
+
+&lt;p&gt;For downloading the new release and see a more detailed list of important changes, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.9.0&quot;&gt;GitHub&lt;/a&gt;. As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 21 May 2018 00:00:00 +0200</pubDate>
+        <link>https://restic.net/blog/2018-05-21/restic-0.9.0-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2018-05-21/restic-0.9.0-released</guid>
+
+        
+        
+
+      </item>
     
       <item>
         <title>The restic project turns four!</title>
@@ -239,117 +254,6 @@ As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/n
         <pubDate>Wed, 20 Sep 2017 00:00:00 +0200</pubDate>
         <link>https://restic.net/blog/2017-09-20/restic-0.7.3-released</link>
         <guid isPermaLink="true">https://restic.net/blog/2017-09-20/restic-0.7.3-released</guid>
-
-        
-        
-
-      </item>
-    
-      <item>
-        <title>restic 0.7.2 released</title>
-        <description>&lt;p&gt;We’re very pleased to announce that &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.7.2&quot;&gt;restic 0.7.2&lt;/a&gt; has been released!
-For downloading the code, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.7.2&quot;&gt;GitHub&lt;/a&gt;.
-As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter!&lt;/p&gt;
-
-&lt;p&gt;The binaries released with each restic version are &lt;a href=&quot;https://reproducible-builds.org/&quot;&gt;reproducible&lt;/a&gt;, which means that you can easily reproduce a byte identical version from the source code for that release. Instructions on how to do that are contained in the &lt;a href=&quot;https://github.com/restic/builder&quot;&gt;builder repository&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h1 id=&quot;important-changes-in-072&quot;&gt;Important Changes in 0.7.2&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;We’ve added an official docker image and a Dockerfile to build this image in &lt;code class=&quot;highlighter-rouge&quot;&gt;docker/&lt;/code&gt;.
-&lt;a href=&quot;https://github.com/restic/restic/pull/1061&quot;&gt;#1061&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;The git repository layout was changed to resemble the layout typically used in Go projects, we’re not using &lt;code class=&quot;highlighter-rouge&quot;&gt;gb&lt;/code&gt; for building restic any more and vendoring the dependencies is now taken care of by &lt;code class=&quot;highlighter-rouge&quot;&gt;dep&lt;/code&gt;.
-&lt;a href=&quot;https://github.com/restic/restic/pull/1126&quot;&gt;#1126&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;We now support saving backups on Google Cloud Storage.
-&lt;a href=&quot;https://github.com/restic/restic/pull/1134&quot;&gt;#1134&lt;/a&gt;
-&lt;a href=&quot;https://github.com/restic/restic/pull/1052&quot;&gt;#1052&lt;/a&gt;
-&lt;a href=&quot;https://github.com/restic/restic/issues/211&quot;&gt;#211&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;We’ve added support for Microsoft Azure Blob Storage as a restic backend.
-&lt;a href=&quot;https://github.com/restic/restic/pull/1149&quot;&gt;#1149&lt;/a&gt;
-&lt;a href=&quot;https://github.com/restic/restic/pull/1059&quot;&gt;#1059&lt;/a&gt;
-&lt;a href=&quot;https://github.com/restic/restic/issues/609&quot;&gt;#609&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;In the course of supporting Microsoft Azure Blobe Storage Go 1.8 is now a requirement to build restic.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;restore&lt;/code&gt; command has been improved: When dirs are excluded (or not included) in a restore, they are not loaded from the repo any more.
-&lt;a href=&quot;https://github.com/restic/restic/pull/1044&quot;&gt;#1044&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Name collisions are now resolved by appending a counter.
-&lt;a href=&quot;https://github.com/restic/restic/issues/1179&quot;&gt;#1179&lt;/a&gt;
-&lt;a href=&quot;https://github.com/restic/restic/pull/1209&quot;&gt;#1209&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;small-changes&quot;&gt;Small changes&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;key&lt;/code&gt; command now prompts for a password even if the original password to access a repo has been specified via the &lt;code class=&quot;highlighter-rouge&quot;&gt;RESTIC_PASSWORD&lt;/code&gt; environment variable or a password file.
-&lt;a href=&quot;https://github.com/restic/restic/issues/1132&quot;&gt;#1132&lt;/a&gt;
-&lt;a href=&quot;https://github.com/restic/restic/pull/1133&quot;&gt;#1133&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Properly report errors when reading files with exclude patterns.
-&lt;a href=&quot;https://github.com/restic/restic/pull/1144&quot;&gt;#1144&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;We now automatically generate man pages for all restic commands, see the subdir &lt;code class=&quot;highlighter-rouge&quot;&gt;doc/man&lt;/code&gt;.
-&lt;a href=&quot;https://github.com/restic/restic/issues/697&quot;&gt;#697&lt;/a&gt;
-&lt;a href=&quot;https://github.com/restic/restic/pull/1147&quot;&gt;#1147&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;key remove&lt;/code&gt; command was corrected and now works as documented.
-&lt;a href=&quot;https://github.com/restic/restic/pull/1164&quot;&gt;#1164&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;When a restic command other than &lt;code class=&quot;highlighter-rouge&quot;&gt;init&lt;/code&gt; is used with a local repository and the repository directory does not exist, restic creates the directory structure. That’s an error, only the &lt;code class=&quot;highlighter-rouge&quot;&gt;init&lt;/code&gt; command should create the dir.
-&lt;a href=&quot;https://github.com/restic/restic/issues/1167&quot;&gt;#1167&lt;/a&gt;
-&lt;a href=&quot;https://github.com/restic/restic/pull/1182&quot;&gt;#1182&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Restic now prints stats on all BSD systems (not only on darwin) when SIGINFO is received (usually when ctrl+t is pressed).
-&lt;a href=&quot;https://github.com/restic/restic/pull/1203&quot;&gt;#1203&lt;/a&gt;
-&lt;a href=&quot;https://github.com/restic/restic/pull/1082#issuecomment-326279920&quot;&gt;#1082&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Since a few releases restic had the ability to write profiling files for memory and CPU usage when &lt;code class=&quot;highlighter-rouge&quot;&gt;debug&lt;/code&gt; is enabled. It was discovered that when restic is interrupted (ctrl+c is pressed), the proper shutdown hook is not run. This is now corrected.
-&lt;a href=&quot;https://github.com/restic/restic/pull/1191&quot;&gt;#1191&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;A new option &lt;code class=&quot;highlighter-rouge&quot;&gt;--exclude-caches&lt;/code&gt; was added that allows excluding cache directories (that are tagged as such). This is a special case of a more generic option &lt;code class=&quot;highlighter-rouge&quot;&gt;--exclude-if-present&lt;/code&gt; which excludes a directory if a file with a specific name (and contents) is present.
-&lt;a href=&quot;https://github.com/restic/restic/issues/317&quot;&gt;#317&lt;/a&gt;
-&lt;a href=&quot;https://github.com/restic/restic/pull/1170&quot;&gt;#1170&lt;/a&gt;
-&lt;a href=&quot;https://github.com/restic/restic/pull/1224&quot;&gt;#1224&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;forget&lt;/code&gt; command now has an option &lt;code class=&quot;highlighter-rouge&quot;&gt;--group-by&lt;/code&gt; that allows flexible grouping policies.
-&lt;a href=&quot;https://github.com/restic/restic/pull/1196&quot;&gt;#1196&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;The date and time restic records for a new backup can now be specified externally by passing &lt;code class=&quot;highlighter-rouge&quot;&gt;--time&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;backup&lt;/code&gt; command.
-&lt;a href=&quot;https://github.com/restic/restic/pull/1205&quot;&gt;#1205&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;The option &lt;code class=&quot;highlighter-rouge&quot;&gt;--compact&lt;/code&gt; was added to the &lt;code class=&quot;highlighter-rouge&quot;&gt;snapshots&lt;/code&gt; command to get a better overview of the snapshots in a repo. It limits each snapshot to a single line.
-&lt;a href=&quot;https://github.com/restic/restic/issues/1218&quot;&gt;#1218&lt;/a&gt;
-&lt;a href=&quot;https://github.com/restic/restic/pull/1223&quot;&gt;#1223&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Wed, 13 Sep 2017 00:00:00 +0200</pubDate>
-        <link>https://restic.net/blog/2017-09-13/restic-0.7.2-released</link>
-        <guid isPermaLink="true">https://restic.net/blog/2017-09-13/restic-0.7.2-released</guid>
 
         
         
