@@ -5,10 +5,25 @@
     <description>Backups done right!</description>
     <link>https://restic.net/blog/</link>
     <atom:link href="https://restic.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 21 May 2018 20:46:41 +0200</pubDate>
-    <lastBuildDate>Mon, 21 May 2018 20:46:41 +0200</lastBuildDate>
+    <pubDate>Sun, 10 Jun 2018 11:51:57 +0200</pubDate>
+    <lastBuildDate>Sun, 10 Jun 2018 11:51:57 +0200</lastBuildDate>
     <generator>Jekyll v3.7.0</generator>
 
+    
+      <item>
+        <title>restic 0.9.1 released</title>
+        <description>&lt;p&gt;We’ve just released &lt;a href=&quot;https://github.com/restic/restic/releases/v0.9.1&quot;&gt;restic 0.9.1&lt;/a&gt;, a minor bugfix release.&lt;/p&gt;
+
+&lt;p&gt;For downloading the new release and see a more detailed list of important changes, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/v0.9.1&quot;&gt;GitHub&lt;/a&gt;. As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 10 Jun 2018 00:00:00 +0200</pubDate>
+        <link>https://restic.net/blog/2018-06-10/restic-0.9.1-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2018-06-10/restic-0.9.1-released</guid>
+
+        
+        
+
+      </item>
     
       <item>
         <title>restic 0.9.0 released</title>
@@ -229,31 +244,6 @@ s3:s3.amazonaws.com/backup-servers
         <pubDate>Sat, 25 Nov 2017 00:00:00 +0100</pubDate>
         <link>https://restic.net/blog/2017-11-25/upcoming-changes-to-s3</link>
         <guid isPermaLink="true">https://restic.net/blog/2017-11-25/upcoming-changes-to-s3</guid>
-
-        
-        
-
-      </item>
-    
-      <item>
-        <title>restic 0.7.3 released</title>
-        <description>&lt;p&gt;We’ve just released &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.7.3&quot;&gt;restic 0.7.3&lt;/a&gt; to correct a bug with the Google Cloud Storage and Azure backends. When &lt;code class=&quot;highlighter-rouge&quot;&gt;restic prune&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;restic rebuild-index&lt;/code&gt; was run, not all files stored in these backends were considered.&lt;/p&gt;
-
-&lt;p&gt;For downloading the code, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.7.3&quot;&gt;GitHub&lt;/a&gt;.
-As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter!&lt;/p&gt;
-
-&lt;p&gt;The binaries released with each restic version are &lt;a href=&quot;https://reproducible-builds.org/&quot;&gt;reproducible&lt;/a&gt;, which means that you can easily reproduce a byte identical version from the source code for that release. Instructions on how to do that are contained in the &lt;a href=&quot;https://github.com/restic/builder&quot;&gt;builder repository&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h1 id=&quot;important-changes-in-073&quot;&gt;Important Changes in 0.7.3&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;For large backups stored in Google Cloud Storage, the &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt; command fails because listing only returns the first 1000 files. This has been corrected, no data is lost in the process. In addition, a plausibility check was added to &lt;code class=&quot;highlighter-rouge&quot;&gt;prune&lt;/code&gt;.
-&lt;a href=&quot;https://github.com/restic/restic/issues/1246&quot;&gt;#1246&lt;/a&gt; &lt;a href=&quot;https://github.com/restic/restic/pull/1247&quot;&gt;#1247&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Wed, 20 Sep 2017 00:00:00 +0200</pubDate>
-        <link>https://restic.net/blog/2017-09-20/restic-0.7.3-released</link>
-        <guid isPermaLink="true">https://restic.net/blog/2017-09-20/restic-0.7.3-released</guid>
 
         
         
