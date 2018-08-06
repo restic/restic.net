@@ -5,10 +5,25 @@
     <description>Backups done right!</description>
     <link>https://restic.net/blog/</link>
     <atom:link href="https://restic.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 10 Jun 2018 11:51:57 +0200</pubDate>
-    <lastBuildDate>Sun, 10 Jun 2018 11:51:57 +0200</lastBuildDate>
+    <pubDate>Mon, 06 Aug 2018 21:40:49 +0200</pubDate>
+    <lastBuildDate>Mon, 06 Aug 2018 21:40:49 +0200</lastBuildDate>
     <generator>Jekyll v3.7.0</generator>
 
+    
+      <item>
+        <title>restic 0.9.2 released</title>
+        <description>&lt;p&gt;We’ve just released &lt;a href=&quot;https://github.com/restic/restic/releases/v0.9.2&quot;&gt;restic 0.9.2&lt;/a&gt;. Among several fixes it includes support for “Application Keys” for BackBlaze B2, which can be restricted to a specific bucket and/or path (so you don’t have to give restic access to all your files stored at B2).&lt;/p&gt;
+
+&lt;p&gt;For downloading the new release and see a more detailed list of important changes, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/v0.9.2&quot;&gt;GitHub&lt;/a&gt;. As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 06 Aug 2018 00:00:00 +0200</pubDate>
+        <link>https://restic.net/blog/2018-08-06/restic-0.9.2-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2018-08-06/restic-0.9.2-released</guid>
+
+        
+        
+
+      </item>
     
       <item>
         <title>restic 0.9.1 released</title>
@@ -205,45 +220,6 @@ to &lt;a href=&quot;https://restic.net/feed.xml&quot;&gt;https://restic.net/feed
         <pubDate>Sun, 26 Nov 2017 00:00:00 +0100</pubDate>
         <link>https://restic.net/blog/2017-11-26/restic-0.8.0-released</link>
         <guid isPermaLink="true">https://restic.net/blog/2017-11-26/restic-0.8.0-released</guid>
-
-        
-        
-
-      </item>
-    
-      <item>
-        <title>Upcoming changes for the S3 backend</title>
-        <description>&lt;p&gt;TL;DR: If you’re using the &lt;code class=&quot;highlighter-rouge&quot;&gt;s3&lt;/code&gt; backend and cannot access your repo any more, append the path &lt;code class=&quot;highlighter-rouge&quot;&gt;/restic&lt;/code&gt; to the repository location.&lt;/p&gt;
-
-&lt;p&gt;We’ve just merged &lt;a href=&quot;https://github.com/restic/restic/pull/1437&quot;&gt;Pull Request #1437&lt;/a&gt; which resolves an issue with the S3 backend reported in &lt;a href=&quot;https://github.com/restic/restic/issues/1292&quot;&gt;#1292&lt;/a&gt;. When the next restic version is released (or you’re using the master branch directly), this may require modifying the repository location you’re passing to restic.&lt;/p&gt;
-
-&lt;p&gt;In order to access a repository stored on S3, restic requires the following information:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;The endpoint address: For Amazon S3, it’s &lt;code class=&quot;highlighter-rouge&quot;&gt;s3.amazonaws.com&lt;/code&gt;, for a custom hosted &lt;a href=&quot;https://minio.io/&quot;&gt;Minio&lt;/a&gt; server it may be &lt;code class=&quot;highlighter-rouge&quot;&gt;https://minio.example.com&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;The bucket name (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;backup-servers&lt;/code&gt;)&lt;/li&gt;
-  &lt;li&gt;The path within the bucket (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;/repo-server1&lt;/code&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The endpoint address and bucket name are required for operation, but the path is optional. When the path is not set or empty, restic used to use the default path &lt;code class=&quot;highlighter-rouge&quot;&gt;/restic&lt;/code&gt; within the bucket. This has now changed: When the path is not set or empty, the repository is put at the root of the bucket, so the path is &lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;This change was made so that it is possible to have the repository directly in the root of the bucket. The default path &lt;code class=&quot;highlighter-rouge&quot;&gt;/restic&lt;/code&gt; within the bucket only existed for historical reasons and was never properly documented.&lt;/p&gt;
-
-&lt;p&gt;So, if you did not specify a path within the bucket, you’ll now get an error that the repo cannot be found:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ restic -r s3:s3.amazonaws.com/backup-servers snapshots
-unable to open config file: Stat: The specified key does not exist.
-Is there a repository at the following location?
-s3:s3.amazonaws.com/backup-servers
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then you’ll need to add the path &lt;code class=&quot;highlighter-rouge&quot;&gt;/restic&lt;/code&gt; now in order to access an existing repo, like this:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ restic -r s3:s3.amazonaws.com/backup-servers/restic snapshots
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;As always, if you have feedback for us, please use &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt; embedded below or (if you experience a bug) &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;create a new issue on GitHub&lt;/a&gt;. Thanks!&lt;/p&gt;
-</description>
-        <pubDate>Sat, 25 Nov 2017 00:00:00 +0100</pubDate>
-        <link>https://restic.net/blog/2017-11-25/upcoming-changes-to-s3</link>
-        <guid isPermaLink="true">https://restic.net/blog/2017-11-25/upcoming-changes-to-s3</guid>
 
         
         
