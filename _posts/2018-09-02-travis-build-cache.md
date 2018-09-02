@@ -16,7 +16,7 @@ for each version of Go, running all the tests takes between 13 and 25 minutes:
 
 ![Build Times on Travis CI Before Caching Build Cache](/assets/travis-ci-before-build-cache.png) 
 
-With the release of Go 1.10, a build cache was introduced
+With the release of Go 1.10, a build cache was
 [introduced](https://golang.org/doc/go1.10#build), which saves compiled
 artifacts in a cache directory. On Linux, that's usually located in
 `~/.cache/go-build`. So when the same package (with the same build tags and
@@ -35,11 +35,12 @@ cache:
     - $HOME/gopath/pkg/mod
 ```
 
-This also caches another directory in the GOPATH called `mod`, which contains
+This also caches another directory in the GOPATH called `pkg/mod`, which contains
 information about released modules. This is a feature introduced with Go 1.11.
 
-These directories work for Linux, but the Go build cache directory is somewhere
-else on OS X, so we need to add the cache entries to our build matrix:
+The directories listed above work for Linux, but the Go build cache directory
+is somewhere else on OS X, so we need to add the cache entries to our build
+matrix:
 
 ```yaml
 matrix:
@@ -68,7 +69,6 @@ matrix:
 
     - os: osx
       go: "1.11.x"
-      env: RESTIC_TEST_FUSE=0 RESTIC_TEST_CLOUD_BACKENDS=0
       cache:
         directories:
           - $HOME/Library/Caches/go-build

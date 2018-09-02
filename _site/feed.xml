@@ -5,8 +5,8 @@
     <description>Backups done right!</description>
     <link>https://restic.net/blog/</link>
     <atom:link href="https://restic.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 02 Sep 2018 13:30:57 +0200</pubDate>
-    <lastBuildDate>Sun, 02 Sep 2018 13:30:57 +0200</lastBuildDate>
+    <pubDate>Sun, 02 Sep 2018 21:03:58 +0200</pubDate>
+    <lastBuildDate>Sun, 02 Sep 2018 21:03:58 +0200</lastBuildDate>
     <generator>Jekyll v3.8.3</generator>
 
     
@@ -25,7 +25,7 @@ for each version of Go, running all the tests takes between 13 and 25 minutes:&l
 
 &lt;p&gt;&lt;img src=&quot;/assets/travis-ci-before-build-cache.png&quot; alt=&quot;Build Times on Travis CI Before Caching Build Cache&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;With the release of Go 1.10, a build cache was introduced
+&lt;p&gt;With the release of Go 1.10, a build cache was
 &lt;a href=&quot;https://golang.org/doc/go1.10#build&quot;&gt;introduced&lt;/a&gt;, which saves compiled
 artifacts in a cache directory. On Linux, that’s usually located in
 &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.cache/go-build&lt;/code&gt;. So when the same package (with the same build tags and
@@ -43,11 +43,12 @@ configuration file &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&l
     &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$HOME/gopath/pkg/mod&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This also caches another directory in the GOPATH called &lt;code class=&quot;highlighter-rouge&quot;&gt;mod&lt;/code&gt;, which contains
+&lt;p&gt;This also caches another directory in the GOPATH called &lt;code class=&quot;highlighter-rouge&quot;&gt;pkg/mod&lt;/code&gt;, which contains
 information about released modules. This is a feature introduced with Go 1.11.&lt;/p&gt;
 
-&lt;p&gt;These directories work for Linux, but the Go build cache directory is somewhere
-else on OS X, so we need to add the cache entries to our build matrix:&lt;/p&gt;
+&lt;p&gt;The directories listed above work for Linux, but the Go build cache directory
+is somewhere else on OS X, so we need to add the cache entries to our build
+matrix:&lt;/p&gt;
 
 &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
@@ -75,7 +76,6 @@ else on OS X, so we need to add the cache entries to our build matrix:&lt;/p&gt;
 
     &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;osx&lt;/span&gt;
       &lt;span class=&quot;na&quot;&gt;go&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1.11.x&quot;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;RESTIC_TEST_FUSE=0 RESTIC_TEST_CLOUD_BACKENDS=0&lt;/span&gt;
       &lt;span class=&quot;na&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
         &lt;span class=&quot;na&quot;&gt;directories&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
           &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$HOME/Library/Caches/go-build&lt;/span&gt;

@@ -110,7 +110,7 @@ for each version of Go, running all the tests takes between 13 and 25 minutes:</
 
 <p><img src="/assets/travis-ci-before-build-cache.png" alt="Build Times on Travis CI Before Caching Build Cache" /></p>
 
-<p>With the release of Go 1.10, a build cache was introduced
+<p>With the release of Go 1.10, a build cache was
 <a href="https://golang.org/doc/go1.10#build">introduced</a>, which saves compiled
 artifacts in a cache directory. On Linux, that’s usually located in
 <code class="highlighter-rouge">~/.cache/go-build</code>. So when the same package (with the same build tags and
@@ -128,11 +128,12 @@ configuration file <code class="highlighter-rouge">.travis.yml</code> looks like
     <span class="pi">-</span> <span class="s">$HOME/gopath/pkg/mod</span>
 </code></pre></div></div>
 
-<p>This also caches another directory in the GOPATH called <code class="highlighter-rouge">mod</code>, which contains
+<p>This also caches another directory in the GOPATH called <code class="highlighter-rouge">pkg/mod</code>, which contains
 information about released modules. This is a feature introduced with Go 1.11.</p>
 
-<p>These directories work for Linux, but the Go build cache directory is somewhere
-else on OS X, so we need to add the cache entries to our build matrix:</p>
+<p>The directories listed above work for Linux, but the Go build cache directory
+is somewhere else on OS X, so we need to add the cache entries to our build
+matrix:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">matrix</span><span class="pi">:</span>
   <span class="na">include</span><span class="pi">:</span>
@@ -160,7 +161,6 @@ else on OS X, so we need to add the cache entries to our build matrix:</p>
 
     <span class="pi">-</span> <span class="na">os</span><span class="pi">:</span> <span class="s">osx</span>
       <span class="na">go</span><span class="pi">:</span> <span class="s2">"</span><span class="s">1.11.x"</span>
-      <span class="na">env</span><span class="pi">:</span> <span class="s">RESTIC_TEST_FUSE=0 RESTIC_TEST_CLOUD_BACKENDS=0</span>
       <span class="na">cache</span><span class="pi">:</span>
         <span class="na">directories</span><span class="pi">:</span>
           <span class="pi">-</span> <span class="s">$HOME/Library/Caches/go-build</span>
