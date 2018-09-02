@@ -5,8 +5,8 @@
     <description>Backups done right!</description>
     <link>https://restic.net/blog/</link>
     <atom:link href="https://restic.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 02 Sep 2018 21:03:58 +0200</pubDate>
-    <lastBuildDate>Sun, 02 Sep 2018 21:03:58 +0200</lastBuildDate>
+    <pubDate>Sun, 02 Sep 2018 21:45:46 +0200</pubDate>
+    <lastBuildDate>Sun, 02 Sep 2018 21:45:46 +0200</lastBuildDate>
     <generator>Jekyll v3.8.3</generator>
 
     
@@ -103,9 +103,11 @@ specifying the list of directories to cache in the &lt;code class=&quot;highligh
 using it to run our integration tests on Windows and don’t run any
 cross-compilation.&lt;/p&gt;
 
-&lt;p&gt;We hope that the build cache does not become too large, it is limited for both
-Travis and AppVeyor. We’ll keep you posted when we discover any problems with
-this approach.&lt;/p&gt;
+&lt;p&gt;We hope that the build cache does not become too large, its size is limited for
+both Travis and AppVeyor. The Go compiler will &lt;a href=&quot;https://golang.org/cmd/go/#hdr-Build_and_test_caching&quot;&gt;delete files which haven’t been
+used recently&lt;/a&gt;, so we
+hope this is enough to keep the cache size small. We’ll keep you posted when we
+discover any problems with this approach.&lt;/p&gt;
 
 &lt;p&gt;Let us know what you think in the comments (which are hosted in &lt;a href=&quot;https://forum.restic.net&quot;&gt;our
 forum&lt;/a&gt;)!&lt;/p&gt;

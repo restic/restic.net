@@ -97,9 +97,11 @@ For restic, the build cache is not so relevant on AppVeyor, since we're only
 using it to run our integration tests on Windows and don't run any
 cross-compilation.
 
-We hope that the build cache does not become too large, it is limited for both
-Travis and AppVeyor. We'll keep you posted when we discover any problems with
-this approach.
+We hope that the build cache does not become too large, its size is limited for
+both Travis and AppVeyor. The Go compiler will [delete files which haven't been
+used recently](https://golang.org/cmd/go/#hdr-Build_and_test_caching), so we
+hope this is enough to keep the cache size small. We'll keep you posted when we
+discover any problems with this approach.
 
 Let us know what you think in the comments (which are hosted in [our
 forum](https://forum.restic.net))!
