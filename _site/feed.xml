@@ -5,10 +5,119 @@
     <description>Backups done right!</description>
     <link>https://restic.net/blog/</link>
     <atom:link href="https://restic.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 06 Aug 2018 21:40:49 +0200</pubDate>
-    <lastBuildDate>Mon, 06 Aug 2018 21:40:49 +0200</lastBuildDate>
-    <generator>Jekyll v3.7.0</generator>
+    <pubDate>Sun, 02 Sep 2018 13:30:57 +0200</pubDate>
+    <lastBuildDate>Sun, 02 Sep 2018 13:30:57 +0200</lastBuildDate>
+    <generator>Jekyll v3.8.3</generator>
 
+    
+      <item>
+        <title>Enabling the Go Build Cache on Travis/AppVeyor</title>
+        <description>&lt;p&gt;The restic project runs the unit and integration tests for each pushed commit
+and each pull request. We’re using &lt;a href=&quot;https://travis-ci.com&quot;&gt;Travis CI&lt;/a&gt; for Linux
+and OS X, and &lt;a href=&quot;https://www.appveyor.com/&quot;&gt;AppVeyor&lt;/a&gt; for Windows. We’re very
+grateful that they provide their services free of charge for Open Source
+projects!&lt;/p&gt;
+
+&lt;p&gt;Our project not only runs the tests on Travis, but also compiles restic for
+each supported architecture, operating system, and version of Go. Go is known
+for its fast compilation times, but still, compilation takes its time. Roughly,
+for each version of Go, running all the tests takes between 13 and 25 minutes:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/travis-ci-before-build-cache.png&quot; alt=&quot;Build Times on Travis CI Before Caching Build Cache&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;With the release of Go 1.10, a build cache was introduced
+&lt;a href=&quot;https://golang.org/doc/go1.10#build&quot;&gt;introduced&lt;/a&gt;, which saves compiled
+artifacts in a cache directory. On Linux, that’s usually located in
+&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.cache/go-build&lt;/code&gt;. So when the same package (with the same build tags and
+architecture and so on) is to be compiled again, the Go compiler can just use
+the cached version.&lt;/p&gt;
+
+&lt;p&gt;Travis executes the tests in a fresh container each time they are run, but we
+can &lt;a href=&quot;https://docs.travis-ci.com/user/caching/&quot;&gt;tell it&lt;/a&gt; to keep the build cache
+directory and extract it before the tests are run next time. The entry in the
+configuration file &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; looks like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;directories&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$HOME/.cache/go-build&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$HOME/gopath/pkg/mod&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This also caches another directory in the GOPATH called &lt;code class=&quot;highlighter-rouge&quot;&gt;mod&lt;/code&gt;, which contains
+information about released modules. This is a feature introduced with Go 1.11.&lt;/p&gt;
+
+&lt;p&gt;These directories work for Linux, but the Go build cache directory is somewhere
+else on OS X, so we need to add the cache entries to our build matrix:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;linux&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;go&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1.9.x&quot;&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;directories&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$HOME/.cache/go-build&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$HOME/gopath/pkg/mod&lt;/span&gt;
+
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;linux&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;go&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1.10.x&quot;&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;directories&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$HOME/.cache/go-build&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$HOME/gopath/pkg/mod&lt;/span&gt;
+
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;linux&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;go&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1.11.x&quot;&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;sudo&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;directories&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$HOME/.cache/go-build&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$HOME/gopath/pkg/mod&lt;/span&gt;
+
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;osx&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;go&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1.11.x&quot;&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;RESTIC_TEST_FUSE=0 RESTIC_TEST_CLOUD_BACKENDS=0&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;directories&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$HOME/Library/Caches/go-build&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$HOME/gopath/pkg/mod&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After a successful build, Travis will then archive both directories, and
+extract them again for the next test run. Indeed, this speeds up running the
+tests a great deal (depending on how much code has changed):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/travis-ci-with-build-cache.png&quot; alt=&quot;Build Times on Travis CI With Caching Build Cache&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can see in the screenshot above that the build time for Go 1.9 wasn’t
+reduced at all since it does not have the build cache feature.&lt;/p&gt;
+
+&lt;p&gt;AppVeyor also has a &lt;a href=&quot;https://www.appveyor.com/docs/build-cache/&quot;&gt;build cache
+feature&lt;/a&gt;, it can be enabled by
+specifying the list of directories to cache in the &lt;code class=&quot;highlighter-rouge&quot;&gt;appveyor.yml&lt;/code&gt; like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;%LocalAppData%\go-build'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For restic, the build cache is not so relevant on AppVeyor, since we’re only
+using it to run our integration tests on Windows and don’t run any
+cross-compilation.&lt;/p&gt;
+
+&lt;p&gt;We hope that the build cache does not become too large, it is limited for both
+Travis and AppVeyor. We’ll keep you posted when we discover any problems with
+this approach.&lt;/p&gt;
+
+&lt;p&gt;Let us know what you think in the comments (which are hosted in &lt;a href=&quot;https://forum.restic.net&quot;&gt;our
+forum&lt;/a&gt;)!&lt;/p&gt;
+</description>
+        <pubDate>Sun, 02 Sep 2018 00:00:00 +0200</pubDate>
+        <link>https://restic.net/blog/2018-09-02/travis-build-cache</link>
+        <guid isPermaLink="true">https://restic.net/blog/2018-09-02/travis-build-cache</guid>
+
+        
+        
+
+      </item>
     
       <item>
         <title>restic 0.9.2 released</title>
@@ -192,34 +301,6 @@ to &lt;a href=&quot;https://restic.net/feed.xml&quot;&gt;https://restic.net/feed
         <pubDate>Wed, 27 Dec 2017 00:00:00 +0100</pubDate>
         <link>https://restic.net/blog/2017-12-27/restic-0.8.1-released</link>
         <guid isPermaLink="true">https://restic.net/blog/2017-12-27/restic-0.8.1-released</guid>
-
-        
-        
-
-      </item>
-    
-      <item>
-        <title>restic 0.8.0 released</title>
-        <description>&lt;p&gt;We’ve just released &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.8.0&quot;&gt;restic 0.8.0&lt;/a&gt;. It brings the new awesome metadata cache which will speed up many operations, you may need to run &lt;code class=&quot;highlighter-rouge&quot;&gt;restic prune&lt;/code&gt; once to fully see it in action.&lt;/p&gt;
-
-&lt;p&gt;For downloading the new release and see a more detailed list of important changes, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.8.0&quot;&gt;GitHub&lt;/a&gt;. As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;This release also corrects a (low risk) vulnerability. When attackers are able to create files with arbitrary names on a Linux/Unix system in a directory that is saved with restic, it may happen that when the directory is restored on a Windows system to write files outside the target directory for the restore.&lt;/p&gt;
-
-&lt;p&gt;It works as follows:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;The attackers create a file called &lt;code class=&quot;highlighter-rouge&quot;&gt;..\test.txt&lt;/code&gt;, which is a valid filename on Linux.&lt;/li&gt;
-  &lt;li&gt;This is saved with restic, which will just save the file name in verbatim.&lt;/li&gt;
-  &lt;li&gt;When the file is restored on Linux, it’ll just be called &lt;code class=&quot;highlighter-rouge&quot;&gt;..\test.txt&lt;/code&gt; again. But if it restored on Windows, it’ll be placed in the parent directory of the target directory (because &lt;code class=&quot;highlighter-rouge&quot;&gt;..\&lt;/code&gt; refers to the parent).&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;We think this situation will not occur very often, so it is estimated to be of low risk. Nevertheless we’ve made sure that the behavior is changed, and now restic refuses to write files outside the target directory during restore.&lt;/p&gt;
-
-&lt;p&gt;We’d like to thank &lt;a href=&quot;https://allinaccess.com/&quot;&gt;Tyler Spivey&lt;/a&gt; for reporting the vulnerability responsibly!&lt;/p&gt;
-</description>
-        <pubDate>Sun, 26 Nov 2017 00:00:00 +0100</pubDate>
-        <link>https://restic.net/blog/2017-11-26/restic-0.8.0-released</link>
-        <guid isPermaLink="true">https://restic.net/blog/2017-11-26/restic-0.8.0-released</guid>
 
         
         
