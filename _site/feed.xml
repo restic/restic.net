@@ -5,8 +5,8 @@
     <description>Backups done right!</description>
     <link>https://restic.net/blog/</link>
     <atom:link href="https://restic.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 09 Sep 2018 13:40:56 +0200</pubDate>
-    <lastBuildDate>Sun, 09 Sep 2018 13:40:56 +0200</lastBuildDate>
+    <pubDate>Sun, 09 Sep 2018 13:50:52 +0200</pubDate>
+    <lastBuildDate>Sun, 09 Sep 2018 13:50:52 +0200</lastBuildDate>
     <generator>Jekyll v3.8.3</generator>
 
     
@@ -50,8 +50,8 @@ the software itself, rather than the project.&lt;/p&gt;
 &lt;p&gt;We also added a few questions users should answer in order to make debugging
 easier, but it turned out that the set of questions we ask for bugs is not
 helpful when suggesting a new feature. We then discovered (almost
-accidentally), that GitHub also supports several different types of issue
-templates, so now when you &lt;a href=&quot;https://github.com/restic/restic/issues/new/choose&quot;&gt;create a new issue for restic&lt;/a&gt;,
+accidentally), that GitHub also &lt;a href=&quot;https://help.github.com/articles/about-issue-and-pull-request-templates/&quot;&gt;supports several different types&lt;/a&gt;
+of issue templates, so now when you &lt;a href=&quot;https://github.com/restic/restic/issues/new/choose&quot;&gt;create a new issue for restic&lt;/a&gt;,
 you’re greeted with the following dialogue:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/github-new-issue.png&quot; alt=&quot;Opening a new Issue on GitHub&quot; /&gt;&lt;/p&gt;

@@ -39,8 +39,8 @@ text which encourages users to use the forum if they are unsure:
 We also added a few questions users should answer in order to make debugging
 easier, but it turned out that the set of questions we ask for bugs is not
 helpful when suggesting a new feature. We then discovered (almost
-accidentally), that GitHub also supports several different types of issue
-templates, so now when you [create a new issue for restic](https://github.com/restic/restic/issues/new/choose),
+accidentally), that GitHub also [supports several different types](https://help.github.com/articles/about-issue-and-pull-request-templates/)
+of issue templates, so now when you [create a new issue for restic](https://github.com/restic/restic/issues/new/choose),
 you're greeted with the following dialogue:
 
 ![Opening a new Issue on GitHub](/assets/github-new-issue.png)
