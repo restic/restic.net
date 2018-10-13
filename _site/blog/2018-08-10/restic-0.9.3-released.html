@@ -12,7 +12,7 @@
   <title>
     restic &middot;
       
-        restic 0.7.3 released
+        restic 0.9.3 released
       
   </title>
 
@@ -31,7 +31,7 @@
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://restic.net/blog/2017-09-20/restic-0.7.3-released" />
+  <link rel="canonical" href="https://restic.net/blog/2018-08-10/restic-0.9.3-released" />
 
   <!-- scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -95,21 +95,11 @@
 
     <div class="content container">
       <div class="post">
-  <h1 class="post-title">restic 0.7.3 released</h1>
-  <span class="post-date">20 Sep 2017</span>
-  <p>We’ve just released <a href="https://github.com/restic/restic/releases/tag/v0.7.3">restic 0.7.3</a> to correct a bug with the Google Cloud Storage and Azure backends. When <code class="highlighter-rouge">restic prune</code> or <code class="highlighter-rouge">restic rebuild-index</code> was run, not all files stored in these backends were considered.</p>
+  <h1 class="post-title">restic 0.9.3 released</h1>
+  <span class="post-date">10 Aug 2018</span>
+  <p>We’ve just released <a href="https://github.com/restic/restic/releases/v0.9.2">restic 0.9.3</a>. It is mostly a maintenance release, but several smaller enhancements have been added.</p>
 
-<p>For downloading the code, head over to <a href="https://github.com/restic/restic/releases/tag/v0.7.3">GitHub</a>.
-As always, thanks for <a href="https://github.com/restic/restic/issues/new">reporting any issues</a> you encounter!</p>
-
-<p>The binaries released with each restic version are <a href="https://reproducible-builds.org/">reproducible</a>, which means that you can easily reproduce a byte identical version from the source code for that release. Instructions on how to do that are contained in the <a href="https://github.com/restic/builder">builder repository</a>.</p>
-
-<h1 id="important-changes-in-073">Important Changes in 0.7.3</h1>
-
-<ul>
-  <li>For large backups stored in Google Cloud Storage, the <code class="highlighter-rouge">prune</code> command fails because listing only returns the first 1000 files. This has been corrected, no data is lost in the process. In addition, a plausibility check was added to <code class="highlighter-rouge">prune</code>.
-<a href="https://github.com/restic/restic/issues/1246">#1246</a> <a href="https://github.com/restic/restic/pull/1247">#1247</a></li>
-</ul>
+<p>For downloading the new release and see a more detailed list of important changes, head over to <a href="https://github.com/restic/restic/releases/v0.9.3">GitHub</a>. As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! Or just write a post in <a href="https://forum.restic.net">the forum</a>.</p>
 
 </div>
 
@@ -118,7 +108,7 @@ As always, thanks for <a href="https://github.com/restic/restic/issues/new">repo
 
 <script type="text/javascript">
   DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/',
-                     discourseEmbedUrl: 'https://restic.net/blog/2017-09-20/restic-0.7.3-released' };
+                     discourseEmbedUrl: 'https://restic.net/blog/2018-08-10/restic-0.9.3-released' };
 
   (function() {
     var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
@@ -151,9 +141,9 @@ As always, thanks for <a href="https://github.com/restic/restic/issues/new">repo
     
       <li>
         <h3>
-          <a href="/blog/2018-08-10/restic-0.9.3-released">
-            restic 0.9.3 released
-            <small>10 Aug 2018</small>
+          <a href="/blog/2018-08-06/restic-0.9.2-released">
+            restic 0.9.2 released
+            <small>06 Aug 2018</small>
           </a>
         </h3>
       </li>
