@@ -5,10 +5,28 @@
     <description>Backups done right!</description>
     <link>https://restic.net/blog/</link>
     <atom:link href="https://restic.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 14 Oct 2018 08:57:39 +0200</pubDate>
-    <lastBuildDate>Sun, 14 Oct 2018 08:57:39 +0200</lastBuildDate>
+    <pubDate>Tue, 01 Jan 2019 17:03:10 +0100</pubDate>
+    <lastBuildDate>Tue, 01 Jan 2019 17:03:10 +0100</lastBuildDate>
     <generator>Jekyll v3.8.3</generator>
 
+    
+      <item>
+        <title>New Year, New Infrastructure!</title>
+        <description>&lt;p&gt;We wish you a happy new year 2019!&lt;/p&gt;
+
+&lt;p&gt;Our friends at &lt;a href=&quot;https://www.hosting.de&quot;&gt;hosting.de&lt;/a&gt; recently provided us with a dedicated server to host this website, the forum, and the &lt;a href=&quot;https://beta.restic.net&quot;&gt;beta builder&lt;/a&gt; for restic, and we’ve just moved everything over. Thank you very much for your support!&lt;/p&gt;
+
+&lt;p&gt;Please leave a comment in the forum in the thread for this announcement if there’s anything broken for you.&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 01 Jan 2019 00:00:00 +0100</pubDate>
+        <link>https://restic.net/blog/2019-01-01/new-infrastructure</link>
+        <guid isPermaLink="true">https://restic.net/blog/2019-01-01/new-infrastructure</guid>
+
+        
+        
+
+      </item>
     
       <item>
         <title>restic 0.9.3 released</title>
@@ -366,21 +384,6 @@ created restic repository 7905a088a0 at rclone:b2prod:yggdrasil/prod-serverA
         <pubDate>Mon, 26 Feb 2018 00:00:00 +0100</pubDate>
         <link>https://restic.net/blog/2018-02-26/restic-0.8.3-released</link>
         <guid isPermaLink="true">https://restic.net/blog/2018-02-26/restic-0.8.3-released</guid>
-
-        
-        
-
-      </item>
-    
-      <item>
-        <title>restic 0.8.2 released</title>
-        <description>&lt;p&gt;We’ve just released &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.8.2&quot;&gt;restic 0.8.2&lt;/a&gt;. This is mostly a bugfix release, with some smaller enhancements.&lt;/p&gt;
-
-&lt;p&gt;For downloading the new release and see a more detailed list of important changes, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.8.2&quot;&gt;GitHub&lt;/a&gt;. As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 17 Feb 2018 00:00:00 +0100</pubDate>
-        <link>https://restic.net/blog/2018-02-17/restic-0.8.2-released</link>
-        <guid isPermaLink="true">https://restic.net/blog/2018-02-17/restic-0.8.2-released</guid>
 
         
         
