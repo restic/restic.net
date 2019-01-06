@@ -5,10 +5,33 @@
     <description>Backups done right!</description>
     <link>https://restic.net/blog/</link>
     <atom:link href="https://restic.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 05 Jan 2019 17:42:37 +0100</pubDate>
-    <lastBuildDate>Sat, 05 Jan 2019 17:42:37 +0100</lastBuildDate>
+    <pubDate>Sun, 06 Jan 2019 22:02:01 +0100</pubDate>
+    <lastBuildDate>Sun, 06 Jan 2019 22:02:01 +0100</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
 
+    
+      <item>
+        <title>restic 0.9.4 released</title>
+        <description>&lt;p&gt;We’ve just released &lt;a href=&quot;https://github.com/restic/restic/releases/v0.9.4&quot;&gt;restic 0.9.4&lt;/a&gt;. Besides several fixes for bugs it contains a new restorer implementation which downloads data concurrently, so it is much faster than the old one.&lt;/p&gt;
+
+&lt;p&gt;For downloading the new release and see a more detailed list of important changes, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/v0.9.4&quot;&gt;GitHub&lt;/a&gt;. If you already have restic 0.9.3, you can use the &lt;code class=&quot;highlighter-rouge&quot;&gt;self-update&lt;/code&gt; command to automatically download and verify the new release. Due to a &lt;a href=&quot;https://github.com/restic/restic/issues/2041&quot;&gt;bug&lt;/a&gt; you need to specify where restic should write the new file, e.g. like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;restic self-update &lt;span class=&quot;nt&quot;&gt;--output&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;which restic&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;You can also just specify a path:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;restic self-update &lt;span class=&quot;nt&quot;&gt;--output&lt;/span&gt; /usr/local/bin/restic&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new/choose&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 06 Jan 2019 00:00:00 +0100</pubDate>
+        <link>https://restic.net/blog/2019-01-06/restic-0.9.4-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2019-01-06/restic-0.9.4-released</guid>
+
+        
+        
+
+      </item>
     
       <item>
         <title>New Year, New Infrastructure!</title>
@@ -369,21 +392,6 @@ created restic repository 7905a088a0 at rclone:b2prod:yggdrasil/prod-serverA
         <pubDate>Sun, 01 Apr 2018 00:00:00 +0200</pubDate>
         <link>https://restic.net/blog/2018-04-01/rclone-backend</link>
         <guid isPermaLink="true">https://restic.net/blog/2018-04-01/rclone-backend</guid>
-
-        
-        
-
-      </item>
-    
-      <item>
-        <title>restic 0.8.3 released</title>
-        <description>&lt;p&gt;We’ve just released &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.8.3&quot;&gt;restic 0.8.3&lt;/a&gt;. This is again a bugfix release, but also several improvements for cloud-based backends.&lt;/p&gt;
-
-&lt;p&gt;For downloading the new release and see a more detailed list of important changes, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.8.3&quot;&gt;GitHub&lt;/a&gt;. As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 26 Feb 2018 00:00:00 +0100</pubDate>
-        <link>https://restic.net/blog/2018-02-26/restic-0.8.3-released</link>
-        <guid isPermaLink="true">https://restic.net/blog/2018-02-26/restic-0.8.3-released</guid>
 
         
         
