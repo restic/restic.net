@@ -5,10 +5,25 @@
     <description>Backups done right!</description>
     <link>https://restic.net/blog/</link>
     <atom:link href="https://restic.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 06 Jan 2019 22:02:01 +0100</pubDate>
-    <lastBuildDate>Sun, 06 Jan 2019 22:02:01 +0100</lastBuildDate>
+    <pubDate>Tue, 23 Apr 2019 13:34:00 +0200</pubDate>
+    <lastBuildDate>Tue, 23 Apr 2019 13:34:00 +0200</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
 
+    
+      <item>
+        <title>restic 0.9.5 released</title>
+        <description>&lt;p&gt;We’ve just released &lt;a href=&quot;https://github.com/restic/restic/releases/v0.9.5&quot;&gt;restic 0.9.5&lt;/a&gt;. For downloading the new release and see a more detailed list of important changes, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/v0.9.5&quot;&gt;GitHub&lt;/a&gt;. If you already have restic 0.9.4, you can use the &lt;code class=&quot;highlighter-rouge&quot;&gt;self-update&lt;/code&gt; command to automatically download and verify the new release.&lt;/p&gt;
+
+&lt;p&gt;As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new/choose&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 23 Apr 2019 00:00:00 +0200</pubDate>
+        <link>https://restic.net/blog/2019-04-23/restic-0.9.5-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2019-04-23/restic-0.9.5-released</guid>
+
+        
+        
+
+      </item>
     
       <item>
         <title>restic 0.9.4 released</title>
@@ -334,64 +349,6 @@ forum&lt;/a&gt;)!&lt;/p&gt;
         <pubDate>Fri, 06 Apr 2018 00:00:00 +0200</pubDate>
         <link>https://restic.net/blog/2018-04-06/restic-turns-four</link>
         <guid isPermaLink="true">https://restic.net/blog/2018-04-06/restic-turns-four</guid>
-
-        
-        
-
-      </item>
-    
-      <item>
-        <title>Using rclone as a restic Backend</title>
-        <description>&lt;p&gt;Originally, restic started with just two backends: &lt;code class=&quot;highlighter-rouge&quot;&gt;local&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;sftp&lt;/code&gt;. Over time, many new backends were added so that restic is now able to store a repository on a variety of different cloud-based services. However, it became clear that each new backend we add for a new cloud service works slightly different and requires almost constant maintenance.&lt;/p&gt;
-
-&lt;p&gt;A while ago, &lt;a href=&quot;https://github.com/fd0&quot;&gt;Alex&lt;/a&gt; was contacted by &lt;a href=&quot;https://github.com/ncw&quot;&gt;Nick&lt;/a&gt;, who found restic by listening to the episode &lt;a href=&quot;https://changelog.com/gotime/48&quot;&gt;#48&lt;/a&gt; of the &lt;a href=&quot;https://changelog.com/gotime&quot;&gt;GoTime podcast&lt;/a&gt;. He’s the primary author of &lt;a href=&quot;https://github.com/ncw/rclone&quot;&gt;rclone&lt;/a&gt;, a program which is “rsync for cloud storage”. At the moment, it supports almost 20 different backends/services! They quickly agreed that it would be awesome if restic could just use rclone as a backend, thereby supporting all the backends that rclone can talk to!&lt;/p&gt;
-
-&lt;p&gt;Over the last couple of weeks, we have added support for rclone in restic. First, rclone learned how to serve restic’s the &lt;a href=&quot;https://restic.readthedocs.io/en/latest/100_references.html#rest-backend&quot;&gt;REST protocol&lt;/a&gt; (&lt;a href=&quot;https://github.com/ncw/rclone/pull/2116&quot;&gt;rclone PR #2116&lt;/a&gt;). It is now possible (&lt;code class=&quot;highlighter-rouge&quot;&gt;rclone&lt;/code&gt; &amp;gt;= 1.40) to start rclone in server mode like this:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rclone serve restic --addr localhost:8889 --user foo --pass s3kr1t remote:bucket/path
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now, you can point restic (version 0.8.2 or later) to the REST server provided on the TCP port 8889 like this:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ restic --repository rest:http://foo:s3kr1t@localhost:8889 init
-[...]
-$ restic --repository rest:http://foo:s3kr1t@localhost:8889 backup $HOME
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;While this is already awesome, it requires starting and stopping rclone manually. In addition, the HTTP server on the TCP port 8889 can be contacted by all processes running on the local machine. On most systems, it is allow to list the command-lines for all running programs, so users on the same machine can find out the username and password needed to contact the REST server. This is not bad, but we can do better.&lt;/p&gt;
-
-&lt;p&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/HTTP/2&quot;&gt;HTTP2 protocol&lt;/a&gt; allows “stream muxing”, which means serving several independent requests/streams over the same TCP connection. Most browsers only implement HTTP2 over TLS, so usually TLS is strictly required to be able to use HTTP2. But in general, HTTP2 can also be spoken over a single TCP connection, or another bi-directional channel.&lt;/p&gt;
-
-&lt;p&gt;It turned out that it is also possible to run an HTTP2 connection over &lt;code class=&quot;highlighter-rouge&quot;&gt;stdin&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;stdout&lt;/code&gt; of a newly started process. We’ve implemented this in restic and rclone. Internally, restic runs &lt;code class=&quot;highlighter-rouge&quot;&gt;rclone serve restic --stdio&lt;/code&gt;, and it will serve HTTP requests via HTTP2 on &lt;code class=&quot;highlighter-rouge&quot;&gt;stdin&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;stdout&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;This is great because it does not need any network connections, all data is only available to the user running the restic and rclone processes (except for the super user &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt;). There’s also no need to coordinate local TCP ports with other users on the system, and restic can easily start and stop the rclone process. It is even possible to run multiple instances of restic/rclone in parallel without having to configure any TCP ports.&lt;/p&gt;
-
-&lt;p&gt;We’ve added the &lt;code class=&quot;highlighter-rouge&quot;&gt;rclone&lt;/code&gt; backend in &lt;a href=&quot;https://github.com/restic/restic/pull/1657&quot;&gt;PR #1657&lt;/a&gt; to restic which automates starting and stopping rclone and makes it really easy to use. Suppose you’ve &lt;a href=&quot;https://rclone.org/b2/&quot;&gt;configured a remote&lt;/a&gt; with rclone called &lt;code class=&quot;highlighter-rouge&quot;&gt;b2prod&lt;/code&gt;, which can then be used to access data stored at BackBlaze B2, and you’ve created a bucket called &lt;code class=&quot;highlighter-rouge&quot;&gt;yggdrasil&lt;/code&gt;.  You should then be able to list the files in the bucket with the following command:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rclone ls b2prod:yggdrasil
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Once this works, you can then use restic to initialize a new repository in the path &lt;code class=&quot;highlighter-rouge&quot;&gt;/prod-serverA&lt;/code&gt; in the bucket &lt;code class=&quot;highlighter-rouge&quot;&gt;yggdrasil&lt;/code&gt; like this:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ restic --repo rclone:b2prod:yggdrasil/prod-serverA init
-created restic repository 7905a088a0 at rclone:b2prod:yggdrasil/prod-serverA
-[...]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then you can check with rclone again and find new files in the bucket:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rclone ls b2prod:yggdrasil
-    155 prod-serverA/config
-    448 prod-serverA/keys/598a405c64c1f878a7eeb6a4691747defdc4d9d4caaa01ae2c3caa02878d3d74
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can find a beta version of restic compiled from the master branch &lt;a href=&quot;https://beta.restic.net/?sort=time&amp;amp;order=desc&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;We’re very keen on getting feedback on this new backend! For experience reports, please just comment on the forum thread for this blog post (see below). If you think you’ve found a bug, please create &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;a new issue on GitHub&lt;/a&gt;. Thanks!&lt;/p&gt;
-</description>
-        <pubDate>Sun, 01 Apr 2018 00:00:00 +0200</pubDate>
-        <link>https://restic.net/blog/2018-04-01/rclone-backend</link>
-        <guid isPermaLink="true">https://restic.net/blog/2018-04-01/rclone-backend</guid>
 
         
         
