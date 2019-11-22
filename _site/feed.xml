@@ -3,10 +3,10 @@
   <channel>
     <title>restic</title>
     <description>Backups done right!</description>
-    <link>http://localhost:4000/blog/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 22 Nov 2019 16:27:49 +0100</pubDate>
-    <lastBuildDate>Fri, 22 Nov 2019 16:27:49 +0100</lastBuildDate>
+    <link>https://restic.net/blog/</link>
+    <atom:link href="https://restic.net/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 22 Nov 2019 18:53:28 +0100</pubDate>
+    <lastBuildDate>Fri, 22 Nov 2019 18:53:28 +0100</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
 
     
@@ -17,8 +17,8 @@
 &lt;p&gt;As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new/choose&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Fri, 22 Nov 2019 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/blog/2019-11-22/restic-0.9.6-released</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2019-11-22/restic-0.9.6-released</guid>
+        <link>https://restic.net/blog/2019-11-22/restic-0.9.6-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2019-11-22/restic-0.9.6-released</guid>
 
         
         
@@ -32,8 +32,8 @@
 &lt;p&gt;As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new/choose&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Tue, 23 Apr 2019 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/blog/2019-04-23/restic-0.9.5-released</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2019-04-23/restic-0.9.5-released</guid>
+        <link>https://restic.net/blog/2019-04-23/restic-0.9.5-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2019-04-23/restic-0.9.5-released</guid>
 
         
         
@@ -55,8 +55,8 @@
 &lt;p&gt;As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new/choose&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Sun, 06 Jan 2019 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/blog/2019-01-06/restic-0.9.4-released</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2019-01-06/restic-0.9.4-released</guid>
+        <link>https://restic.net/blog/2019-01-06/restic-0.9.4-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2019-01-06/restic-0.9.4-released</guid>
 
         
         
@@ -73,8 +73,8 @@
 
 </description>
         <pubDate>Tue, 01 Jan 2019 00:00:00 +0100</pubDate>
-        <link>http://localhost:4000/blog/2019-01-01/new-infrastructure</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2019-01-01/new-infrastructure</guid>
+        <link>https://restic.net/blog/2019-01-01/new-infrastructure</link>
+        <guid isPermaLink="true">https://restic.net/blog/2019-01-01/new-infrastructure</guid>
 
         
         
@@ -88,8 +88,8 @@
 &lt;p&gt;For downloading the new release and see a more detailed list of important changes, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/v0.9.3&quot;&gt;GitHub&lt;/a&gt;. As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new/choose&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Sat, 13 Oct 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/blog/2018-10-13/restic-0.9.3-released</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2018-10-13/restic-0.9.3-released</guid>
+        <link>https://restic.net/blog/2018-10-13/restic-0.9.3-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2018-10-13/restic-0.9.3-released</guid>
 
         
         
@@ -185,8 +185,8 @@ high-quality issues that are actionable? Please leave a comment in the forum
 linked below this article!&lt;/p&gt;
 </description>
         <pubDate>Sun, 09 Sep 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/blog/2018-09-09/GitHub-issue-templates</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2018-09-09/GitHub-issue-templates</guid>
+        <link>https://restic.net/blog/2018-09-09/GitHub-issue-templates</link>
+        <guid isPermaLink="true">https://restic.net/blog/2018-09-09/GitHub-issue-templates</guid>
 
         
         
@@ -296,8 +296,8 @@ discover any problems with this approach.&lt;/p&gt;
 forum&lt;/a&gt;)!&lt;/p&gt;
 </description>
         <pubDate>Sun, 02 Sep 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/blog/2018-09-02/travis-build-cache</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2018-09-02/travis-build-cache</guid>
+        <link>https://restic.net/blog/2018-09-02/travis-build-cache</link>
+        <guid isPermaLink="true">https://restic.net/blog/2018-09-02/travis-build-cache</guid>
 
         
         
@@ -311,8 +311,8 @@ forum&lt;/a&gt;)!&lt;/p&gt;
 &lt;p&gt;For downloading the new release and see a more detailed list of important changes, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/v0.9.2&quot;&gt;GitHub&lt;/a&gt;. As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Mon, 06 Aug 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/blog/2018-08-06/restic-0.9.2-released</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2018-08-06/restic-0.9.2-released</guid>
+        <link>https://restic.net/blog/2018-08-06/restic-0.9.2-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2018-08-06/restic-0.9.2-released</guid>
 
         
         
@@ -326,8 +326,8 @@ forum&lt;/a&gt;)!&lt;/p&gt;
 &lt;p&gt;For downloading the new release and see a more detailed list of important changes, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/v0.9.1&quot;&gt;GitHub&lt;/a&gt;. As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Sun, 10 Jun 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/blog/2018-06-10/restic-0.9.1-released</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2018-06-10/restic-0.9.1-released</guid>
+        <link>https://restic.net/blog/2018-06-10/restic-0.9.1-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2018-06-10/restic-0.9.1-released</guid>
 
         
         
@@ -341,8 +341,8 @@ forum&lt;/a&gt;)!&lt;/p&gt;
 &lt;p&gt;For downloading the new release and see a more detailed list of important changes, head over to &lt;a href=&quot;https://github.com/restic/restic/releases/tag/v0.9.0&quot;&gt;GitHub&lt;/a&gt;. As always, thanks for &lt;a href=&quot;https://github.com/restic/restic/issues/new&quot;&gt;reporting any issues&lt;/a&gt; you encounter! Or just write a post in &lt;a href=&quot;https://forum.restic.net&quot;&gt;the forum&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Mon, 21 May 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/blog/2018-05-21/restic-0.9.0-released</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2018-05-21/restic-0.9.0-released</guid>
+        <link>https://restic.net/blog/2018-05-21/restic-0.9.0-released</link>
+        <guid isPermaLink="true">https://restic.net/blog/2018-05-21/restic-0.9.0-released</guid>
 
         
         
