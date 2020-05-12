@@ -57,7 +57,12 @@ Contributions are welcome! More information can be found in [the restic contribu
 
 ## <a name="contact"></a>Contact
 
-If you discover a bug or find something surprising, please feel free to [open a github issue](https://github.com/restic/restic/issues/new). If you would like to chat about restic, there is also the IRC channel `#restic` on `irc.freenode.net`. Or just write an email :)
+There are several ways to contact the restic project and its community:
+
+ * If you have *usage questions or problems in general*, please post in [the forum](https://forum.restic.net/).
+ * If you *discover a bug or have a feature suggestion* , feel free to [open a github issue](https://github.com/restic/restic/issues/new/choose) (don't forget to fill out the issue template you are presented with when doing so).
+ * If you would like to *chat about restic* with other users there is also the IRC channel `#restic` on `irc.freenode.net`, which you can [access through your browser](https://webchat.freenode.net/#restic) if you don't have a proper IRC client installed.
+ * For *other project related inquiries* (not support requests), feel free to just write an e-mail to alexander@bumpern.de :)
 
 **Important**: If you discover something that you believe to be a possible critical security problem, please do *not* open a GitHub issue but send an email directly to alexander@bumpern.de. If possible, please encrypt your email using PGP ([0xD3F7A907](https://pgp.mit.edu/pks/lookup?op=get&search=0x91A6868BD3F7A907)).
 
