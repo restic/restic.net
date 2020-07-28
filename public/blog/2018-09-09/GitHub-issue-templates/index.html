@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    restic &middot;
+    
+      Configuring GitHub Issue Templates
+    
+  </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/others.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://restic.net/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://restic.net/favicon.ico">
+
+  
+  
+  <link rel="canonical" href="https://restic.net/blog/2018-09-09/GitHub-issue-templates/">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+
+  <body>
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="https://restic.net/">restic</a>
+      </h1>
+      <p class="lead">Backups done right!</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="https://restic.net/">Home</a>
+
+      
+      
+        
+      
+        
+          <a class="sidebar-nav-item" href="https://restic.net/blog/">Blog</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+
+      <a class="sidebar-nav-item" href="https://forum.restic.net/">Forum</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/stable/">Docs</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/latest/">Docs (dev)</a>
+
+      <a class="sidebar-nav-item" href="https://github.com/restic/restic">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        GitHub Project
+      </a>
+
+      <a class="sidebar-nav-item" href="https://twitter.com/resticbackup">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        @<span class="username">resticbackup</span>
+      </a>
+    </nav>
+
+    
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+        <h1 class="post-title">Configuring GitHub Issue Templates</h1>
+        <span class="post-date">09 Sep 2018</span>
+        <p>Like many other Open Source projects, restic uses GitHub for hosting the source
+code and managing issues. Over time, we discovered that oftentimes users open
+an issue on GitHub which just consists of a question, for example on how to use
+restic in a certain situation. While such issues can be answered quickly,
+sometimes there&rsquo;s no consent on when the issue can be seen as resolved and
+therefore closed (the issue is not actionable). The GitHub issue tracker is
+then cluttered with issues for which there is no clear next action and no
+clear &ldquo;resolved&rdquo; state. This blog post describes how we set up the issue
+templates on GitHub to resolve this situation nicely.</p>
+<p>A year ago in August 2017 we <a href="/blog/2017-08-11/discourse-forum/">decided to install</a>
+a forum based on <a href="https://discourse.org">Discourse</a> at
+<a href="https://forum.restic.net">https://forum.restic.net</a>. It developed nicely and
+over time attracted a stable base of core users and developers who are ready to
+help each other and new restic users.</p>
+<p>This leaves the question: how do users who have a question find the forum?
+Sure, it&rsquo;s linked on the website, but that did not seem enough. Thankfully,
+GitHub supports templates for all newly created issues, so we added a bit of
+text which encourages users to use the forum if they are unsure:</p>
+<blockquote>
+<p>Welcome! If you have a question or are unsure if you should open an issue,
+please use the forum instead!</p>
+<p><a href="https://forum.restic.net">https://forum.restic.net</a></p>
+<p>The forum is a better place for questions about restic or general suggestions
+and topics, e.g. usage or documentation questions! This issue tracker is mainly
+for tracking bugs and feature requests directly relating to the development of
+the software itself, rather than the project.</p>
+<p>Thanks for understanding, and for contributing to the project!</p>
+</blockquote>
+<p>We also added a few questions users should answer in order to make debugging
+easier, but it turned out that the set of questions we ask for bugs is not
+helpful when suggesting a new feature. We then discovered (almost
+accidentally), that GitHub also <a href="https://help.github.com/articles/about-issue-and-pull-request-templates/">supports several different types</a>
+of issue templates, so now when you <a href="https://github.com/restic/restic/issues/new/choose">create a new issue for restic</a>,
+you&rsquo;re greeted with the following dialogue:</p>
+<p><img src="/blog/github-new-issue.png" alt="Opening a new Issue on GitHub"></p>
+<p>The &ldquo;Bug report&rdquo; and &ldquo;Feature request&rdquo; templates are stored in the files
+<code>Bug.md</code> and <code>Feature.md</code> in the directory <code>.github/ISSUE_TEMPLATE</code> of the
+restic repository. The headline and description can be set in the header
+of the file, for example the <a href="https://github.com/restic/restic/blob/master/.github/ISSUE_TEMPLATE/Bug.md">&ldquo;Bug report&rdquo; template</a> starts with the following
+text:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">---
+name: Bug report
+about: Report a problem with restic to help us resolve it and improve
+---
+
+<span style="color:#75715e">&lt;!--
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">Welcome! - We kindly ask that you:
+</span><span style="color:#75715e"></span>
+  <span style="color:#66d9ef">1.</span><span style="color:#75715e"> Fill out the issue template below - not doing so needs a good reason.
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">2.</span><span style="color:#75715e"> Use the forum if you have a question rather than a bug or feature request.
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">[...]
+</span><span style="color:#75715e">--&gt;</span>
+</code></pre></div><p>The <a href="https://github.com/restic/restic/blob/master/.github/ISSUE_TEMPLATE/Feature.md">&ldquo;Feature request&rdquo; template</a>
+is very similar, just with other questions. We&rsquo;re using a combination of
+Markdown headlines to structure the issue text, and HTML comments for a bit of
+background explanation. The HTML comments are not shown when displaying an
+issue in GitHub, so they don&rsquo;t distract from the content.</p>
+<p>This leaves us with the third kind of issue users can create by clicking on the
+link titled &ldquo;Open a regular issue&rdquo;. For this, the file
+<a href="https://github.com/restic/restic/blob/master/.github/ISSUE_TEMPLATE.md"><code>.github/ISSUE_TEMPLATE.md</code></a> is used.</p>
+<p>This allows users to select the type of issue they would like to create, and in
+all cases there&rsquo;s a hint to use the forum if they are unsure what to do. This
+works very well for us.</p>
+<p>If you&rsquo;re a user and submitted an issue before (or maybe you&rsquo;ve been redirected
+to the forum), please tell us about the experience? Did you like it? Was it
+awkward? How do other projects handle nudging users into submitting
+high-quality issues that are actionable? Please leave a comment in the forum
+linked below this article!</p>
+
+      </div>
+
+      <h2>Comments</h2>
+      <div id='discourse-comments'></div>
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2018-09-09\/GitHub-issue-templates\/' };
+      
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+
+      <div class="related">
+        <h2>Related Posts</h2>
+        <div class="related-posts">
+          
+          <ul>
+<li>
+<p>22 Nov 2019 » <a href="/blog/2019-11-22/restic-0.9.6-released/">restic 0.9.6 released</a></p>
+</li>
+<li>
+<p>23 Apr 2019 » <a href="/blog/2019-04-23/restic-0.9.5-released/">restic 0.9.5 released</a></p>
+</li>
+<li>
+<p>06 Jan 2019 » <a href="/blog/2019-01-06/restic-0.9.4-released/">restic 0.9.4 released</a></p>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+
+    <a href="https://github.com/restic/restic" class="desktop">
+	<img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+</a>
+  </body>
+</html>

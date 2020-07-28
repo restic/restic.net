@@ -1,0 +1,36 @@
+/* enable hyphenation */
+div.content p, div.content li {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -o-hyphens: auto;
+  -ms-hyphens: auto; }
+
+/* override standard hyde content box width */
+.content {
+  max-width: 45rem; }
+
+/* override table width */
+table {
+  width: auto;
+  text-align: center;
+  margin-left: 2em; }
+
+@media all and (max-width: 768px) {
+  .desktop {
+    display: none; } }
+
+/* temporary styles for ToC */
+#TableOfContents ul {
+  padding-left: 0; }
+  #TableOfContents ul li {
+    display: block; }
+    #TableOfContents ul li a {
+      display: block;
+      line-height: 1.75; }
+
+/* temporarily adjust list look for related blog posts */
+.related-posts ul {
+  padding-left: inherit;
+  list-style: inherit; }

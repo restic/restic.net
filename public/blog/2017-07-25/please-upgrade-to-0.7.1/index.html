@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    restic &middot;
+    
+      Please upgrade to restic 0.7.1!
+    
+  </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/others.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://restic.net/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://restic.net/favicon.ico">
+
+  
+  
+  <link rel="canonical" href="https://restic.net/blog/2017-07-25/please-upgrade-to-0.7.1/">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+
+  <body>
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="https://restic.net/">restic</a>
+      </h1>
+      <p class="lead">Backups done right!</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="https://restic.net/">Home</a>
+
+      
+      
+        
+      
+        
+          <a class="sidebar-nav-item" href="https://restic.net/blog/">Blog</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+
+      <a class="sidebar-nav-item" href="https://forum.restic.net/">Forum</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/stable/">Docs</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/latest/">Docs (dev)</a>
+
+      <a class="sidebar-nav-item" href="https://github.com/restic/restic">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        GitHub Project
+      </a>
+
+      <a class="sidebar-nav-item" href="https://twitter.com/resticbackup">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        @<span class="username">resticbackup</span>
+      </a>
+    </nav>
+
+    
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+        <h1 class="post-title">Please upgrade to restic 0.7.1!</h1>
+        <span class="post-date">25 Jul 2017</span>
+        <p>TL;DR:</p>
+<ul>
+<li>Under some circumstances, data in the repo was not stored properly</li>
+<li>This could have caused incomplete backups</li>
+<li><strong>Upgrade restic to at least 0.7.1 and run <code>restic rebuild-index</code> before the next backup</strong></li>
+<li>It is good practice to run <code>restic check</code> regularly</li>
+</ul>
+<h2 id="background">Background</h2>
+<p>We always knew that at some point there may be a more serious bug in restic
+that warrants a broader announcement. This is the story of how a small
+improvement that makes the code even more conservative lead to a small error
+which then caused a couple of unintended consequences. In the end, under some
+specific circumstances restic wrote incomplete snapshots to the repository.</p>
+<p>But let&rsquo;s start at the beginning. Restic stores all data for backups in a
+repository (repo). There are several different classes of files in there, the
+most important ones are:</p>
+<ul>
+<li><code>data</code> files (in the directory <code>data/</code>) contain parts of files (blobs) and
+meta data (trees) about backups.</li>
+<li><code>index</code> files (in the directory <code>index/</code>) contain a list of <code>data</code> files and
+their content, which blobs and meta data is stored in which <code>data</code> file and
+where exactly.</li>
+</ul>
+<p>So when restic starts a backup, it first loads all index files to learn which
+data is already stored in the repo. This is much cheaper than going through the
+complete list of <code>data</code> files and read the header of each <code>data</code> file to find
+out what&rsquo;s in it. Then restic walks the list of files/directories to save,
+reads files, splits them into blobs and bundles the blobs not already present
+in the repo to <code>data</code> files and uploads those files. Regularly during the run
+and at the end of the backup process it saves new index files to the repo that
+cover the newly uploaded <code>data</code> files so that the next restic instance
+discovers the new data. Whenever something is wrong with the index (or we even
+guess that the index may be inaccurate) we advise users to run <code>restic rebuild-index</code>, which simply lists all <code>data</code> files, read the header to list
+the contents of each file, writes a new index and removes all old <code>index</code> files
+from the repo.</p>
+<p>When <a href="https://restic.github.io/blog/2016-08-22/removing-snapshots">snapshots are removed</a> with the
+<code>forget</code> command, the data in the repo needs to be reorganized so that files
+containing data which is not needed any more can be removed. This is what the
+<code>prune</code> command does. As we&rsquo;ve seen above, the <code>data</code> files stored in the repo
+consists of many different blobs from different files. When all blobs in a file
+are not needed any more, the file can be simply removed. That&rsquo;s the easy case.
+Oftentimes, restic will detect that some blobs of a <code>data</code> file are still
+needed and some others are not. In this case, restic downloads the <code>data</code> file,
+bundles the still needed blobs into a new <code>data</code> file and uploads that. At the
+end of the process, restic removes the now unneeded <code>data</code> files and creates a
+new index that covers the current set of <code>data</code> files in the repo. The last
+step is to remove the old, now superseded index files.</p>
+<h2 id="the-first-bug">The First Bug</h2>
+<p>The procedure we&rsquo;ve just described in the previous paragraph contains a bug.
+Did you notice it? What happens when after the (now unneeded) files have been
+removed the index could not be saved to the repo?</p>
+<p>This was reported (thankfully) by a user as <a href="https://github.com/restic/restic/issues/1032">GitHub issue #1032</a>.
+The next time restic starts, it reads the old index files (remember, the new
+index could not be saved, so restic returned an error), and then thinks
+the repo still has the <code>data</code> files which have been removed during <code>prune</code>
+earlier. This is bad because on the next <code>backup</code> run, restic may not save
+blobs to the repo because it thinks they are already stored there, except these
+blobs may have been removed by prune!</p>
+<p>So, we thought this issue could easily be resolved: The user can just run
+<code>rebuild-index</code> to correct the index for his particular repo, and we slightly
+modify the order of things that prune does: First create a new index, and only
+after it has successfully been saved to the repo remove the old <code>data</code> files.
+This is what was introduced in <a href="https://github.com/restic/restic/pull/1035">Pull Request #1035</a>.
+Unfortunately, the change increased the code complexity for the <code>prune</code>
+command.</p>
+<p>This is what&rsquo;s included in restic 0.7.0, specifically commit
+<a href="https://github.com/restic/restic/commit/91a24e822911c48ae00760dd70d2d55a40d8aff6">91a24e8</a>.</p>
+<h2 id="the-second-bug">The Second Bug</h2>
+<p>As you may have guessed, the new code for the <code>prune</code> command contained a new
+bug: The <code>data</code> files to be deleted are not excluded from the new index
+created, so after <code>prune</code> was completed successfully we had a repo containing a
+single index file which covers both the newly created files and some files that
+are not stored in the repo any more. But the data is safe, because all blobs
+that are still needed have been copied to other <code>data</code> files during <code>prune</code>,
+right?</p>
+<p>That&rsquo;s unfortunately not always the case. Suppose we have a file called
+<code>foo.txt</code> that is included in a snapshot, so its content is saved in some <code>data</code>
+file in the repo. The file just present during one snapshot, and this snapshot
+is removed via the <code>forget</code> command. The next run of <code>prune</code> will then repack
+all blobs in the same <code>data</code> file, and remove the file. Except the old, removed
+file is still present in the index. So the next time a new snapshot is created
+that contains the file again, its content is not uploaded because restic thinks
+(that&rsquo;s what the index says) the data is still present in the repo.</p>
+<p>The next time <code>prune</code> or <code>rebuild-index</code> are run, restic notices that the index
+contains files that are not there any more and creates a new index without the
+obsolete files.</p>
+<p>Now we have a problem: There&rsquo;s a snapshot in the repo which contains our
+<code>foo.txt</code> file, but its content is not saved in the repo! Thankfully, this is
+detected by the <code>check</code> command. Unfortunately, if we don&rsquo;t have the content of the
+file handy anywhere, it is lost.</p>
+<p>This bug was corrected in <a href="https://github.com/restic/restic/pull/1115">Pull Request #1115</a>
+and is included in restic 0.7.1. The PR states (incorrectly) that restic will
+detect this situation during backup and just re-upload the data, but after
+several users reported errors returned by the <code>check</code> command it became clear
+that this is not the case.</p>
+<p>The bug was only included in restic 0.7.0 released on 2017-07-01, in commit
+<a href="https://github.com/restic/restic/commit/91a24e822911c48ae00760dd70d2d55a40d8aff6">91a24e8</a>.
+It was corrected in the <code>master</code> branch on 2017-07-18, which was released as
+restic 0.7.1 on 2017-07-22. So the time frame is rather narrow.</p>
+<h2 id="faq">FAQ</h2>
+<h3 id="how-do-i-know-if-im-affected">How Do I Know If I&rsquo;m Affected?</h3>
+<p>Did you run <code>prune</code> with restic 0.7.0, or more specifically commit <a href="https://github.com/restic/restic/commit/91a24e822911c48ae00760dd70d2d55a40d8aff6">91a24e8</a>
+(in case you&rsquo;re tracking the master branch)? If you didn&rsquo;t, you&rsquo;re probably not
+affected.</p>
+<p>You can check as follows: Run the <code>rebuild-index</code> followed by the
+<code>check</code> command. If it complains about <code>tree 69691d30, blob 6b9a777b: not found in index</code>, then there&rsquo;s a blob missing. The IDs will be different for you.</p>
+<h3 id="what-does-that-mean">What does that mean?</h3>
+<p>Probably that a file in one or more of your snapshots is missing a piece and
+cannot be restored. When the same piece is found during a subsequent backup,
+restic will store the blob in the repo and the file can be restored again.</p>
+<h3 id="what-data-is-affected">What data is affected?</h3>
+<p>For this bug to occur there needs to be a data blob that is present in a
+snapshot that is then removed by the <code>forget</code> command. It may not be present in
+any other, still referenced snapshot. Then <code>prune</code> needs to be run. In a
+subsequent backup, the data blob is found but not saved again. It needs to be
+exactly this order.</p>
+<h2 id="lessons-learned">Lessons Learned</h2>
+<p>We&rsquo;re sorry this bug made it into a release of restic.</p>
+<p>Software has bugs, so always make sure you have enough safety checks to detect
+important bugs within a short amount of time. In this case, the <code>check</code> command
+would&rsquo;ve detected the error right after <code>prune</code> ran, but it seems nobody
+(including the restic authors) did run a <code>check</code> right after <code>prune</code>.</p>
+<p>We&rsquo;ll add a prominent recommendation to the manual to regularly run <code>check</code>. In
+addition, we&rsquo;re planning to have restic print a message when <code>check</code> hasn&rsquo;t
+been run for some time. This is tracked in
+<a href="https://github.com/restic/restic/issues/1137">GitHub issue #1137</a>.
+We&rsquo;ve also added a test which creates a few snapshots, runs <code>forget</code>, <code>prune</code>
+and finally <code>check</code> to see if there&rsquo;s any error.</p>
+
+      </div>
+
+      <h2>Comments</h2>
+      <div id='discourse-comments'></div>
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2017-07-25\/please-upgrade-to-0.7.1\/' };
+      
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+
+      <div class="related">
+        <h2>Related Posts</h2>
+        <div class="related-posts">
+          
+          <ul>
+<li>
+<p>22 Nov 2019 » <a href="/blog/2019-11-22/restic-0.9.6-released/">restic 0.9.6 released</a></p>
+</li>
+<li>
+<p>23 Apr 2019 » <a href="/blog/2019-04-23/restic-0.9.5-released/">restic 0.9.5 released</a></p>
+</li>
+<li>
+<p>06 Jan 2019 » <a href="/blog/2019-01-06/restic-0.9.4-released/">restic 0.9.4 released</a></p>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+
+    <a href="https://github.com/restic/restic" class="desktop">
+	<img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+</a>
+  </body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    restic &middot;
+    
+      restic 0.7.1 released
+    
+  </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/others.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://restic.net/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://restic.net/favicon.ico">
+
+  
+  
+  <link rel="canonical" href="https://restic.net/blog/2017-07-22/restic-0.7.1-released/">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+
+  <body>
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="https://restic.net/">restic</a>
+      </h1>
+      <p class="lead">Backups done right!</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="https://restic.net/">Home</a>
+
+      
+      
+        
+      
+        
+          <a class="sidebar-nav-item" href="https://restic.net/blog/">Blog</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+
+      <a class="sidebar-nav-item" href="https://forum.restic.net/">Forum</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/stable/">Docs</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/latest/">Docs (dev)</a>
+
+      <a class="sidebar-nav-item" href="https://github.com/restic/restic">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        GitHub Project
+      </a>
+
+      <a class="sidebar-nav-item" href="https://twitter.com/resticbackup">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        @<span class="username">resticbackup</span>
+      </a>
+    </nav>
+
+    
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+        <h1 class="post-title">restic 0.7.1 released</h1>
+        <span class="post-date">22 Jul 2017</span>
+        <p>We&rsquo;re proud to present <a href="https://github.com/restic/restic/releases/tag/v0.7.1">restic 0.7.1</a>!
+For downloading the code, head over to <a href="https://github.com/restic/restic/releases/tag/v0.7.1">GitHub</a>.
+As always, thanks for <a href="https://github.com/restic/restic/issues/new">reporting any issues</a> you encounter!</p>
+<p>The binaries released with each restic version starting are <a href="https://reproducible-builds.org/">reproducible</a>, which means that you can easily reproduce a byte identical version from the source code for that release. Instructions on how to do that are contained in the <a href="https://github.com/restic/builder">builder repository</a>.</p>
+<h1 id="important-changes-in-071">Important Changes in 0.7.1</h1>
+<ul>
+<li>The <code>migrate</code> command for changing the <code>s3legacy</code> layout to the <code>default</code> layout for s3 backends has been improved: It can now be restarted with <code>restic migrate --force s3_layout</code> and automatically retries operations on error. <a href="https://github.com/restic/restic/issues/1073">#1073</a> <a href="https://github.com/restic/restic/pull/1075">#1075</a></li>
+</ul>
+<h2 id="small-changes">Small changes</h2>
+<ul>
+<li>
+<p>The local and sftp backends now create the subdirs below <code>data/</code> on open/init. This way, restic makes sure that they always exist. This is connected to an issue for the sftp server: <a href="https://github.com/restic/rest-server/pull/11#issuecomment-309879710">#11</a> <a href="https://github.com/restic/restic/issues/1055">#1055</a> <a href="https://github.com/restic/restic/pull/1077">#1077</a> <a href="https://github.com/restic/restic/pull/1105">#1105</a></p>
+</li>
+<li>
+<p>When no S3 credentials are specified in the environment variables, restic now tries to load credentials from an IAM instance profile when the s3 backend is used. <a href="https://github.com/restic/restic/issues/1067">#1067</a> <a href="https://github.com/restic/restic/pull/1086">#1086</a></p>
+</li>
+<li>
+<p>On Darwin and FreeBSD, restic now prints stats when SIGINFO is received (usually when ctrl+t is pressed). <a href="https://github.com/restic/restic/pull/1082">#1082</a></p>
+</li>
+<li>
+<p>The dependencies have been updated. <a href="https://github.com/restic/restic/pull/1108">#1108</a> <a href="https://github.com/restic/restic/pull/1124">#1124</a></p>
+</li>
+<li>
+<p>A bug was found (and corrected) in the index rebuilding after prune, which led to indexes which include files that were not present in the repo any more. There were already checks in place which detected this situation and aborted with an error message. A new run of either <code>prune</code> or <code>rebuild-index</code> corrected the index files. This is now fixed and a test has been added to detect this. <a href="https://github.com/restic/restic/pull/1115">#1115</a></p>
+</li>
+<li>
+<p>Errors for chmod() on Unix for filesystems which do not support it (e.g. smb mounted via gvfs) are now ignored. <a href="https://github.com/restic/restic/pull/1080">#1080</a> <a href="https://github.com/restic/restic/pull/1112">#1112</a></p>
+</li>
+<li>
+<p>The semantic for the <code>--tags</code> option to <code>forget</code> and <code>snapshots</code> was clarified: <a href="https://github.com/restic/restic/issues/1081">#1081</a> <a href="https://github.com/restic/restic/pull/1090">#1090</a></p>
+</li>
+</ul>
+
+      </div>
+
+      <h2>Comments</h2>
+      <div id='discourse-comments'></div>
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2017-07-22\/restic-0.7.1-released\/' };
+      
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+
+      <div class="related">
+        <h2>Related Posts</h2>
+        <div class="related-posts">
+          
+          <ul>
+<li>
+<p>22 Nov 2019 » <a href="/blog/2019-11-22/restic-0.9.6-released/">restic 0.9.6 released</a></p>
+</li>
+<li>
+<p>23 Apr 2019 » <a href="/blog/2019-04-23/restic-0.9.5-released/">restic 0.9.5 released</a></p>
+</li>
+<li>
+<p>06 Jan 2019 » <a href="/blog/2019-01-06/restic-0.9.4-released/">restic 0.9.4 released</a></p>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+
+    <a href="https://github.com/restic/restic" class="desktop">
+	<img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+</a>
+  </body>
+</html>

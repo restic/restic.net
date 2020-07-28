@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    restic &middot;
+    
+      Enabling the Go Build Cache on Travis/AppVeyor
+    
+  </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/others.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://restic.net/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://restic.net/favicon.ico">
+
+  
+  
+  <link rel="canonical" href="https://restic.net/blog/2018-09-02/travis-build-cache/">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+
+  <body>
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="https://restic.net/">restic</a>
+      </h1>
+      <p class="lead">Backups done right!</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="https://restic.net/">Home</a>
+
+      
+      
+        
+      
+        
+          <a class="sidebar-nav-item" href="https://restic.net/blog/">Blog</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+
+      <a class="sidebar-nav-item" href="https://forum.restic.net/">Forum</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/stable/">Docs</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/latest/">Docs (dev)</a>
+
+      <a class="sidebar-nav-item" href="https://github.com/restic/restic">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        GitHub Project
+      </a>
+
+      <a class="sidebar-nav-item" href="https://twitter.com/resticbackup">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        @<span class="username">resticbackup</span>
+      </a>
+    </nav>
+
+    
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+        <h1 class="post-title">Enabling the Go Build Cache on Travis/AppVeyor</h1>
+        <span class="post-date">02 Sep 2018</span>
+        <p>The restic project runs the unit and integration tests for each pushed commit
+and each pull request. We&rsquo;re using <a href="https://travis-ci.com">Travis CI</a> for Linux
+and OS X, and <a href="https://www.appveyor.com/">AppVeyor</a> for Windows. We&rsquo;re very
+grateful that they provide their services free of charge for Open Source
+projects!</p>
+<p>Our project not only runs the tests on Travis, but also compiles restic for
+each supported architecture, operating system, and version of Go. Go is known
+for its fast compilation times, but still, compilation takes its time. Roughly,
+for each version of Go, running all the tests takes between 13 and 25 minutes:</p>
+<p><img src="/blog/travis-ci-before-build-cache.png" alt="Build Times on Travis CI Before Caching Build Cache"></p>
+<p>With the release of Go 1.10, a build cache was
+<a href="https://golang.org/doc/go1.10#build">introduced</a>, which saves compiled
+artifacts in a cache directory. On Linux, that&rsquo;s usually located in
+<code>~/.cache/go-build</code>. So when the same package (with the same build tags and
+architecture and so on) is to be compiled again, the Go compiler can just use
+the cached version.</p>
+<p>Travis executes the tests in a fresh container each time they are run, but we
+can <a href="https://docs.travis-ci.com/user/caching/">tell it</a> to keep the build cache
+directory and extract it before the tests are run next time. The entry in the
+configuration file <code>.travis.yml</code> looks like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">cache</span>:
+  <span style="color:#66d9ef">directories</span>:
+    - $HOME/.cache/go-build
+    - $HOME/gopath/pkg/mod
+</code></pre></div><p>This also caches another directory in the GOPATH called <code>pkg/mod</code>, which contains
+information about released modules. This is a feature introduced with Go 1.11.</p>
+<p>The directories listed above work for Linux, but the Go build cache directory
+is somewhere else on OS X, so we need to add the cache entries to our build
+matrix:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">matrix</span>:
+  <span style="color:#66d9ef">include</span>:
+    - <span style="color:#66d9ef">os</span>: linux
+      <span style="color:#66d9ef">go</span>: <span style="color:#e6db74">&#34;1.9.x&#34;</span>
+      <span style="color:#66d9ef">cache</span>:
+        <span style="color:#66d9ef">directories</span>:
+          - $HOME/.cache/go-build
+          - $HOME/gopath/pkg/mod
+
+    - <span style="color:#66d9ef">os</span>: linux
+      <span style="color:#66d9ef">go</span>: <span style="color:#e6db74">&#34;1.10.x&#34;</span>
+      <span style="color:#66d9ef">cache</span>:
+        <span style="color:#66d9ef">directories</span>:
+          - $HOME/.cache/go-build
+          - $HOME/gopath/pkg/mod
+
+    - <span style="color:#66d9ef">os</span>: linux
+      <span style="color:#66d9ef">go</span>: <span style="color:#e6db74">&#34;1.11.x&#34;</span>
+      <span style="color:#66d9ef">sudo</span>: <span style="color:#66d9ef">true</span>
+      <span style="color:#66d9ef">cache</span>:
+        <span style="color:#66d9ef">directories</span>:
+          - $HOME/.cache/go-build
+          - $HOME/gopath/pkg/mod
+
+    - <span style="color:#66d9ef">os</span>: osx
+      <span style="color:#66d9ef">go</span>: <span style="color:#e6db74">&#34;1.11.x&#34;</span>
+      <span style="color:#66d9ef">cache</span>:
+        <span style="color:#66d9ef">directories</span>:
+          - $HOME/Library/Caches/go-build
+          - $HOME/gopath/pkg/mod
+</code></pre></div><p>After a successful build, Travis will then archive both directories, and
+extract them again for the next test run. Indeed, this speeds up running the
+tests a great deal (depending on how much code has changed):</p>
+<p><img src="/blog/travis-ci-with-build-cache.png" alt="Build Times on Travis CI With Caching Build Cache"></p>
+<p>You can see in the screenshot above that the build time for Go 1.9 wasn&rsquo;t
+reduced at all since it does not have the build cache feature.</p>
+<p>AppVeyor also has a <a href="https://www.appveyor.com/docs/build-cache/">build cache
+feature</a>, it can be enabled by
+specifying the list of directories to cache in the <code>appveyor.yml</code> like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">cache</span>:
+  - <span style="color:#e6db74">&#39;%LocalAppData%\go-build&#39;</span>
+</code></pre></div><p>For restic, the build cache is not so relevant on AppVeyor, since we&rsquo;re only
+using it to run our integration tests on Windows and don&rsquo;t run any
+cross-compilation.</p>
+<p>We hope that the build cache does not become too large, its size is limited for
+both Travis and AppVeyor. The Go compiler will <a href="https://golang.org/cmd/go/#hdr-Build_and_test_caching">delete files which haven&rsquo;t been
+used recently</a>, so we
+hope this is enough to keep the cache size small. We&rsquo;ll keep you posted when we
+discover any problems with this approach.</p>
+<p>Let us know what you think in the comments (which are hosted in <a href="https://forum.restic.net">our
+forum</a>)!</p>
+
+      </div>
+
+      <h2>Comments</h2>
+      <div id='discourse-comments'></div>
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2018-09-02\/travis-build-cache\/' };
+      
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+
+      <div class="related">
+        <h2>Related Posts</h2>
+        <div class="related-posts">
+          
+          <ul>
+<li>
+<p>22 Nov 2019 » <a href="/blog/2019-11-22/restic-0.9.6-released/">restic 0.9.6 released</a></p>
+</li>
+<li>
+<p>23 Apr 2019 » <a href="/blog/2019-04-23/restic-0.9.5-released/">restic 0.9.5 released</a></p>
+</li>
+<li>
+<p>06 Jan 2019 » <a href="/blog/2019-01-06/restic-0.9.4-released/">restic 0.9.4 released</a></p>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+
+    <a href="https://github.com/restic/restic" class="desktop">
+	<img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+</a>
+  </body>
+</html>

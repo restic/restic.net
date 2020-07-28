@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+	<meta name="generator" content="Hugo 0.74.2" />
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    restic &middot;
+    
+      Backups done right!
+    
+  </title>
+
+  
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="/css/others.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://restic.net/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://restic.net/favicon.ico">
+
+  
+  <link rel="alternate" type="application/rss+xml" href="https://restic.net/index.xml" title="restic" />
+  
+  <link rel="canonical" href="https://restic.net/">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+
+  <body>
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="https://restic.net/">restic</a>
+      </h1>
+      <p class="lead">Backups done right!</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="https://restic.net/">Home</a>
+
+      
+      
+        
+      
+        
+          <a class="sidebar-nav-item" href="https://restic.net/blog/">Blog</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+
+      <a class="sidebar-nav-item" href="https://forum.restic.net/">Forum</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/stable/">Docs</a>
+      <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/latest/">Docs (dev)</a>
+
+      <a class="sidebar-nav-item" href="https://github.com/restic/restic">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        GitHub Project
+      </a>
+
+      <a class="sidebar-nav-item" href="https://twitter.com/resticbackup">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        @<span class="username">resticbackup</span>
+      </a>
+    </nav>
+
+    
+      <p class="lead">Table of Contents</p>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#quickstart">Quickstart</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#compatibility">Compatibility</a></li>
+        <li><a href="#contributing">Contributing</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#talks">Talks</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#license">License</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    
+  </div>
+</div>
+
+
+    <div class="content container">
+      <h1 id="introduction">Introduction</h1>
+<p>restic is a program that does backups right. The design goals are:</p>
+<ul>
+<li>
+<p><strong>Easy:</strong> Doing backups should be a frictionless process, otherwise you are tempted to skip it.  Restic should be easy to configure and use, so that in the unlikely event of a data loss you can just restore it. Likewise, restoring data should not be complicated.</p>
+</li>
+<li>
+<p><strong>Fast:</strong> Backing up your data with restic should only be limited by your network or hard disk bandwidth so that you can backup your files every day. Nobody does backups if it takes too much time. Restoring backups should only transfer data that is needed for the files that are to be restored, so that this process is also fast.</p>
+</li>
+<li>
+<p><strong>Verifiable:</strong> Much more important than backup is restore, so restic enables you to easily verify that all data can be restored.</p>
+</li>
+<li>
+<p><strong>Secure:</strong> Restic uses cryptography to guarantee confidentiality and integrity of your data. The location where the backup data is stored is assumed to be an untrusted environment (e.g. a shared space where others like system administrators are able to access your backups). Restic is <a href="https://restic.readthedocs.io/en/latest/100_references.html#design">built to secure your data</a> against such attackers, by encrypting it with AES-256 in counter mode and authenticating it using Poly1305-AES.</p>
+</li>
+<li>
+<p><strong>Efficient:</strong> With the growth of data, additional snapshots should only take the storage of the actual increment. Even more, duplicate data should be de-duplicated before it is actually written to the storage backend to save precious backup space.</p>
+</li>
+<li>
+<p><strong>Free:</strong> restic is free software and licensed under the <a href="https://github.com/restic/restic/blob/master/LICENSE">BSD 2-Clause License</a> and actively developed on <a href="https://github.com/restic/restic/">GitHub</a>.</p>
+</li>
+</ul>
+<h2 id="quickstart">Quickstart</h2>
+<p>A short recorded demo of restic:</p>
+<script type="text/javascript" src="https://asciinema.org/a/anro1vq39k80ae7c46s9nj6bs.js" id="asciicast-23554" async></script>
+<p>To learn more about restic, checkout the user manual:</p>
+<ul>
+<li><a href="https://restic.readthedocs.io/en/stable/">Manual for restic (released version)</a></li>
+<li><a href="https://restic.readthedocs.io/en/latest/">Manual for restic (latest development version)</a></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>To install, please follow the <a href="https://restic.readthedocs.io/en/stable/020_installation.html">Installation Instructions Page</a> in the manual or download the latest native binary on the <a href="https://github.com/restic/restic/releases/latest">GitHub Download Page</a>.</p>
+<h2 id="compatibility">Compatibility</h2>
+<p>Backward compatibility for backups is important so that our users are always able to restore saved data. Therefore restic follows <a href="http://semver.org">Semantic Versioning</a> to clearly define which versions are compatible. The repository and data structures contained therein are considered the &ldquo;Public API&rdquo; in the sense of Semantic Versioning.</p>
+<p>We guarantee backward compatibility of all repositories within one major version; as long as we do not increment the major version, data can be read and restored. We strive to be fully backward compatible to all prior versions.</p>
+<h2 id="contributing">Contributing</h2>
+<p>Contributions are welcome! More information can be found in <a href="https://github.com/restic/restic/blob/master/CONTRIBUTING.md">the restic contribution guidelines</a>. A document describing the design of restic and the data structures stored on disc is contained in <a href="http://restic.readthedocs.io/en/latest/100_references.html#design">the design document</a>.</p>
+<h2 id="contact">Contact</h2>
+<p>There are several ways to contact the restic project and its community:</p>
+<ul>
+<li>If you have <strong>usage questions</strong> or <strong>problems</strong> in general, please post in <a href="https://forum.restic.net/">the <strong>forum</strong></a>.</li>
+<li>If you discover a <strong>bug</strong> or have a <strong>feature</strong> suggestion, feel free to <a href="https://github.com/restic/restic/issues/new/choose">open a <strong>GitHub issue</strong></a>. Please make sure to fill out the issue template you are presented with when doing so.</li>
+<li>If you would like to <strong>chat</strong> about restic with other users there is also the IRC channel <code>#restic</code> on <code>irc.freenode.net</code>, which you can <a href="https://webchat.freenode.net/#restic">access through your browser</a> if you don&rsquo;t have an IRC client installed.</li>
+<li>For <strong>other project related inquiries</strong> (<strong>not</strong> support requests), feel free to just write an e-mail to <code>alexander@bumpern.de</code> :)</li>
+</ul>
+<p><strong>Important</strong>: If you discover something that you believe to be a possible critical security problem, please do <strong>not</strong> open a GitHub issue but send an email directly to <a href="mailto:alexander@bumpern.de">alexander@bumpern.de</a>. If possible, please encrypt your email using PGP (<a href="https://pgp.mit.edu/pks/lookup?op=get&amp;search=0x91A6868BD3F7A907">0xD3F7A907</a>).</p>
+<h2 id="talks">Talks</h2>
+<p>The following talks will be or have been given about restic:</p>
+<ul>
+<li>2016-01-31: Lightning Talk at the Go Devroom at FOSDEM 2016, Brussels, Belgium</li>
+<li>2016-01-29: <a href="https://media.ccc.de/v/c4.openchaos.2016.01.restic">restic - Backups mal richtig</a>: Public lecture in German at <a href="https://koeln.ccc.de">CCC Cologne e.V.</a> in Cologne, Germany</li>
+<li>2015-08-23: <a href="https://media.ccc.de/browse/conferences/froscon/2015/froscon2015-1515-a_solution_to_the_backup_inconvenience.html#video">A Solution to the Backup Inconvenience</a>: Lecture at <a href="https://www.froscon.de">FROSCON 2015</a> in Bonn, Germany</li>
+<li>2015-02-01: <a href="https://www.youtube.com/watch?v=oM-MfeflUZ8&amp;t=11m40s">Lightning Talk at FOSDEM 2015</a>: A short introduction (with slightly outdated command line)</li>
+<li>2015-01-27: <a href="https://videoag.fsmpi.rwth-aachen.de/?view=player&amp;lectureid=4442#content">Talk about restic at CCC Aachen</a> (in German)</li>
+</ul>
+<h2 id="blog">Blog</h2>
+<p>For more information regarding restic development, have a look at <a href="/blog">our blog</a>. The latest posts are:</p>
+<ul>
+<li>
+<p>22 Nov 2019 » <a href="/blog/2019-11-22/restic-0.9.6-released/">restic 0.9.6 released</a></p>
+</li>
+<li>
+<p>23 Apr 2019 » <a href="/blog/2019-04-23/restic-0.9.5-released/">restic 0.9.5 released</a></p>
+</li>
+<li>
+<p>06 Jan 2019 » <a href="/blog/2019-01-06/restic-0.9.4-released/">restic 0.9.4 released</a></p>
+</li>
+</ul>
+<h2 id="license">License</h2>
+<p>Restic is licensed under &ldquo;BSD 2-Clause License&rdquo;. You can find the complete text in the file <code>LICENSE</code>.</p>
+
+    </div>
+
+    <a href="https://github.com/restic/restic" class="desktop">
+	<img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+</a>
+  </body>
+</html>
