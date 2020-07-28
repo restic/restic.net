@@ -1,18 +1,10 @@
-sudo: false
-
-language: ruby
-cache: bundler
-rvm:
-  - 2.5.1
-
 install:
-  - pyenv local 2.7.14
-  - pip install --user --no-cache-dir git+https://github.com/linkcheck/linkchecker.git@master
-  - export PATH=~/.local/bin:$PATH
-  - bundle install --jobs=3 --retry=3
+  - curl -LO https://github.com/gohugoio/hugo/releases/download/v0.74.3/hugo_0.74.3_Linux-64bit.deb
+  - sudo dpkg -i hugo_0.74.3_Linux-64bit.deb
+  - sudo apt install -y linkchecker
 
 script:
-  - bundle exec jekyll build --destination _site-new
-  - diff -aur --exclude 'feed.xml' _site _site-new
-  - bundle exec jekyll serve --detach --verbose --skip-initial-build
-  - linkchecker --check-extern --no-robots http://127.0.0.1:4000
+  - hugo --debug --cleanDestinationDir --destination public-new --templateMetrics --templateMetricsHints
+  - diff -aur public public-new
+  - hugo server --debug --disableBrowserError --disableLiveReload --noHTTPCache
+  - linkchecker --check-extern --no-robots http://127.0.0.1:1313
