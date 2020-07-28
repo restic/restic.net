@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  {{ partial "head.html" . }}
+
+  <body>
+    {{ partial "sidebar.html" . }}
+
+    <div class="content container">
+      {{ .Content }}
+    </div>
+
+    {{ partial "github.html" . }}
+  </body>
+</html>

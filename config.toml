@@ -1,0 +1,26 @@
+baseURL = "https://restic.net"
+languageCode = "en-us"
+title = "restic"
+
+# Stay compatible with URLs from the previous (Jekyll) website.
+disablePathToLower = true
+
+[params]
+	tagline = "Backups done right!"
+	# Default number of pages included in the recent-pages shortcode and partial.
+	defaultNumRecentPages = 5
+
+[markup.goldmark.renderer]
+	# Needed to allow embedding HTML tags.
+	unsafe = true
+
+[markup.tableOfContents]
+	# Make ToC include the level 1 heading, default is to start with level 2 headings.
+	startLevel = 1
+
+# Unfortunately it's not possible to specify a default permalink format, one /has/ to
+#  specify it once for each section. Don't forget to configure this when adding sections!
+[permalinks]
+	# The previous site (Jekyll) does not use an ending slash when generating links,
+	#  but even if we don't include that here, Hugo generates it, so we leave it in.
+	blog = "/blog/:year-:month-:day/:filename/"

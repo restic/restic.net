@@ -1,0 +1,15 @@
+---
+title: "Introduction to the restic Blog - Welcome!"
+date: 2015-09-12T00:00:00Z
+---
+
+If you're reading this, you've found your way to the restic development blog,
+awesome! Let me welcome you on behalf of the whole development team.
+
+In this blog we'll publish articles that explain the foundation techniques that
+restic is built upon and will give some insights into what's happening on the
+development side of restic. Once restic is widely in use, we'll probably shift
+the focus a bit towards the user perspective of backups and present tips and
+tricks for using restic more efficiently.
+
+But for now, stay tuned for explanations of the base techniques!

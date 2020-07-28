@@ -1,0 +1,3 @@
+{{ range first (default .Site.Params.defaultNumRecentPages (.Scratch.Get "numRecentPages")) $.Page.Site.RegularPages }}
+  {{ partial "recent-page.md" . }}
+{{ end }}

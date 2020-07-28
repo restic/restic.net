@@ -1,0 +1,83 @@
+---
+title: "restic 0.7.2 released"
+date: 2017-09-13T00:00:00Z
+---
+
+We're very pleased to announce that [restic 0.7.2](https://github.com/restic/restic/releases/tag/v0.7.2) has been released!
+For downloading the code, head over to [GitHub](https://github.com/restic/restic/releases/tag/v0.7.2).
+As always, thanks for [reporting any issues](https://github.com/restic/restic/issues/new) you encounter!
+
+The binaries released with each restic version are [reproducible](https://reproducible-builds.org/), which means that you can easily reproduce a byte identical version from the source code for that release. Instructions on how to do that are contained in the [builder repository](https://github.com/restic/builder).
+
+Important Changes in 0.7.2
+==========================
+
+ * We've added an official docker image and a Dockerfile to build this image in `docker/`.
+   [#1061](https://github.com/restic/restic/pull/1061)
+
+ * The git repository layout was changed to resemble the layout typically used in Go projects, we're not using `gb` for building restic any more and vendoring the dependencies is now taken care of by `dep`.
+   [#1126](https://github.com/restic/restic/pull/1126)
+
+ * We now support saving backups on Google Cloud Storage.
+   [#1134](https://github.com/restic/restic/pull/1134)
+   [#1052](https://github.com/restic/restic/pull/1052)
+   [#211](https://github.com/restic/restic/issues/211)
+
+ * We've added support for Microsoft Azure Blob Storage as a restic backend.
+   [#1149](https://github.com/restic/restic/pull/1149)
+   [#1059](https://github.com/restic/restic/pull/1059)
+   [#609](https://github.com/restic/restic/issues/609)
+
+ * In the course of supporting Microsoft Azure Blobe Storage Go 1.8 is now a requirement to build restic.
+
+ * The `restore` command has been improved: When dirs are excluded (or not included) in a restore, they are not loaded from the repo any more.
+   [#1044](https://github.com/restic/restic/pull/1044)
+
+ * Name collisions are now resolved by appending a counter.
+   [#1179](https://github.com/restic/restic/issues/1179)
+   [#1209](https://github.com/restic/restic/pull/1209)
+
+
+Small changes
+-------------
+
+ * The `key` command now prompts for a password even if the original password to access a repo has been specified via the `RESTIC_PASSWORD` environment variable or a password file.
+   [#1132](https://github.com/restic/restic/issues/1132)
+   [#1133](https://github.com/restic/restic/pull/1133)
+
+ * Properly report errors when reading files with exclude patterns.
+   [#1144](https://github.com/restic/restic/pull/1144)
+
+ * We now automatically generate man pages for all restic commands, see the subdir `doc/man`.
+   [#697](https://github.com/restic/restic/issues/697)
+   [#1147](https://github.com/restic/restic/pull/1147)
+
+ * The `key remove` command was corrected and now works as documented.
+   [#1164](https://github.com/restic/restic/pull/1164)
+
+ * When a restic command other than `init` is used with a local repository and the repository directory does not exist, restic creates the directory structure. That's an error, only the `init` command should create the dir.
+   [#1167](https://github.com/restic/restic/issues/1167)
+   [#1182](https://github.com/restic/restic/pull/1182)
+
+ * Restic now prints stats on all BSD systems (not only on darwin) when SIGINFO is received (usually when ctrl+t is pressed).
+   [#1203](https://github.com/restic/restic/pull/1203)
+   [#1082](https://github.com/restic/restic/pull/1082#issuecomment-326279920)
+
+ * Since a few releases restic had the ability to write profiling files for memory and CPU usage when `debug` is enabled. It was discovered that when restic is interrupted (ctrl+c is pressed), the proper shutdown hook is not run. This is now corrected.
+   [#1191](https://github.com/restic/restic/pull/1191)
+
+ * A new option `--exclude-caches` was added that allows excluding cache directories (that are tagged as such). This is a special case of a more generic option `--exclude-if-present` which excludes a directory if a file with a specific name (and contents) is present.
+   [#317](https://github.com/restic/restic/issues/317)
+   [#1170](https://github.com/restic/restic/pull/1170)
+   [#1224](https://github.com/restic/restic/pull/1224)
+
+ * The `forget` command now has an option `--group-by` that allows flexible grouping policies.
+   [#1196](https://github.com/restic/restic/pull/1196)
+
+ * The date and time restic records for a new backup can now be specified externally by passing `--time` to the `backup` command.
+   [#1205](https://github.com/restic/restic/pull/1205)
+
+ * The option `--compact` was added to the `snapshots` command to get a better overview of the snapshots in a repo. It limits each snapshot to a single line.
+   [#1218](https://github.com/restic/restic/issues/1218)
+   [#1223](https://github.com/restic/restic/pull/1223)
+

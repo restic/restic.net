@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  {{ partial "head.html" . }}
+
+  <body>
+    {{ partial "sidebar.html" . }}
+
+    <div class="content container">
+      <div class="post">
+        <h1 class="post-title">{{.Title}}</h1>
+        <span class="post-date">{{ .Date.Format "02 Jan 2006" }}</span>
+        {{ .Content }}
+      </div>
+
+      <h2>Comments</h2>
+      <div id='discourse-comments'></div>
+      <script type="text/javascript">
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: '{{ .Permalink }}' };
+      
+        (function() {
+          var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+        })();
+      </script>
+
+      <div class="related">
+        <h2>Related Posts</h2>
+        <div class="related-posts">
+          {{ .Scratch.Set "numRecentPages" 3 }}
+          {{ partial "recent-pages.html" . | .RenderString }}
+        </div>
+      </div>
+    </div>
+
+    {{ partial "github.html" . }}
+  </body>
+</html>

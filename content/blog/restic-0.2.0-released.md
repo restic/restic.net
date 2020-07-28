@@ -1,0 +1,12 @@
+---
+title: "restic 0.2.0 released"
+date: 2016-08-05T00:00:00Z
+---
+
+A few days ago we've released [restic 0.2.0](https://github.com/restic/restic/releases/tag/v0.2.0),
+the detailed change log and released files can be found over at GitHub:
+[https://github.com/restic/restic/releases/tag/v0.2.0](https://github.com/restic/restic/releases/tag/v0.2.0).
+
+This release includes around 550 commits since version 0.1.0 (August 2015).
+
+
