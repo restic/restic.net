@@ -57,7 +57,7 @@ There are several ways to contact the restic project and its community:
 
 ## Talks
 
-The following talks will be or have been given about restic:
+The following talks have been given about restic:
 
  * 2016-01-31: Lightning Talk at the Go Devroom at FOSDEM 2016, Brussels, Belgium
  * 2016-01-29: [restic - Backups mal richtig](https://media.ccc.de/v/c4.openchaos.2016.01.restic): Public lecture in German at [CCC Cologne e.V.](https://koeln.ccc.de) in Cologne, Germany
