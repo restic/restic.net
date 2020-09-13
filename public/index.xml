@@ -6,10 +6,21 @@
     <description>Recent content in Backups done right! on restic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 22 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2020 11:47:00 +0200</lastBuildDate>
     
 	<atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Rest Server 0.10 Released</title>
+      <link>https://restic.net/blog/2020-09-13/rest-server-0.10.0-released/</link>
+      <pubDate>Sun, 13 Sep 2020 11:47:00 +0200</pubDate>
+      
+      <guid>https://restic.net/blog/2020-09-13/rest-server-0.10.0-released/</guid>
+      <description>We have just released rest-server 0.10.0 which includes a few potentially breaking changes. For details, please see the changes described in the release.
+This release corrects a security issue. User wojas discovered that it was possible to access repositories belonging to other users. It was not possible to access directories outside of the path the repositories were stored in.
+The rest-server has an option to allow users (identify by HTTP Basic authentication) to only access their own repository by specifying the --private-repos option.</description>
+    </item>
     
     <item>
       <title>restic 0.9.6 released</title>

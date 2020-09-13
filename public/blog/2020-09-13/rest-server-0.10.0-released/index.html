@@ -11,7 +11,7 @@
   <title>
     restic &middot;
     
-      restic 0.4.0 released
+      Rest Server 0.10 Released
     
   </title>
 
@@ -29,7 +29,7 @@
 
   
   
-  <link rel="canonical" href="https://restic.net/blog/2017-02-02/restic-0.4.0-released/">
+  <link rel="canonical" href="https://restic.net/blog/2020-09-13/rest-server-0.10.0-released/">
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -176,17 +176,20 @@
 
     <div class="content container">
       <div class="post">
-        <h1 class="post-title">restic 0.4.0 released</h1>
-        <span class="post-date">02 Feb 2017</span>
-        <p>We&rsquo;ve just released <a href="https://github.com/restic/restic/releases/tag/v0.4.0">restic 0.4.0</a>. This release will use much less memory during certain operations (notably <code>prune</code>, but also during backup). There have also been some major internal changes which will hopefully contribute to an even larger improvement in memory usage.</p>
-<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new">reporting any issues</a> you encounter!</p>
+        <h1 class="post-title">Rest Server 0.10 Released</h1>
+        <span class="post-date">13 Sep 2020</span>
+        <p>We have just released <a href="https://github.com/restic/rest-server/releases/tag/v0.10.0">rest-server 0.10.0</a> which includes a few potentially breaking changes. For details, please see the changes described <a href="https://github.com/restic/rest-server/releases/tag/v0.10.0">in the release</a>.</p>
+<p>This release corrects a security issue. User <a href="https://github.com/wojas">wojas</a> discovered that it was possible to access repositories belonging to other users. It was not possible to access directories outside of the path the repositories were stored in.</p>
+<p>The <code>rest-server</code> has an option to allow users (identify by HTTP Basic authentication) to only access their own repository by specifying the <code>--private-repos</code> option. For example, the user <code>foo</code> can then only access the repository at <code>https://localhost:8000/foo</code>, but not the repo of the user <code>bar</code> at <code>http://localhost:8000/bar</code>.</p>
+<p>Wojas discovered that by URL-encoding the slash character (<code>/</code>) to <code>%2F</code>, it was possible to specify a different path. The HTTP routing framework the <code>rest-server</code> uses then decodes the slash and passes it on to the code. This way, it was possible to specify a relative path like this: <code>http://localhost:8000/foo%2F..%2Fbar</code>, which allowed user <code>foo</code> to access the repository files of user <code>bar</code>. Please note that due to the way restic works, user <code>foo</code> was unable to decrypt any data of or add new data to the other repository unless they know a valid password.</p>
+<p>Please let us know what you think in the forum post linked below!</p>
 
       </div>
 
       <h2>Comments</h2>
       <div id='discourse-comments'></div>
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2017-02-02\/restic-0.4.0-released\/' };
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2020-09-13\/rest-server-0.10.0-released\/' };
       
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
