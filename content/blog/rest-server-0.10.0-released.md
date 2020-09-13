@@ -1,5 +1,5 @@
 ---
-title: "Rest Server 0.10 Released"
+title: "Rest Server 0.10.0 Released"
 date: 2020-09-13T11:47:00+02:00
 ---
 
