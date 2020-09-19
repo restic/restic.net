@@ -6,10 +6,16 @@
     <description>Recent content in Backups done right! on restic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Sep 2020 11:47:00 +0200</lastBuildDate>
-    
-	<atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sat, 19 Sep 2020 17:44:59 +0200</lastBuildDate><atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>restic 0.10.0 released</title>
+      <link>https://restic.net/blog/2020-09-19/restic-0.10.0-released/</link>
+      <pubDate>Sat, 19 Sep 2020 17:44:59 +0200</pubDate>
+      
+      <guid>https://restic.net/blog/2020-09-19/restic-0.10.0-released/</guid>
+      <description>After ten months of work we&amp;rsquo;ve just released restic 0.10.0! For downloading the new release and to see a more detailed list of important changes, please head over to GitHub. If you already have restic (0.9.4 or later), you can use the self-update command to automatically download and verify the new release.
+This release contains a lot of improvements, both smaller and bigger ones, and the restic project wishes to send a big thank you to everyone who contributed to make this happen.</description>
+    </item>
     
     <item>
       <title>Rest Server 0.10.0 Released</title>
@@ -361,7 +367,7 @@ As always, thanks for reporting any issues you encounter!</description>
       <pubDate>Thu, 02 Feb 2017 00:00:00 +0000</pubDate>
       
       <guid>https://restic.net/blog/2017-02-02/FOSDEM-2017-Brussels/</guid>
-      <description>For the third time at this year&amp;rsquo;s FOSDEM (which stands for &amp;ldquo;Free and Open Source Software Developers&amp;rsquo; European Meeting&amp;rdquo; according to Wikipedia) features a room on Sunday (5 February 2017) dedicated to Go development: The Go Devroom. fd0 will be available for a chat about restic and Go development the whole day!</description>
+      <description>For the third time at this year&amp;rsquo;s FOSDEM (which stands for &amp;ldquo;Free and Open Source Software Developers&#39; European Meeting&amp;rdquo; according to Wikipedia) features a room on Sunday (5 February 2017) dedicated to Go development: The Go Devroom. fd0 will be available for a chat about restic and Go development the whole day!</description>
     </item>
     
     <item>

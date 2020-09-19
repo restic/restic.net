@@ -4,12 +4,17 @@
   
   <url>
     <loc>https://restic.net/</loc>
-    <lastmod>2020-09-13T11:47:00+02:00</lastmod>
+    <lastmod>2020-09-19T17:44:59+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://restic.net/blog/</loc>
-    <lastmod>2020-09-13T11:47:00+02:00</lastmod>
+    <lastmod>2020-09-19T17:44:59+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://restic.net/blog/2020-09-19/restic-0.10.0-released/</loc>
+    <lastmod>2020-09-19T17:44:59+02:00</lastmod>
   </url>
   
   <url>

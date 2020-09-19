@@ -11,7 +11,7 @@
   <title>
     restic &middot;
     
-      restic 0.8.3 released
+      restic 0.10.0 released
     
   </title>
 
@@ -29,7 +29,7 @@
 
   
   
-  <link rel="canonical" href="https://restic.net/blog/2018-02-26/restic-0.8.3-released/">
+  <link rel="canonical" href="https://restic.net/blog/2020-09-19/restic-0.10.0-released/">
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -178,17 +178,30 @@
 
     <div class="content container">
       <div class="post">
-        <h1 class="post-title">restic 0.8.3 released</h1>
-        <span class="post-date">26 Feb 2018</span>
-        <p>We&rsquo;ve just released <a href="https://github.com/restic/restic/releases/tag/v0.8.3">restic 0.8.3</a>. This is again a bugfix release, but also several improvements for cloud-based backends.</p>
-<p>For downloading the new release and see a more detailed list of important changes, head over to <a href="https://github.com/restic/restic/releases/tag/v0.8.3">GitHub</a>. As always, thanks for <a href="https://github.com/restic/restic/issues/new">reporting any issues</a> you encounter! Or just write a post in <a href="https://forum.restic.net">the forum</a>.</p>
+        <h1 class="post-title">restic 0.10.0 released</h1>
+        <span class="post-date">19 Sep 2020</span>
+        <p>After ten months of work we&rsquo;ve just released <a href="https://github.com/restic/restic/releases/v0.10.0">restic 0.10.0</a>! For downloading the new release and to see a more detailed list of important changes, please head over to <a href="https://github.com/restic/restic/releases/v0.10.0">GitHub</a>. If you already have restic (0.9.4 or later), you can use the <code>self-update</code> command to automatically download and verify the new release.</p>
+<p>This release contains a lot of improvements, both smaller and bigger ones, and the restic project wishes to send a big thank you to everyone who contributed to make this happen. Every contribution, be it a small documentation change or deeply technical code changes and optimizations, are always welcome. An extra huge thanks goes out to <a href="https://github.com/MichaelEischer">MichaelEischer</a> for tying it all together with countless hours of tireless reviewing and carefully considered decisions as part of this delicate process.</p>
+<p>Below are some highlights of the changes in this release (in no particular order):</p>
+<ul>
+<li>Change <a href="https://github.com/restic/restic/pull/2546">#2546</a>: Restic now returns exit code 3 when failing to backup all source data, primarily useful when automating backups</li>
+<li>Fix <a href="https://github.com/restic/restic/pull/2592">#2592</a>: The SFTP backend now supports IPv6 addresses</li>
+<li>Enh <a href="https://github.com/restic/restic/issues/2277">#2277</a>: Support for the ppc64le architecture has been added</li>
+<li>Enh <a href="https://github.com/restic/restic/issues/2569">#2569</a>: Support for excluding files by their size has been added</li>
+<li>Enh <a href="https://github.com/restic/restic/issues/323">#323</a>: You can now copy snapshots from one repository to another using the new <code>copy</code> command. In relation to this, please also see the new <code>--copy-chunk-params</code> option to the <code>init</code> command</li>
+<li>Enh <a href="https://github.com/restic/restic/pull/2328">#2328</a>: Performance of the <code>check</code> command has been much improved</li>
+<li>Enh <a href="https://github.com/restic/restic/pull/2195">#2195</a>: Performance of the <code>restore</code> command has been much improved</li>
+<li>Enh <a href="https://github.com/restic/restic/issues/1680">#1680</a> and <a href="https://github.com/restic/restic/pull/2790">#2790</a>: Performance of the <code>mount</code> command has been much improved</li>
+</ul>
+<p>Please note that this is only a manual selection of the improvements in restic 0.10.0 - there are numerous other optimizations, fixes and improvements to be found in <a href="https://github.com/restic/restic/releases/tag/v0.10.0">the changelog</a>!</p>
+<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! Or just write a post in <a href="https://forum.restic.net">the forum</a>.</p>
 
       </div>
 
       <h2>Comments</h2>
       <div id='discourse-comments'></div>
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2018-02-26\/restic-0.8.3-released\/' };
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2020-09-19\/restic-0.10.0-released\/' };
       
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;

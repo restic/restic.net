@@ -153,6 +153,8 @@
       
         
       
+        
+      
 
       <a class="sidebar-nav-item" href="https://forum.restic.net/">Forum</a>
       <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/stable/">Docs</a>
@@ -198,45 +200,45 @@ the cached version.</p>
 can <a href="https://docs.travis-ci.com/user/caching/">tell it</a> to keep the build cache
 directory and extract it before the tests are run next time. The entry in the
 configuration file <code>.travis.yml</code> looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">cache</span>:
-  <span style="color:#66d9ef">directories</span>:
-    - $HOME/.cache/go-build
-    - $HOME/gopath/pkg/mod
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">cache</span>:
+  <span style="color:#f92672">directories</span>:
+    - <span style="color:#ae81ff">$HOME/.cache/go-build</span>
+    - <span style="color:#ae81ff">$HOME/gopath/pkg/mod</span>
 </code></pre></div><p>This also caches another directory in the GOPATH called <code>pkg/mod</code>, which contains
 information about released modules. This is a feature introduced with Go 1.11.</p>
 <p>The directories listed above work for Linux, but the Go build cache directory
 is somewhere else on OS X, so we need to add the cache entries to our build
 matrix:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">matrix</span>:
-  <span style="color:#66d9ef">include</span>:
-    - <span style="color:#66d9ef">os</span>: linux
-      <span style="color:#66d9ef">go</span>: <span style="color:#e6db74">&#34;1.9.x&#34;</span>
-      <span style="color:#66d9ef">cache</span>:
-        <span style="color:#66d9ef">directories</span>:
-          - $HOME/.cache/go-build
-          - $HOME/gopath/pkg/mod
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">matrix</span>:
+  <span style="color:#f92672">include</span>:
+    - <span style="color:#f92672">os</span>: <span style="color:#ae81ff">linux</span>
+      <span style="color:#f92672">go</span>: <span style="color:#e6db74">&#34;1.9.x&#34;</span>
+      <span style="color:#f92672">cache</span>:
+        <span style="color:#f92672">directories</span>:
+          - <span style="color:#ae81ff">$HOME/.cache/go-build</span>
+          - <span style="color:#ae81ff">$HOME/gopath/pkg/mod</span>
 
-    - <span style="color:#66d9ef">os</span>: linux
-      <span style="color:#66d9ef">go</span>: <span style="color:#e6db74">&#34;1.10.x&#34;</span>
-      <span style="color:#66d9ef">cache</span>:
-        <span style="color:#66d9ef">directories</span>:
-          - $HOME/.cache/go-build
-          - $HOME/gopath/pkg/mod
+    - <span style="color:#f92672">os</span>: <span style="color:#ae81ff">linux</span>
+      <span style="color:#f92672">go</span>: <span style="color:#e6db74">&#34;1.10.x&#34;</span>
+      <span style="color:#f92672">cache</span>:
+        <span style="color:#f92672">directories</span>:
+          - <span style="color:#ae81ff">$HOME/.cache/go-build</span>
+          - <span style="color:#ae81ff">$HOME/gopath/pkg/mod</span>
 
-    - <span style="color:#66d9ef">os</span>: linux
-      <span style="color:#66d9ef">go</span>: <span style="color:#e6db74">&#34;1.11.x&#34;</span>
-      <span style="color:#66d9ef">sudo</span>: <span style="color:#66d9ef">true</span>
-      <span style="color:#66d9ef">cache</span>:
-        <span style="color:#66d9ef">directories</span>:
-          - $HOME/.cache/go-build
-          - $HOME/gopath/pkg/mod
+    - <span style="color:#f92672">os</span>: <span style="color:#ae81ff">linux</span>
+      <span style="color:#f92672">go</span>: <span style="color:#e6db74">&#34;1.11.x&#34;</span>
+      <span style="color:#f92672">sudo</span>: <span style="color:#66d9ef">true</span>
+      <span style="color:#f92672">cache</span>:
+        <span style="color:#f92672">directories</span>:
+          - <span style="color:#ae81ff">$HOME/.cache/go-build</span>
+          - <span style="color:#ae81ff">$HOME/gopath/pkg/mod</span>
 
-    - <span style="color:#66d9ef">os</span>: osx
-      <span style="color:#66d9ef">go</span>: <span style="color:#e6db74">&#34;1.11.x&#34;</span>
-      <span style="color:#66d9ef">cache</span>:
-        <span style="color:#66d9ef">directories</span>:
-          - $HOME/Library/Caches/go-build
-          - $HOME/gopath/pkg/mod
+    - <span style="color:#f92672">os</span>: <span style="color:#ae81ff">osx</span>
+      <span style="color:#f92672">go</span>: <span style="color:#e6db74">&#34;1.11.x&#34;</span>
+      <span style="color:#f92672">cache</span>:
+        <span style="color:#f92672">directories</span>:
+          - <span style="color:#ae81ff">$HOME/Library/Caches/go-build</span>
+          - <span style="color:#ae81ff">$HOME/gopath/pkg/mod</span>
 </code></pre></div><p>After a successful build, Travis will then archive both directories, and
 extract them again for the next test run. Indeed, this speeds up running the
 tests a great deal (depending on how much code has changed):</p>
@@ -246,7 +248,7 @@ reduced at all since it does not have the build cache feature.</p>
 <p>AppVeyor also has a <a href="https://www.appveyor.com/docs/build-cache/">build cache
 feature</a>, it can be enabled by
 specifying the list of directories to cache in the <code>appveyor.yml</code> like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">cache</span>:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">cache</span>:
   - <span style="color:#e6db74">&#39;%LocalAppData%\go-build&#39;</span>
 </code></pre></div><p>For restic, the build cache is not so relevant on AppVeyor, since we&rsquo;re only
 using it to run our integration tests on Windows and don&rsquo;t run any
@@ -279,13 +281,13 @@ forum</a>)!</p>
           
           <ul>
 <li>
+<p>19 Sep 2020 » <a href="/blog/2020-09-19/restic-0.10.0-released/">restic 0.10.0 released</a></p>
+</li>
+<li>
 <p>13 Sep 2020 » <a href="/blog/2020-09-13/rest-server-0.10.0-released/">Rest Server 0.10.0 Released</a></p>
 </li>
 <li>
 <p>22 Nov 2019 » <a href="/blog/2019-11-22/restic-0.9.6-released/">restic 0.9.6 released</a></p>
-</li>
-<li>
-<p>23 Apr 2019 » <a href="/blog/2019-04-23/restic-0.9.5-released/">restic 0.9.5 released</a></p>
 </li>
 </ul>
 
