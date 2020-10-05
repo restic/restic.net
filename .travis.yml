@@ -2,8 +2,8 @@ language: minimal
 dist: focal
 
 install:
-  - curl -LO https://github.com/gohugoio/hugo/releases/download/v0.74.3/hugo_0.74.3_Linux-64bit.deb
-  - sudo dpkg -i hugo_0.74.3_Linux-64bit.deb
+  - curl -LO https://github.com/gohugoio/hugo/releases/download/v0.74.3/hugo_extended_0.74.3_Linux-64bit.deb
+  - sudo dpkg -i hugo_extended_0.74.3_Linux-64bit.deb
   - sudo apt install -y linkchecker
 
 script:

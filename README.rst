@@ -2,6 +2,8 @@
 
 This is the repository for the website content at `restic.net <https://restic.net>`__, generated using `Hugo <https://gohugo.io>`__.
 
+**NOTE:** The `"extended" version of Hugo <https://gohugo.io/troubleshooting/faq/#i-get-tocss--this-feature-is-not-available-in-your-current-hugo-version>`__ must be used when building this website, as it uses SCSS for some parts of the styling. When downloading/installing Hugo, use the `"hugo-extended" package <https://github.com/gohugoio/hugo/releases>`__.
+
 The generated website can be checked for dangling links with `linkchecker <https://github.com/linkchecker/linkchecker>`__:
 
     $ linkchecker --check-extern --no-robots https://restic.net
