@@ -9,5 +9,6 @@ install:
 script:
   - hugo --debug --cleanDestinationDir --destination public-new --templateMetrics --templateMetricsHints
   - diff -aur public public-new
-  - hugo server --debug --disableBrowserError --disableLiveReload --noHTTPCache
+  - hugo server --debug --disableBrowserError --disableLiveReload --noHTTPCache &
+  - sleep 15
   - linkchecker --check-extern --no-robots http://127.0.0.1:1313
