@@ -4,11 +4,12 @@ dist: focal
 install:
   - curl -LO https://github.com/gohugoio/hugo/releases/download/v0.74.3/hugo_extended_0.74.3_Linux-64bit.deb
   - sudo dpkg -i hugo_extended_0.74.3_Linux-64bit.deb
-  - sudo apt install -y linkchecker
+  - curl -LO https://github.com/raviqqe/muffet/releases/download/v2.2.1/muffet_2.2.1_Linux_x86_64.tar.gz
+  - tar zxf muffet_2.2.1_Linux_x86_64.tar.gz
 
 script:
   - hugo --debug --cleanDestinationDir --destination public-new --templateMetrics --templateMetricsHints
   - diff -aur public public-new
   - hugo server --debug --disableBrowserError --disableLiveReload --noHTTPCache &
   - sleep 15
-  - linkchecker --check-extern --no-robots http://127.0.0.1:1313
+  - ./muffet http://127.0.0.1:1313
