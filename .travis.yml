@@ -10,6 +10,6 @@ install:
 script:
   - hugo --debug --cleanDestinationDir --destination public-new --templateMetrics --templateMetricsHints
   - diff -aur public public-new
-  - hugo server --debug --disableBrowserError --disableLiveReload --noHTTPCache &
+  - hugo server --debug --baseURL http://127.0.0.1:1313/ --disableBrowserError --disableLiveReload &
   - sleep 15
   - ./muffet http://127.0.0.1:1313
