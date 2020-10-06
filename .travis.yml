@@ -16,8 +16,8 @@ install:
 script:
   # Build website.
   - hugo --debug --cleanDestinationDir --destination public-new --templateMetrics --templateMetricsHints
-  # Compare new (public-new) website with previous version (public).
-  - diff -aur public public-new
+  # Compare new (public-new) website with previous version (public), but force success exit code.
+  - diff -aur public public-new || true
   # Start Hugo web server in the background to serve the website for link checking.
   # For some reason we need this --baseURL argument in place, otherwise muffet will give a lot of
   #   "dial tcp4 127.0.1.1:1313: connect: connection refused" and not be able to scrape the website.
