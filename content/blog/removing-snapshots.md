@@ -1,6 +1,7 @@
 ---
 title: "Removing Snapshots"
 date: 2016-08-22T00:00:00Z
+lastmod: 2020-10-06T00:00:00Z
 ---
 
 The feature that was most often requested feature for restic is the ability to
@@ -25,8 +26,8 @@ $ export RESTIC_REPOSITORY=/tmp RESTIC_PASSWORD=geheim
 {{< / highlight >}}
 
 Please note that this feature is not yet contained in any released version of
-restic, you need to [compile](https://github.com/restic/restic#build-restic)
-the code from the current (as of 22 August 2016) master branch yourself.
+restic, you need to compile the code from the current (as of 22 August 2016)
+master branch yourself.
 
 ## Removing a single snapshot
 

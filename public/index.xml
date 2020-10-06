@@ -6,7 +6,7 @@
     <description>Recent content in Backups done right! on restic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 19 Sep 2020 17:44:59 +0200</lastBuildDate><atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>restic 0.10.0 released</title>
       <link>https://restic.net/blog/2020-09-19/restic-0.10.0-released/</link>
@@ -482,9 +482,9 @@ In a backup program, data de-duplication can be applied in two locations: Removi
       
       <guid>https://restic.net/blog/2015-09-12/FROSCON-2015-talk-about-restic/</guid>
       <description>For the tenth time, FrOSCon took place at the University of Applied Sciences Bonn-Rhein-Sieg in Sankt Augustin near Bonn/Cologne on 22nd and 23rd of August. We took the chance and submitted a talk about restic titled &amp;ldquo;A Solution to the Backup Inconvenience&amp;rdquo;, which was accepted.
-You can watch the recording and view the slides. If you do so, please leave feedback
+You can watch the recording and view the slides. If you do so, please leave feedback1
 The recording is embedded below:
- </description>
+  [1] The feedback link is non-functional (2020-10-06)</description>
     </item>
     
     <item>

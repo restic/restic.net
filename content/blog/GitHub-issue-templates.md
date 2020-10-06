@@ -1,6 +1,7 @@
 ---
 title: "Configuring GitHub Issue Templates"
 date: 2018-09-09T00:00:00Z
+lastmod: 2020-10-06T00:00:00Z
 ---
 
 Like many other Open Source projects, restic uses GitHub for hosting the source
@@ -76,7 +77,8 @@ issue in GitHub, so they don't distract from the content.
 
 This leaves us with the third kind of issue users can create by clicking on the
 link titled "Open a regular issue". For this, the file
-[`.github/ISSUE_TEMPLATE.md`](https://github.com/restic/restic/blob/master/.github/ISSUE_TEMPLATE.md) is used.
+`.github/ISSUE_TEMPLATE.md` can be used (we currently don't use this, which
+makes the issue form open with a blank textarea).
 
 This allows users to select the type of issue they would like to create, and in
 all cases there's a hint to use the forum if they are unsure what to do. This
