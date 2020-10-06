@@ -482,9 +482,9 @@ In a backup program, data de-duplication can be applied in two locations: Removi
       
       <guid>https://restic.net/blog/2015-09-12/FROSCON-2015-talk-about-restic/</guid>
       <description>For the tenth time, FrOSCon took place at the University of Applied Sciences Bonn-Rhein-Sieg in Sankt Augustin near Bonn/Cologne on 22nd and 23rd of August. We took the chance and submitted a talk about restic titled &amp;ldquo;A Solution to the Backup Inconvenience&amp;rdquo;, which was accepted.
-You can watch the recording and view the slides. If you do so, please leave feedback
+You can watch the recording and view the slides. If you do so, please leave feedback1
 The recording is embedded below:
- </description>
+  [1] The feedback link is non-functional (2020-10-06)</description>
     </item>
     
     <item>

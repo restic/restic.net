@@ -1,5 +1,6 @@
 ---
 title: "Backups done right!"
+lastmod: 2020-10-06T00:00:00Z
 ---
 
 # Introduction
@@ -50,7 +51,7 @@ There are several ways to contact the restic project and its community:
 
  * If you have **usage questions** or **problems** in general, please post in [the **forum**](https://forum.restic.net/).
  * If you discover a **bug** or have a **feature** suggestion, feel free to [open a **GitHub issue**](https://github.com/restic/restic/issues/new/choose). Please make sure to fill out the issue template you are presented with when doing so.
- * If you would like to **chat** about restic with other users there is also the IRC channel `#restic` on `irc.freenode.net`, which you can [access through your browser](https://webchat.freenode.net/#restic) if you don't have an IRC client installed.
+ * If you would like to **chat** about restic with other users there is also the IRC channel `#restic` on `irc.freenode.net`, which you can [access through your browser](https://kiwiirc.com/nextclient/irc.freenode.net/restic) if you don't have an IRC client installed.
  * For **other project related inquiries** (**not** support requests), feel free to just write an e-mail to `alexander@bumpern.de` :)
 
 **Important**: If you discover something that you believe to be a possible critical security problem, please do **not** open a GitHub issue but send an email directly to alexander@bumpern.de. If possible, please encrypt your email using PGP ([0xD3F7A907](https://pgp.mit.edu/pks/lookup?op=get&search=0x91A6868BD3F7A907)).
@@ -61,9 +62,9 @@ The following talks have been given about restic:
 
  * 2016-01-31: Lightning Talk at the Go Devroom at FOSDEM 2016, Brussels, Belgium
  * 2016-01-29: [restic - Backups mal richtig](https://media.ccc.de/v/c4.openchaos.2016.01.restic): Public lecture in German at [CCC Cologne e.V.](https://koeln.ccc.de) in Cologne, Germany
- * 2015-08-23: [A Solution to the Backup Inconvenience](https://media.ccc.de/browse/conferences/froscon/2015/froscon2015-1515-a_solution_to_the_backup_inconvenience.html#video): Lecture at [FROSCON 2015](https://www.froscon.de) in Bonn, Germany
+ * 2015-08-23: [A Solution to the Backup Inconvenience](https://media.ccc.de/browse/conferences/froscon/2015/froscon2015-1515-a_solution_to_the_backup_inconvenience.html): Lecture at [FROSCON 2015](https://www.froscon.de) in Bonn, Germany
  * 2015-02-01: [Lightning Talk at FOSDEM 2015](https://www.youtube.com/watch?v=oM-MfeflUZ8&t=11m40s): A short introduction (with slightly outdated command line)
- * 2015-01-27: [Talk about restic at CCC Aachen](https://videoag.fsmpi.rwth-aachen.de/?view=player&lectureid=4442#content) (in German)
+ * 2015-01-27: [Talk about restic at CCC Aachen](https://videoag.fsmpi.rwth-aachen.de/?view=player&lectureid=4442) (in German)
 
 ## Blog
 
