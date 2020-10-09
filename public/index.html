@@ -198,25 +198,28 @@
 
     <div class="content container">
       <h1 id="introduction">Introduction</h1>
-<p>restic is a program that does backups right. The design goals are:</p>
+<p>Restic is a modern backup program that can back up your files:</p>
 <ul>
 <li>
-<p><strong>Easy:</strong> Doing backups should be a frictionless process, otherwise you are tempted to skip it.  Restic should be easy to configure and use, so that in the unlikely event of a data loss you can just restore it. Likewise, restoring data should not be complicated.</p>
+<p>from <strong>Linux, BSD, Mac and Windows</strong></p>
 </li>
 <li>
-<p><strong>Fast:</strong> Backing up your data with restic should only be limited by your network or hard disk bandwidth so that you can backup your files every day. Nobody does backups if it takes too much time. Restoring backups should only transfer data that is needed for the files that are to be restored, so that this process is also fast.</p>
+<p>to <strong>many different storage types</strong>, including self-hosted and online services</p>
 </li>
 <li>
-<p><strong>Verifiable:</strong> Much more important than backup is restore, so restic enables you to easily verify that all data can be restored.</p>
+<p><strong>easily</strong>, being a single executable that you can run without a server or complex setup</p>
 </li>
 <li>
-<p><strong>Secure:</strong> Restic uses cryptography to guarantee confidentiality and integrity of your data. The location where the backup data is stored is assumed to be an untrusted environment (e.g. a shared space where others like system administrators are able to access your backups). Restic is <a href="https://restic.readthedocs.io/en/latest/100_references.html#design">built to secure your data</a> against such attackers, by encrypting it with AES-256 in counter mode and authenticating it using Poly1305-AES.</p>
+<p><strong>effectively</strong>, only transferring the parts that actually changed in the files you back up</p>
 </li>
 <li>
-<p><strong>Efficient:</strong> With the growth of data, additional snapshots should only take the storage of the actual increment. Even more, duplicate data should be de-duplicated before it is actually written to the storage backend to save precious backup space.</p>
+<p><strong>securely</strong>, by careful use of cryptography in every part of the process</p>
 </li>
 <li>
-<p><strong>Free:</strong> restic is free software and licensed under the <a href="https://github.com/restic/restic/blob/master/LICENSE">BSD 2-Clause License</a> and actively developed on <a href="https://github.com/restic/restic/">GitHub</a>.</p>
+<p><strong>verifiably</strong>, enabling you to make sure that your files can be restored when needed</p>
+</li>
+<li>
+<p><strong>freely</strong> - restic is entirely free to use and completely open source</p>
 </li>
 </ul>
 <h2 id="quickstart">Quickstart</h2>
