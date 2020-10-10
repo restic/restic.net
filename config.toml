@@ -5,6 +5,9 @@ title = "restic"
 # Stay compatible with URLs from the previous (Jekyll) website.
 disablePathToLower = true
 
+# Don't automatically inject the "Hugo 0.x.y" meta tag
+disableHugoGeneratorInject = true
+
 [params]
 	tagline = "Backups done right!"
 	# Default number of pages included in the recent-pages shortcode and partial.
