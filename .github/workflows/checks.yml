@@ -1,4 +1,4 @@
-name: check
+name: Build and Checks
 
 on:
   # run tests on push to master, but not when other branches are pushed to
@@ -14,7 +14,7 @@ on:
 # debug GitHub Actions locally with 'act':
 # https://michaelheap.com/testing-github-actions-with-act/
 jobs:
-  check:
+  build-and-check:
     runs-on: ubuntu-latest
 
     steps:
