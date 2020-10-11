@@ -1,4 +1,4 @@
-name: check
+name: Build and Checks
 
 on:
   # run tests on push to master, but not when other branches are pushed to
@@ -14,7 +14,7 @@ on:
 # debug GitHub Actions locally with 'act':
 # https://michaelheap.com/testing-github-actions-with-act/
 jobs:
-  check:
+  build-and-check:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,12 +29,14 @@ jobs:
         run: |
           mkdir $HOME/bin
           curl -L https://github.com/raviqqe/muffet/releases/download/v2.2.1/muffet_2.2.1_Linux_x86_64.tar.gz | tar zx -C $HOME/bin
+          echo "$HOME/bin" >> $GITHUB_PATH
 
       - name: Check out website
         uses: actions/checkout@v1
 
       - name: Build website
-        run: hugo --cleanDestinationDir --destination public-compare --templateMetrics --templateMetricsHints
+        run: |
+          hugo --cleanDestinationDir --destination public-compare --templateMetrics --templateMetricsHints
 
       - name: Check for differences
         run: diff -aur public public-compare
@@ -45,9 +47,9 @@ jobs:
           # For some reason we need this --baseURL argument in place, otherwise muffet will give a lot of
           #   "dial tcp4 127.0.1.1:1313: connect: connection refused" and not be able to scrape the website.
           hugo server --baseURL http://127.0.0.1:1313/ --disableBrowserError --disableLiveReload &
-          # Give Hugo ample time to start up before scraping.
-          sleep 15
+          # Give Hugo some time to start up before scraping.
+          sleep 2
           # Check for dead links and similar problems, with generous timeout due to e.g. MIT PGP server.
-          $HOME/bin/muffet --timeout=90 http://127.0.0.1:1313
+          muffet --timeout=90 http://127.0.0.1:1313
           # kill hugo again
           kill %1

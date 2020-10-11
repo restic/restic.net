@@ -17,5 +17,5 @@ To create a new blog post, do the following:
 
 To re-generate the website, run ``build.sh`` - this will run Hugo with the proper arguments and the website will be generated in the ``public/`` directory.
 
-.. |Build Status| image:: https://travis-ci.com/restic/restic.net.svg?branch=master
-   :target: https://travis-ci.com/restic/restic.net
+.. |Build Status| image:: https://github.com/restic/restic.net/workflows/Build%20and%20Checks/badge.svg
+   :target: https://github.com/restic/restic.net/actions?query=workflow%3A%22Build+and+Checks%22
