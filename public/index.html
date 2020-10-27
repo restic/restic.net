@@ -236,7 +236,8 @@
 <p>To install, please follow the <a href="https://restic.readthedocs.io/en/stable/020_installation.html">Installation Instructions Page</a> in the manual or download the latest native binary on the <a href="https://github.com/restic/restic/releases/latest">GitHub Download Page</a>.</p>
 <h2 id="compatibility">Compatibility</h2>
 <p>Backward compatibility for backups is important so that our users are always able to restore saved data. Therefore restic follows <a href="http://semver.org">Semantic Versioning</a> to clearly define which versions are compatible. The repository and data structures contained therein are considered the &ldquo;Public API&rdquo; in the sense of Semantic Versioning.</p>
-<p>We guarantee backward compatibility of all repositories within one major version; as long as we do not increment the major version, data can be read and restored. We strive to be fully backward compatible to all prior versions.</p>
+<p>Once version 1.0.0 is released, we guarantee backward compatibility of all repositories within one major version; as long as we do not increment the major version, data can be read and restored. We strive to be fully backward compatible to all prior versions.</p>
+<p>During initial development (versions prior to 1.0.0), maintainers and developers will do their utmost to keep backwards compatibility and stability, although there might be breaking changes without increasing the major version.</p>
 <h2 id="contributing">Contributing</h2>
 <p>Contributions are welcome! More information can be found in <a href="https://github.com/restic/restic/blob/master/CONTRIBUTING.md">the restic contribution guidelines</a>. A document describing the design of restic and the data structures stored on disc is contained in <a href="http://restic.readthedocs.io/en/latest/100_references.html#design">the design document</a>.</p>
 <h2 id="contact">Contact</h2>
