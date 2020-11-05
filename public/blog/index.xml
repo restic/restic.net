@@ -6,7 +6,17 @@
     <description>Recent content in Blog on restic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 19 Sep 2020 17:44:59 +0200</lastBuildDate><atom:link href="https://restic.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Nov 2020 10:00:51 +0100</lastBuildDate><atom:link href="https://restic.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Restic 0.11.0</title>
+      <link>https://restic.net/blog/2020-11-05/restic-0.11.0-released/</link>
+      <pubDate>Thu, 05 Nov 2020 10:00:51 +0100</pubDate>
+      
+      <guid>https://restic.net/blog/2020-11-05/restic-0.11.0-released/</guid>
+      <description>Restic 0.11.0 was released today! For downloading the new release and to see a more detailed list of important changes, please head over to GitHub. If you already have restic (0.9.4 or later), you can use the self-update command to automatically download and verify the new release.
+This new release contains a highly anticipated feature on Windows: being able to automatically create a Volume Shadow Copy (VSS) using restic backup --use-fs-snapshot.</description>
+    </item>
+    
     <item>
       <title>restic 0.10.0 released</title>
       <link>https://restic.net/blog/2020-09-19/restic-0.10.0-released/</link>
