@@ -6,9 +6,18 @@
     <description>Recent content in Blog on restic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Nov 2020 10:00:51 +0100</lastBuildDate><atom:link href="https://restic.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 Feb 2021 11:02:36 +0100</lastBuildDate><atom:link href="https://restic.net/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Restic 0.11.0</title>
+      <title>Restic 0.12.0 released</title>
+      <link>https://restic.net/blog/2021-02-14/restic-0.12.0-released/</link>
+      <pubDate>Sun, 14 Feb 2021 11:02:36 +0100</pubDate>
+      
+      <guid>https://restic.net/blog/2021-02-14/restic-0.12.0-released/</guid>
+      <description>We&amp;rsquo;re proud to announce that restic 0.12.0 has been released today! This release packs many speed improvements in several restic commands. For example, we expect that the garbage collection process (restic prune) will be an order of magnitude faster for almost all users. In addition, you can now configure how much data should be optimized (via --max-repack-size) and how much unused data is allowed to remain in the repo (via --max-unused).</description>
+    </item>
+    
+    <item>
+      <title>Restic 0.11.0 released</title>
       <link>https://restic.net/blog/2020-11-05/restic-0.11.0-released/</link>
       <pubDate>Thu, 05 Nov 2020 10:00:51 +0100</pubDate>
       

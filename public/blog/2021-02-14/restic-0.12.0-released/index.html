@@ -14,7 +14,7 @@
   <title>
     restic &middot;
     
-      The restic project turns four!
+      Restic 0.12.0 released
     
   </title>
 
@@ -32,7 +32,7 @@
 
   
   
-  <link rel="canonical" href="https://restic.net/blog/2018-04-06/restic-turns-four/">
+  <link rel="canonical" href="https://restic.net/blog/2021-02-14/restic-0.12.0-released/">
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -75,22 +75,18 @@
 
     <div class="content container">
       <div class="post">
-        <h1 class="post-title">The restic project turns four!</h1>
-        <span class="post-date">06 Apr 2018</span>
-        <p>Four years ago on 2014-04-06 <a href="https://github.com/fd0">fd0</a> added the <a href="https://github.com/restic/restic/commit/c54facf66be1c4e137121f36b300543f6673ea7c">first commit</a> to what would later become the restic repository. At the time it was code-named <code>khepri</code>, but unfortunately the name wasn&rsquo;t available on GitHub any more, so we had to find a different one.</p>
-<p>At the moment, restic&rsquo;s repository was starred on GitHub almost four thousand times. And we&rsquo;ve <a href="https://github.com/restic/others">collected</a> 56 other backup tools along the way, helping countless people to discover backup programs (not necessarily restic alone). These two facts alone prove that it was worth it: More people were able to setup easy, effortless backups which they can depend upon.</p>
-<p>We&rsquo;ve seen quite a few milestones in restic&rsquo;s development, most recently the introduction of the local metadata cache in <a href="https://github.com/restic/restic/releases/v0.8.0">0.8.0</a> in November 2017, which sped up many operations. We continue to improve support for our various backends, the last one was the <code>rclone</code> backend which will be included in the next release and allows using <a href="https://rclone.org">rclone</a>, a versatile cloud syncing tool, for storing backups on a variety of cloud-based backends.</p>
-<p>If you like restic, and you&rsquo;d like development to continue, send some nice words to the developers! Either <del>use the <a href="">SayThanks</a> service</del><sup>1</sup>, or add a comment below via the forum! It&rsquo;s always very encouraging to hear how restic helps users.</p>
-<p>Last, we&rsquo;d like to thank our many contributors! They are not only working on the code, but also on the documentation, the website, help with issue triage, and provide helpful comments in code reviews. You are awesome, thank you very much!</p>
-<hr>
-<p><em>[1] The SayThanks service is deprecated (2020-10-06)</em></p>
+        <h1 class="post-title">Restic 0.12.0 released</h1>
+        <span class="post-date">14 Feb 2021</span>
+        <p>We&rsquo;re proud to announce that <a href="https://github.com/restic/restic/releases/v0.12.0">restic 0.12.0</a> has been released today! This release packs <strong>many</strong> speed improvements in several restic commands. For example, we expect that the garbage collection process (<code>restic prune</code>) will be an order of magnitude faster for almost all users. In addition, you can now configure how much data should be optimized (via <code>--max-repack-size</code>) and how much unused data is allowed to remain in the repo (via <code>--max-unused</code>). These flags gives you more control over how long <code>restic prune</code> will take overall, and also allow you to have several shorter runs of <code>restic prune</code> instead of a single long one. A special thanks goes out to <a href="https://github.com/aawsome">Alexander Weiss</a> for these indeed awesome improvements in particular, but also to all the other contributors who work on restic!</p>
+<p>For downloading the new release and to see a more detailed list of important changes, please head over to <a href="https://github.com/restic/restic/releases/v0.12.0">GitHub</a>. If you already have restic (0.9.4 or later), you can use the <code>self-update</code> command to automatically download and verify the new release.</p>
+<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! Or just write a post in <a href="https://forum.restic.net">the forum</a>. If you have the time, please let us know if the <code>CHANGELOG.md</code> file (also included in the release on GitHub) is helpful for you. We try hard to make it readable for users, so you do not have to follow the development in detail. Is it worth the effort? What do you think? Please answer in the forum below.</p>
 
       </div>
 
       <h2>Comments</h2>
       <div id='discourse-comments'></div>
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2018-04-06\/restic-turns-four\/' };
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2021-02-14\/restic-0.12.0-released\/' };
 
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
