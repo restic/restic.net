@@ -10,12 +10,12 @@
     <nav class="sidebar-nav">
       <a class="sidebar-nav-item{{ if eq .Page.Permalink .Site.BaseURL }} active{{ end }}{{ if eq .Page.RelPermalink "/index.html" }} active{{ end }}" href="{{ .Site.BaseURL }}/">Home</a>
 
-      {{ $currentPage := . }}
-      {{ range .Site.Pages }}
-        {{ if and (eq .Kind "section") (ne .Title "") }}
+      {{- $currentPage := . }}
+      {{- range .Site.Pages }}
+        {{- if and (eq .Kind "section") (ne .Title "") }}
           <a class="sidebar-nav-item{{ if eq .Permalink $currentPage.Permalink }} active{{ end }}" href="{{ .Permalink }}">{{ .Title }}</a>
-        {{ end }}
-      {{ end }}
+        {{- end }}
+      {{- end }}
 
       <a class="sidebar-nav-item" href="https://forum.restic.net/">Forum</a>
       <a class="sidebar-nav-item" href="https://restic.readthedocs.io/en/stable/">Docs</a>
