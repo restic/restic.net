@@ -52,9 +52,9 @@ Contributions are welcome! More information can be found in [the restic contribu
 
 There are several ways to contact the restic project and its community:
 
- * If you have **usage questions** or **problems** in general, please post in [the **forum**](https://forum.restic.net/).
+ * If you have **usage or support questions**, please post in [the **forum**](https://forum.restic.net/).
  * If you discover a **bug** or have a **feature** suggestion, feel free to [open a **GitHub issue**](https://github.com/restic/restic/issues/new/choose). Please make sure to fill out the issue template you are presented with when doing so.
- * If you would like to **chat** about restic with other users there is also the IRC channel `#restic` on `irc.freenode.net`, which you can [access through your browser](https://kiwiirc.com/nextclient/irc.freenode.net/restic) if you don't have an IRC client installed.
+ * If you would like to **chat** about restic with other users there is also the IRC channel `#restic` on `irc.libera.chat`, which you can [access through your browser](https://kiwiirc.com/nextclient/#ircs://irc.libera.chat:6697/#restic) if you don't have an IRC client installed. Please note that support questions are preferably asked in the forum.
  * For **other project related inquiries** (**not** support requests), feel free to just write an e-mail to `alexander@bumpern.de` :)
 
 **Important**: If you discover something that you believe to be a possible critical security problem, please do **not** open a GitHub issue but send an email directly to `alexander@bumpern.de`. If possible, please encrypt your email using PGP ([CF8F18F2844575973F79D4E191A6868BD3F7A907](gpg-key-alex.asc)).
