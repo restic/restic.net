@@ -1,5 +1,5 @@
 ---
-title: "Restic 0.12.1"
+title: "Restic 0.12.1 released"
 date: 2021-08-03T12:04:36+02:00
 ---
 
