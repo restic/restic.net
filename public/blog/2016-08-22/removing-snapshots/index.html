@@ -92,14 +92,14 @@ of the restic repository.</p>
 been written to the environment variables <code>RESTIC_REPOSITORY</code> and
 <code>RESTIC_PASSWORD</code> so that the commands can be run directly. This is how to do
 it:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ export RESTIC_REPOSITORY<span style="color:#f92672">=</span>/tmp RESTIC_PASSWORD<span style="color:#f92672">=</span>geheim</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ export RESTIC_REPOSITORY<span style="color:#f92672">=</span>/tmp RESTIC_PASSWORD<span style="color:#f92672">=</span>geheim</code></pre></div></p>
 <p>Please note that this feature is not yet contained in any released version of
 restic, you need to compile the code from the current (as of 22 August 2016)
 master branch yourself.</p>
 <h2 id="removing-a-single-snapshot">Removing a single snapshot</h2>
 <p>Let&rsquo;s suppose you have a restic repository and ran a backup at 5:00 o&rsquo;clock in the morning each day this year.
 Running the <code>snapshots</code> command shows you around 235 snapshots:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic snapshots
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic snapshots
 ID        Date                 Host        Directory
 ----------------------------------------------------------------------
 6e001a58  2016-01-01 04:00:00  mopped      /home/fd0/tmp/data
@@ -112,7 +112,7 @@ d0267dbb  2016-08-20 05:00:00  mopped      /home/fd0/tmp/data
 <p>The <code>forget</code> command allows removing snapshots. When a snapshot ID like
 <code>6e001a58</code> for the first snapshot made on 1 January 2016 is specified as the
 argument of the command, that snapshot is deleted from the repository:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic forget 6e001a58
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic forget 6e001a58
 removed snapshot 6e001a58
 
 $ restic snapshots
@@ -126,7 +126,7 @@ a07ffe20  2016-01-04 04:00:00  mopped      /home/fd0/tmp/data
 was present when the snapshot was made. Removing a snapshot does not remove the
 data from the repository, only when the command <code>prune</code> is run, unreferenced
 (and therefore unneeded) data is removed:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic prune
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic prune
 counting files in repo
 building new index <span style="color:#66d9ef">for</span> repo
 <span style="color:#f92672">[</span>0:00<span style="color:#f92672">]</span> 100.00%  <span style="color:#ae81ff">1</span> / <span style="color:#ae81ff">1</span> files
@@ -150,7 +150,7 @@ original pack file. This process can also take some time.</p>
 <h2 id="applying-an-expire-policy">Applying an expire policy</h2>
 <p>Removing a single snapshot is useful, but not very convenient. Let&rsquo;s check out
 the specific parameters of the <code>forget</code> command:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic forget --help
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic forget --help
 <span style="color:#f92672">[</span>...<span style="color:#f92672">]</span>
 Help Options:
   -h, --help              Show this help message
@@ -172,7 +172,7 @@ restic which snapshots you want to keep. Restic then goes through the list of
 snapshots and removes those that do not match the policy.</p>
 <p>Let&rsquo;s try this with a simple policy: Restic should keep the last seven daily
 snapshots, eight weekly backups and only a monthly backup for 24 months:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic forget --dry-run --keep-daily <span style="color:#ae81ff">7</span> --keep-weekly <span style="color:#ae81ff">8</span> --keep-monthly <span style="color:#ae81ff">24</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic forget --dry-run --keep-daily <span style="color:#ae81ff">7</span> --keep-weekly <span style="color:#ae81ff">8</span> --keep-monthly <span style="color:#ae81ff">24</span>
 keep <span style="color:#ae81ff">21</span> snapshots:
 ID        Date                 Host        Directory
 ----------------------------------------------------------------------
@@ -210,7 +210,7 @@ ee891602  2016-01-03 04:00:00  mopped      /home/fd0/tmp/data
 62a86121  2016-01-02 04:00:00  mopped      /home/fd0/tmp/data</code></pre></div>
 <p>You can see that when this command is run without <code>--dry-run</code>, restic will
 remove a lot of snapshots (213 of 235):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic forget --keep-daily <span style="color:#ae81ff">7</span> --keep-weekly <span style="color:#ae81ff">8</span> --keep-monthly <span style="color:#ae81ff">24</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic forget --keep-daily <span style="color:#ae81ff">7</span> --keep-weekly <span style="color:#ae81ff">8</span> --keep-monthly <span style="color:#ae81ff">24</span>
 snapshots <span style="color:#66d9ef">for</span> host mopped, directories /home/fd0/tmp/data:
 
 keep <span style="color:#ae81ff">21</span> snapshots:
@@ -240,7 +240,7 @@ creating new index
 saved new index as 504caa39
 <span style="color:#66d9ef">done</span></code></pre></div>
 <p>Afterwards, the list of snapshots is a lot shorter:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic snapshots
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic snapshots
 ID        Date                 Host        Directory
 ----------------------------------------------------------------------
 dd2bbbf9  2016-01-31 04:00:00  mopped      /home/fd0/tmp/data
@@ -280,7 +280,7 @@ four most recent hours in which a snapshot was created. For each of those
 hours, it marks the last snapshot as to be kept, and flags the others for
 removal. It will then remove all the snapshots for these hours from the list.</p>
 <p>It&rsquo;s easier than it sounds. Consider the following snapshots in a repo:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic snapshots
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic snapshots
 ID        Date                 Host        Directory
 ----------------------------------------------------------------------
 dbd30e0e  2016-08-22 03:00:00  mopped      /home/fd0/tmp/data
@@ -298,7 +298,7 @@ d221a465  2016-08-22 19:24:00  mopped      /home/fd0/tmp/data
 means that <code>98fb9f00</code> is kept, and <code>d221a465</code> is removed. The next hour that
 has a snapshot starts at 18:00:00, the one after that at 05:00:00, and so on.
 This is the result of running <code>forget --keep-hourly 4</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic forget --dry-run --keep-hourly <span style="color:#ae81ff">4</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic forget --dry-run --keep-hourly <span style="color:#ae81ff">4</span>
 keep <span style="color:#ae81ff">21</span> snapshots:
 ID        Date                 Host        Directory
 ----------------------------------------------------------------------
@@ -350,13 +350,13 @@ you notice any odd behavior or find bugs.</p>
           
           <ul>
 <li>
+<p>03 Aug 2021 » <a href="/blog/2021-08-03/restic-0.12.1-released/">Restic 0.12.1</a></p>
+</li>
+<li>
 <p>14 Feb 2021 » <a href="/blog/2021-02-14/restic-0.12.0-released/">Restic 0.12.0 released</a></p>
 </li>
 <li>
 <p>05 Nov 2020 » <a href="/blog/2020-11-05/restic-0.11.0-released/">Restic 0.11.0 released</a></p>
-</li>
-<li>
-<p>19 Sep 2020 » <a href="/blog/2020-09-19/restic-0.10.0-released/">restic 0.10.0 released</a></p>
 </li>
 </ul>
 

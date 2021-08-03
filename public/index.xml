@@ -8,6 +8,17 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 06 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Restic 0.12.1</title>
+      <link>https://restic.net/blog/2021-08-03/restic-0.12.1-released/</link>
+      <pubDate>Tue, 03 Aug 2021 12:04:36 +0200</pubDate>
+      
+      <guid>https://restic.net/blog/2021-08-03/restic-0.12.1-released/</guid>
+      <description>We&amp;rsquo;re proud to announce that restic 0.12.1 has been released today! This release contains several small fixes for bugs and a few smaller enhancements.
+For downloading the new release and to see a more detailed list of important changes, please head over to GitHub. If you already have restic (0.9.4 or later), you can use the self-update command to automatically download and verify the new release.
+As always, thanks for reporting any issues you encounter!</description>
+    </item>
+    
+    <item>
       <title>Restic 0.12.0 released</title>
       <link>https://restic.net/blog/2021-02-14/restic-0.12.0-released/</link>
       <pubDate>Sun, 14 Feb 2021 11:02:36 +0100</pubDate>

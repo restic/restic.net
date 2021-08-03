@@ -204,29 +204,29 @@ save the changed first chunk.</p>
 fun with restic. For the sake of simplicity, we&rsquo;ll save the repository location
 and the password in environment variables (<code>RESTIC_REPOSITORY</code> and
 <code>RESTIC_PASSWORD</code>) so that we don&rsquo;t have to type the password for every action:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ export RESTIC_REPOSITORY<span style="color:#f92672">=</span>/tmp/restic-test-repository RESTIC_PASSWORD<span style="color:#f92672">=</span>foo</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ export RESTIC_REPOSITORY<span style="color:#f92672">=</span>/tmp/restic-test-repository RESTIC_PASSWORD<span style="color:#f92672">=</span>foo</code></pre></div>
 <p>Please be aware that this way the password will be contained in your shell
 history.</p>
 <p>First, we&rsquo;ll initialize a new repository at a temporary location:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic init
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic init
 created restic backend 2b310bf378 at /tmp/restic-test-repository
 
 Please note that knowledge of your password is required to access
 the repository. Losing your password means that your data is
 irrecoverably lost.</code></pre></div>
 <p>At this point, nothing has been saved to the repository, so it is rather small:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ du -sh $RESTIC_REPOSITORY
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ du -sh $RESTIC_REPOSITORY
 8.0K	/tmp/restic-test-repository</code></pre></div>
 <p>Next, we create a new directory called <code>testdata</code> for our test, containing a file
 <code>file.raw</code>, filled with 100MiB of random data:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mkdir testdata
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mkdir testdata
 $ dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/urandom of<span style="color:#f92672">=</span>testdata/file.raw bs<span style="color:#f92672">=</span>1M count<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>
 100+0 records in
 100+0 records out
 <span style="color:#ae81ff">104857600</span> bytes <span style="color:#f92672">(</span><span style="color:#ae81ff">105</span> MB<span style="color:#f92672">)</span> copied, 5.76985 s, 18.2 MB/s</code></pre></div></p>
 <p>We then backup this directory with restic (into the repository we specified via the
 environment variable <code>$RESTIC_REPOSITORY</code> above):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic backup testdata
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic backup testdata
 scan <span style="color:#f92672">[</span>/home/fd0/tmp/testdata<span style="color:#f92672">]</span>
 scanned <span style="color:#ae81ff">1</span> directories, <span style="color:#ae81ff">1</span> files in 0:00
 <span style="color:#f92672">[</span>0:02<span style="color:#f92672">]</span> 100.00%  41.457 MiB/s  100.000 MiB / 100.000 MiB  <span style="color:#ae81ff">0</span> / <span style="color:#ae81ff">2</span> it...ETA 0:00
@@ -234,12 +234,12 @@ duration: 0:02, 44.21MiB/s
 snapshot 7452bd17 saved</code></pre></div>
 <p>We can see that restic created a backup with a size of 100MiB in about two
 seconds. We can verify this by checking the size of the repository again:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ du -sh $RESTIC_REPOSITORY
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ du -sh $RESTIC_REPOSITORY
 101M	/tmp/restic-test-repository</code></pre></div>
 <p>Not surprisingly, the repository is roughly the same size as the data we have
 created the backup of.</p>
 <p>Now, we run the backup command for a second time:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic backup testdata
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic backup testdata
 using parent snapshot 7452bd17
 scan <span style="color:#f92672">[</span>/home/fd0/tmp/testdata<span style="color:#f92672">]</span>
 scanned <span style="color:#ae81ff">1</span> directories, <span style="color:#ae81ff">1</span> files in 0:00
@@ -252,12 +252,12 @@ would have also been able to efficiently backup a file that was renamed or even
 moved to a different directory.</p>
 <p>Looking at the repository size we can already guess that it is still about
 100MiB, since we didn&rsquo;t really add any new data:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ du -sh $RESTIC_REPOSITORY
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ du -sh $RESTIC_REPOSITORY
 101M	/tmp/restic-test-repository</code></pre></div>
 <p>When we make a copy of the file <code>file.raw</code> and backup the same repository again,
 restic recognises that all data is already known and the repository size does
 not grow at all, although the directory <code>testdata</code> now contains 200MiB of data:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cp testdata/file.raw testdata/file2.raw
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cp testdata/file.raw testdata/file2.raw
 
 $ du -sh testdata
 200M	testdata
@@ -275,14 +275,14 @@ $ du -sh $RESTIC_REPOSITORY
 <p>Now for the final demonstration we&rsquo;ll create a new file <code>file3.raw</code> which is a
 nasty combination of the 100MiB we&rsquo;ve initially saved in <code>file.raw</code> so that
 <code>testdata</code> now contains about 400MiB:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#f92672">(</span>echo foo; cat testdata/file.raw; echo bar; cat testdata/file.raw; echo baz<span style="color:#f92672">)</span> <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#f92672">(</span>echo foo; cat testdata/file.raw; echo bar; cat testdata/file.raw; echo baz<span style="color:#f92672">)</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  &gt; testdata/file3.raw
 
 $ du -sh testdata
 401M	testdata</code></pre></div>
 <p>We&rsquo;ll create a new backup of the directory with restic and observe that the
 repository has grown by about 10MiB:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic backup testdata
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ restic backup testdata
 using parent snapshot ab8e0047
 scan <span style="color:#f92672">[</span>/home/fd0/tmp/testdata<span style="color:#f92672">]</span>
 scanned <span style="color:#ae81ff">1</span> directories, <span style="color:#ae81ff">3</span> files in 0:00
@@ -335,13 +335,13 @@ This gives us not only <em>inter-file</em> de-duplication, but also the more rel
           
           <ul>
 <li>
+<p>03 Aug 2021 » <a href="/blog/2021-08-03/restic-0.12.1-released/">Restic 0.12.1</a></p>
+</li>
+<li>
 <p>14 Feb 2021 » <a href="/blog/2021-02-14/restic-0.12.0-released/">Restic 0.12.0 released</a></p>
 </li>
 <li>
 <p>05 Nov 2020 » <a href="/blog/2020-11-05/restic-0.11.0-released/">Restic 0.11.0 released</a></p>
-</li>
-<li>
-<p>19 Sep 2020 » <a href="/blog/2020-09-19/restic-0.10.0-released/">restic 0.10.0 released</a></p>
 </li>
 </ul>
 

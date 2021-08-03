@@ -97,7 +97,7 @@ the cached version.</p>
 can <a href="https://docs.travis-ci.com/user/caching/">tell it</a> to keep the build cache
 directory and extract it before the tests are run next time. The entry in the
 configuration file <code>.travis.yml</code> looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">cache</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">cache</span>:
   <span style="color:#f92672">directories</span>:
     - <span style="color:#ae81ff">$HOME/.cache/go-build</span>
     - <span style="color:#ae81ff">$HOME/gopath/pkg/mod</span>
@@ -106,7 +106,7 @@ information about released modules. This is a feature introduced with Go 1.11.</
 <p>The directories listed above work for Linux, but the Go build cache directory
 is somewhere else on OS X, so we need to add the cache entries to our build
 matrix:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">matrix</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">matrix</span>:
   <span style="color:#f92672">include</span>:
     - <span style="color:#f92672">os</span>: <span style="color:#ae81ff">linux</span>
       <span style="color:#f92672">go</span>: <span style="color:#e6db74">&#34;1.9.x&#34;</span>
@@ -145,7 +145,7 @@ reduced at all since it does not have the build cache feature.</p>
 <p>AppVeyor also has a <a href="https://www.appveyor.com/docs/build-cache/">build cache
 feature</a>, it can be enabled by
 specifying the list of directories to cache in the <code>appveyor.yml</code> like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">cache</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">cache</span>:
   - <span style="color:#e6db74">&#39;%LocalAppData%\go-build&#39;</span>
 </code></pre></div><p>For restic, the build cache is not so relevant on AppVeyor, since we&rsquo;re only
 using it to run our integration tests on Windows and don&rsquo;t run any
@@ -178,13 +178,13 @@ forum</a>)!</p>
           
           <ul>
 <li>
+<p>03 Aug 2021 » <a href="/blog/2021-08-03/restic-0.12.1-released/">Restic 0.12.1</a></p>
+</li>
+<li>
 <p>14 Feb 2021 » <a href="/blog/2021-02-14/restic-0.12.0-released/">Restic 0.12.0 released</a></p>
 </li>
 <li>
 <p>05 Nov 2020 » <a href="/blog/2020-11-05/restic-0.11.0-released/">Restic 0.11.0 released</a></p>
-</li>
-<li>
-<p>19 Sep 2020 » <a href="/blog/2020-09-19/restic-0.10.0-released/">restic 0.10.0 released</a></p>
 </li>
 </ul>
 
