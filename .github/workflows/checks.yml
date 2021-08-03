@@ -28,7 +28,7 @@ jobs:
       - name: Install muffet
         run: |
           mkdir $HOME/bin
-          curl -L https://github.com/raviqqe/muffet/releases/download/v2.2.1/muffet_2.2.1_Linux_x86_64.tar.gz | tar zx -C $HOME/bin
+          curl -L https://github.com/raviqqe/muffet/releases/download/v2.4.2/muffet_2.4.2_Linux_x86_64.tar.gz | tar zx -C $HOME/bin
           echo "$HOME/bin" >> $GITHUB_PATH
 
       - name: Check out website
@@ -50,6 +50,6 @@ jobs:
           # Give Hugo some time to start up before scraping.
           sleep 2
           # Check for dead links and similar problems, with generous timeout due to e.g. MIT PGP server.
-          muffet --timeout=90 http://127.0.0.1:1313
+          muffet --timeout=90 --ignore-fragments http://127.0.0.1:1313
           # kill hugo again
           kill %1
