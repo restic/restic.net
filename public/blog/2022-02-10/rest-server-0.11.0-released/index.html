@@ -14,7 +14,7 @@
   <title>
     restic &middot;
     
-      Upcoming changes for the S3 backend
+      Rest Server 0.11.0 released
     
   </title>
 
@@ -32,7 +32,7 @@
 
   
   
-  <link rel="canonical" href="https://restic.net/blog/2017-11-25/upcoming-changes-to-s3/">
+  <link rel="canonical" href="https://restic.net/blog/2022-02-10/rest-server-0.11.0-released/">
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -75,33 +75,17 @@
 
     <div class="content container">
       <div class="post">
-        <h1 class="post-title">Upcoming changes for the S3 backend</h1>
-        <span class="post-date">25 Nov 2017</span>
-        <p>TL;DR: If you&rsquo;re using the <code>s3</code> backend and cannot access your repo any more, append the path <code>/restic</code> to the repository location.</p>
-<p>We&rsquo;ve just merged <a href="https://github.com/restic/restic/pull/1437">Pull Request #1437</a> which resolves an issue with the S3 backend reported in <a href="https://github.com/restic/restic/issues/1292">#1292</a>. When the next restic version is released (or you&rsquo;re using the master branch directly), this may require modifying the repository location you&rsquo;re passing to restic.</p>
-<p>In order to access a repository stored on S3, restic requires the following information:</p>
-<ul>
-<li>The endpoint address: For Amazon S3, it&rsquo;s <code>s3.amazonaws.com</code>, for a custom hosted <a href="https://minio.io/">Minio</a> server it may be <code>https://minio.example.com</code>.</li>
-<li>The bucket name (e.g. <code>backup-servers</code>)</li>
-<li>The path within the bucket (e.g. <code>/repo-server1</code>)</li>
-</ul>
-<p>The endpoint address and bucket name are required for operation, but the path is optional. When the path is not set or empty, restic used to use the default path <code>/restic</code> within the bucket. This has now changed: When the path is not set or empty, the repository is put at the root of the bucket, so the path is <code>/</code>.</p>
-<p>This change was made so that it is possible to have the repository directly in the root of the bucket. The default path <code>/restic</code> within the bucket only existed for historical reasons and was never properly documented.</p>
-<p>So, if you did not specify a path within the bucket, you&rsquo;ll now get an error that the repo cannot be found:</p>
-<pre tabindex="0"><code>$ restic -r s3:s3.amazonaws.com/backup-servers snapshots
-unable to open config file: Stat: The specified key does not exist.
-Is there a repository at the following location?
-s3:s3.amazonaws.com/backup-servers
-</code></pre><p>Then you&rsquo;ll need to add the path <code>/restic</code> now in order to access an existing repo, like this:</p>
-<pre tabindex="0"><code>$ restic -r s3:s3.amazonaws.com/backup-servers/restic snapshots
-</code></pre><p>As always, if you have feedback for us, please use <a href="https://forum.restic.net">the forum</a> embedded below or (if you experience a bug) <a href="https://github.com/restic/restic/issues/new">create a new issue on GitHub</a>. Thanks!</p>
+        <h1 class="post-title">Rest Server 0.11.0 released</h1>
+        <span class="post-date">10 Feb 2022</span>
+        <p>We have just released <a href="https://github.com/restic/rest-server/releases/tag/v0.11.0">rest-server 0.11.0</a>. It includes a fix for an issue where during transfer, a file could have been corrupted. The details are described in <a href="https://github.com/restic/rest-server/pull/142">PR #142</a>. The full changelog is included in the <a href="https://github.com/restic/rest-server/releases/tag/v0.11.0">release</a>.</p>
+<p>Please let us know what you think in the forum post linked below!</p>
 
       </div>
 
       <h2>Comments</h2>
       <div id='discourse-comments'></div>
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2017-11-25\/upcoming-changes-to-s3\/' };
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2022-02-10\/rest-server-0.11.0-released\/' };
 
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
