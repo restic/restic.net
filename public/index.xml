@@ -8,6 +8,17 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 06 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Restic 0.13.0 Released</title>
+      <link>https://restic.net/blog/2022-03-26/restic-0.13.0-released/</link>
+      <pubDate>Sat, 26 Mar 2022 19:47:44 +0100</pubDate>
+      
+      <guid>https://restic.net/blog/2022-03-26/restic-0.13.0-released/</guid>
+      <description>We&amp;rsquo;re proud to announce that restic 0.13.0 has been released today!
+This release contains several bug fixes and improvements worth mentioning:
+ It is now possible to add negative patterns to cancel previous exclusions (e.g. --exclude &#39;/home/user/*&#39; --exclude &#39;!/home/user/.config&#39;). The backup command now has a --dry-run switch which (together with --verbose) prints the files that would be included in a backup. We have added checksums for various backends so data uploaded to a backend can be checked there.</description>
+    </item>
+    
+    <item>
       <title>Rest Server 0.11.0 released</title>
       <link>https://restic.net/blog/2022-02-10/rest-server-0.11.0-released/</link>
       <pubDate>Thu, 10 Feb 2022 20:23:36 +0100</pubDate>
@@ -407,7 +418,7 @@ As always, thanks for reporting any issues you encounter!</description>
       <pubDate>Thu, 02 Feb 2017 00:00:00 +0000</pubDate>
       
       <guid>https://restic.net/blog/2017-02-02/FOSDEM-2017-Brussels/</guid>
-      <description>For the third time at this year&amp;rsquo;s FOSDEM (which stands for &amp;ldquo;Free and Open Source Software Developers&#39; European Meeting&amp;rdquo; according to Wikipedia) features a room on Sunday (5 February 2017) dedicated to Go development: The Go Devroom. fd0 will be available for a chat about restic and Go development the whole day!</description>
+      <description>For the third time at this year&amp;rsquo;s FOSDEM (which stands for &amp;ldquo;Free and Open Source Software Developers&amp;rsquo; European Meeting&amp;rdquo; according to Wikipedia) features a room on Sunday (5 February 2017) dedicated to Go development: The Go Devroom. fd0 will be available for a chat about restic and Go development the whole day!</description>
     </item>
     
     <item>

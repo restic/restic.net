@@ -89,28 +89,28 @@ pointers to a commit, optionally annotated with other data. You can read about
 tags in detail <a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging">here</a>.
 Creating a signed tag is really easy: just call <code>git tag</code> with <code>--annotate</code> and
 <code>--sign</code>, e.g. to sign the current commit as version 0.1.0 run:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git tag --annotate --sign --message <span style="color:#e6db74">&#34;v0.1.0&#34;</span> v0.1.0</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ git tag --annotate --sign --message <span style="color:#e6db74">&#34;v0.1.0&#34;</span> v0.1.0</span></span></code></pre></div>
 <p>You can then use <code>git tag --verify</code> to check the signature:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git tag --verify v0.1.0
-object 16e87d72087a2550b24b413ffc46e9d1fa50dd68
-type commit
-tag v0.1.0
-tagger Alexander Neumann &lt;alexander@bumpern.de&gt; <span style="color:#ae81ff">1440188457</span> +0200
-
-v0.1.0
-gpg: Signature made Fr <span style="color:#ae81ff">21</span> Aug <span style="color:#ae81ff">2015</span> 22:20:57 CEST using RSA key ID D3F7A907
-gpg: Good signature from <span style="color:#e6db74">&#34;Alexander Neumann &lt;alexander@bumpern.de&gt;&#34;</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ git tag --verify v0.1.0
+</span></span><span style="display:flex;"><span>object 16e87d72087a2550b24b413ffc46e9d1fa50dd68
+</span></span><span style="display:flex;"><span>type commit
+</span></span><span style="display:flex;"><span>tag v0.1.0
+</span></span><span style="display:flex;"><span>tagger Alexander Neumann &lt;alexander@bumpern.de&gt; <span style="color:#ae81ff">1440188457</span> +0200
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>v0.1.0
+</span></span><span style="display:flex;"><span>gpg: Signature made Fr <span style="color:#ae81ff">21</span> Aug <span style="color:#ae81ff">2015</span> 22:20:57 CEST using RSA key ID D3F7A907
+</span></span><span style="display:flex;"><span>gpg: Good signature from <span style="color:#e6db74">&#34;Alexander Neumann &lt;alexander@bumpern.de&gt;&#34;</span></span></span></code></pre></div>
 <p>At the moment, we&rsquo;re in an early stage of the project and haven&rsquo;t setup a
 dedicated signing key so all releases are signed by
 <a href="https://github.com/fd0">fd0</a>. In order to verify the integrity against this
 key you need to import it, e.g. from the public key servers:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ gpg --recv-key D3F7A907</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ gpg --recv-key D3F7A907</span></span></code></pre></div>
 <p>Afterwards make sure to verify the fingerprint:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ gpg --fingerprint D3F7A907
-pub   rsa4096/D3F7A907 2014-11-01
-      Key fingerprint <span style="color:#f92672">=</span> CF8F 18F2 <span style="color:#ae81ff">8445</span> <span style="color:#ae81ff">7597</span> 3F79  D4E1 91A6 868B D3F7 A907
-uid         <span style="color:#f92672">[</span>ultimate<span style="color:#f92672">]</span> Alexander Neumann &lt;alexander@bumpern.de&gt;
-sub   rsa4096/4043FDF1 2014-11-01</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ gpg --fingerprint D3F7A907
+</span></span><span style="display:flex;"><span>pub   rsa4096/D3F7A907 2014-11-01
+</span></span><span style="display:flex;"><span>      Key fingerprint <span style="color:#f92672">=</span> CF8F 18F2 <span style="color:#ae81ff">8445</span> <span style="color:#ae81ff">7597</span> 3F79  D4E1 91A6 868B D3F7 A907
+</span></span><span style="display:flex;"><span>uid         <span style="color:#f92672">[</span>ultimate<span style="color:#f92672">]</span> Alexander Neumann &lt;alexander@bumpern.de&gt;
+</span></span><span style="display:flex;"><span>sub   rsa4096/4043FDF1 2014-11-01</span></span></code></pre></div>
 <h3 id="recreating-automatically-generated-release-archives">Recreating Automatically Generated Release Archives</h3>
 <p>For each tag, we create a release on the <a href="https://github.com/restic/restic">restic GitHub project
 page</a>. You can see a list of all releases
@@ -119,26 +119,26 @@ offers an automatically generated <code>tar.gz</code> file containing the code f
 release.</p>
 <p>For restic version 0.1.0, the <code>tar.gz</code> file can be recreated from a checkout of
 the repository as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ git archive --format<span style="color:#f92672">=</span>tar --prefix<span style="color:#f92672">=</span>restic-0.1.0/ v0.1.0 | gzip -n &gt; restic-0.1.0.tar.gz</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ git archive --format<span style="color:#f92672">=</span>tar --prefix<span style="color:#f92672">=</span>restic-0.1.0/ v0.1.0 | gzip -n &gt; restic-0.1.0.tar.gz</span></span></code></pre></div>
 <p>Comparing the SHA-256 hash against the hash of the automatically generated file
 shows that indeed the same file has been generated:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sha256sum restic-0.1.0.tar.gz
-df7842cb690a56ce5371013a958d9f324072429897511d4bbfc092d76303f198  restic-0.1.0.tar.gz
-
-$ curl -s -L https://github.com/restic/restic/archive/v0.1.0.tar.gz | sha256sum
-df7842cb690a56ce5371013a958d9f324072429897511d4bbfc092d76303f198  -</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sha256sum restic-0.1.0.tar.gz
+</span></span><span style="display:flex;"><span>df7842cb690a56ce5371013a958d9f324072429897511d4bbfc092d76303f198  restic-0.1.0.tar.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ curl -s -L https://github.com/restic/restic/archive/v0.1.0.tar.gz | sha256sum
+</span></span><span style="display:flex;"><span>df7842cb690a56ce5371013a958d9f324072429897511d4bbfc092d76303f198  -</span></span></code></pre></div>
 <h3 id="signing-and-verifying-release-files">Signing and Verifying Release Files</h3>
 <p>The file generated via <code>git archive</code> as described above is then signed with GPG:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ gpg --armor --detach-sign restic-0.1.0.tar.gz</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ gpg --armor --detach-sign restic-0.1.0.tar.gz</span></span></code></pre></div>
 <p>And both files <code>restic-0.1.0.tar.gz</code> and <code>restic-0.1.0.tar.gz.asc</code> are uploaded
 and attached to the release on GitHub.</p>
 <p>When you download the source code and the signature from the <a href="https://github.com/restic/restic/releases">GitHub Releases
 Page</a>, you can afterwards verify the
 signature as follows (provided the necessary GPG key has been retrieved):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ gpg --verify restic-0.1.0.tar.gz.asc 
-gpg: assuming signed data in <span style="color:#e6db74">&#39;restic-0.1.0.tar.gz&#39;</span>
-gpg: Signature made Mi <span style="color:#ae81ff">16</span> Sep <span style="color:#ae81ff">2015</span> 23:33:11 CEST using RSA key ID D3F7A907
-gpg: Good signature from <span style="color:#e6db74">&#34;Alexander Neumann &lt;alexander@bumpern.de&gt;&#34;</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ gpg --verify restic-0.1.0.tar.gz.asc 
+</span></span><span style="display:flex;"><span>gpg: assuming signed data in <span style="color:#e6db74">&#39;restic-0.1.0.tar.gz&#39;</span>
+</span></span><span style="display:flex;"><span>gpg: Signature made Mi <span style="color:#ae81ff">16</span> Sep <span style="color:#ae81ff">2015</span> 23:33:11 CEST using RSA key ID D3F7A907
+</span></span><span style="display:flex;"><span>gpg: Good signature from <span style="color:#e6db74">&#34;Alexander Neumann &lt;alexander@bumpern.de&gt;&#34;</span></span></span></code></pre></div>
 <h3 id="conclusion">Conclusion</h3>
 <p>While GitHub provides a great service, it&rsquo;s always a good idea to independently
 verify the integrity of the source code before using it. Especially for package
@@ -166,13 +166,13 @@ addition a GPG signature is provided for the <code>tar.gz</code> files for each 
           
           <ul>
 <li>
+<p>26 Mar 2022 » <a href="/blog/2022-03-26/restic-0.13.0-released/">Restic 0.13.0 Released</a></p>
+</li>
+<li>
 <p>10 Feb 2022 » <a href="/blog/2022-02-10/rest-server-0.11.0-released/">Rest Server 0.11.0 released</a></p>
 </li>
 <li>
 <p>03 Aug 2021 » <a href="/blog/2021-08-03/restic-0.12.1-released/">Restic 0.12.1 released</a></p>
-</li>
-<li>
-<p>14 Feb 2021 » <a href="/blog/2021-02-14/restic-0.12.0-released/">Restic 0.12.0 released</a></p>
 </li>
 </ul>
 
