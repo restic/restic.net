@@ -14,7 +14,7 @@
   <title>
     restic &middot;
     
-      Documentation and Manual
+      Restic 0.13.1 Released
     
   </title>
 
@@ -32,7 +32,7 @@
 
   
   
-  <link rel="canonical" href="https://restic.net/blog/2016-02-24/Documentation/">
+  <link rel="canonical" href="https://restic.net/blog/2022-04-10/restic-0.13.1-released/">
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -75,44 +75,18 @@
 
     <div class="content container">
       <div class="post">
-        <h1 class="post-title">Documentation and Manual</h1>
-        <span class="post-date">24 Feb 2016</span>
-        <p>Documentation in software projects is one of the things most developers hate.
-It is no secret that the docs always seem to be out of date.</p>
-<p>In order to improve this situation for restic, since a <a href="https://github.com/restic/restic/commit/eaa2f899d5f7c1d6e21d058cd5f5b6dc65eb45e6">few days
-ago</a>
-the manual and documentation is part of the main restic repository. Having the
-documentation in the main repository means that all users have instant access
-to the exact version of the documentation they&rsquo;ll need and developers can
-document new features in the same Pull Request they&rsquo;re submitting the code.</p>
-<p>We chose <a href="http://www.mkdocs.org/">MkDocs</a> so we can easily write the
-documentation in Markdown and locally preview it before publishing. The
-documentation can be viewed locally by running the following command from
-within the repository:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ mkdocs serve
-</span></span><span style="display:flex;"><span>INFO    -  Building documentation... 
-</span></span><span style="display:flex;"><span>INFO    -  Cleaning site directory 
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>I <span style="color:#ae81ff">160224</span> 21:04:49 server:271<span style="color:#f92672">]</span> Serving on http://127.0.0.1:8000
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>I <span style="color:#ae81ff">160224</span> 21:04:49 handlers:58<span style="color:#f92672">]</span> Start watching changes
-</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>I <span style="color:#ae81ff">160224</span> 21:04:49 handlers:60<span style="color:#f92672">]</span> Start detecting changes</span></span></code></pre></div>
-<p>Afterwards just visit the printed URL. If you pass the additional parameter
-<code>--livereload</code>, the browser will automatically refresh after a files was
-changed. Of course you can also just view the Markdown files in a text editor,
-without any third-party software. We&rsquo;ll always try to make the documentation
-readable in plain text.</p>
-<p>Additionally we&rsquo;ve enabled the awesome
-<a href="https://readthedocs.org/">Read the Docs</a> service, which allows reading the
-documentation at <a href="https://restic.readthedocs.io/">https://restic.readthedocs.io/</a>. In the bottom left corner
-is a small menu which allows switching to a specific version of the
-documentation. The URL <a href="https://restic.readthedocs.io/en/latest/">https://restic.readthedocs.io/en/latest/</a> will always
-return the docs for the latest master branch.</p>
+        <h1 class="post-title">Restic 0.13.1 Released</h1>
+        <span class="post-date">10 Apr 2022</span>
+        <p>We&rsquo;re proud to announce that <a href="https://github.com/restic/restic/releases/v0.13.1">restic 0.13.1</a> has been released today!</p>
+<p>This release contains two smaller bug fixes which came up after the last release. For downloading the new release and to see a more detailed list of important changes, please head over to <a href="https://github.com/restic/restic/releases/v0.13.1">GitHub</a>. If you already have restic (0.9.4 or later), you can use the <code>self-update</code> command to automatically download and verify the new release.</p>
+<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! Or just write a post in <a href="https://forum.restic.net">the forum</a>.</p>
 
       </div>
 
       <h2>Comments</h2>
       <div id='discourse-comments'></div>
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2016-02-24\/Documentation\/' };
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2022-04-10\/restic-0.13.1-released\/' };
 
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
