@@ -63,6 +63,7 @@ There are several ways to contact the restic project and its community:
 
 The following talks have been given about restic:
 
+ * 2021-03-21: [The Changelog: Restic has your backup (Podcast)](https://changelog.com/podcast/434)
  * 2016-01-31: Lightning Talk at the Go Devroom at FOSDEM 2016, Brussels, Belgium
  * 2016-01-29: [restic - Backups mal richtig](https://media.ccc.de/v/c4.openchaos.2016.01.restic): Public lecture in German at [CCC Cologne e.V.](https://koeln.ccc.de) in Cologne, Germany
  * 2015-08-23: [A Solution to the Backup Inconvenience](https://media.ccc.de/browse/conferences/froscon/2015/froscon2015-1515-a_solution_to_the_backup_inconvenience.html): Lecture at [FROSCON 2015](https://www.froscon.de) in Bonn, Germany
