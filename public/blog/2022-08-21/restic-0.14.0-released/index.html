@@ -14,7 +14,7 @@
   <title>
     restic &middot;
     
-      Introduction to the restic Blog - Welcome!
+      Restic 0.14.0 Released
     
   </title>
 
@@ -32,7 +32,7 @@
 
   
   
-  <link rel="canonical" href="https://restic.net/blog/2015-09-12/intro/">
+  <link rel="canonical" href="https://restic.net/blog/2022-08-21/restic-0.14.0-released/">
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -75,23 +75,29 @@
 
     <div class="content container">
       <div class="post">
-        <h1 class="post-title">Introduction to the restic Blog - Welcome!</h1>
-        <span class="post-date">12 Sep 2015</span>
-        <p>If you&rsquo;re reading this, you&rsquo;ve found your way to the restic development blog,
-awesome! Let me welcome you on behalf of the whole development team.</p>
-<p>In this blog we&rsquo;ll publish articles that explain the foundation techniques that
-restic is built upon and will give some insights into what&rsquo;s happening on the
-development side of restic. Once restic is widely in use, we&rsquo;ll probably shift
-the focus a bit towards the user perspective of backups and present tips and
-tricks for using restic more efficiently.</p>
-<p>But for now, stay tuned for explanations of the base techniques!</p>
+        <h1 class="post-title">Restic 0.14.0 Released</h1>
+        <span class="post-date">21 Aug 2022</span>
+        <p>We today happily announce the release of <a href="https://github.com/restic/restic/releases/v0.14.0">restic 0.14.0</a>! \o/</p>
+<p>This release contains a highly anticipated feature in restic - compression! To start using it, either <a href="https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html#preparing-a-new-repository">initialize a new repository</a> (with the option <code>--repository-version 2</code>) or <a href="https://restic.readthedocs.io/en/stable/045_working_with_repos.html#upgrading-the-repository-format-version">upgrade your current repository</a>. The <a href="https://restic.readthedocs.io/en/stable/047_tuning_backup_parameters.html#compression">compression level</a> can be changed from the default <code>auto</code> (fast and efficient) to <code>max</code> or <code>off</code> using the <code>--compression</code> option (or the corresponding <a href="https://restic.readthedocs.io/en/stable/040_backup.html#environment-variables">environment variable</a>). Please note that the new/upgraded repository can only be accessed by restic version 0.14 or higher.</p>
+<p>Another feature that can be highly useful is the <code>--unsafe-recover-no-free-space</code> option to the <code>prune</code> command, which allows you to save the day when the repository storage has been completely saturated. Just make sure to <a href="https://restic.readthedocs.io/en/stable/060_forget.html#recovering-from-no-free-space-errors">read the corresponding documentation</a> first!</p>
+<p>Besides the above, here are some other notable fixes and improvements in this release:</p>
+<ul>
+<li>Ability to <a href="https://restic.readthedocs.io/en/stable/047_tuning_backup_parameters.html#backend-connections">tune the number of concurrent backend connections</a>, increasing backup performance.</li>
+<li>Ability to <a href="https://restic.readthedocs.io/en/stable/047_tuning_backup_parameters.html#pack-size">increase pack size</a>, increasing backup performance and using less storage resources.</li>
+<li>The <code>check --read-data</code> and <code>prune</code> commands no longer uses temporary files when reading from the repository, resulting in less disk I/O.</li>
+<li>The <code>copy</code> command&rsquo;s performance has been greatly improved.</li>
+<li>The <code>init</code> and <code>copy</code> commands have a new <code>--from-repo</code> option, replacing the now deprecated <code>--repo2</code> option.</li>
+<li>The <code>backup</code> command now uses around 30% less memory when backing up directories with hundreds of thousands (or more) files.</li>
+</ul>
+<p>For downloading the new release and to see a more detailed list of important changes, please head over to <a href="https://github.com/restic/restic/releases/v0.14.0">GitHub</a>. If you already have restic (0.9.4 or later), you can use the <code>self-update</code> command to automatically download and verify the new release.</p>
+<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! Or just write a post in <a href="https://forum.restic.net">the forum</a>.</p>
 
       </div>
 
       <h2>Comments</h2>
       <div id='discourse-comments'></div>
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2015-09-12\/intro\/' };
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2022-08-21\/restic-0.14.0-released\/' };
 
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;

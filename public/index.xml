@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 06 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Restic 0.14.0 Released</title>
+      <link>https://restic.net/blog/2022-08-21/restic-0.14.0-released/</link>
+      <pubDate>Sun, 21 Aug 2022 19:13:02 +0200</pubDate>
+      
+      <guid>https://restic.net/blog/2022-08-21/restic-0.14.0-released/</guid>
+      <description>We today happily announce the release of restic 0.14.0! \o/
+This release contains a highly anticipated feature in restic - compression! To start using it, either initialize a new repository (with the option --repository-version 2) or upgrade your current repository. The compression level can be changed from the default auto (fast and efficient) to max or off using the --compression option (or the corresponding environment variable). Please note that the new/upgraded repository can only be accessed by restic version 0.</description>
+    </item>
+    
+    <item>
       <title>Restic 0.13.1 Released</title>
       <link>https://restic.net/blog/2022-04-10/restic-0.13.1-released/</link>
       <pubDate>Sun, 10 Apr 2022 11:16:23 +0200</pubDate>
