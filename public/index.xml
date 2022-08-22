@@ -26,7 +26,7 @@ As always, thanks for reporting any issues you encounter!</description>
       <guid>https://restic.net/blog/2022-03-26/restic-0.13.0-released/</guid>
       <description>We&amp;rsquo;re proud to announce that restic 0.13.0 has been released today!
 This release contains several bug fixes and improvements worth mentioning:
- It is now possible to add negative patterns to cancel previous exclusions (e.g. --exclude &#39;/home/user/*&#39; --exclude &#39;!/home/user/.config&#39;). The backup command now has a --dry-run switch which (together with --verbose) prints the files that would be included in a backup. We have added checksums for various backends so data uploaded to a backend can be checked there.</description>
+It is now possible to add negative patterns to cancel previous exclusions (e.g. --exclude &#39;/home/user/*&#39; --exclude &#39;!/home/user/.config&#39;). The backup command now has a --dry-run switch which (together with --verbose) prints the files that would be included in a backup. We have added checksums for various backends so data uploaded to a backend can be checked there.</description>
     </item>
     
     <item>
@@ -322,7 +322,7 @@ Please let us know any feedback you have (in the forum, obviously)!</description
       
       <guid>https://restic.net/blog/2017-07-25/please-upgrade-to-0.7.1/</guid>
       <description>TL;DR:
- Under some circumstances, data in the repo was not stored properly This could have caused incomplete backups Upgrade restic to at least 0.7.1 and run restic rebuild-index before the next backup It is good practice to run restic check regularly  Background We always knew that at some point there may be a more serious bug in restic that warrants a broader announcement. This is the story of how a small improvement that makes the code even more conservative lead to a small error which then caused a couple of unintended consequences.</description>
+Under some circumstances, data in the repo was not stored properly This could have caused incomplete backups Upgrade restic to at least 0.7.1 and run restic rebuild-index before the next backup It is good practice to run restic check regularly Background We always knew that at some point there may be a more serious bug in restic that warrants a broader announcement. This is the story of how a small improvement that makes the code even more conservative lead to a small error which then caused a couple of unintended consequences.</description>
     </item>
     
     <item>
@@ -333,7 +333,7 @@ Please let us know any feedback you have (in the forum, obviously)!</description
       <guid>https://restic.net/blog/2017-07-22/restic-0.7.1-released/</guid>
       <description>We&amp;rsquo;re proud to present restic 0.7.1! For downloading the code, head over to GitHub. As always, thanks for reporting any issues you encounter!
 The binaries released with each restic version starting are reproducible, which means that you can easily reproduce a byte identical version from the source code for that release. Instructions on how to do that are contained in the builder repository.
-Important Changes in 0.7.1  The migrate command for changing the s3legacy layout to the default layout for s3 backends has been improved: It can now be restarted with restic migrate --force s3_layout and automatically retries operations on error.</description>
+Important Changes in 0.7.1 The migrate command for changing the s3legacy layout to the default layout for s3 backends has been improved: It can now be restarted with restic migrate --force s3_layout and automatically retries operations on error.</description>
     </item>
     
     <item>
@@ -352,9 +352,9 @@ Important Changes in 0.7.1  The migrate command for changing the s3legacy layout
       
       <guid>https://restic.net/blog/2017-07-01/restic-0.7.0-released/</guid>
       <description>We&amp;rsquo;ve just released restic 0.7.0! For downloading the code, head over to GitHub. As always, thanks for reporting any issues you encounter!
-Important Changes in 0.7.0   New &amp;ldquo;swift&amp;rdquo; backend: A new backend for the OpenStack Swift cloud storage protocol has been added, https://wiki.openstack.org/wiki/Swift https://github.com/restic/restic/pull/975 https://github.com/restic/restic/pull/648
-  New &amp;ldquo;b2&amp;rdquo; backend: A new backend for Backblaze B2 cloud storage service has been added, https://www.backblaze.com https://github.com/restic/restic/issues/512 https://github.com/restic/restic/pull/978
-  Improved performance for the find command: Restic recognizes paths it has already checked for the files in question, so the number of backend requests is reduced a lot.</description>
+Important Changes in 0.7.0 New &amp;ldquo;swift&amp;rdquo; backend: A new backend for the OpenStack Swift cloud storage protocol has been added, https://wiki.openstack.org/wiki/Swift https://github.com/restic/restic/pull/975 https://github.com/restic/restic/pull/648
+New &amp;ldquo;b2&amp;rdquo; backend: A new backend for Backblaze B2 cloud storage service has been added, https://www.backblaze.com https://github.com/restic/restic/issues/512 https://github.com/restic/restic/pull/978
+Improved performance for the find command: Restic recognizes paths it has already checked for the files in question, so the number of backend requests is reduced a lot.</description>
     </item>
     
     <item>
@@ -410,7 +410,7 @@ For downloading the code, head over to https://github.com/restic/restic/releases
       <guid>https://restic.net/blog/2017-03-11/restic-0.5.0-released/</guid>
       <description>We&amp;rsquo;ve just released restic 0.5.0.
 This release contains (among many bug fixes) several improvements to the user interface:
- more progress bars consistent filtering for tags, hostname, or path a new command tag which allows modifying tags of existing snapshots  Since we&amp;rsquo;ve internally started using the new context package, Go 1.7 is now required for compiling restic. Running build.go will check this for you. The released binaries have been compiled with Go 1.</description>
+more progress bars consistent filtering for tags, hostname, or path a new command tag which allows modifying tags of existing snapshots Since we&amp;rsquo;ve internally started using the new context package, Go 1.7 is now required for compiling restic. Running build.go will check this for you. The released binaries have been compiled with Go 1.</description>
     </item>
     
     <item>
@@ -512,8 +512,7 @@ In order to improve this situation for restic, since a few days ago the manual a
       
       <guid>https://restic.net/blog/2016-02-04/CCC-Cologne-OpenChaos/</guid>
       <description>On Friday, 30 January fd0 gave a talk at the Chaos Computer Club Cologne (C4) e.V. in Cologne, Germany in their monthly series of public lectures called OpenChaos. Unfortunately for our international readers the talk was given in German.
-The recording is embedded below. If you&amp;rsquo;ve watched the talk and have a question or other feedback, please contact fd0, he&amp;rsquo;d love to hear your feedback!
- </description>
+The recording is embedded below. If you&amp;rsquo;ve watched the talk and have a question or other feedback, please contact fd0, he&amp;rsquo;d love to hear your feedback!</description>
     </item>
     
     <item>
@@ -546,7 +545,7 @@ In a backup program, data de-duplication can be applied in two locations: Removi
       <description>For the tenth time, FrOSCon took place at the University of Applied Sciences Bonn-Rhein-Sieg in Sankt Augustin near Bonn/Cologne on 22nd and 23rd of August. We took the chance and submitted a talk about restic titled &amp;ldquo;A Solution to the Backup Inconvenience&amp;rdquo;, which was accepted.
 You can watch the recording and view the slides. If you do so, please leave feedback1
 The recording is embedded below:
-  [1] The feedback link is non-functional (2020-10-06)</description>
+[1] The feedback link is non-functional (2020-10-06)</description>
     </item>
     
     <item>
