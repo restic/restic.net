@@ -32,7 +32,7 @@
 
   
   
-  <link rel="canonical" href="https://restic.net/blog/2022-08-21/restic-0.14.0-released/">
+  <link rel="canonical" href="https://restic.net/blog/2022-08-25/restic-0.14.0-released/">
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -76,7 +76,7 @@
     <div class="content container">
       <div class="post">
         <h1 class="post-title">Restic 0.14.0 Released</h1>
-        <span class="post-date">21 Aug 2022</span>
+        <span class="post-date">25 Aug 2022</span>
         <p>We today happily announce the release of <a href="https://github.com/restic/restic/releases/v0.14.0">restic 0.14.0</a>! \o/</p>
 <p>This release contains a highly anticipated feature in restic - compression! To start using it, either <a href="https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html#preparing-a-new-repository">initialize a new repository</a> (with the option <code>--repository-version 2</code>) or <a href="https://restic.readthedocs.io/en/stable/045_working_with_repos.html#upgrading-the-repository-format-version">upgrade your current repository</a>. The <a href="https://restic.readthedocs.io/en/stable/047_tuning_backup_parameters.html#compression">compression level</a> can be changed from the default <code>auto</code> (fast and efficient) to <code>max</code> or <code>off</code> using the <code>--compression</code> option (or the corresponding <a href="https://restic.readthedocs.io/en/stable/040_backup.html#environment-variables">environment variable</a>). Please note that the new/upgraded repository can only be accessed by restic version 0.14 or higher.</p>
 <p>Another feature that can be highly useful is the <code>--unsafe-recover-no-free-space</code> option to the <code>prune</code> command, which allows you to save the day when the repository storage has been completely saturated. Just make sure to <a href="https://restic.readthedocs.io/en/stable/060_forget.html#recovering-from-no-free-space-errors">read the corresponding documentation</a> first!</p>
@@ -97,7 +97,7 @@
       <h2>Comments</h2>
       <div id='discourse-comments'></div>
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2022-08-21\/restic-0.14.0-released\/' };
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2022-08-25\/restic-0.14.0-released\/' };
 
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
@@ -112,7 +112,7 @@
           
           <ul>
 <li>
-<p>21 Aug 2022 » <a href="/blog/2022-08-21/restic-0.14.0-released/">Restic 0.14.0 Released</a></p>
+<p>25 Aug 2022 » <a href="/blog/2022-08-25/restic-0.14.0-released/">Restic 0.14.0 Released</a></p>
 </li>
 <li>
 <p>10 Apr 2022 » <a href="/blog/2022-04-10/restic-0.13.1-released/">Restic 0.13.1 Released</a></p>

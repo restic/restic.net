@@ -1,6 +1,6 @@
 ---
 title: "Restic 0.14.0 Released"
-date: 2022-08-21T19:13:02+02:00
+date: 2022-08-25T20:16:02+02:00
 ---
 
 We today happily announce the release of [restic 0.14.0](https://github.com/restic/restic/releases/v0.14.0)! \o/
