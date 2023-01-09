@@ -97,7 +97,7 @@ of the file still yields the same chunk boundaries, shifted by 20 bytes:
 | 577556 | `0x77db45c60d400000` |
 |1990676 | `0xc0da6ed30fe00000` |
 |2945039 | `0x309235f507600000` |
-|4194304 | End of File |
+|4194324 | End of File |
 
 When restic computes a cryptographic hash (SHA-256) over the data in each chunk,
 it detects that the first chunk has been changed (we added 20 bytes, remember?),
