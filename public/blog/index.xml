@@ -6,7 +6,17 @@
     <description>Recent content in Blog on restic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Aug 2022 20:16:02 +0200</lastBuildDate><atom:link href="https://restic.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Jan 2023 00:00:00 +0100</lastBuildDate><atom:link href="https://restic.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Restic 0.15.0 Released</title>
+      <link>https://restic.net/blog/2023-01-12/restic-0.15.0-released/</link>
+      <pubDate>Thu, 12 Jan 2023 00:00:00 +0100</pubDate>
+      
+      <guid>https://restic.net/blog/2023-01-12/restic-0.15.0-released/</guid>
+      <description>We are happy to announce the release of restic 0.15.0!
+In this version a new rewrite command has been implemented. This allows for removing unwanted data from existing snapshots, for example if one discovers that some files were unintentionally backed up, such as files with sensitive content or files that take up a lot of space and don&amp;rsquo;t need to be backed up. Please see the corresponding documentation for more information and usage examples.</description>
+    </item>
+    
     <item>
       <title>Restic 0.14.0 Released</title>
       <link>https://restic.net/blog/2022-08-25/restic-0.14.0-released/</link>
