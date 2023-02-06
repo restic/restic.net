@@ -14,7 +14,7 @@
   <title>
     restic &middot;
     
-      restic 0.8.0 released
+      Restic 0.15.1 Released
     
   </title>
 
@@ -32,7 +32,7 @@
 
   
   
-  <link rel="canonical" href="https://restic.net/blog/2017-11-26/restic-0.8.0-released/">
+  <link rel="canonical" href="https://restic.net/blog/2023-01-30/restic-0.15.1-released/">
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -75,26 +75,18 @@
 
     <div class="content container">
       <div class="post">
-        <h1 class="post-title">restic 0.8.0 released</h1>
-        <span class="post-date">26 Nov 2017</span>
-        <p>We&rsquo;ve just released <a href="https://github.com/restic/restic/releases/tag/v0.8.0">restic 0.8.0</a>. It brings the new awesome metadata cache which will speed up many operations, you may need to run <code>restic prune</code> once to fully see it in action.</p>
-<p>For downloading the new release and see a more detailed list of important changes, head over to <a href="https://github.com/restic/restic/releases/tag/v0.8.0">GitHub</a>. As always, thanks for <a href="https://github.com/restic/restic/issues/new">reporting any issues</a> you encounter! Or just write a post in <a href="https://forum.restic.net">the forum</a>.</p>
-<p>This release also corrects a (low risk) vulnerability. When attackers are able to create files with arbitrary names on a Linux/Unix system in a directory that is saved with restic, it may happen that when the directory is restored on a Windows system to write files outside the target directory for the restore.</p>
-<p>It works as follows:</p>
-<ol>
-<li>The attackers create a file called <code>..\test.txt</code>, which is a valid filename on Linux.</li>
-<li>This is saved with restic, which will just save the file name in verbatim.</li>
-<li>When the file is restored on Linux, it&rsquo;ll just be called <code>..\test.txt</code> again. But if it restored on Windows, it&rsquo;ll be placed in the parent directory of the target directory (because <code>..\</code> refers to the parent).</li>
-</ol>
-<p>We think this situation will not occur very often, so it is estimated to be of low risk. Nevertheless we&rsquo;ve made sure that the behavior is changed, and now restic refuses to write files outside the target directory during restore.</p>
-<p>We&rsquo;d like to thank <a href="https://allinaccess.com/">Tyler Spivey</a> for reporting the vulnerability responsibly!</p>
+        <h1 class="post-title">Restic 0.15.1 Released</h1>
+        <span class="post-date">30 Jan 2023</span>
+        <p>We&rsquo;re very pleased to announce <a href="https://github.com/restic/restic/releases/v0.15.1">restic 0.15.1</a>! This is just a small bugfix release, fixing some issues and cosmetic inconveniences.</p>
+<p>To download the new release and to see a more detailed list of important changes, please head over to <a href="https://github.com/restic/restic/releases/v0.15.1">GitHub</a>. If you already have restic (0.9.4 or later), you can use the <code>self-update</code> command to automatically download and verify the new release.</p>
+<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! To get help or provide feedback, please write a post in <a href="https://forum.restic.net">the forum</a>.</p>
 
       </div>
 
       <h2>Comments</h2>
       <div id='discourse-comments'></div>
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2017-11-26\/restic-0.8.0-released\/' };
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2023-01-30\/restic-0.15.1-released\/' };
 
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
