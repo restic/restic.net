@@ -6,7 +6,29 @@
     <description>Recent content in Blog on restic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Jan 2023 00:00:00 +0100</lastBuildDate><atom:link href="https://restic.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Apr 2023 13:00:00 +0200</lastBuildDate><atom:link href="https://restic.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>REST-server 0.12.0 released</title>
+      <link>https://restic.net/blog/2023-04-24/rest-server-0.12.0-released/</link>
+      <pubDate>Mon, 24 Apr 2023 13:00:00 +0200</pubDate>
+      
+      <guid>https://restic.net/blog/2023-04-24/rest-server-0.12.0-released/</guid>
+      <description>We have just released rest-server 0.12.0.
+This release includes performance optimizations, allowing additional characters in usernames, ability to specify .htpasswd file location, as well as some macOS specific fixes and other general compatibility fixes. Please see the changelog for more specific information!
+Please let us know what you think in the forum post linked below!</description>
+    </item>
+    
+    <item>
+      <title>Restic 0.15.2 released</title>
+      <link>https://restic.net/blog/2023-04-24/restic-0.15.2-released/</link>
+      <pubDate>Mon, 24 Apr 2023 12:00:00 +0200</pubDate>
+      
+      <guid>https://restic.net/blog/2023-04-24/restic-0.15.2-released/</guid>
+      <description>We&amp;rsquo;re very pleased to announce restic 0.15.2!
+This release is primarily intended to address some minor bugs and cosmetic issues, but worth mentioning is that it is now possible to use the ap-southeast-4 region (Melbourne) with S3. Also, official restic builds for the riscv64 architecture on Linux are now available.
+To download the new release and to see a more detailed list of important changes, please head over to GitHub. If you already have restic (0.</description>
+    </item>
+    
     <item>
       <title>Restic 0.15.1 Released</title>
       <link>https://restic.net/blog/2023-01-30/restic-0.15.1-released/</link>
