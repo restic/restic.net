@@ -14,7 +14,7 @@
   <title>
     restic &middot;
     
-      restic 0.9.4 released
+      Restic 0.16.0 Released
     
   </title>
 
@@ -32,7 +32,7 @@
 
   
   
-  <link rel="canonical" href="https://restic.net/blog/2019-01-06/restic-0.9.4-released/">
+  <link rel="canonical" href="https://restic.net/blog/2023-07-28/restic-0.16.0-released/">
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -75,21 +75,30 @@
 
     <div class="content container">
       <div class="post">
-        <h1 class="post-title">restic 0.9.4 released</h1>
-        <span class="post-date">06 Jan 2019</span>
-        <p>We&rsquo;ve just released <a href="https://github.com/restic/restic/releases/v0.9.4">restic 0.9.4</a>. Besides several fixes for bugs it contains a new restorer implementation which downloads data concurrently, so it is much faster than the old one.</p>
-<p>For downloading the new release and see a more detailed list of important changes, head over to <a href="https://github.com/restic/restic/releases/v0.9.4">GitHub</a>. If you already have restic 0.9.3, you can use the <code>self-update</code> command to automatically download and verify the new release. Due to a <a href="https://github.com/restic/restic/issues/2041">bug</a> you need to specify where restic should write the new file, e.g. like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ restic self-update --output <span style="color:#66d9ef">$(</span>which restic<span style="color:#66d9ef">)</span></span></span></code></pre></div>
-<p>You can also just specify a path:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ restic self-update --output /usr/local/bin/restic</span></span></code></pre></div>
-<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! Or just write a post in <a href="https://forum.restic.net">the forum</a>.</p>
+        <h1 class="post-title">Restic 0.16.0 Released</h1>
+        <span class="post-date">28 Jul 2023</span>
+        <p>We are happy to announce the release of <a href="https://github.com/restic/restic/releases/v0.16.0">restic 0.16.0</a>!</p>
+<p>This version of restic brings up to 25% less memory usage and a lot of usability improvements, including <code>&lt;snapshot&gt;:&lt;subfolder&gt;</code> syntax for the <code>diff</code>, <code>ls</code> and <code>restore</code> commands, as well as a progress bar and <a href="https://restic.readthedocs.io/en/stable/075_scripting.html#restore">JSON support</a> for the <code>restore</code> command. Please see the documentation of each command for details.</p>
+<p>Restic now also includes a <a href="https://restic.readthedocs.io/en/stable/077_troubleshooting.html"><code>repair snapshots</code></a> command, which can be used to salvage certain types of damaged repositories. For consistency, the <code>rebuild-index</code> command has been renamed to <code>repair index</code>.</p>
+<p>Some other notable enhancements in this release are:</p>
+<ul>
+<li>Multi-platform docker images, now also available at <a href="https://github.com/restic/restic/pkgs/container/restic">ghcr.io</a>.</li>
+<li>Improved lock refresh handling when using standby / slow network connections.</li>
+<li>Better lock retry handling with the <code>--retry-lock</code> option.</li>
+<li>backup: Support <a href="https://restic.readthedocs.io/en/stable/040_backup.html#file-change-detection"><code>--group-by</code></a> for backup parent selection.</li>
+<li>forget: Keep oldest snapshot when there is room for it according to <code>--keep-*</code> policy.</li>
+<li>azure: Add support for <a href="https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html#microsoft-azure-blob-storage">Managed / Workload Identities</a>.</li>
+</ul>
+<p>To download the new release and to see a more detailed list of important changes, please head over to <a href="https://github.com/restic/restic/releases/v0.16.0">GitHub</a>. If you already have restic (0.9.4 or later), you can use the <code>self-update</code> command to automatically download and verify the new release.</p>
+<p><strong>We wish to thank all of our wonderful contributors</strong>, who help making restic even better with every release as well as giving support and guidance to other restic users in the community. Thank you all!</p>
+<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! To get help or provide feedback, please write a post in <a href="https://forum.restic.net">the forum</a>.</p>
 
       </div>
 
       <h2>Comments</h2>
       <div id='discourse-comments'></div>
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2019-01-06\/restic-0.9.4-released\/' };
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2023-07-28\/restic-0.16.0-released\/' };
 
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
