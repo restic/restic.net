@@ -9,10 +9,10 @@
     <lastBuildDate>Tue, 06 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Restic 0.16.0 Released</title>
-      <link>https://restic.net/blog/2023-07-28/restic-0.16.0-released/</link>
-      <pubDate>Fri, 28 Jul 2023 21:14:23 +0200</pubDate>
+      <link>https://restic.net/blog/2023-07-31/restic-0.16.0-released/</link>
+      <pubDate>Mon, 31 Jul 2023 20:42:23 +0200</pubDate>
       
-      <guid>https://restic.net/blog/2023-07-28/restic-0.16.0-released/</guid>
+      <guid>https://restic.net/blog/2023-07-31/restic-0.16.0-released/</guid>
       <description>We are happy to announce the release of restic 0.16.0!
 This version of restic brings up to 25% less memory usage and a lot of usability improvements, including &amp;lt;snapshot&amp;gt;:&amp;lt;subfolder&amp;gt; syntax for the diff, ls and restore commands, as well as a progress bar and JSON support for the restore command. Please see the documentation of each command for details.
 Restic now also includes a repair snapshots command, which can be used to salvage certain types of damaged repositories.</description>
