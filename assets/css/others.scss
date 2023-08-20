@@ -47,3 +47,7 @@ table {
   padding-left: inherit;
   list-style: inherit;
 }
+
+/* navigation social icons */
+.sidebar-nav-item-with-icon { display: flex; gap: 8px; align-items: center; }
+.sidebar-nav-item-with-icon svg { fill: currentColor; height: 18px; }
