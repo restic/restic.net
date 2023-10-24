@@ -1,6 +1,6 @@
 ---
 title: "Restic 0.16.1 Released"
-date: 2023-10-23T22:00:00+02:00
+date: 2023-10-24T00:00:00+02:00
 ---
 
 We are happy to announce the release of [restic 0.16.1](https://github.com/restic/restic/releases/v0.16.1)!
