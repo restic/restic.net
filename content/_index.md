@@ -68,7 +68,7 @@ The following talks have been given about restic:
  * 2016-01-29: [restic - Backups mal richtig](https://media.ccc.de/v/c4.openchaos.2016.01.restic): Public lecture in German at [CCC Cologne e.V.](https://koeln.ccc.de) in Cologne, Germany
  * 2015-08-23: [A Solution to the Backup Inconvenience](https://media.ccc.de/browse/conferences/froscon/2015/froscon2015-1515-a_solution_to_the_backup_inconvenience.html): Lecture at [FROSCON 2015](https://www.froscon.de) in Bonn, Germany
  * 2015-02-01: [Lightning Talk at FOSDEM 2015](https://www.youtube.com/watch?v=oM-MfeflUZ8&t=11m40s): A short introduction (with slightly outdated command line)
- * 2015-01-27: [Talk about restic at CCC Aachen](https://videoag.fsmpi.rwth-aachen.de/?view=player&lectureid=4442) (in German)
+ * 2015-01-27: [Talk about restic at CCC Aachen](https://video.fsmpi.rwth-aachen.de/cccac/4442) (in German)
 
 ## Blog
 
