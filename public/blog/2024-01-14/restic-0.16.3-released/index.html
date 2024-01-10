@@ -14,7 +14,7 @@
   <title>
     restic &middot;
     
-      The restic project turns four!
+      Restic 0.16.3 Released
     
   </title>
 
@@ -31,7 +31,7 @@
 
   
   
-  <link rel="canonical" href="https://restic.net/blog/2018-04-06/restic-turns-four/">
+  <link rel="canonical" href="https://restic.net/blog/2024-01-14/restic-0.16.3-released/">
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -74,22 +74,19 @@
 
     <div class="content container">
       <div class="post">
-        <h1 class="post-title">The restic project turns four!</h1>
-        <span class="post-date">06 Apr 2018</span>
-        <p>Four years ago on 2014-04-06 <a href="https://github.com/fd0">fd0</a> added the <a href="https://github.com/restic/restic/commit/c54facf66be1c4e137121f36b300543f6673ea7c">first commit</a> to what would later become the restic repository. At the time it was code-named <code>khepri</code>, but unfortunately the name wasn&rsquo;t available on GitHub any more, so we had to find a different one.</p>
-<p>At the moment, restic&rsquo;s repository was starred on GitHub almost four thousand times. And we&rsquo;ve <a href="https://github.com/restic/others">collected</a> 56 other backup tools along the way, helping countless people to discover backup programs (not necessarily restic alone). These two facts alone prove that it was worth it: More people were able to setup easy, effortless backups which they can depend upon.</p>
-<p>We&rsquo;ve seen quite a few milestones in restic&rsquo;s development, most recently the introduction of the local metadata cache in <a href="https://github.com/restic/restic/releases/v0.8.0">0.8.0</a> in November 2017, which sped up many operations. We continue to improve support for our various backends, the last one was the <code>rclone</code> backend which will be included in the next release and allows using <a href="https://rclone.org">rclone</a>, a versatile cloud syncing tool, for storing backups on a variety of cloud-based backends.</p>
-<p>If you like restic, and you&rsquo;d like development to continue, send some nice words to the developers! Either <del>use the <a href="">SayThanks</a> service</del><sup>1</sup>, or add a comment below via the forum! It&rsquo;s always very encouraging to hear how restic helps users.</p>
-<p>Last, we&rsquo;d like to thank our many contributors! They are not only working on the code, but also on the documentation, the website, help with issue triage, and provide helpful comments in code reviews. You are awesome, thank you very much!</p>
-<hr>
-<p><em>[1] The SayThanks service is deprecated (2020-10-06)</em></p>
+        <h1 class="post-title">Restic 0.16.3 Released</h1>
+        <span class="post-date">14 Jan 2024</span>
+        <p>We are happy to announce the release of <a href="https://github.com/restic/restic/releases/v0.16.3">restic 0.16.3</a>!</p>
+<p>This release fixes a couple of bugs on Windows and in the <code>restore</code> command. It also works around an unlikely yet possible situation with <code>rclone</code> which could potentially result in data loss. Please upgrade to this new restic version to make sure you are not affected.</p>
+<p>To download the new release and to see a more detailed list of important changes, please head over to <a href="https://github.com/restic/restic/releases/v0.16.3">GitHub</a>. If you already have restic (0.9.4 or later), you can use the <code>self-update</code> command to automatically download and verify the new release.</p>
+<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! To get help or provide feedback, please write a post in <a href="https://forum.restic.net">the forum</a>.</p>
 
       </div>
 
       <h2>Comments</h2>
       <div id='discourse-comments'></div>
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2018-04-06\/restic-turns-four\/' };
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2024-01-14\/restic-0.16.3-released\/' };
 
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;

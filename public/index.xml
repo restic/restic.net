@@ -9,6 +9,13 @@
     <lastBuildDate>Tue, 06 Oct 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Restic 0.16.3 Released</title>
+      <link>https://restic.net/blog/2024-01-14/restic-0.16.3-released/</link>
+      <pubDate>Sun, 14 Jan 2024 00:00:00 +0100</pubDate>
+      <guid>https://restic.net/blog/2024-01-14/restic-0.16.3-released/</guid>
+      <description>We are happy to announce the release of restic 0.16.3!&#xA;This release fixes a couple of bugs on Windows and in the restore command. It also works around an unlikely yet possible situation with rclone which could potentially result in data loss. Please upgrade to this new restic version to make sure you are not affected.&#xA;To download the new release and to see a more detailed list of important changes, please head over to GitHub.</description>
+    </item>
+    <item>
       <title>Restic 0.16.2 Released</title>
       <link>https://restic.net/blog/2023-10-29/restic-0.16.2-released/</link>
       <pubDate>Sun, 29 Oct 2023 00:00:00 +0200</pubDate>
