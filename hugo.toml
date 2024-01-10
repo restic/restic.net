@@ -5,8 +5,14 @@ title = "restic"
 # Stay compatible with URLs from the previous (Jekyll) website.
 disablePathToLower = true
 
-# Don't automatically inject the "Hugo 0.x.y" meta tag
+# Don't automatically inject the "Hugo 0.x.y" meta tag.
 disableHugoGeneratorInject = true
+
+# Remove files that should no longer exist.
+cleanDestinationDir = true
+
+# Include content with a future publish date.
+buildFuture = true
 
 [params]
 	tagline = "Backups done right!"

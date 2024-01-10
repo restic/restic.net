@@ -15,7 +15,7 @@ To create a new blog post, do the following:
 - To make the post a draft or future publish it, see `here <https://gohugo.io/getting-started/usage/#draft-future-and-expired-content>`__.
 - To embed an image in the post, place the image file in the ``static/blog/`` directory and reference it in the post file like this ``![My fancy image](/blog/my-fancy-image.png)`` (the text will be the alt/description of the image).
 
-To re-generate the website, run ``build.sh`` - this will run Hugo with the proper arguments and the website will be generated in the ``public/`` directory.
+To re-generate the website, run ``hugo`` - this will run Hugo with the proper settings (configured in `hugo.toml`) and the website will be generated in the ``public/`` directory.
 
 .. |Build Status| image:: https://github.com/restic/restic.net/actions/workflows/checks.yml/badge.svg
    :target: https://github.com/restic/restic.net/actions/workflows/checks.yml

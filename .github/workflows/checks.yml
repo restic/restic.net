@@ -36,7 +36,7 @@ jobs:
 
       - name: Build website
         run: |
-          hugo --cleanDestinationDir --destination public-compare --templateMetrics --templateMetricsHints
+          hugo --destination public-compare --templateMetrics --templateMetricsHints
 
       - name: Check for differences
         run: diff -aur public public-compare
