@@ -34,7 +34,7 @@ without any third-party software. We'll always try to make the documentation
 readable in plain text.
 
 Additionally we've enabled the awesome
-[Read the Docs](https://readthedocs.org/) service, which allows reading the
+[Read the Docs](https://about.readthedocs.com/) service, which allows reading the
 documentation at <https://restic.readthedocs.io/>. In the bottom left corner
 is a small menu which allows switching to a specific version of the
 documentation. The URL <https://restic.readthedocs.io/en/latest/> will always
