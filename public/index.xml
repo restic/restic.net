@@ -6,8 +6,15 @@
     <description>Recent content in Backups done right! on restic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 04 Feb 2024 00:00:00 +0100</lastBuildDate>
     <atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Restic 0.16.4 Released</title>
+      <link>https://restic.net/blog/2024-02-04/restic-0.16.4-released/</link>
+      <pubDate>Sun, 04 Feb 2024 00:00:00 +0100</pubDate>
+      <guid>https://restic.net/blog/2024-02-04/restic-0.16.4-released/</guid>
+      <description>A new patch release of restic 0.16 has now been released, restic 0.16.4!&#xA;This release works around and improves detection of a bug in the compression library used by restic. The resulting issue only happens when using restic 0.16.3 and the max compression level (the default auto and off compression levels are not affected), and when the source files being backed up have specific data in them to trigger the bug.</description>
+    </item>
     <item>
       <title>Restic 0.16.3 Released</title>
       <link>https://restic.net/blog/2024-01-14/restic-0.16.3-released/</link>
