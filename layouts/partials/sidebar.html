@@ -2,13 +2,13 @@
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <h1>
-        <a href="{{ .Site.BaseURL }}/">{{ .Site.Title }}</a>
+        <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
       </h1>
       <p class="lead">{{ .Site.Params.tagline }}</p>
     </div>
 
     <nav class="sidebar-nav">
-      <a class="sidebar-nav-item{{ if eq .Page.Permalink .Site.BaseURL }} active{{ end }}{{ if eq .Page.RelPermalink "/index.html" }} active{{ end }}" href="{{ .Site.BaseURL }}/">Home</a>
+      <a class="sidebar-nav-item{{ if eq .Page.Permalink .Site.BaseURL }} active{{ end }}{{ if eq .Page.RelPermalink "/index.html" }} active{{ end }}" href="{{ .Site.BaseURL }}">Home</a>
 
       {{- $currentPage := . }}
       {{- range .Site.Pages }}
