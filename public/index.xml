@@ -4,10 +4,17 @@
     <title>Backups done right! on restic</title>
     <link>https://restic.net/</link>
     <description>Recent content in Backups done right! on restic</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Feb 2024 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jul 2024 21:00:00 +0200</lastBuildDate>
     <atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Restic 0.16.5 Released</title>
+      <link>https://restic.net/blog/2024-07-01/restic-0.16.5-released/</link>
+      <pubDate>Mon, 01 Jul 2024 21:00:00 +0200</pubDate>
+      <guid>https://restic.net/blog/2024-07-01/restic-0.16.5-released/</guid>
+      <description>We are happy to announce the release of restic 0.16.5!&#xA;This release updates a few potentially vulnerable dependencies.&#xA;To download the new release and to see a more detailed list of important changes, please head over to GitHub. If you already have restic (0.9.4 or later), you can use the self-update command to automatically download and verify the new release.&#xA;As always, thanks for reporting any issues you encounter! To get help or provide feedback, please write a post in the forum.</description>
+    </item>
     <item>
       <title>Restic 0.16.4 Released</title>
       <link>https://restic.net/blog/2024-02-04/restic-0.16.4-released/</link>

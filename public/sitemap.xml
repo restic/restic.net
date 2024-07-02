@@ -3,7 +3,10 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://restic.net/blog/</loc>
-    <lastmod>2024-02-04T00:00:00+01:00</lastmod>
+    <lastmod>2024-07-01T21:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://restic.net/blog/2024-07-01/restic-0.16.5-released/</loc>
+    <lastmod>2024-07-01T21:00:00+02:00</lastmod>
   </url><url>
     <loc>https://restic.net/blog/2024-02-04/restic-0.16.4-released/</loc>
     <lastmod>2024-02-04T00:00:00+01:00</lastmod>
