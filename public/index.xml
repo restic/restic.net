@@ -6,8 +6,15 @@
     <description>Recent content in Backups done right! on restic</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jul 2024 21:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jul 2024 00:00:00 +0200</lastBuildDate>
     <atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>REST-server 0.13.0 released</title>
+      <link>https://restic.net/blog/2024-07-26/rest-server-0.13.0-released/</link>
+      <pubDate>Fri, 26 Jul 2024 00:00:00 +0200</pubDate>
+      <guid>https://restic.net/blog/2024-07-26/rest-server-0.13.0-released/</guid>
+      <description>We have just released REST-server 0.13.0.&#xA;This release of REST-server supports listening on unix sockets and also handles signals better than previous releases. Due to dependency updates REST-server now requires Go 1.18 to build.&#xA;Please see the changelog for more specific information!&#xA;Please let us know what you think in the forum post linked below!</description>
+    </item>
     <item>
       <title>Restic 0.16.5 Released</title>
       <link>https://restic.net/blog/2024-07-01/restic-0.16.5-released/</link>
