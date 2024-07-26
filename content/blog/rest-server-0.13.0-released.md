@@ -1,6 +1,6 @@
 ---
 title: "REST-server 0.13.0 released"
-date: 2024-07-26T00:00:00+02:00
+date: 2024-07-26T11:30:00+02:00
 ---
 
 We have just released [REST-server 0.13.0](https://github.com/restic/rest-server/releases/tag/v0.13.0).

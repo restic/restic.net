@@ -1,6 +1,6 @@
 ---
 title: "Restic 0.17.0 Released"
-date: 2024-07-26T00:00:00+02:00
+date: 2024-07-26T15:08:00+02:00
 ---
 
 We are happy to announce the release of [restic 0.17.0](https://github.com/restic/restic/releases/tag/v0.17.0)!
