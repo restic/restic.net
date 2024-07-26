@@ -14,7 +14,7 @@
   <title>
     restic &middot;
     
-      restic 0.6.0-rc.1 released
+      Restic 0.17.0 Released
     
   </title>
 
@@ -31,7 +31,7 @@
 
   
   
-  <link rel="canonical" href="https://restic.net/blog/2017-05-25/restic-0.6.0-rc.1-released/">
+  <link rel="canonical" href="https://restic.net/blog/2024-07-26/restic-0.17.0-released/">
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -74,26 +74,51 @@
 
     <div class="content container">
       <div class="post">
-        <h1 class="post-title">restic 0.6.0-rc.1 released</h1>
-        <span class="post-date">25 May 2017</span>
-        <p>We&rsquo;ve just released <a href="https://github.com/restic/restic/releases/tag/v0.6.0-rc.1">restic 0.6.0-rc.1</a>!</p>
-<p>This is the Release Candidate version. If no grave bugs occur, it will be released as the final version in a few days. This release contains many bug fixes and several improvements for the user interface, the most important changes are listed below (and also contained in the <code>CHANGELOG.md</code>.</p>
-<p>For downloading the code, head over to <a href="https://github.com/restic/restic/releases/tag/v0.6.0-rc.1">https://github.com/restic/restic/releases/tag/v0.6.0-rc.1</a>
-As always, thanks for <a href="https://github.com/restic/restic/issues/new">reporting any issues</a> you encounter!</p>
-<h1 id="important-changes-in-060">Important Changes in 0.6.0</h1>
-<h2 id="consistent-forget-policy">Consistent forget policy</h2>
-<p>The <code>forget</code> command was corrected to be more consistent in which snapshots are to be forgotten. It is possible that the new code removes more snapshots than before, so please review what would be deleted by using the <code>--dry-run</code> option. <a href="https://github.com/restic/restic/pull/957">https://github.com/restic/restic/pull/957</a> <a href="https://github.com/restic/restic/issues/953">https://github.com/restic/restic/issues/953</a></p>
-<h2 id="unified-repository-layout">Unified repository layout</h2>
-<p>Up to now the s3 backend used a special repository layout. We&rsquo;ve decided to unify the repository layout and implemented the default layout also for the s3 backend. For creating a new repository on s3 with the default layout, use <code>restic -o s3.layout=default init</code>. For further commands the option is not necessary any more, restic will automatically detect the correct layout to use. A future version will switch to the default layout for new repositories. <a href="https://github.com/restic/restic/pull/966">https://github.com/restic/restic/pull/966</a> <a href="https://github.com/restic/restic/issues/965">https://github.com/restic/restic/issues/965</a></p>
-<h2 id="memory-and-time-improvements-for-the-s3-backend">Memory and time improvements for the s3 backend</h2>
-<p>We&rsquo;ve updated the library used for accessing s3, switched to using a lower level API and added caching for some requests. This lead to a decrease in memory usage and a great speedup. In addition, we added benchmark functions for all backends, so we can track improvements over time. The Continuous Integration test service we&rsquo;re using (Travis) now runs the s3 backend tests not only against a Minio server, but also against the Amazon s3 live service, so we should be notified of any regressions much sooner. <a href="https://github.com/restic/restic/pull/962">https://github.com/restic/restic/pull/962</a> <a href="https://github.com/restic/restic/pull/960">https://github.com/restic/restic/pull/960</a> <a href="https://github.com/restic/restic/pull/946">https://github.com/restic/restic/pull/946</a> <a href="https://github.com/restic/restic/pull/938">https://github.com/restic/restic/pull/938</a> <a href="https://github.com/restic/restic/pull/883">https://github.com/restic/restic/pull/883</a></p>
+        <h1 class="post-title">Restic 0.17.0 Released</h1>
+        <span class="post-date">26 Jul 2024</span>
+        <p>We are happy to announce the release of <a href="https://github.com/restic/restic/releases/tag/v0.17.0">restic 0.17.0</a>!</p>
+<p>After almost a year of hard work, this release brings a lot of improvements, of which the main highlights are:</p>
+<ul>
+<li>Highly improved <a href="https://restic.readthedocs.io/en/stable/050_restore.html"><code>restore</code></a> command, now supporting <a href="https://restic.readthedocs.io/en/stable/050_restore.html#dry-run">dry-run</a>, <a href="https://restic.readthedocs.io/en/stable/050_restore.html#restoring-in-place">in-place restore</a> with different overwrite modes and a <a href="https://restic.readthedocs.io/en/stable/050_restore.html#delete-files-not-in-snapshot">delete</a> option.</li>
+<li>Resumable and optimized <a href="https://restic.readthedocs.io/en/stable/060_forget.html"><code>prune</code></a> command, now using up to 60% less memory and being less write-intensive.</li>
+<li>Ability to <a href="https://restic.readthedocs.io/en/stable/040_backup.html#skip-creating-snapshots-if-unchanged">skip snapshot creation if nothing changed</a>.</li>
+<li>Support for <a href="https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html#repositories-with-empty-password">repositories with empty password</a>.</li>
+<li>Support for <a href="https://restic.readthedocs.io/en/stable/050_restore.html#restore-using-mount">FUSE-T on macOS</a>.</li>
+<li>Support for <a href="https://restic.readthedocs.io/en/stable/045_working_with_repos.html#listing-all-snapshots">size</a> and <a href="https://restic.readthedocs.io/en/stable/075_scripting.html#summary">summary</a> statistics in snapshots.</li>
+</ul>
+<p>Other notable mentions are:</p>
+<ul>
+<li>The <code>repair packs</code> command can now also handle truncated pack files.</li>
+<li>Improved and more resilient backend error handling.</li>
+<li><a href="https://restic.readthedocs.io/en/stable/040_backup.html#comparing-snapshots">Bitrot detection</a> in the <code>diff</code> command.</li>
+<li>Improved <a href="https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html#sftp">SFTP</a> upload performance.</li>
+<li>Improved <a href="https://restic.readthedocs.io/en/stable/050_restore.html#printing-files-to-stdout"><code>dump</code></a> performance for large files.</li>
+<li>Additional <a href="https://restic.readthedocs.io/en/stable/075_scripting.html#exit-codes">exit codes</a> 10 and 11 for when repository does not exist or cannot be locked.</li>
+<li>Support for reading the backup source <a href="https://restic.readthedocs.io/en/stable/040_backup.html#reading-data-from-a-command">from a command&rsquo;s standard output</a>.</li>
+<li>Support for backing up to <a href="https://github.com/restic/rest-server">rest-server</a> over a unix socket.</li>
+<li>Support for AWS Assume Role with the S3 backend using the <code>RESTIC_AWS_ASSUME_*</code> <a href="https://restic.readthedocs.io/en/stable/040_backup.html#environment-variables">environment variables</a>.</li>
+<li>Support for generating <a href="https://restic.readthedocs.io/en/stable/045_working_with_repos.html#listing-files-in-a-snapshot">NCDU file listings</a>.</li>
+<li>Support for <a href="https://restic.readthedocs.io/en/stable/047_tuning_backup_parameters.html#feature-flags">feature flags</a>.</li>
+<li>Support for specifying hostname via <a href="https://restic.readthedocs.io/en/stable/040_backup.html#environment-variables">environment variable</a> <code>RESTIC_HOST</code>.</li>
+<li>Support for specifying a custom HTTP <code>User-Agent</code> using <code>--http-user-agent</code> or the <a href="https://restic.readthedocs.io/en/stable/040_backup.html#environment-variables"><code>RESTIC_HTTP_USER_AGENT</code></a>.</li>
+<li>Support for reading <a href="https://restic.readthedocs.io/en/stable/050_restore.html#restoring-from-a-snapshot">include and exclude patterns from files</a> with the <code>restore</code> command.</li>
+<li>Support for <a href="https://restic.readthedocs.io/en/stable/045_working_with_repos.html#modifying-metadata-of-snapshots">rewriting host and time metadata</a> in snapshots.</li>
+<li>Support for backing up and restoring Extended Attributes and <a href="https://restic.readthedocs.io/en/stable/040_backup.html#backing-up-special-items-and-metadata">SecurityDescriptors</a> on Windows.</li>
+<li>Support for <a href="https://restic.readthedocs.io/en/stable/060_forget.html#removing-all-snapshots">forgetting all snapshots using</a> <code>--unsafe-allow-remove-all</code>.</li>
+<li><a href="https://restic.readthedocs.io/en/stable/040_backup.html#backing-up">Extended options</a> to configure Windows Shadow Copy Service during backup.</li>
+<li>The <a href="https://github.com/restic/restic/releases">official restic release binaries</a> now require at least ARMv6 support on ARM platforms.</li>
+</ul>
+<p>Besides this and various minor fixes and improvements, parts of the code base has been refactored to be more modular and easier to work with for the upcoming changes which will become the next restic version.</p>
+<p>We would like to thank all of the wonderful users that have been testing and providing input during the development of this release, as well as helping out in the forum with support and feature discussions! Without your valuable insights, restic would not have become what it is today.</p>
+<p>To download the new release and to see a more detailed list of important changes, please head over to <a href="https://github.com/restic/restic/releases/tag/v0.17.0">GitHub</a>. If you already have restic (0.9.4 or later), you can use the <code>self-update</code> command to automatically download and verify the new release.</p>
+<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! To get help or provide feedback, please write a post in <a href="https://forum.restic.net">the forum</a>.</p>
 
       </div>
 
       <h2>Comments</h2>
       <div id='discourse-comments'></div>
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2017-05-25\/restic-0.6.0-rc.1-released\/' };
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2024-07-26\/restic-0.17.0-released\/' };
 
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
