@@ -6,8 +6,15 @@
     <description>Recent content in Backups done right! on restic</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 Jul 2024 15:08:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 03 Sep 2024 00:00:00 +0200</lastBuildDate>
     <atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Restic 0.17.1 Released</title>
+      <link>https://restic.net/blog/2024-09-03/restic-0.17.1-released/</link>
+      <pubDate>Tue, 03 Sep 2024 00:00:00 +0200</pubDate>
+      <guid>https://restic.net/blog/2024-09-03/restic-0.17.1-released/</guid>
+      <description>We are happy to announce the release of restic 0.17.1!&#xA;This release contains various bug fixes and small enhancements. The most important ones are the following:&#xA;The backup command now also stores files and directories for which some metadata could not be retrieved. On Windows several backup errors have been fixed. In particular volumes and network shares that do not support extended attributes can be backed up again. The JSON output of the backup and restore command now properly include the error message.</description>
+    </item>
     <item>
       <title>Restic 0.17.0 Released</title>
       <link>https://restic.net/blog/2024-07-26/restic-0.17.0-released/</link>
