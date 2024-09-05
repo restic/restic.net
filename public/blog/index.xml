@@ -6,13 +6,13 @@
     <description>Recent content in Blog on restic</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Sep 2024 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 05 Sep 2024 21:40:00 +0200</lastBuildDate>
     <atom:link href="https://restic.net/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Restic 0.17.1 Released</title>
-      <link>https://restic.net/blog/2024-09-03/restic-0.17.1-released/</link>
-      <pubDate>Tue, 03 Sep 2024 00:00:00 +0200</pubDate>
-      <guid>https://restic.net/blog/2024-09-03/restic-0.17.1-released/</guid>
+      <link>https://restic.net/blog/2024-09-05/restic-0.17.1-released/</link>
+      <pubDate>Thu, 05 Sep 2024 21:40:00 +0200</pubDate>
+      <guid>https://restic.net/blog/2024-09-05/restic-0.17.1-released/</guid>
       <description>&lt;p&gt;We are happy to announce the release of &lt;a href=&#34;https://github.com/restic/restic/releases/v0.17.1&#34;&gt;restic 0.17.1&lt;/a&gt;!&lt;/p&gt;&#xA;&lt;p&gt;This release contains various bug fixes and small enhancements. The most important ones are the following:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The backup command now also stores files and directories for which some metadata could not be retrieved.&lt;/li&gt;&#xA;&lt;li&gt;On Windows several backup errors have been fixed. In particular volumes and network shares that do not support extended attributes can be backed up again.&lt;/li&gt;&#xA;&lt;li&gt;The JSON output of the backup and restore command now properly include the error message.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;To download the new release and to see a more detailed list of important changes, please head over to &lt;a href=&#34;https://github.com/restic/restic/releases/v0.17.1&#34;&gt;GitHub&lt;/a&gt;. If you already have restic (0.9.4 or later), you can use the &lt;code&gt;self-update&lt;/code&gt; command to automatically download and verify the new release.&lt;/p&gt;</description>
     </item>
     <item>
