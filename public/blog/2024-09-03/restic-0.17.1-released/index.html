@@ -14,7 +14,7 @@
   <title>
     restic &middot;
     
-      Restic 0.12.0 released
+      Restic 0.17.1 Released
     
   </title>
 
@@ -31,7 +31,7 @@
 
   
   
-  <link rel="canonical" href="https://restic.net/blog/2021-02-14/restic-0.12.0-released/">
+  <link rel="canonical" href="https://restic.net/blog/2024-09-03/restic-0.17.1-released/">
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -74,18 +74,24 @@
 
     <div class="content container">
       <div class="post">
-        <h1 class="post-title">Restic 0.12.0 released</h1>
-        <span class="post-date">14 Feb 2021</span>
-        <p>We&rsquo;re proud to announce that <a href="https://github.com/restic/restic/releases/v0.12.0">restic 0.12.0</a> has been released today! This release packs <strong>many</strong> speed improvements in several restic commands. For example, we expect that the garbage collection process (<code>restic prune</code>) will be an order of magnitude faster for almost all users. In addition, you can now configure how much data should be optimized (via <code>--max-repack-size</code>) and how much unused data is allowed to remain in the repo (via <code>--max-unused</code>). These flags gives you more control over how long <code>restic prune</code> will take overall, and also allow you to have several shorter runs of <code>restic prune</code> instead of a single long one. A special thanks goes out to <a href="https://github.com/aawsome">Alexander Weiss</a> for these indeed awesome improvements in particular, but also to all the other contributors who work on restic!</p>
-<p>For downloading the new release and to see a more detailed list of important changes, please head over to <a href="https://github.com/restic/restic/releases/v0.12.0">GitHub</a>. If you already have restic (0.9.4 or later), you can use the <code>self-update</code> command to automatically download and verify the new release.</p>
-<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! Or just write a post in <a href="https://forum.restic.net">the forum</a>. If you have the time, please let us know if the <code>CHANGELOG.md</code> file (also included in the release on GitHub) is helpful for you. We try hard to make it readable for users, so you do not have to follow the development in detail. Is it worth the effort? What do you think? Please answer in the forum below.</p>
+        <h1 class="post-title">Restic 0.17.1 Released</h1>
+        <span class="post-date">03 Sep 2024</span>
+        <p>We are happy to announce the release of <a href="https://github.com/restic/restic/releases/v0.17.1">restic 0.17.1</a>!</p>
+<p>This release contains various bug fixes and small enhancements. The most important ones are the following:</p>
+<ul>
+<li>The backup command now also stores files and directories for which some metadata could not be retrieved.</li>
+<li>On Windows several backup errors have been fixed. In particular volumes and network shares that do not support extended attributes can be backed up again.</li>
+<li>The JSON output of the backup and restore command now properly include the error message.</li>
+</ul>
+<p>To download the new release and to see a more detailed list of important changes, please head over to <a href="https://github.com/restic/restic/releases/v0.17.1">GitHub</a>. If you already have restic (0.9.4 or later), you can use the <code>self-update</code> command to automatically download and verify the new release.</p>
+<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! To get help or provide feedback, please write a post in <a href="https://forum.restic.net">the forum</a>.</p>
 
       </div>
 
       <h2>Comments</h2>
       <div id='discourse-comments'></div>
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2021-02-14\/restic-0.12.0-released\/' };
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2024-09-03\/restic-0.17.1-released\/' };
 
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;

@@ -141,58 +141,58 @@ will remain identical thanks to the content-defined chunk boundaries.</p>
 chunk boundaries, where &ldquo;offset&rdquo; is the byte offset of the last byte of the
 sliding window:</p>
 <table>
-<thead>
-<tr>
-<th style="text-align:right">Offset</th>
-<th style="text-align:right">Fingerprint</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">577536</td>
-<td style="text-align:right"><code>0x77db45c60d400000</code></td>
-</tr>
-<tr>
-<td style="text-align:right">1990656</td>
-<td style="text-align:right"><code>0xc0da6ed30fe00000</code></td>
-</tr>
-<tr>
-<td style="text-align:right">2945019</td>
-<td style="text-align:right"><code>0x309235f507600000</code></td>
-</tr>
-<tr>
-<td style="text-align:right">4194304</td>
-<td style="text-align:right">End of File</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: right">Offset</th>
+          <th style="text-align: right">Fingerprint</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: right">577536</td>
+          <td style="text-align: right"><code>0x77db45c60d400000</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: right">1990656</td>
+          <td style="text-align: right"><code>0xc0da6ed30fe00000</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: right">2945019</td>
+          <td style="text-align: right"><code>0x309235f507600000</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: right">4194304</td>
+          <td style="text-align: right">End of File</td>
+      </tr>
+  </tbody>
 </table>
 <p>The file is therefore split into four chunks. Adding 20 bytes at the beginning
 of the file still yields the same chunk boundaries, shifted by 20 bytes:</p>
 <table>
-<thead>
-<tr>
-<th style="text-align:right">Offset</th>
-<th style="text-align:right">Fingerprint</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">577556</td>
-<td style="text-align:right"><code>0x77db45c60d400000</code></td>
-</tr>
-<tr>
-<td style="text-align:right">1990676</td>
-<td style="text-align:right"><code>0xc0da6ed30fe00000</code></td>
-</tr>
-<tr>
-<td style="text-align:right">2945039</td>
-<td style="text-align:right"><code>0x309235f507600000</code></td>
-</tr>
-<tr>
-<td style="text-align:right">4194324</td>
-<td style="text-align:right">End of File</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: right">Offset</th>
+          <th style="text-align: right">Fingerprint</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: right">577556</td>
+          <td style="text-align: right"><code>0x77db45c60d400000</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: right">1990676</td>
+          <td style="text-align: right"><code>0xc0da6ed30fe00000</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: right">2945039</td>
+          <td style="text-align: right"><code>0x309235f507600000</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: right">4194324</td>
+          <td style="text-align: right">End of File</td>
+      </tr>
+  </tbody>
 </table>
 <p>When restic computes a cryptographic hash (SHA-256) over the data in each chunk,
 it detects that the first chunk has been changed (we added 20 bytes, remember?),
@@ -334,13 +334,13 @@ This gives us not only <em>inter-file</em> de-duplication, but also the more rel
           
           <ul>
 <li>
+<p>03 Sep 2024 » <a href="/blog/2024-09-03/restic-0.17.1-released/">Restic 0.17.1 Released</a></p>
+</li>
+<li>
 <p>26 Jul 2024 » <a href="/blog/2024-07-26/restic-0.17.0-released/">Restic 0.17.0 Released</a></p>
 </li>
 <li>
 <p>26 Jul 2024 » <a href="/blog/2024-07-26/rest-server-0.13.0-released/">REST-server 0.13.0 released</a></p>
-</li>
-<li>
-<p>01 Jul 2024 » <a href="/blog/2024-07-01/restic-0.16.5-released/">Restic 0.16.5 Released</a></p>
 </li>
 </ul>
 
