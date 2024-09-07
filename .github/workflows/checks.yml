@@ -50,6 +50,6 @@ jobs:
           # Give Hugo some time to start up before scraping.
           sleep 2
           # Check for dead links and similar problems, with generous timeout due to e.g. MIT PGP server.
-          muffet --timeout=90 --ignore-fragments --buffer-size=8192 http://127.0.0.1:1313
+          muffet --timeout=90 --ignore-fragments --buffer-size=16384 http://127.0.0.1:1313
           # kill hugo again
           kill %1
