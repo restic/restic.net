@@ -14,7 +14,7 @@
   <title>
     restic &middot;
     
-      REST-server 0.12.0 released
+      Restic 0.17.2 Released
     
   </title>
 
@@ -31,7 +31,7 @@
 
   
   
-  <link rel="canonical" href="https://restic.net/blog/2023-04-24/rest-server-0.12.0-released/">
+  <link rel="canonical" href="https://restic.net/blog/2024-10-27/restic-0.17.2-released/">
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -74,18 +74,19 @@
 
     <div class="content container">
       <div class="post">
-        <h1 class="post-title">REST-server 0.12.0 released</h1>
-        <span class="post-date">24 Apr 2023</span>
-        <p>We have just released <a href="https://github.com/restic/rest-server/releases/tag/v0.12.0">rest-server 0.12.0</a>.</p>
-<p>This release includes performance optimizations, allowing additional characters in usernames, ability to specify <code>.htpasswd</code> file location, as well as some macOS specific fixes and other general compatibility fixes. Please see the <a href="https://github.com/restic/rest-server/releases/tag/v0.12.0">changelog</a> for more specific information!</p>
-<p>Please let us know what you think in the forum post linked below!</p>
+        <h1 class="post-title">Restic 0.17.2 Released</h1>
+        <span class="post-date">27 Oct 2024</span>
+        <p>We are happy to announce the release of <a href="https://github.com/restic/restic/releases/v0.17.2">restic 0.17.2</a>!</p>
+<p>This patch release is mainly to fix a problem on Windows where files with the type <code>irregular</code> could mistakenly be included in snapshots, causing error messages. Once having upgraded to restic 0.17.2, this can be fixed for existing snapshots by running <code>restic repair snapshots --forget</code>.</p>
+<p>To download the new release and to see a more detailed list of important changes, please head over to <a href="https://github.com/restic/restic/releases/v0.17.2">GitHub</a>. If you already have restic (0.9.4 or later), you can use the <code>self-update</code> command to automatically download and verify the new release.</p>
+<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! To get help or provide feedback, please write a post in <a href="https://forum.restic.net">the forum</a>.</p>
 
       </div>
 
       <h2>Comments</h2>
       <div id='discourse-comments'></div>
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2023-04-24\/rest-server-0.12.0-released\/' };
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2024-10-27\/restic-0.17.2-released\/' };
 
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
