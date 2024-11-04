@@ -6,8 +6,15 @@
     <description>Recent content in Blog on restic</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 27 Oct 2024 16:55:00 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 08 Nov 2024 00:00:00 +0100</lastBuildDate>
     <atom:link href="https://restic.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Restic 0.17.3 Released</title>
+      <link>https://restic.net/blog/2024-11-08/restic-0.17.3-released/</link>
+      <pubDate>Fri, 08 Nov 2024 00:00:00 +0100</pubDate>
+      <guid>https://restic.net/blog/2024-11-08/restic-0.17.3-released/</guid>
+      <description>&lt;p&gt;We are happy to announce the release of &lt;a href=&#34;https://github.com/restic/restic/releases/v0.17.3&#34;&gt;restic 0.17.3&lt;/a&gt;!&lt;/p&gt;&#xA;&lt;p&gt;This patch release fixes a couple of bugs on Windows related to backing up metadata on removable disks and extended attributes with VSS. It also fixes handling of broken SFTP connections, enables &lt;code&gt;--no-lock&lt;/code&gt; for &lt;code&gt;prune --dry-run&lt;/code&gt; and works around a problem when browsing FUSE-T mounted repositories.&lt;/p&gt;&#xA;&lt;p&gt;To download the new release and to see a more detailed list of important changes, please head over to &lt;a href=&#34;https://github.com/restic/restic/releases/v0.17.3&#34;&gt;GitHub&lt;/a&gt;. If you already have restic (0.9.4 or later), you can use the &lt;code&gt;self-update&lt;/code&gt; command to automatically download and verify the new release.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Restic 0.17.2 Released</title>
       <link>https://restic.net/blog/2024-10-27/restic-0.17.2-released/</link>
