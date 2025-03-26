@@ -14,7 +14,7 @@
   <title>
     restic &middot;
     
-      Configuring GitHub Issue Templates
+      Restic 0.18.0 Released
     
   </title>
 
@@ -31,7 +31,7 @@
 
   
   
-  <link rel="canonical" href="https://restic.net/blog/2018-09-09/GitHub-issue-templates/">
+  <link rel="canonical" href="https://restic.net/blog/2024-03-26/restic-0.18.0-released/">
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -74,85 +74,41 @@
 
     <div class="content container">
       <div class="post">
-        <h1 class="post-title">Configuring GitHub Issue Templates</h1>
-        <span class="post-date">09 Sep 2018</span>
-        <p>Like many other Open Source projects, restic uses GitHub for hosting the source
-code and managing issues. Over time, we discovered that oftentimes users open
-an issue on GitHub which just consists of a question, for example on how to use
-restic in a certain situation. While such issues can be answered quickly,
-sometimes there&rsquo;s no consent on when the issue can be seen as resolved and
-therefore closed (the issue is not actionable). The GitHub issue tracker is
-then cluttered with issues for which there is no clear next action and no
-clear &ldquo;resolved&rdquo; state. This blog post describes how we set up the issue
-templates on GitHub to resolve this situation nicely.</p>
-<p>A year ago in August 2017 we <a href="/blog/2017-08-11/discourse-forum/">decided to install</a>
-a forum based on <a href="https://discourse.org">Discourse</a> at
-<a href="https://forum.restic.net">https://forum.restic.net</a>. It developed nicely and
-over time attracted a stable base of core users and developers who are ready to
-help each other and new restic users.</p>
-<p>This leaves the question: how do users who have a question find the forum?
-Sure, it&rsquo;s linked on the website, but that did not seem enough. Thankfully,
-GitHub supports templates for all newly created issues, so we added a bit of
-text which encourages users to use the forum if they are unsure:</p>
-<blockquote>
-<p>Welcome! If you have a question or are unsure if you should open an issue,
-please use the forum instead!</p>
-<p><a href="https://forum.restic.net">https://forum.restic.net</a></p>
-<p>The forum is a better place for questions about restic or general suggestions
-and topics, e.g. usage or documentation questions! This issue tracker is mainly
-for tracking bugs and feature requests directly relating to the development of
-the software itself, rather than the project.</p>
-<p>Thanks for understanding, and for contributing to the project!</p></blockquote>
-<p>We also added a few questions users should answer in order to make debugging
-easier, but it turned out that the set of questions we ask for bugs is not
-helpful when suggesting a new feature. We then discovered (almost
-accidentally), that GitHub also <a href="https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates">supports several different types</a>
-of issue templates, so now when you <a href="https://github.com/restic/restic/issues/new/choose">create a new issue for restic</a>,
-you&rsquo;re greeted with the following dialogue:</p>
-<p><img src="/blog/github-new-issue.png" alt="Opening a new Issue on GitHub"></p>
-<p>The &ldquo;Bug report&rdquo; and &ldquo;Feature request&rdquo; templates are stored in the files
-<code>Bug.md</code> and <code>Feature.md</code> in the directory <code>.github/ISSUE_TEMPLATE</code> of the
-restic repository. The headline and description can be set in the header
-of the file, for example the <a href="https://github.com/restic/restic/blob/master/.github/ISSUE_TEMPLATE/Bug.md">&ldquo;Bug report&rdquo; template</a> starts with the following
-text:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>---
-</span></span><span style="display:flex;"><span>name: Bug report
-</span></span><span style="display:flex;"><span>about: Report a problem with restic to help us resolve it and improve
-</span></span><span style="display:flex;"><span>---
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Welcome! - We kindly ask that you:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">1.</span><span style="color:#75715e"> Fill out the issue template below - not doing so needs a good reason.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">2.</span><span style="color:#75715e"> Use the forum if you have a question rather than a bug or feature request.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">[...]
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">--&gt;</span>
-</span></span></code></pre></div><p>The <a href="https://github.com/restic/restic/blob/master/.github/ISSUE_TEMPLATE/Feature.md">&ldquo;Feature request&rdquo; template</a>
-is very similar, just with other questions. We&rsquo;re using a combination of
-Markdown headlines to structure the issue text, and HTML comments for a bit of
-background explanation. The HTML comments are not shown when displaying an
-issue in GitHub, so they don&rsquo;t distract from the content.</p>
-<p>This leaves us with the third kind of issue users can create by clicking on the
-link titled &ldquo;Open a regular issue&rdquo;. For this, the file
-<code>.github/ISSUE_TEMPLATE.md</code> can be used (we currently don&rsquo;t use this, which
-makes the issue form open with a blank textarea).</p>
-<p>This allows users to select the type of issue they would like to create, and in
-all cases there&rsquo;s a hint to use the forum if they are unsure what to do. This
-works very well for us.</p>
-<p>If you&rsquo;re a user and submitted an issue before (or maybe you&rsquo;ve been redirected
-to the forum), please tell us about the experience? Did you like it? Was it
-awkward? How do other projects handle nudging users into submitting
-high-quality issues that are actionable? Please leave a comment in the forum
-linked below this article!</p>
+        <h1 class="post-title">Restic 0.18.0 Released</h1>
+        <span class="post-date">26 Mar 2024</span>
+        <p>We are happy to announce the release of <a href="https://github.com/restic/restic/releases/tag/v0.18.0">restic 0.18.0</a>!</p>
+<p>This release brings a large number of improvements, many of which have been contributed by our community. Thank you to everyone who contributed to this release, whether through providing input, testing, contributing code changes, or helping with support in the forum!</p>
+<p>The most important changes are:</p>
+<ul>
+<li>Mitigation for a potential attack on the content-defined chunking algorithm used by restic. The attack does not let an attacker decrypt data, but could in very specific circumstances allow an attacker to determine whether a large file, fully known to the attacker, is present in the repository. We consider the chance of a practical attack to be very low, but nonetheless implement protection against it. See this <a href="https://github.com/restic/restic/issues/5291#issuecomment-2746146193">post</a> for details on the attack and mitigation.</li>
+<li>On Windows and macOS, restic now requires at least Windows 10, Windows Server 2016 or macOS 11 Big Sur. In addition, restic no longer supports TLS versions before TLS 1.2.</li>
+<li>JSON support for the <code>check</code> and <code>tag</code> commands. Exit codes are now also formatted as JSON. See the <a href="https://restic.readthedocs.io/en/stable/075_scripting.html#json-output">JSON output</a> documentation.</li>
+</ul>
+<p>Other notable changes include:</p>
+<ul>
+<li>The <code>deprecate-legacy-index</code>, <code>deprecate-s3-legacy-layout</code>, <code>explicit-s3-anonymous-auth</code> and <code>safe-forget-keep-tags</code> features are now always enabled and will be removed in restic 0.19.0.</li>
+<li>The <code>backup</code> command no longer reports a &ldquo;lstat [&hellip;]: no such file or directory&rdquo; warning if a file disappears during the backup.</li>
+<li><code>rewrite</code> can now <a href="https://restic.readthedocs.io/en/stable/045_working_with_repos.html#removing-files-from-snapshots">create snapshot summaries</a> for snapshots created before restic 0.17.0.</li>
+<li>Images in the GitHub Container Registry are now built with <a href="https://restic.readthedocs.io/en/stable/developer_information.html#verifying-slsa-provenance-for-docker-images">SLSA provenance</a>.</li>
+<li>Experimental, partial support for <a href="https://restic.readthedocs.io/en/stable/faq.html#are-cold-storages-supported">cold storage on S3 backends</a>.</li>
+<li>Support for <a href="https://restic.readthedocs.io/en/stable/045_working_with_repos.html#listing-files-in-a-snapshot">sorting the output</a> for the <code>ls</code> command.</li>
+<li>Sort <code>find</code> output from latest to oldest by default.</li>
+<li>Support for letting <code>prune</code> repack all <a href="https://restic.readthedocs.io/en/stable/060_forget.html#customize-pruning">pack files below a specified size</a>.</li>
+<li>Support for excluding <a href="https://restic.readthedocs.io/en/stable/040_backup.html#excluding-files">online-only cloud files</a> (e.g., from OneDrive) during backups on Windows.</li>
+<li>Enable compression for ZIP archives in the <code>dump</code> command.</li>
+<li>Show count of deleted files and directories during <code>restore</code>.</li>
+<li>Allow <a href="https://restic.readthedocs.io/en/stable/050_restore.html#restoring-extended-file-attributes">including/excluding extended file attributes</a> during <code>restore</code>.</li>
+<li>Add DragonFlyBSD build support and add xattr support for NetBSD 10+.</li>
+</ul>
+<p>To download the new release and to see a more detailed list of important changes, please head over to <a href="https://github.com/restic/restic/releases/tag/v0.18.0">GitHub</a>. If you already have restic (0.9.4 or later), you can use the <code>self-update</code> command to automatically download and verify the new release.</p>
+<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! To get help or provide feedback, please write a post in <a href="https://forum.restic.net">the forum</a>.</p>
 
       </div>
 
       <h2>Comments</h2>
       <div id='discourse-comments'></div>
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2018-09-09\/GitHub-issue-templates\/' };
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2024-03-26\/restic-0.18.0-released\/' };
 
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
