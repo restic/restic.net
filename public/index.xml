@@ -6,8 +6,15 @@
     <description>Recent content in Backups done right! on restic</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 08 Nov 2024 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 27 Mar 2025 20:41:00 +0100</lastBuildDate>
     <atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Restic 0.18.0 Released</title>
+      <link>https://restic.net/blog/2025-03-27/restic-0.18.0-released/</link>
+      <pubDate>Thu, 27 Mar 2025 20:41:00 +0100</pubDate>
+      <guid>https://restic.net/blog/2025-03-27/restic-0.18.0-released/</guid>
+      <description>&lt;p&gt;We are happy to announce the release of &lt;a href=&#34;https://github.com/restic/restic/releases/tag/v0.18.0&#34;&gt;restic 0.18.0&lt;/a&gt;!&lt;/p&gt;&#xA;&lt;p&gt;This release brings a large number of improvements, many of which have been contributed by our community. Thank you to everyone who contributed to this release, whether through providing input, testing, contributing code changes, or helping with support in the forum!&lt;/p&gt;&#xA;&lt;p&gt;The most important changes are:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Mitigation for a potential attack on the content-defined chunking algorithm used by restic. The attack does not let an attacker decrypt data, but could in very specific circumstances allow an attacker to determine whether a large file, fully known to the attacker, is present in the repository. We consider the chance of a practical attack to be very low, but nonetheless implement protection against it. See this &lt;a href=&#34;https://github.com/restic/restic/issues/5291#issuecomment-2746146193&#34;&gt;post&lt;/a&gt; for details on the attack and mitigation.&lt;/li&gt;&#xA;&lt;li&gt;On Windows and macOS, restic now requires at least Windows 10, Windows Server 2016 or macOS 11 Big Sur. In addition, restic no longer supports TLS versions before TLS 1.2. This is due to dependencies needing Go 1.23 which is now used to build restic.&lt;/li&gt;&#xA;&lt;li&gt;JSON support for the &lt;code&gt;check&lt;/code&gt; and &lt;code&gt;tag&lt;/code&gt; commands. Exit codes are now also included in JSON output. See the &lt;a href=&#34;https://restic.readthedocs.io/en/stable/075_scripting.html#json-output&#34;&gt;JSON output&lt;/a&gt; documentation for more information.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Other notable changes include:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Restic 0.17.3 Released</title>
       <link>https://restic.net/blog/2024-11-08/restic-0.17.3-released/</link>
@@ -49,13 +56,6 @@
       <pubDate>Mon, 01 Jul 2024 21:00:00 +0200</pubDate>
       <guid>https://restic.net/blog/2024-07-01/restic-0.16.5-released/</guid>
       <description>&lt;p&gt;We are happy to announce the release of &lt;a href=&#34;https://github.com/restic/restic/releases/v0.16.5&#34;&gt;restic 0.16.5&lt;/a&gt;!&lt;/p&gt;&#xA;&lt;p&gt;This release updates a few potentially vulnerable dependencies.&lt;/p&gt;&#xA;&lt;p&gt;To download the new release and to see a more detailed list of important changes, please head over to &lt;a href=&#34;https://github.com/restic/restic/releases/v0.16.5&#34;&gt;GitHub&lt;/a&gt;. If you already have restic (0.9.4 or later), you can use the &lt;code&gt;self-update&lt;/code&gt; command to automatically download and verify the new release.&lt;/p&gt;&#xA;&lt;p&gt;As always, thanks for &lt;a href=&#34;https://github.com/restic/restic/issues/new/choose&#34;&gt;reporting any issues&lt;/a&gt; you encounter! To get help or provide feedback, please write a post in &lt;a href=&#34;https://forum.restic.net&#34;&gt;the forum&lt;/a&gt;.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Restic 0.18.0 Released</title>
-      <link>https://restic.net/blog/2024-03-27/restic-0.18.0-released/</link>
-      <pubDate>Wed, 27 Mar 2024 00:30:00 +0100</pubDate>
-      <guid>https://restic.net/blog/2024-03-27/restic-0.18.0-released/</guid>
-      <description>&lt;p&gt;We are happy to announce the release of &lt;a href=&#34;https://github.com/restic/restic/releases/tag/v0.18.0&#34;&gt;restic 0.18.0&lt;/a&gt;!&lt;/p&gt;&#xA;&lt;p&gt;This release brings a large number of improvements, many of which have been contributed by our community. Thank you to everyone who contributed to this release, whether through providing input, testing, contributing code changes, or helping with support in the forum!&lt;/p&gt;&#xA;&lt;p&gt;The most important changes are:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Mitigation for a potential attack on the content-defined chunking algorithm used by restic. The attack does not let an attacker decrypt data, but could in very specific circumstances allow an attacker to determine whether a large file, fully known to the attacker, is present in the repository. We consider the chance of a practical attack to be very low, but nonetheless implement protection against it. See this &lt;a href=&#34;https://github.com/restic/restic/issues/5291#issuecomment-2746146193&#34;&gt;post&lt;/a&gt; for details on the attack and mitigation.&lt;/li&gt;&#xA;&lt;li&gt;On Windows and macOS, restic now requires at least Windows 10, Windows Server 2016 or macOS 11 Big Sur. In addition, restic no longer supports TLS versions before TLS 1.2. This is due to dependencies needing Go 1.23 which is now used to build restic.&lt;/li&gt;&#xA;&lt;li&gt;JSON support for the &lt;code&gt;check&lt;/code&gt; and &lt;code&gt;tag&lt;/code&gt; commands. Exit codes are now also included in JSON output. See the &lt;a href=&#34;https://restic.readthedocs.io/en/stable/075_scripting.html#json-output&#34;&gt;JSON output&lt;/a&gt; documentation for more information.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Other notable changes include:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Restic 0.16.4 Released</title>

@@ -3,7 +3,10 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://restic.net/blog/</loc>
-    <lastmod>2024-11-08T00:00:00+01:00</lastmod>
+    <lastmod>2025-03-27T20:41:00+01:00</lastmod>
+  </url><url>
+    <loc>https://restic.net/blog/2025-03-27/restic-0.18.0-released/</loc>
+    <lastmod>2025-03-27T20:41:00+01:00</lastmod>
   </url><url>
     <loc>https://restic.net/blog/2024-11-08/restic-0.17.3-released/</loc>
     <lastmod>2024-11-08T00:00:00+01:00</lastmod>
@@ -22,9 +25,6 @@
   </url><url>
     <loc>https://restic.net/blog/2024-07-01/restic-0.16.5-released/</loc>
     <lastmod>2024-07-01T21:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://restic.net/blog/2024-03-27/restic-0.18.0-released/</loc>
-    <lastmod>2024-03-27T00:30:00+01:00</lastmod>
   </url><url>
     <loc>https://restic.net/blog/2024-02-04/restic-0.16.4-released/</loc>
     <lastmod>2024-02-04T00:00:00+01:00</lastmod>
