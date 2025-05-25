@@ -14,7 +14,7 @@
   <title>
     restic &middot;
     
-      Restic 0.16.0 Released
+      REST-server 0.14.0 released
     
   </title>
 
@@ -31,7 +31,7 @@
 
   
   
-  <link rel="canonical" href="https://restic.net/blog/2023-07-31/restic-0.16.0-released/">
+  <link rel="canonical" href="https://restic.net/blog/2025-05-26/rest-server-0.14.0-released/">
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -74,30 +74,20 @@
 
     <div class="content container">
       <div class="post">
-        <h1 class="post-title">Restic 0.16.0 Released</h1>
-        <span class="post-date">31 Jul 2023</span>
-        <p>We are happy to announce the release of <a href="https://github.com/restic/restic/releases/v0.16.0">restic 0.16.0</a>!</p>
-<p>This version of restic brings up to 25% less memory usage and a lot of usability improvements, including <code>&lt;snapshot&gt;:&lt;subfolder&gt;</code> syntax for the <code>diff</code>, <code>ls</code> and <code>restore</code> commands, as well as a progress bar and <a href="https://restic.readthedocs.io/en/stable/075_scripting.html#restore">JSON support</a> for the <code>restore</code> command. Please see the documentation of each command for details.</p>
-<p>Restic now also includes a <a href="https://restic.readthedocs.io/en/stable/077_troubleshooting.html"><code>repair snapshots</code></a> command, which can be used to salvage certain types of damaged repositories. For consistency, the <code>rebuild-index</code> command has been renamed to <code>repair index</code>.</p>
-<p>Some other notable enhancements in this release are:</p>
-<ul>
-<li>Multi-platform docker images, now also available at <a href="https://github.com/restic/restic/pkgs/container/restic">ghcr.io</a>.</li>
-<li>Improved lock refresh handling when using standby / slow network connections.</li>
-<li>Better lock retry handling with the <code>--retry-lock</code> option.</li>
-<li>backup: Support <a href="https://restic.readthedocs.io/en/stable/040_backup.html#file-change-detection"><code>--group-by</code></a> for backup parent selection.</li>
-<li>forget: Keep oldest snapshot when there is room for it according to <code>--keep-*</code> policy.</li>
-<li>azure: Add support for <a href="https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html#microsoft-azure-blob-storage">Managed / Workload Identities</a>.</li>
-</ul>
-<p>To download the new release and to see a more detailed list of important changes, please head over to <a href="https://github.com/restic/restic/releases/v0.16.0">GitHub</a>. If you already have restic (0.9.4 or later), you can use the <code>self-update</code> command to automatically download and verify the new release.</p>
-<p><strong>We wish to thank all of our wonderful contributors</strong>, who help making restic even better with every release as well as giving support and guidance to other restic users in the community. Thank you all!</p>
-<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! To get help or provide feedback, please write a post in <a href="https://forum.restic.net">the forum</a>.</p>
+        <h1 class="post-title">REST-server 0.14.0 released</h1>
+        <span class="post-date">26 May 2025</span>
+        <p>We have just released <a href="https://github.com/restic/rest-server/releases/tag/v0.14.0">REST-server 0.14.0</a>.</p>
+<p>This release corrects permissions of the <code>.htpasswd</code> file created by the Docker container when one does not already exist. The permissions of existing <code>.htpasswd</code> files, which were previously created world-readable, must be manually changed if relevant in your setup.</p>
+<p>In addition, REST-server adds support for proxy-based authentication and uses hardened TLS settings. Due to dependency updates, REST-server now requires Go 1.23 to build.</p>
+<p>Please see the <a href="https://github.com/restic/rest-server/releases/tag/v0.14.0">changelog</a> for more specific information!</p>
+<p>Please let us know what you think in the forum post linked below!</p>
 
       </div>
 
       <h2>Comments</h2>
       <div id='discourse-comments'></div>
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2023-07-31\/restic-0.16.0-released\/' };
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2025-05-26\/rest-server-0.14.0-released\/' };
 
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
