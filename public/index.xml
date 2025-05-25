@@ -6,8 +6,15 @@
     <description>Recent content in Backups done right! on restic</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Mar 2025 20:41:00 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 26 May 2025 18:30:00 +0200</lastBuildDate>
     <atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>REST-server 0.14.0 released</title>
+      <link>https://restic.net/blog/2025-05-26/rest-server-0.14.0-released/</link>
+      <pubDate>Mon, 26 May 2025 18:30:00 +0200</pubDate>
+      <guid>https://restic.net/blog/2025-05-26/rest-server-0.14.0-released/</guid>
+      <description>&lt;p&gt;We have just released &lt;a href=&#34;https://github.com/restic/rest-server/releases/tag/v0.14.0&#34;&gt;REST-server 0.14.0&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This release corrects permissions of the &lt;code&gt;.htpasswd&lt;/code&gt; file created by the Docker container when one does not already exist. The permissions of existing &lt;code&gt;.htpasswd&lt;/code&gt; files, which were previously created world-readable, must be manually changed if relevant in your setup.&lt;/p&gt;&#xA;&lt;p&gt;In addition, REST-server adds support for proxy-based authentication and uses hardened TLS settings. Due to dependency updates, REST-server now requires Go 1.23 to build.&lt;/p&gt;&#xA;&lt;p&gt;Please see the &lt;a href=&#34;https://github.com/restic/rest-server/releases/tag/v0.14.0&#34;&gt;changelog&lt;/a&gt; for more specific information!&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Restic 0.18.0 Released</title>
       <link>https://restic.net/blog/2025-03-27/restic-0.18.0-released/</link>
