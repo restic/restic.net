@@ -1,6 +1,6 @@
 ---
 title: "REST-server 0.14.0 released"
-date: 2025-05-26T18:30:00+02:00
+date: 2025-05-31T22:35:00+02:00
 ---
 
 We have just released [REST-server 0.14.0](https://github.com/restic/rest-server/releases/tag/v0.14.0).
