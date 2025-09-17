@@ -6,8 +6,15 @@
     <description>Recent content in Blog on restic</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 31 May 2025 22:35:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 18 Sep 2025 16:55:00 +0200</lastBuildDate>
     <atom:link href="https://restic.net/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Restic 0.18.1 Released</title>
+      <link>https://restic.net/blog/2025-09-18/restic-0.18.1-released/</link>
+      <pubDate>Thu, 18 Sep 2025 16:55:00 +0200</pubDate>
+      <guid>https://restic.net/blog/2025-09-18/restic-0.18.1-released/</guid>
+      <description>&lt;p&gt;We are happy to announce the release of &lt;a href=&#34;https://github.com/restic/restic/releases/v0.18.1&#34;&gt;restic 0.18.1&lt;/a&gt;!&lt;/p&gt;&#xA;&lt;p&gt;This is a bug fix release. Most notably, it resolves a crash when using &lt;code&gt;backup --stdin-filename&lt;/code&gt; with directory paths and another crash that could occur when directories are removed during backup operations. Support for local repositories stored on a filesystem that does not support &lt;code&gt;chmod&lt;/code&gt; (such as CIFS or WebDAV mounted via FUSE) has been restored.&lt;/p&gt;&#xA;&lt;p&gt;To download the new release and to see a more detailed list of important changes, please head over to &lt;a href=&#34;https://github.com/restic/restic/releases/v0.18.1&#34;&gt;GitHub&lt;/a&gt;. If you already have restic (0.9.4 or later), you can use the &lt;code&gt;self-update&lt;/code&gt; command to automatically download and verify the new release.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>REST-server 0.14.0 released</title>
       <link>https://restic.net/blog/2025-05-31/rest-server-0.14.0-released/</link>
