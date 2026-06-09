@@ -46,7 +46,7 @@ During initial development (versions prior to 1.0.0), maintainers and developers
 
 ## Contributing
 
-Contributions are welcome! More information can be found in [the restic contribution guidelines](https://github.com/restic/restic/blob/master/CONTRIBUTING.md). A document describing the design of restic and the data structures stored on disc is contained in [the design document](http://restic.readthedocs.io/en/latest/100_references.html#design).
+Contributions are welcome! More information can be found in [the restic contribution guidelines](https://github.com/restic/restic/blob/master/CONTRIBUTING.md). A document describing the design of restic and the data structures stored on disc is contained in [the design document](https://restic.readthedocs.io/en/latest/100_references.html#design).
 
 ## Contact
 
