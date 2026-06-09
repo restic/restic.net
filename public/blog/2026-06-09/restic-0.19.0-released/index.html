@@ -14,7 +14,7 @@
   <title>
     restic &middot;
     
-      Restic 0.13.0 Released
+      Restic 0.19.0 Released
     
   </title>
 
@@ -31,7 +31,7 @@
 
   
   
-  <link rel="canonical" href="https://restic.net/blog/2022-03-26/restic-0.13.0-released/">
+  <link rel="canonical" href="https://restic.net/blog/2026-06-09/restic-0.19.0-released/">
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -74,25 +74,40 @@
 
     <div class="content container">
       <div class="post">
-        <h1 class="post-title">Restic 0.13.0 Released</h1>
-        <span class="post-date">26 Mar 2022</span>
-        <p>We&rsquo;re proud to announce that <a href="https://github.com/restic/restic/releases/v0.13.0">restic 0.13.0</a> has been released today!</p>
-<p>This release contains several bug fixes and improvements worth mentioning:</p>
+        <h1 class="post-title">Restic 0.19.0 Released</h1>
+        <span class="post-date">09 Jun 2026</span>
+        <p>We are happy to announce the release of <a href="https://github.com/restic/restic/releases/v0.19.0">restic 0.19.0</a>!</p>
+<p>As with previous releases, this one contains many different enhancements, some optimizations as well as a few bugfixes. We are grateful to all the contributors who spent their time and effort to help improve restic yet another time - thank you! Also a huge thanks to everyone in the restic community, who answers technical and non-technical questions tirelessly for both existing and new users - this is very helpful and much appreciated.</p>
+<p>Some of the most important changes in this release are:</p>
 <ul>
-<li>It is now possible to add negative patterns to cancel previous exclusions (e.g. <code>--exclude '/home/user/*' --exclude '!/home/user/.config'</code>).</li>
-<li>The <code>backup</code> command now has a <code>--dry-run</code> switch which (together with <code>--verbose</code>) prints the files that would be included in a backup.</li>
-<li>We have added checksums for various backends so data uploaded to a backend can be checked there.</li>
-<li>The <code>restore</code> command was optimized and is now twice as fast, the <code>copy</code> command was improved as well.</li>
+<li>Restic now supports the zstd compression modes <code>fastest</code> and <code>better</code>, allowing for more tailored choice of compression.</li>
+<li>Loading the index for a large repository is now significantly faster, and the <code>mount</code> command loads new index files on demand.</li>
+<li>The <code>check</code>, <code>copy</code>, <code>diff</code> and <code>stats</code> commands now use less memory when handling large snapshots.</li>
+<li>The <code>restore</code> command now supports restoring file ownership on UNIX systems by user and group name with the <code>--ownership-by-name</code> option.</li>
+<li>The <code>backup</code> command now supports <code>--exclude-cloud-files</code> (previously only available on Windows) on supported macOS versions to skip cloud-only files.</li>
 </ul>
-<p>For downloading the new release and to see a more detailed list of important changes, please head over to <a href="https://github.com/restic/restic/releases/v0.13.0">GitHub</a>. If you already have restic (0.9.4 or later), you can use the <code>self-update</code> command to automatically download and verify the new release.</p>
-<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! Or just write a post in <a href="https://forum.restic.net">the forum</a>.</p>
+<p>Other notable changes include:</p>
+<ul>
+<li>API transaction costs for files up to 256 MiB are reduced by about half in the Azure backend.</li>
+<li>The <code>copy</code> command now copies multiple snapshots together so that small pack files are avoided where possible.</li>
+<li>The <code>backup</code> command no longer applies exclude rules to paths given on the command line itself (excludes still apply to contents within those paths).</li>
+<li>The <code>check</code> command now supports snapshot filters (<code>--tag</code>, <code>--host</code>, <code>--path</code>, or explicit snapshot IDs).</li>
+<li>The <code>rewrite</code> command now supports include filters (<code>--include</code>, <code>--include-file</code>, <code>--iinclude</code>, <code>--iinclude-file</code>).</li>
+<li>Serving files from a Windows backup in a mounted restic repository using Samba is now possible on a POSIX system.</li>
+<li>Access Control Entry inheritance on Windows is now restored correctly.</li>
+<li>The official restic Docker image now supports <code>nice</code> and <code>ionice</code> scheduling hints.</li>
+<li>Exit codes have been improved for certain situations and signals, improving scripting reliability.</li>
+<li>Several UX improvements have been made in the CLI and restic&rsquo;s output.</li>
+</ul>
+<p>To download the new release and to see a more detailed list of important changes, please head over to <a href="https://github.com/restic/restic/releases/v0.19.0">GitHub</a>. If you already have restic (0.9.4 or later), you can use the <code>self-update</code> command to automatically download and verify the new release.</p>
+<p>As always, thanks for <a href="https://github.com/restic/restic/issues/new/choose">reporting any issues</a> you encounter! To get help or provide feedback, please write a post in <a href="https://forum.restic.net">the forum</a>.</p>
 
       </div>
 
       <h2>Comments</h2>
       <div id='discourse-comments'></div>
       <script type="text/javascript">
-        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2022-03-26\/restic-0.13.0-released\/' };
+        DiscourseEmbed = { discourseUrl: 'https://forum.restic.net/', discourseEmbedUrl: 'https:\/\/restic.net\/blog\/2026-06-09\/restic-0.19.0-released\/' };
 
         (function() {
           var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
