@@ -10,9 +10,16 @@
 		
 		
 		
-			<lastBuildDate>Sun, 21 Sep 2025 20:36:00 +0200</lastBuildDate>
+			<lastBuildDate>Tue, 09 Jun 2026 21:00:00 +0200</lastBuildDate>
 		
 			<atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Restic 0.19.0 Released</title>
+				<link>https://restic.net/blog/2026-06-09/restic-0.19.0-released/</link>
+				<pubDate>Tue, 09 Jun 2026 21:00:00 +0200</pubDate>
+				<guid>https://restic.net/blog/2026-06-09/restic-0.19.0-released/</guid>
+				<description>&lt;p&gt;We are happy to announce the release of &lt;a href=&#34;https://github.com/restic/restic/releases/v0.19.0&#34;&gt;restic 0.19.0&lt;/a&gt;!&lt;/p&gt;&#xA;&lt;p&gt;As with previous releases, this one contains many different enhancements, some optimizations as well as a few bugfixes. We are grateful to all the contributors who spent their time and effort to help improve restic yet another time - thank you! Also a huge thanks to everyone in the restic community, who answers technical and non-technical questions tirelessly for both existing and new users - this is very helpful and much appreciated.&lt;/p&gt;</description>
+			</item>
 			<item>
 				<title>Restic 0.18.1 Released</title>
 				<link>https://restic.net/blog/2025-09-21/restic-0.18.1-released/</link>
