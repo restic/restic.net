@@ -263,9 +263,9 @@ This gives us not only *inter-file* de-duplication, but also the more relevant
 ### References
 
  * [The restic CDC implementation](https://github.com/restic/chunker) and
-   [API documentation](http://godoc.org/github.com/restic/chunker)
+   [API documentation](https://godoc.org/github.com/restic/chunker)
  * Michael O. Rabin (1981): [Fingerprinting by Random Polynomials](http://www.xmailserver.org/rabin.pdf)
- * Ross N. Williams (1993): [A Painless Guide to CRC Error Detection Algorithms](http://www.zlib.net/crc_v3.txt)
+ * Ross N. Williams (1993): [A Painless Guide to CRC Error Detection Algorithms](https://www.zlib.net/crc_v3.txt)
  * Andrei Z. Broder (1993): [Some Applications of Rabin's Fingerprinting Method](http://www.xmailserver.org/rabin_apps.pdf)
  * Shuhong Gao and Daniel Panario (1997): [Tests and Constructions of Irreducible Polynomials over Finite Fields](http://www.math.clemson.edu/~sgao/papers/GP97a.pdf)
  * Andrew Kadatch, Bob Jenkins (2007): [Everything we know about CRC but afraid to forget](https://github.com/rurban/crcutil/raw/master/doc/crc.pdf)
