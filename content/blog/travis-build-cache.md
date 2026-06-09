@@ -4,7 +4,7 @@ date: 2018-09-02T00:00:00Z
 ---
 
 The restic project runs the unit and integration tests for each pushed commit
-and each pull request. We're using [Travis CI](https://travis-ci.com) for Linux
+and each pull request. We're using [Travis CI](https://www.travis-ci.com) for Linux
 and OS X, and [AppVeyor](https://www.appveyor.com/) for Windows. We're very
 grateful that they provide their services free of charge for Open Source
 projects!
