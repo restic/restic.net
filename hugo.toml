@@ -1,5 +1,5 @@
 baseURL = "https://restic.net"
-languageCode = "en-us"
+locale = "en-us"
 title = "restic"
 
 # Stay compatible with URLs from the previous (Jekyll) website.
@@ -32,4 +32,4 @@ buildFuture = true
 [permalinks]
 	# The previous site (Jekyll) does not use an ending slash when generating links,
 	#  but even if we don't include that here, Hugo generates it, so we leave it in.
-	blog = "/blog/:year-:month-:day/:filename/"
+	blog = "/blog/:year-:month-:day/:contentbasename/"
