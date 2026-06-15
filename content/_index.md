@@ -69,7 +69,7 @@ The following talks have been given about restic:
  * 2015-08-23: [A Solution to the Backup Inconvenience](https://media.ccc.de/browse/conferences/froscon/2015/froscon2015-1515-a_solution_to_the_backup_inconvenience.html): Lecture at [FROSCON 2015](https://www.froscon.de) in Bonn, Germany
  * 2015-02-01: [Lightning Talk at FOSDEM 2015](https://www.youtube.com/watch?v=oM-MfeflUZ8&t=11m40s): A short introduction (with slightly outdated command line)
  * 2015-01-27: [Talk about restic at CCC Aachen](https://video.fsmpi.rwth-aachen.de/cccac/4442) (in German)
- * 2026-06-10: [FLOSS Weekly: Open Source Gardening](https://www.youtube.com/watch?v=BSIV52iiWSU)
+ * 2026-06-10: [restic on the FLOSS Weekly podcast](https://hackaday.com/2026/06/10/floss-weekly-episode-870-open-source-gardening/)
 
 ## Blog
 
