@@ -1,13 +1,11 @@
 /* enable hyphenation */
-@mixin hyphens($value: "manual") {
-  @each $prefix in "", -webkit-, -moz-, -o-, -ms- {
-    #{$prefix}hyphens: $value;
-  }
-}
-
 div.content p, div.content li {
   text-align: justify;
-  @include hyphens(auto);
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -o-hyphens: auto;
+  -ms-hyphens: auto;
 }
 
 /* override standard hyde content box width */
@@ -29,17 +27,17 @@ table {
 }
 
 /* temporary styles for ToC */
-#TableOfContents {
-  ul {
-    padding-left: 0;
-    li {
-      display: block;
-      a {
-        display: block;
-        line-height: 1.75;
-      }
-    }
-  }
+#TableOfContents ul {
+  padding-left: 0;
+}
+
+#TableOfContents ul li {
+  display: block;
+}
+
+#TableOfContents ul li a {
+  display: block;
+  line-height: 1.75;
 }
 
 /* temporarily adjust list look for related blog posts */
