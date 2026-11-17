@@ -11,7 +11,7 @@ Important Changes in 0.7.0
 ==========================
 
  * New "swift" backend: A new backend for the OpenStack Swift cloud storage
-   protocol has been added, https://wiki.openstack.org/wiki/Swift
+   protocol has been added, https://docs.openstack.org/swift
    https://github.com/restic/restic/pull/975
    https://github.com/restic/restic/pull/648
 
