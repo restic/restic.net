@@ -10,14 +10,14 @@
 		
 		
 		
-			<lastBuildDate>Wed, 18 Nov 2026 21:00:00 +0100</lastBuildDate>
+			<lastBuildDate>Thu, 19 Nov 2026 13:00:00 +0100</lastBuildDate>
 		
 			<atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>Restic 0.20.0 Released</title>
-				<link>https://restic.net/blog/2026-11-18/restic-0.20.0-released/</link>
-				<pubDate>Wed, 18 Nov 2026 21:00:00 +0100</pubDate>
-				<guid>https://restic.net/blog/2026-11-18/restic-0.20.0-released/</guid>
+				<link>https://restic.net/blog/2026-11-19/restic-0.20.0-released/</link>
+				<pubDate>Thu, 19 Nov 2026 13:00:00 +0100</pubDate>
+				<guid>https://restic.net/blog/2026-11-19/restic-0.20.0-released/</guid>
 				<description>&lt;p&gt;We are happy to announce the release of &lt;a href=&#34;https://github.com/restic/restic/releases/v0.20.0&#34;&gt;restic 0.20.0&lt;/a&gt;!&lt;/p&gt;&#xA;&lt;p&gt;This release contains several different enhancements and bugfixes along with significant internal cleanups.&#xA;A lot of these come from efforts in the community, and as usual we send our regards to those helping out with improving restic!&lt;/p&gt;&#xA;&lt;p&gt;This release includes two security related fixes:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;When restoring from a manipulated repository, an attacker could trick restic into writing files with attacker controlled location and content. Thanks to Mario Ramos (@marrionesa), calif.io, Zachariah Mithani (AploSec) and Manuel Riel (@m3nu) for reporting this.&lt;/li&gt;&#xA;&lt;li&gt;When restoring with &lt;code&gt;--ownership-by-name&lt;/code&gt;, if the user/group name does not exist on the restore host, this resulted in the file being owned by root. This could be a problem if the file permissions contained the &lt;code&gt;setuid&lt;/code&gt; or &lt;code&gt;setgid&lt;/code&gt; bit. Thanks to Manuel Riel (@m3nu) for fixing this.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Other notable changes in this release are:&lt;/p&gt;</description>
 			</item>
 			<item>
