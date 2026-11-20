@@ -10,9 +10,16 @@
 		
 		
 		
-			<lastBuildDate>Thu, 19 Nov 2026 13:00:00 +0100</lastBuildDate>
+			<lastBuildDate>Sat, 21 Nov 2026 18:35:00 +0100</lastBuildDate>
 		
 			<atom:link href="https://restic.net/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>REST-server 0.15.0 released</title>
+				<link>https://restic.net/blog/2026-11-21/rest-server-0.15.0-released/</link>
+				<pubDate>Sat, 21 Nov 2026 18:35:00 +0100</pubDate>
+				<guid>https://restic.net/blog/2026-11-21/rest-server-0.15.0-released/</guid>
+				<description>&lt;p&gt;We have just released &lt;a href=&#34;https://github.com/restic/rest-server/releases/tag/v0.15.0&#34;&gt;REST-server 0.15.0&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This release contains a low severity security fix, where a temporary error while reading &lt;code&gt;.htpasswd&lt;/code&gt; kept the old credentials until the file was changed again. A failed reload is now retried until it succeeds. Thanks to Wenhao Wu (@d3do-23) for reporting this issue.&lt;/p&gt;&#xA;&lt;p&gt;REST-server now has a &lt;code&gt;/healthz&lt;/code&gt; endpoint that can be used as a liveness probe for the server. The Docker container now also honors the &lt;code&gt;TZ&lt;/code&gt; environment variable to configure a timezone. When REST-server runs behind a reverse proxy, it now interprets the forwarded IP if the &lt;code&gt;--proxy-headers&lt;/code&gt; option is enabled. When using &lt;code&gt;--proxy-auth-username&lt;/code&gt;, the usernames must now conform to the same validation as in the &lt;code&gt;.htpasswd&lt;/code&gt; file (unicode letters, digits and &lt;code&gt;@&lt;/code&gt;, &lt;code&gt;.&lt;/code&gt;, &lt;code&gt;_&lt;/code&gt;, &lt;code&gt;-&lt;/code&gt;).&lt;/p&gt;</description>
+			</item>
 			<item>
 				<title>Restic 0.20.0 Released</title>
 				<link>https://restic.net/blog/2026-11-19/restic-0.20.0-released/</link>
